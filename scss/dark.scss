@@ -29,7 +29,7 @@ html.dark body {
 
     article.post, article.guestbook {
         input[type="submit"] {
-            color: var(--hl);
+            color: var(--hl) !important;
         }
     }
 

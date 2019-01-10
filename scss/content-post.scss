@@ -63,10 +63,6 @@ article.post {
                 border-color: rgba(160, 160, 160, .3) !important;
             }
         }
-
-        a {
-            color: var(--hl);
-        }
     }
 
     .post-tags {
@@ -133,7 +129,7 @@ article.post {
                     width: .8rem;
                     height: .8rem;
                     display: inline-block;
-                    margin-right: 7px;
+                    margin-right: 6px;
                     animation: rotate 30s linear infinite;
                     opacity: .7;
                 }
@@ -234,7 +230,7 @@ article.post {
                 
                 &:hover, &:focus {
                     transition: none;
-                    color: var(--ul);
+                    color: var(--ul) !important;
                     background-color: var(--hl);
                 }
             }
