@@ -1,0 +1,9 @@
+s_page_rep: article.page
+    script
+        | try {
+        |     document.querySelector("header.global .t_menu_page a[href=\"" + location.pathname + "\"]").classList.add("now");
+        | } catch (e) {}
+
+    | [##_article_rep_title_##]
+
+    //- TODO

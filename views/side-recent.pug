@@ -1,0 +1,15 @@
+s_sidebar_element
+    // 최근 글
+    div#recent-panel
+        div.panel-title
+            p= "최근에 올라온 글"
+        ul.tt_recent
+            s_rctps_rep: li
+                div.recent-item
+                    a.recent-title(href="[##_rctps_rep_link_##]")
+                        | [##_rctps_rep_title_##]
+                        span.comments-count= "[##_rctps_rep_rp_cnt_##]"
+                    div.recent-info
+                        span.recent-date= "[##_rctps_rep_date_##]"
+                        a.recent-category(href="[##_rctps_rep_category_link_##]")
+                            | [##_rctps_rep_category_##]

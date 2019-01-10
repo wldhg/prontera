@@ -1,0 +1,9 @@
+s_paging: div.paginator
+    a.prev([##_prev_page_##] class="[##_no_more_prev_##]")
+        include icons/arrow-left
+
+    s_paging_rep
+        a([##_paging_rep_link_##])= "[##_paging_rep_link_num_##]"
+
+    a.next([##_next_page_##] class="[##_no_more_next_##]")
+        include icons/arrow-right

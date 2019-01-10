@@ -1,0 +1,14 @@
+$CONTENT_WIDTH: 1000px;
+$CONTENT_MIN_WIDTH: 320px;
+
+%comment-count-on-list {
+    font-size: 12px;
+    padding-left: .3rem;
+    font-weight: 200;
+    color: #aaa;
+}
+
+@mixin size($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}

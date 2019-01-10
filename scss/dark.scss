@@ -1,0 +1,65 @@
+@import "common";
+
+html.dark body {
+    color: #eee;
+
+    *:not(.dark-ne) {
+        --ul: #f0f0f0;
+    }
+
+    header.global {
+        background-color: #333;
+
+        #dark-controller {
+            .icon.moon path {
+                fill: #eee !important;
+            }
+            .icon.sun path {
+                fill: #ffd924 !important;
+            }
+
+            label {
+                margin-left: 3px;
+            }
+            &:hover label {
+                width: 20px;
+            }
+        }
+    }
+
+    article.post, article.guestbook {
+        input[type="submit"] {
+            color: var(--hl);
+        }
+    }
+
+    aside {
+        #about-panel {
+            border-bottom-color: rgba(100,100,100,.7);
+
+            .info {
+                .alternative { color: #ccc; }
+                .description { color: #bbb; }
+            }
+        }
+
+        #search-panel {
+            input, button {
+                border-color: rgba(160, 160, 160, .3);
+            }
+            button {
+                background-color: rgba(160, 160, 160, .3);
+            }
+        }
+    }
+
+    path { fill: var(--hl) !important; }
+
+    input[type="text"] {
+        color: var(--hl);
+    }
+
+    a.goto-top {
+        background-color: #333;
+    }
+}

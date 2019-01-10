@@ -1,0 +1,27 @@
+doctype
+html(lang="ko")
+    include head
+    body#top(data-type="[##_body_id_##]")
+        s_t3
+            include global-header
+
+            main
+                div#content.left
+                    include content-post
+                    include content-page
+                    include content-tags
+                    include content-guestbook
+                    include content-paginator
+
+                aside#side-bar.right
+                    include side-about
+                    s_sidebar
+                        include side-search
+                        include side-category
+                        include side-notice
+                        include side-recent
+
+            include global-footer
+
+            a.goto-top.dark-ne(href="#top")
+                span= "가장 위로"

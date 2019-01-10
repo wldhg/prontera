@@ -1,0 +1,56 @@
+s_article_rep: article.post
+    header
+        h2.post-title
+            a(href="[##_article_rep_link_##]")
+                | [##_article_rep_title_##]
+        div.post-info
+            span.date= "[##_article_rep_date_##]"
+            a(href="[##_article_rep_category_link_##]")
+                span.category= "[##_article_rep_category_##]"
+            s_rp_count: span.comments-count
+                = "[##_article_rep_rp_cnt_##]"
+    
+    s_index_article_rep
+        section.post-content.summary
+            | [##_article_rep_summary_##]
+    
+    s_permalink_article_rep
+        section.post-content.full-text
+            | [##_article_rep_desc_##]
+        s_tag_label: section.post-tags
+            span= "태그"
+            | [##_tag_label_rep_##]
+        s_rp: footer
+            div.post-comments
+                h2= "댓글"
+                s_rp_container: ol
+                    s_rp_rep: li(id='[##_rp_rep_id_##]' class="[##_rp_rep_class_##]")
+                        span.name= "[##_rp_rep_name_##]"
+                        span.date= "[##_rp_rep_date_##]"
+                        div.control
+                            a.address(href="[##_rp_rep_link_##]")= "#"
+                            a.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
+                            a.write(href="#" onclick="[##_rp_rep_onclick_reply_##]")= "대댓글"
+                        p= "[##_rp_rep_desc_##]"
+                        s_rp2_container: ol
+                            s_rp2_rep: li(id="[##_rp_rep_id_##]" class="[##_rp_rep_class_##]")
+                                span.name= "[##_rp_rep_name_##]"
+                                span.date= "[##_rp_rep_date_##]"
+                                div.control
+                                    a.address(href="[##_rp_rep_link_##]")= "#"
+                                    a.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
+                                p= "[##_rp_rep_desc_##]"
+                s_rp_input_form: div#write-comment
+                    div.wc-content
+                        textarea(name="[##_rp_input_comment_##]" placeholder="하고 싶은 말이 무엇인가요?")
+                    div.wc-personal
+                        s_rp_member
+                            s_rp_guest
+                                input(type="text" name="[##_rp_input_name_##]" value="[##_guest_name_##]" placeholder="이름")
+                                input(type="password" maxlength="8" name="[##_rp_input_password_##]" value="[##_guest_password_##]" placeholder="비밀번호")
+                                input(type="hidden" name="[##_rp_input_homepage_##]")
+                            label(for="isSecret")
+                                include icons/padlock-unlocked
+                                include icons/padlock-locked
+                            input(type="checkbox" id="isSecret" name="[##_rp_input_is_secret_##]" onchange="Pt.comment.toggle(this)")
+                        input.dark-ne(type="submit" value="댓글 달기" onclick="[##_rp_onclick_submit_##]")

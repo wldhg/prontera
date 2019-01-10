@@ -1,0 +1,9 @@
+s_tag: article.tags
+    header
+        h2.tags-title= "태그 목록"
+    
+    section.tags-list
+        ul
+            s_tag_rep: li
+                a(href="[##_tag_link_##]" class="[##_tag_class_##]")
+                    | [##_tag_name_##]

@@ -1,0 +1,42 @@
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="theme-color" content="[##_var_unlight_##]")
+    
+    script
+        | (function () {
+        |     var cq = document.cookie.split(";");
+        |     cq.forEach(function (ci) {
+        |         var c = ci.split("=");
+        |         if ("ptDark" == c[0].trim() && c[1][0] === "t") {
+        |             document.documentElement.style.setProperty("background-color", "#222");
+        |             document.documentElement.classList.add("dark");
+        |         } else {
+        |             document.documentElement.style.setProperty("background-color", "#fff");
+        |         }
+        |     });
+        | })()
+
+    meta(name="author" content="[##_blogger_##]")
+    title= "[##_page_title_##]"
+
+    link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")
+
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700")
+    link(rel="stylesheet" href="./style.css")
+    style(type="text/css")
+        | * {
+        |     --hl: [##_var_highlight_##];
+        |     --ul: [##_var_unlight_##];
+        | }
+    
+    script(src="./script.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async)
+    script(type="text/x-mathjax-config")
+        | MathJax.Hub.Config({
+        |     tex2jax: {
+        |         inlineMath: [['$', '$']],
+        |         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        |         processEscapes: true
+        |     }
+        | });
