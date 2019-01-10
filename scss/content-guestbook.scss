@@ -50,6 +50,17 @@ article.guestbook {
                     }
                 }
 
+                &.guest_admin > .name::before {
+                    content: '';
+                    background: url("./images/star.svg") no-repeat;
+                    width: .8rem;
+                    height: .8rem;
+                    display: inline-block;
+                    margin-right: 7px;
+                    animation: rotate 30s linear infinite;
+                    opacity: .7;
+                }
+
                 .name {
                     margin-right: .23rem;
                     font-weight: 700;

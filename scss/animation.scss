@@ -38,3 +38,8 @@
     50% { border: 1px solid var(--hl); }
     100% { border: 1px solid transparent; }
 }
+
+@keyframes rotate {
+    0% { transform: rotateZ(0); }
+    100% { transform: rotateZ(360deg); }
+}
