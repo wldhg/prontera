@@ -1,5 +1,9 @@
 @import "common";
 
+html.dark {
+    scrollbar-color: rgba(128, 128, 128, .8) rgba(200, 200, 200, .3);
+}
+
 html.dark body {
     color: #eee;
 

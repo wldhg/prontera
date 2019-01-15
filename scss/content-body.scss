@@ -1,5 +1,84 @@
 .content-body {
     a {
+        color: var(--hl) !important;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    code {
+        padding: 0 5px 3px;
+        background: rgba(200, 200, 200, .3);
+        border: rgba(200, 200, 200, .5) 1px solid;
+        box-sizing: border-box;
+        font-family: monospace;
+        white-space: nowrap;
+        border-radius: 2px;
+        margin: 0 2px;
+    }
+
+    table {
+        border-spacing: 0;
+
+        td {
+            padding: 5px;
+            vertical-align: bottom;
+        }
+    }
+
+    .imageblock {
+        span:not(.cap1) {
+            display: block;
+            background-color: rgba(160, 160, 160, .3);
+        }
+
+        .cap1 {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            font-size: .8rem;
+        }
+    }
+
+    div.footnotes {
+        margin-top: 40px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(160, 160, 160, .3);
+        
+        li {
+            &:target {
+                animation: border-emphasize 2.5s infinite ease-in-out;
+            }
+
+            a:last-child {
+                color: rgba(128, 128, 128, .7);
+                transition: color .32s ease-in-out;
+
+                &::after { display: none; }
+
+                &:hover, &:focus { color: var(--hl); }
+            }
+        }
+    }
+}
+
+div[id^='tistoryFootnoteLayer_'] {
+    *:not(a) {
+        color: #222;
+    }
+
+    a {
         color: var(--hl);
+
+        &:hover, &:focus {
+            text-decoration: underline !important;
+        }
     }
 }

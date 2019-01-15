@@ -2,7 +2,7 @@
 <skin>
     <information>
         <name>Prontera</name>
-        <version>0.8.0</version>
+        <version>0.9.0</version>
         <description>
             <![CDATA[Hexo의 Prontera에서 개량한 테마입니다.]]>
         </description>
@@ -24,8 +24,8 @@
         <sortInCloud>1</sortInCloud>
         <expandComment>1</expandComment>
         <expandTrackback>0</expandTrackback>
-        <lengthOfRecentNotice>29</lengthOfRecentNotice>
-        <lengthOfRecentEntry>27</lengthOfRecentEntry>
+        <lengthOfRecentNotice>120</lengthOfRecentNotice>
+        <lengthOfRecentEntry>120</lengthOfRecentEntry>
         <lengthOfRecentComment>0</lengthOfRecentComment>
         <lengthOfRecentTrackback>0</lengthOfRecentTrackback>
         <lengthOfLink>0</lengthOfLink>

@@ -28,7 +28,6 @@
 + 모바일 대응 (반응형)
 + 웹 접근성 확장 대응
 + 검색 결과, 태그 결과 표시
-+ 간헐적으로 나타나는 화면 모드 비정상 오류 수정
 + `index.xml`과 `package.json` 설명, 버전 연동 (`index.xml` 기준으로)  
 
 ## 스킨 파일 빌드하기
@@ -53,4 +52,9 @@ $ yarn gulp build
 ## 라이센스
 디자인의 토대는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)에서 가져왔습니다.  
 이 프로젝트는 Mozilla Public License 2.0를 따릅니다.  
-프로젝트에 사용된 `svg` 아이콘의 저작권은 비상업적 이용이 허가된 아이콘으로, 자세한 내용은 [이 링크](https://www.svgrepo.com/info/licensing)에서 설명합니다.  
+
+### 아이콘 라이센스
+- `padlock-locked.pug`: &copy; Yuoa.  
+- `padlock-unlocked.pug`: &copy; Yuoa.  
+
+위 나열된 파일 이외 프로젝트에 사용된 `svg` 아이콘은 비상업적 이용이 허가된 아이콘으로, 자세한 내용은 [이 링크](https://www.svgrepo.com/info/licensing)에서 설명합니다.  

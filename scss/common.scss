@@ -8,6 +8,17 @@ $CONTENT_MIN_WIDTH: 320px;
     color: #aaa;
 }
 
+%underline-basic {
+    content: ' ';
+    width: 100%;
+    margin-top: 2px;
+    background-color: currentColor;
+    height: .15em;
+    position: absolute;
+    left: 0;
+    bottom: -.15em;
+}
+
 @mixin size($width: auto, $height: auto) {
     width: $width;
     height: $height;

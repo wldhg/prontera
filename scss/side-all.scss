@@ -85,10 +85,16 @@ aside {
 
     #search-panel {
         width: 100%;
-        padding-top: 20px;
+        margin-top: 20px;
         font-size: 0;
         display: flex;
+        transition: filter .32s ease-in-out;
+        filter: grayscale(100%) opacity(50%);
         $border: 3px;
+
+        &:hover, &:target, &:focus-within {
+            filter: none;
+        }
 
         input, button {
             border: $border solid var(--ul);
