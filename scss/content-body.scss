@@ -13,12 +13,18 @@
         font-size: 1.1rem;
     }
 
+    code, pre {
+        background: rgba(200, 200, 200, .1);
+        border: rgba(200, 200, 200, .35) 1px solid;
+        box-sizing: border-box;
+        
+        &, * {
+            font-family: monospace !important;
+        }
+    }
+
     code {
         padding: 0 5px 3px;
-        background: rgba(200, 200, 200, .3);
-        border: rgba(200, 200, 200, .5) 1px solid;
-        box-sizing: border-box;
-        font-family: monospace;
         white-space: nowrap;
         border-radius: 2px;
         margin: 0 2px;
@@ -65,6 +71,100 @@
 
                 &:hover, &:focus { color: var(--hl); }
             }
+        }
+    }
+
+    .hljs, pre {
+        padding: 1.2em 1.4em;
+        line-height: 1.5em;
+        margin: 0;
+        overflow-x: auto;
+
+         & > span, & > code, & > div {
+            margin-right: 1.4em;
+            display: block;
+        }
+
+        br {
+            display: none;
+        }
+
+        .hljs-comment {
+            opacity: .4;
+        }
+
+        .hljs-keyword,
+        .hljs-attribute,
+        .hljs-selector-tag,
+        .hljs-meta-keyword,
+        .hljs-doctag,
+        .hljs-name,
+        .hljs-title,
+        .hljs-section {
+            font-weight: bold;
+        }
+
+        .hljs-type,
+        .hljs-string,
+        .hljs-number,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-quote,
+        .hljs-template-tag,
+        .hljs-deletion,
+        .hljs-title,
+        .hljs-section {
+            color: var(--hl);
+        }
+
+        .hljs-regexp,
+        .hljs-symbol,
+        .hljs-variable,
+        .hljs-template-variable,
+        .hljs-link,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: var(--hl);
+        }
+
+        .hljs-literal {
+            color: var(--hl);
+        }
+
+        .hljs-built_in,
+        .hljs-bullet,
+        .hljs-code,
+        .hljs-addition {
+            color: var(--hl);
+        }
+
+        .hljs-meta {
+            color: var(--hl);
+        }
+
+        .hljs-meta-string {
+            color: var(--hl);
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: rgba(160, 160, 160, .7);
+            text-align: right;
+            font-size: 0.75em;
+            padding: 5px 10px 0;
+            line-height: 15px;
+            height: 15px;
+            font-weight: 600;
         }
     }
 }
