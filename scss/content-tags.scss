@@ -18,25 +18,12 @@ article.tags {
                 margin: 5px 20px;
 
                 a {
+                    @extend %underline-slide;
                     color: var(--ul);
                     transition: color .32s ease-in-out;
 
-                    &::after {
-                        @extend %underline-basic;
-                        width: 0% !important;
-                        transition: width .32s linear, margin-left .32s linear;
-                        box-sizing: border-box;
-                        margin-left: 100%;
-                    }
-                
                     &:hover, &:focus {
                         color: var(--hl);
-
-                        &::after {
-                            transition: width .32s linear;
-                            width: 100% !important;
-                            margin-left: 0%;
-                        }
                     }
 
                     &.cloud1 { font-size: 2rem; }

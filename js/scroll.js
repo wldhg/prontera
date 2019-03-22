@@ -30,8 +30,6 @@ var Prontera = Prontera || {};
         else w.topScroller.classList.remove("visible");
     };
 
-    if (window.location.hash) {
-        window.scrollTo(0, w.pageOffset + document.querySelector(window.location.hash).getBoundingClientRect().top - 100);
-    }
+    // Hash-related scripts are in "contents.js"
 
 }, "scroll");

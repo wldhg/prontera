@@ -192,6 +192,15 @@ aside {
         }
     }
 
+    .side-list, .category_list {
+        &:empty::after {
+            content: "항목이 없습니다.";
+            display: block;
+            margin-left: 13px;
+            color: #aaa;
+        }
+    }
+
     .tt_notice, .tt_recent {
         list-style: none;
         margin: 0;

@@ -104,8 +104,20 @@ main {
         width: 32%;
         float: left;
     }
+
+    .absent_post {
+        font-size: 16px !important;
+        color: #34495e !important;
+        background: none !important;
+    }
 }
 
 .no-event {
     pointer-events: none;
+}
+
+.lb-close {
+    &::after {
+        display: none;
+    }
 }

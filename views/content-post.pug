@@ -1,3 +1,11 @@
+s_list
+    em.result
+        | '
+        b= "[##_list_conform_##]"
+        | ' 에 해당되는 글이
+        b= " [##_list_count_##]개 "
+        | 있습니다.
+
 s_article_rep: article.post
     header
         h2.post-title
@@ -11,8 +19,12 @@ s_article_rep: article.post
                 = "[##_article_rep_rp_cnt_##]"
     
     s_index_article_rep
+        s_article_rep_thumbnail
+            .post-thumbnail(style="background-image: url([##_article_rep_thumbnail_url_##])")
         section.post-content.content-summary
             | [##_article_rep_summary_##]
+            a(href="[##_article_rep_link_##]")= "더보기"
+            
     
     s_permalink_article_rep
         section.post-content.content-body

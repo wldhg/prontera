@@ -31,6 +31,12 @@ html.dark body {
         }
     }
 
+    main {
+        .absent_post {
+            color: #eee !important;
+        }
+    }
+
     article.post, article.guestbook {
         input[type="submit"] {
             color: var(--hl) !important;

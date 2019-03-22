@@ -39,7 +39,12 @@ header.global {
         a { color: var(--ul); }
         a:hover, a:focus, a:target { &::after { display: none; } }
 
-        h1 { font-size: 1.67rem; }
+        h1 {
+            @extend %underline-slide;
+            
+            font-size: 1.67rem;
+            position: relative;
+        }
 
         ul {
             padding: 0;
