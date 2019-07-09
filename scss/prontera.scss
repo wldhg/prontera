@@ -4,3 +4,41 @@
 @import "dark-mode";
 
 @import "global";
+
+html {
+  scrollbar-color: rgba(128, 128, 128, .4) rgba(200, 200, 200, .6);
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  color: var(--ul);
+  font-size: 12px;
+  line-height: 1.4;
+
+  &, * {
+    font-family: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::selection {
+      color: #eaeaea;
+      background-color: var(--hl);
+    }
+  }
+
+  path, polygon {
+    fill: var(--ul);
+  }
+}
+
+main {
+  width: $CONTENT-WIDTH;
+  padding-top: 90px;
+  margin: 0 auto;
+  height: fit-content;
+  height: auto;
+  display: block;
+}

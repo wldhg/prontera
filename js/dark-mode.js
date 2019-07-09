@@ -9,6 +9,7 @@ PtRegister(
 
     if (w.isDark) {
         w.checkBox.checked = w.isDark;
+        document.querySelector('meta[name=theme-color]').content = "#000000";
     }
 
     w.setCookie = function (value) {
@@ -23,11 +24,13 @@ PtRegister(
         w.isDark = !w.isDark;
 
         if (w.isDark) {
-            document.documentElement.style.setProperty("background-color", "#222");
-            document.documentElement.classList.add("dark");
+            document.documentElement.style.setProperty("background-color", "#000000");
+          document.documentElement.classList.add("dark");
+          document.querySelector('meta[name=theme-color]').content = "#000000";
         } else {
-            document.documentElement.style.setProperty("background-color", "#fff");
-            document.documentElement.classList.remove("dark");
+            document.documentElement.style.setProperty("background-color", "#eaeaea");
+          document.documentElement.classList.remove("dark");
+          document.querySelector('meta[name=theme-color]').content = "#eaeaea";
         }
 
         w.setCookie(w.isDark);
