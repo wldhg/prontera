@@ -1,27 +1,46 @@
 doctype
 html(lang="ko")
-    include head
-    body#top(data-type="[##_body_id_##]")
-        s_t3
-            include global-header
 
-            main
-                div#content.left
-                    include content-page
-                    include content-post
-                    include content-tags
-                    include content-guestbook
-                    include content-paginator
+  head
+    include scripts
+    include styles
+    include meta
+    title= "[##_page_title_##]"
+    link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")
 
-                aside#side-bar.right
-                    include side-about
-                    s_sidebar
-                        include side-search
-                        include side-category
-                        include side-notice
-                        include side-recent
+  //- About body_id
+    * tt-body-index = main page
+    * tt-body-page = an article, a page
+    * tt-body-guestbook = guestbook page
+    * tt-body-tag = tag page, list of articles in specified tag
+    * tt-body-category = list of articles in specified category
+    * tt-body-search = list of articles which are results of search
 
-            include global-footer
+  body#top(data-page-type="[##_body_id_##]")
+    s_t3
 
-            a.goto-top.dark-ne(href="#top")
-                span= "가장 위로"
+      include header
+
+      main
+        div#content.left
+
+          include content-body/page
+          include content-body/post
+          include content-body/tags
+          include content-body/guestbook
+
+          include pagenator
+
+        aside#side-bar.right
+          s_sidebar
+
+            include content-side/about
+            include content-side/search
+            include content-side/category
+            include content-side/notice
+            include content-side/recent
+
+      include footer
+
+      a.goto-top.dark-ne(href="#top")
+        span= "가장 위로"

@@ -121,7 +121,7 @@ aside {
             height: 35px;
             border-right-width: 3px;
             cursor: pointer;
-            
+
             svg {
                 height: 29px - $border * 2;
                 line-height: 29px - $border * 2;
@@ -220,7 +220,7 @@ aside {
                     @extend %comment-count-on-list;
                 }
             }
-            
+
             .recent-info {
                 font-weight: 200;
                 color: #999;

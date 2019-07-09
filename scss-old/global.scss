@@ -28,7 +28,7 @@ header.global {
             line-height: 40px;
             vertical-align: middle;
             margin: 0;
-            
+
             img, svg {
                 height: 100%;
                 width: auto;
@@ -41,7 +41,7 @@ header.global {
 
         h1 {
             @extend %underline-slide;
-            
+
             font-size: 1.67rem;
             position: relative;
         }
@@ -83,7 +83,7 @@ header.global {
             float: right;
             padding: 17.5px 10px;
             height: 35px;
-            
+
             * {
                 display: table-cell;
                 height: 35px;
@@ -102,7 +102,7 @@ header.global {
             width: 40px;
             height: 20px;
             cursor: pointer;
-            
+
             * {
                 line-height: 25px;
                 height: 25px;
@@ -112,7 +112,7 @@ header.global {
                 position: absolute;
                 width: 20px;
                 height: 20px;
-                
+
                 &.moon {
                     left: -31px;
 
@@ -170,9 +170,9 @@ header.global {
         }
     }
 }
-body[data-type="tt-body-index"] header.global .t_menu_home a[href="/"],
-body[data-type="tt-body-tag"] header.global .t_menu_tag a[href="/tag"],
-body[data-type="tt-body-guestbook"] header.global .t_menu_guestbook a[href="/guestbook"],
+body[data-page-type="tt-body-index"] header.global .t_menu_home a[href="/"],
+body[data-page-type="tt-body-tag"] header.global .t_menu_tag a[href="/tag"],
+body[data-page-type="tt-body-guestbook"] header.global .t_menu_guestbook a[href="/guestbook"],
 header.global a.now {
     border-bottom: var(--hl) 5px solid;
     padding-top: 5px;

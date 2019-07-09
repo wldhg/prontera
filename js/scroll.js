@@ -1,9 +1,6 @@
-var Prontera = Prontera || {};
-(function (fn, wn) {
-    if (window.onload && window.onload.launched) {
-        window.Pt[wn] = {}; try { fn(window.Pt[wn]); } catch (e) { console.debug(e); }
-    } else Prontera[wn] = fn;
-})(function (w) {
+PtRegister(
+  "scroll",
+  function (w) {
 
     w.scrollThreshold = 20;
     w.scrollStandard = 0;
@@ -32,4 +29,5 @@ var Prontera = Prontera || {};
 
     // Hash-related scripts are in "contents.js"
 
-}, "scroll");
+  },
+);

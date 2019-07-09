@@ -1,9 +1,6 @@
-var Prontera = Prontera || {};
-(function (fn, wn) {
-    if (window.onload && window.onload.launched) {
-        window.Pt[wn] = {}; try { fn(window.Pt[wn]); } catch (e) { console.debug(e); }
-    } else Prontera[wn] = fn;
-})(function (w) {
+PtRegister(
+  "contents-builder",
+  function (w) {
 
     // Originally Korean is not proper for DOM ID (by HTML spec)
     // But for Korean URL readability, I permitted them.
@@ -26,7 +23,7 @@ var Prontera = Prontera || {};
 
                 // Add ID links
                 var id = h.textContent.replace(w.whitespaceRegEx, "-").replace(w.nonIDCharRegEx, "_");//.replace(w.firstNonAlphabetRegEx, "");
-                
+
                 while (idPool.includes(id)) id += "_";
                 idPool.push(id);
 
@@ -48,7 +45,7 @@ var Prontera = Prontera || {};
         style.type = "text/css";
         style.innerHTML = ".content-anchor { opacity: 1 !important; }"
         document.body.appendChild(style);
-        
+
         if (window.location.hash) {
             var pageOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
@@ -60,4 +57,5 @@ var Prontera = Prontera || {};
         }
     }
 
-}, "contents");
+  },
+);

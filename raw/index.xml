@@ -2,25 +2,25 @@
 <skin>
     <information>
         <name>Prontera</name>
-        <version>0.9.0</version>
+        <version>1.0.0</version>
         <description>
-            <![CDATA[Hexo의 Prontera에서 개량한 테마입니다.]]>
+            <![CDATA[넘치지 않으면서 적당하게 알맞은 스킨.]]>
         </description>
         <license>
-            <![CDATA[이 테마는 MPL 2.0 라이선스를 따릅니다.]]>
+            <![CDATA[이 스킨은 MPL 2.0 라이선스를 따릅니다.]]>
         </license>
     </information>
     <author>
-        <name>Yuoa</name>
-        <homepage>https://www.yuoa.pm</homepage>
-        <email>support@yuoa.pm</email>
+        <name>Widh</name>
+        <homepage>https://widh.me/</homepage>
+        <email>jio@widh.me</email>
     </author>
     <default>
-        <recentEntries>4</recentEntries>
+        <recentEntries>3</recentEntries>
         <recentComments>0</recentComments>
         <recentTrackbacks>0</recentTrackbacks>
         <itemsOnGuestbook>16</itemsOnGuestbook>
-        <tagsInCloud>8</tagsInCloud>
+        <tagsInCloud>65535</tagsInCloud>
         <sortInCloud>1</sortInCloud>
         <expandComment>1</expandComment>
         <expandTrackback>0</expandTrackback>
@@ -36,69 +36,83 @@
             <single>댓글이 &lt;span class="cnt"&gt;하나&lt;/span&gt; 달렸습니다.</single>
         </commentMessage>
         <trackbackMessage>
-            <none>받은 트랙백이 없고</none>
+            <none>트랙백이 없고</none>
             <single>트랙백이 &lt;span class="cnt"&gt;하나&lt;/span&gt;이고</single>
         </trackbackMessage>
         <tree>
-            <color>000000</color>
-            <bgColor>ffffff</bgColor>
-            <activeColor>000000</activeColor>
-            <activeBgColor>eeeeee</activeBgColor>
+            <color>333333</color>
+            <bgColor>eeeeee</bgColor>
+            <activeColor>ee3344</activeColor>
+            <activeBgColor>cccccc</activeBgColor>
             <labelLength>23</labelLength>
             <showValue>1</showValue>
         </tree>
-        <contentWidth>630</contentWidth>
+        <contentWidth>540</contentWidth>
     </default>
     <variables>
         <variable>
-            <name>highlight</name>
-            <label>강조 색상</label>
-            <description>강조되어 표시될 색상 (주 색상).</description>
+            <name>color-hl</name>
+            <label>주 색상</label>
+            <description>강조되어 표시될 색상.</description>
             <type>COLOR</type>
             <option />
-            <default><![CDATA[#33bbaa]]></default>
+            <default><![CDATA[#ee3344]]></default>
         </variable>
         <variable>
-            <name>unlight</name>
-            <label>비 강조 색상</label>
-            <description>그리 중요하지 않지만 차별화된 색상 (보조 색상).</description>
+            <name>color-ul</name>
+            <label>보조 색상</label>
+            <description>그리 중요하지 않지만 차별화된 색상.</description>
             <type>COLOR</type>
             <option />
-            <default><![CDATA[#34495e]]></default>
+            <default><![CDATA[#333333]]></default>
         </variable>
         <variable>
-            <name>logo-icon</name>
+            <name>img-logo</name>
             <label>블로그 아이콘</label>
             <description>상단 로고 옆의 아이콘을 사용하고 싶은 경우.</description>
             <type>IMAGE</type>
             <option />
         </variable>
         <variable>
-            <name>home-url</name>
+            <name>url-home</name>
             <label>홈페이지 URL</label>
             <type>STRING</type>
             <description>블로그 이외 별개의 홈페이지가 있을 경우.</description>
             <option />
         </variable>
         <variable>
-            <name>github-url</name>
+            <name>url-github</name>
             <label>Github URL</label>
             <description>보여줄 수 있는 Github 프로필이 있는 경우.</description>
             <type>STRING</type>
             <option />
         </variable>
         <variable>
-            <name>author-alter</name>
+            <name>name-main</name>
+            <label>필명</label>
+            <description>TISTORY 계정명 이외의 필명을 사용하는 경우.</description>
+            <type>STRING</type>
+            <option />
+        </variable>
+        <variable>
+            <name>name-alter</name>
             <label>보조 필명</label>
             <description>필명을 보조하는 단어 혹은 설명이 있는 경우.</description>
             <type>STRING</type>
             <option />
         </variable>
         <variable>
-            <name>avatar</name>
+            <name>img-avatar</name>
             <label>오른쪽 사이드바 아바타</label>
             <description>나를 대표하는 이미지 하나. RSS 구독 링크의 역할.</description>
             <type>IMAGE</type>
+            <option />
+        </variable>
+        <variable>
+            <name>cookie-domain</name>
+            <label>밝기 모드 쿠키 공유 도메인</label>
+            <description>"modarkbul"=["true"|"false"] 의 형식으로 저장됨.</description>
+            <type>STRING</type>
             <option />
         </variable>
     </variables>

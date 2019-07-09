@@ -1,0 +1,15 @@
+s_page_rep: article
+
+  style(type="text/css")
+    | div#content { width: 100%; padding-right: 0; }
+    | article.page header { text-align: center; }
+    | article.page header h2 { font-size: 3rem; }
+    | aside.right { display: none; }
+
+  header
+    h2.ct-title
+      a.center(href="[##_article_rep_link_##]")
+        | [##_article_rep_title_##]
+
+  section.ct-body
+    | [##_article_rep_desc_##]

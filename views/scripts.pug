@@ -1,0 +1,35 @@
+//- Dark mode
+script
+  | (function () {
+  |   var cq = document.cookie.split(";");
+  |   cq.forEach(function (cr) {
+  |     var c = cr.split("=");
+  |     if ("modarkbul" === c[0].trim()) {
+  |       if (c[1][0] === "t") {
+  |         document.documentElement.style.setProperty("background-color", "#000");
+  |         document.documentElement.classList.add("dark");
+  |       } else {
+  |         document.documentElement.style.setProperty("background-color", "#eaeaea");
+  |       }
+  |     }
+  |   });
+  | })();
+  | window.modarkbulDomain = '[##_var_cookie-domain_##]';
+
+//- Prontera
+script(src="./base.js" async)
+script(src="./functions.js" defer)
+
+//- Code Highlight
+script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js")
+
+//- MathJax
+script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async)
+script(type="text/x-mathjax-config")
+  | MathJax.Hub.Config({
+  |   tex2jax: {
+  |     inlineMath: [['$$', '$$']],
+  |     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+  |     processEscapes: true
+  |   }
+  | });

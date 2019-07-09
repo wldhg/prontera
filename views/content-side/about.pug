@@ -1,0 +1,15 @@
+s_sidebar_element
+  // 내 정보
+  div#about-panel
+    div.info
+      div.author
+        include ../functions/author
+      s_if_var_name-alter: div.alternative
+        | [##_var_name-alter_##]
+      div.description
+        | [##_desc_##]
+    a.rss(href="[##_rss_url_##]" target="_blank" title="RSS 받아보기")
+      include ../icons/rss-inner
+      include ../icons/rss-outer
+      s_if_var_img-avatar
+        img.avatar(src="[##_var_img-avatar_##]")

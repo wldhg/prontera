@@ -19,7 +19,7 @@ var buildSass = () => gulp.src('./scss/prontera.scss')
 
 // Build scripts
 var buildJs = () => gulp.src('./js/*.js')
-    .pipe(gConcat('script.js'))
+    .pipe(gConcat('functions.js'))
     .pipe(gMinifyJs({ noSource: true, ext: {min: '.js'} }))
     .pipe(gulp.dest('./out'));
 
@@ -52,7 +52,12 @@ var watch = async () => {
     try {
         buildSass(); gulp.watch('./scss/*.scss', {}, buildSass);
         buildJs(); gulp.watch('./js/*.js', {}, buildJs);
-        buildPug(); gulp.watch(['./views/*.pug', './views/icons/*.pug'], {}, buildPug);
+        buildPug(); gulp.watch([
+          './views/*.pug',
+          './views/icons/*.pug',
+          './views/content-body/*.pug',
+          './views/content-side/*.pug',
+        ], {}, buildPug);
         buildSvg(); gulp.watch('./images/*.svg', {}, buildSvg);
         buildRaw(); gulp.watch('./raw/*', {}, buildRaw);
     } catch (e) { console.debug(e); }

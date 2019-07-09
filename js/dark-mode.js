@@ -1,13 +1,10 @@
-var Prontera = Prontera || {};
-(function (fn, wn) {
-    if (window.onload && window.onload.launched) {
-        window.Pt[wn] = {}; try { fn(window.Pt[wn]); } catch (e) { console.debug(e); }
-    } else Prontera[wn] = fn;
-})(function (w) {
+PtRegister(
+  "dark-mode",
+  function (w) {
 
-    w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)ptDark\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true";
+    w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true";
     w.darkCont = document.getElementById("dark-controller");
-    w.checkBox = document.getElementById("isDark");
+    w.checkBox = document.getElementById("is-dark");
     w.checkBox.style.setProperty("pointer-events", "none");
 
     if (w.isDark) {
@@ -18,7 +15,7 @@ var Prontera = Prontera || {};
         var date = new Date();
         date.setTime(date.getTime() + 315360000000);
         var expires = "expires=" + date.toUTCString();
-        document.cookie = "ptDark=" + value + ";" + expires + ";path=/";
+        document.cookie = "modarkbul=" + value + ";" + expires + ";path=/" + (window.modarkbulDomain ? ";domain=" + window.modarkbulDomain : "");
     };
     w.setCookie(w.isDark);
 
@@ -38,4 +35,5 @@ var Prontera = Prontera || {};
     };
     w.darkCont.onclick = w.toggle;
 
-}, "dark-mode");
+  },
+);
