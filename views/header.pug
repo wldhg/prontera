@@ -12,16 +12,18 @@ header.global
   div#others.inherit.right
 
     ul#shortcuts
-      s_if_var_url-github
-        a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank")
-          include icons/github
       s_if_var_url-home
         a#goto-home.no-color(href="[##_var_url-home_##]" target="_self")
           span= "홈으로 돌아가기"
           include icons/return
+      s_if_var_url-github
+        a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank")
+          include icons/github
 
     div#modarkbul(title="밝기 모드 전환")
       include icons/moon
-      label.no-event
-        input#is-dark(type="checkbox" name="is-dark")
+      div.container
+        div.border
+          label.no-event
+            input#is-dark(type="checkbox" name="is-dark")
       include icons/sun

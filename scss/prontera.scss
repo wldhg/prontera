@@ -58,8 +58,8 @@ body {
 
 main {
   width: $CONTENT_WIDTH;
-  height: fit-content;
   height: auto;
+  height: fit-content;
   position: relative;
   display: block;
   padding-top: $HEADER_HEIGHT + $CONTENT_PADDING;
@@ -88,6 +88,10 @@ main {
 
 .no-event {
   pointer-events: none;
+}
+
+.no-transparency {
+  opacity: 1 !important;
 }
 
 .speak-only {

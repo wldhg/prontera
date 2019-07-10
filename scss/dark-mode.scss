@@ -13,6 +13,20 @@ html.dark {
 
     header.global {
       background-color: $COLOR_DARK_H;
+
+      #modarkbul {
+        .container .border {
+          background-color: #000000;
+        }
+
+        .icon.moon path {
+          fill: #4f75b3;
+        }
+
+        .icon.sun path {
+          fill: #edd326;
+        }
+      }
     }
   }
 }

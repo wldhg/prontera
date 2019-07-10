@@ -80,6 +80,7 @@ header.global {
     vertical-align: middle;
     padding: $HEADER_INNER_PADDING 0;
     height: $HEADER_INNER_HEIGHT;
+    box-sizing: content-box;
 
     img, svg {
       width: auto;
@@ -150,14 +151,14 @@ header.global {
       list-style: none;
 
       a {
-        $MENU_INDICATOR_HEIGHT: 5px;
+        $MENU_INDICATOR_HEIGHT: 4px;
 
         position: relative;
         display: table-cell;
         vertical-align: middle;
         text-align: center;
         box-sizing: border-box;
-        padding-bottom: $MENU_INDICATOR_HEIGHT / 2;
+        padding: 0 10px ($MENU_INDICATOR_HEIGHT / 2);
         min-width: 110px - (2 * $MENU_BOX_PADDING);
         max-width: 25vw;
         height: $HEADER_HEIGHT;
@@ -175,7 +176,7 @@ header.global {
             height: $MENU_INDICATOR_HEIGHT;
             left: 5%;
             background-color: $COLOR_HL;
-            border-radius: $MENU_INDICATOR_HEIGHT / 2;
+            border-radius: $MENU_INDICATOR_HEIGHT;
             opacity: .7;
             content: '';
           }
@@ -186,9 +187,104 @@ header.global {
 
   #shortcuts {
     @extend %paddedComponent;
+
+    $SHORTCUT_SIZE: 26px;
+    $SHORTCUT_PADDING_VERT: ($HEADER_INNER_HEIGHT - $SHORTCUT_SIZE) / 2;
+    $SHORTCUT_PADDING_HORI: 20px;
+
+    margin: 0;
+
+    a {
+      padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI $SHORTCUT_PADDING_VERT 0;
+
+      &:hover, &:focus {
+        img, svg {
+          transform: scale(1.4);
+        }
+      }
+
+      img, svg {
+        @include transit(transform);
+        height: $SHORTCUT_SIZE;
+        width: auto;
+      }
+    }
   }
 
   #modarkbul {
     @extend %paddedComponent;
+    @include transit(opacity);
+
+    $MDB_WIDTH: 40px;
+    $MDB_HEIGHT: 22px;
+    $MDB_BALL_SIZE: 14px;
+    $MDB_ELASTICITY: 4px;
+    $MDB_FUSS: 3px;
+    $MDB_MARGIN: ($MDB_HEIGHT - $MDB_BALL_SIZE) / 2;
+    $MDB_TOP_FIX: ($MDB_HEIGHT - 1.2px - $MDB_BALL_SIZE) / 3;
+
+    display: table;
+    border-spacing: 10px;
+    cursor: pointer;
+    opacity: 0;
+
+    & > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &:hover, &:focus {
+      .container .border label {
+        left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE - $MDB_ELASTICITY - $MDB_FUSS;
+        width: $MDB_BALL_SIZE + $MDB_ELASTICITY;
+
+        &.dark {
+          left: $MDB_MARGIN + $MDB_FUSS;
+        }
+      }
+    }
+
+    .container {
+      .border {
+        @include transit(background-color);
+        border-radius: $MDB_HEIGHT;
+        width: $MDB_WIDTH;
+        height: $MDB_HEIGHT;
+        position: relative;
+        background-color: #dfdfdf;
+        margin-top: $MDB_TOP_FIX;
+
+        label {
+          @include transit(left, width);
+          position: absolute;
+          width: $MDB_BALL_SIZE;
+          height: $MDB_BALL_SIZE;
+          top: $MDB_MARGIN;
+          left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE;
+          border-radius: $MDB_BALL_SIZE;
+          background-color: $COLOR_HL;
+
+          &.dark {
+            left: $MDB_MARGIN;
+          }
+
+          input[type="checkbox"] { display: none; }
+        }
+      }
+    }
+
+    .icon {
+      width: $MDB_HEIGHT;
+      height: $MDB_HEIGHT;
+      margin-top: $MDB_TOP_FIX;
+
+      &.moon path {
+        fill: #0e2d6c;
+      }
+
+      &.sun path {
+        fill: #ffb700;
+      }
+    }
   }
 }

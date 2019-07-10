@@ -3,13 +3,17 @@ PtRegister(
   function (w, c) {
 
     w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true";
-    w.darkCont = document.getElementById("modarkbul");
+    w.themeColor = document.querySelector('meta[name=theme-color]');
+    w.mdbLabel = document.querySelector('#modarkbul label');
     w.checkBox = document.getElementById("is-dark");
     w.checkBox.style.setProperty("pointer-events", "none");
+    w.darkCont = document.getElementById("modarkbul");
+    w.darkCont.classList.add('no-transparency');
 
     if (w.isDark) {
       w.checkBox.checked = w.isDark;
-      document.querySelector('meta[name=theme-color]').content = "#000000";
+      w.themeColor.content = "#000000";
+      w.mdbLabel.classList.add('dark');
     }
 
     w.setCookie = function (value) {
@@ -26,11 +30,13 @@ PtRegister(
       if (w.isDark) {
         document.documentElement.style.setProperty("background-color", "#000000");
         document.documentElement.classList.add("dark");
-        document.querySelector('meta[name=theme-color]').content = "#000000";
+        w.themeColor.content = "#000000";
+        w.mdbLabel.classList.add('dark');
       } else {
         document.documentElement.style.setProperty("background-color", "#eaeaea");
         document.documentElement.classList.remove("dark");
-        document.querySelector('meta[name=theme-color]').content = "#eaeaea";
+        w.themeColor.content = "#eaeaea";
+        w.mdbLabel.classList.remove('dark');
       }
 
       w.setCookie(w.isDark);
