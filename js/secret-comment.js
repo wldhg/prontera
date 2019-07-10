@@ -1,6 +1,6 @@
 PtRegister(
   "secret-comment",
-  function (w, c) {
+  (w, c, end) => {
 
     w.checkBox = document.getElementById("isSecret");
     w.label = document.querySelector(".wc-personal label");
@@ -14,6 +14,8 @@ PtRegister(
     } : function () { };
 
     w.toggle(w.checkBox);
+
+    end();
 
   },
 );

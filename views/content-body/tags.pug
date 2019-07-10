@@ -1,10 +1,10 @@
 s_tag: article
-  header
+  header.ct-header
     h1.ct-title= "태그 목록"
     h2.ct-subtitle= "블로그에서 사용한 모든 태그를 모았습니다. 크기가 클 수록 많이 사용된 것입니다."
 
-  section.tags-list
-    ul
+  section.ct-body
+    ul.tags-list
       s_tag_rep: li
         a(href="[##_tag_link_##]" class="[##_tag_class_##]")
           | [##_tag_name_##]

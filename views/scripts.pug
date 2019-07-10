@@ -18,13 +18,28 @@ script(async)
   |   modarkbulDomain: '[##_var_cookie-domain_##]',
   |   hlColor: '[##_var_color-hl_##]',
   |   ulColor: '[##_var_color-ul_##]',
+  |   pageType: '[##_body_id_##]',
+  | };
+  | window.PtQueue = {};
+  | window.PtLateQueue = {};
+  | window.PtRegister = function (name, fn, lazy) {
+  |   if (window.onload && window.PtLaunched) {
+  |     window.PtStore[name] = {};
+  |     try {
+  |       fn(window.PtStore[name], window.PtConfig, function () {});
+  |     } catch (e) {
+  |       console.debug(e);
+  |     }
+  |   } else {
+  |     (lazy ? PtLateQueue : PtQueue)[name] = fn;
+  |   }
   | };
 
 //- Code Highlight
 script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js" defer)
 
 //- Prontera
-script(src="./base.js" async)
+script(src="./onload.js" async)
 script(src="./functions.js" defer)
 
 //- MathJax

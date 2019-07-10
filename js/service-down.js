@@ -1,10 +1,12 @@
 PtRegister(
   "service-down",
-  function (w, c) {
+  (w, c, end) => {
 
     if (true) {
-      alert('블로그 점검 중입니다. 07-10 완료 예정.');
+      alert('블로그 점검 중입니다. 7월 11일 중 완료 예정.');
     }
+
+    end();
 
   },
 );

@@ -1,6 +1,6 @@
 PtRegister(
   "scroll-toggler",
-  function (w, c) {
+  (w, c, end) => {
 
     w.scrollDeltaThreshold = 20;
     w.scrollDeltaStandard = 0;
@@ -55,6 +55,7 @@ PtRegister(
     };
 
     // Hash-related scripts are in "contents-builder".
+    end();
 
   },
 );

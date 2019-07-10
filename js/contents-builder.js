@@ -1,6 +1,6 @@
 PtRegister(
   "contents-builder",
-  function (w, c) {
+  (w, c, end) => {
 
     // Originally Korean is not proper for DOM ID (by HTML spec)
     // But for Korean URL readability, I permitted them.
@@ -55,6 +55,8 @@ PtRegister(
           window.scrollTo(0, pageOffset + selectedDOM.getBoundingClientRect().top - 100);
         }
       }
+
+      end();
     }
 
   },

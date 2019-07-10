@@ -1,6 +1,6 @@
 PtRegister(
   "dark-mode",
-  function (w, c) {
+  (w, c, end) => {
 
     w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true";
     w.themeColor = document.querySelector('meta[name=theme-color]');
@@ -43,6 +43,8 @@ PtRegister(
       w.checkBox.checked = w.isDark;
     };
     w.darkCont.onclick = w.toggle;
+
+    end();
 
   },
 );

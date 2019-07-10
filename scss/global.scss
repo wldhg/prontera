@@ -1,7 +1,6 @@
 @import "common";
 
 #goto-top {
-  @include transit(transform, opacity);
   position: fixed;
   right: $FIXED_MARGIN_HORI;
   bottom: $FIXED_MARGIN_VERT;
@@ -13,6 +12,8 @@
   color: $COLOR_LIGHT;
   opacity: 0;
   overflow: hidden;
+
+  @include transit(transform, opacity);
 
   &.enabled {
     display: table;
@@ -47,9 +48,82 @@
   }
 }
 
+#paginator {
+  $PAGINATOR_SIZE: 20px;
+
+  display: table;
+  padding: ($CONTENT_PADDING * 2) 0;
+  border-spacing: $CONTENT_PADDING;
+  margin: auto;
+  text-align: center;
+
+  a {
+    display: table-cell;
+    width: $PAGINATOR_SIZE;
+    height: $PAGINATOR_SIZE;
+    vertical-align: middle;
+    color: $COLOR_DEF;
+
+    @include transit(color, opacity);
+
+    &.iter {
+      padding: 0 8px;
+    }
+
+    &:not(.iter) {
+      padding-bottom: 5px;
+    }
+
+    &:not([href]) {
+      cursor: default;
+      opacity: .28;
+    }
+
+    &[href] {
+      cursor: pointer;
+      opacity: .7;
+
+      &:hover, &:focus {
+        opacity: 1;
+        color: $COLOR_HL;
+
+        span, svg {
+          transform: scale(1.2);
+        }
+
+        polygon {
+          fill: $COLOR_HL;
+        }
+      }
+    }
+
+    svg {
+      height: $PAGINATOR_SIZE;
+
+      @include transit(transform);
+
+      polygon {
+        fill: $COLOR_DEF;
+
+        @include transit(fill);
+      }
+    }
+
+    span {
+      line-height: $PAGINATOR_SIZE;
+      display: block;
+      margin: 0 8px;
+      font-size: 1.1rem;
+      line-height: 1.1rem;
+
+      @include transit(transform);
+    }
+  }
+}
+
 header.global {
-  @include transit(top, background-color);
   z-index: 100;
+  max-width: 100vw;
   width: 100%;
   height: $HEADER_HEIGHT;
   box-sizing: border-box;
@@ -62,14 +136,30 @@ header.global {
   display: flex;
   justify-content: space-between;
 
+  @include transit(top, background-color);
+  @include onCompactView {
+    height: comp($HEADER_HEIGHT) * 2;
+    display: block;
+    padding: 0;
+  }
+
   &.hidden {
     top: -1 * ($HEADER_HEIGHT + 4px);
+
+    @include onCompactView {
+      top: -1 * (comp($HEADER_HEIGHT) * 2 + 4px);
+    }
   }
 
   & > *, & > .inherit > * {
     height: $HEADER_HEIGHT;
     display: inline-flex;
     box-sizing: border-box;
+
+    @include onCompactView {
+      height: comp($HEADER_HEIGHT);
+      display: flex;
+    }
 
     * {
       padding: 0;
@@ -82,10 +172,20 @@ header.global {
     height: $HEADER_INNER_HEIGHT;
     box-sizing: content-box;
 
+    @include onCompactView {
+      padding: comp($HEADER_INNER_PADDING) 0;
+      height: comp($HEADER_INNER_HEIGHT);
+    }
+
     img, svg {
       width: auto;
       height: $HEADER_INNER_HEIGHT;
       max-height: $HEADER_INNER_HEIGHT;
+
+      @include onCompactView {
+        height: comp($HEADER_INNER_HEIGHT);
+        max-height: comp($HEADER_INNER_HEIGHT);
+      }
     }
   }
 
@@ -93,7 +193,6 @@ header.global {
     position: relative;
 
     &::before {
-      @include transit(opacity);
       position: absolute;
       top: 0;
       left: -1 * $horiPadding;
@@ -105,6 +204,13 @@ header.global {
       opacity: 0;
       z-index: -1;
       content: '';
+
+      @include transit(opacity);
+      @include onCompactView {
+        left: -1 * comp($horiPadding);
+        padding: 0 comp($horiPadding);
+        height: comp($HEADER_HEIGHT);
+      }
     }
 
     &:hover, &:focus, &:target {
@@ -115,11 +221,14 @@ header.global {
   }
 
   #identity {
-    @extend %paddedComponent;
-    @include headerButton(15px);
+    $IDENTITY_PADDING_HORI: 15px;
 
-    &:hover, &:focus, &:target {
-      text-decoration: none;
+    @extend %paddedComponent;
+    @include headerButton($IDENTITY_PADDING_HORI);
+    @include onCompactView {
+      @include headerButton(comp($IDENTITY_PADDING_HORI));
+      padding-left: comp($IDENTITY_PADDING_HORI);
+      padding-right: comp($IDENTITY_PADDING_HORI);
     }
 
     //- Identity Logo
@@ -132,6 +241,10 @@ header.global {
     span {
       font-size: $HEADER_INNER_HEIGHT / $LINE_HEIGHT;
       font-weight: $W_BOLD;
+
+      @include onCompactView {
+        font-size: comp($HEADER_INNER_HEIGHT / $LINE_HEIGHT);
+      }
     }
   }
 
@@ -139,9 +252,11 @@ header.global {
     display: flex;
     margin: 0;
 
-    li {
-      @include headerButton(0, .1);
+    @include onCompactView {
+      width: 100vw;
+    }
 
+    li {
       $MENU_BOX_PADDING: 10px;
 
       display: table;
@@ -149,6 +264,8 @@ header.global {
       cursor: pointer;
       box-sizing: border-box;
       list-style: none;
+
+      @include headerButton(0, .1);
 
       a {
         $MENU_INDICATOR_HEIGHT: 4px;
@@ -163,6 +280,15 @@ header.global {
         max-width: 25vw;
         height: $HEADER_HEIGHT;
         font-size: 1.2rem;
+
+        @include onCompactView {
+          min-width: 80px - (2 * $MENU_BOX_PADDING);
+          font-size: 1.1rem;
+          height: comp($HEADER_HEIGHT);
+        }
+        @include onSuperCompactView {
+          font-size: .92rem;
+        }
 
         &:hover, &:focus, &:target {
           text-decoration: none;
@@ -179,42 +305,65 @@ header.global {
             border-radius: $MENU_INDICATOR_HEIGHT;
             opacity: .7;
             content: '';
+
+            @include onCompactView {
+              height: comp($MENU_INDICATOR_HEIGHT);
+            }
           }
         }
       }
     }
   }
 
-  #shortcuts {
-    @extend %paddedComponent;
+  #others {
+    @include onCompactView {
+      position: absolute;
+      right: 10px;
+      top: 0;
+    }
+  }
 
+  #shortcuts {
     $SHORTCUT_SIZE: 26px;
     $SHORTCUT_PADDING_VERT: ($HEADER_INNER_HEIGHT - $SHORTCUT_SIZE) / 2;
     $SHORTCUT_PADDING_HORI: 20px;
 
     margin: 0;
 
+    @extend %paddedComponent;
+    @include onSuperCompactView {
+      display: none;
+    }
+
     a {
       padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI $SHORTCUT_PADDING_VERT 0;
+
+      @include onCompactView {
+        $SHORTCUT_PADDING_VERT: (comp($HEADER_INNER_HEIGHT) - $SHORTCUT_SIZE) / 2;
+
+        padding: $SHORTCUT_PADDING_VERT comp($SHORTCUT_PADDING_HORI) $SHORTCUT_PADDING_VERT 0;
+      }
 
       &:hover, &:focus {
         img, svg {
           transform: scale(1.4);
+
+          @include onCompactView {
+            transform: scale(1.3);
+          }
         }
       }
 
       img, svg {
-        @include transit(transform);
         height: $SHORTCUT_SIZE;
         width: auto;
+
+        @include transit(transform);
       }
     }
   }
 
   #modarkbul {
-    @extend %paddedComponent;
-    @include transit(opacity);
-
     $MDB_WIDTH: 40px;
     $MDB_HEIGHT: 22px;
     $MDB_BALL_SIZE: 14px;
@@ -227,6 +376,12 @@ header.global {
     border-spacing: 10px;
     cursor: pointer;
     opacity: 0;
+
+    @extend %paddedComponent;
+    @include transit(opacity);
+    @include onCompactView {
+      margin-top: -1 * comp(10px);
+    }
 
     & > * {
       display: table-cell;
@@ -246,7 +401,6 @@ header.global {
 
     .container {
       .border {
-        @include transit(background-color);
         border-radius: $MDB_HEIGHT;
         width: $MDB_WIDTH;
         height: $MDB_HEIGHT;
@@ -254,8 +408,9 @@ header.global {
         background-color: #dfdfdf;
         margin-top: $MDB_TOP_FIX;
 
+        @include transit(background-color);
+
         label {
-          @include transit(left, width);
           position: absolute;
           width: $MDB_BALL_SIZE;
           height: $MDB_BALL_SIZE;
@@ -263,6 +418,8 @@ header.global {
           left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE;
           border-radius: $MDB_BALL_SIZE;
           background-color: $COLOR_HL;
+
+          @include transit(left, width);
 
           &.dark {
             left: $MDB_MARGIN;

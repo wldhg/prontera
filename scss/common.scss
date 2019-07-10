@@ -43,3 +43,22 @@ $TRANSIT_PROPERTY : .32s ease-in-out;
 @mixin transit($props...) {
   transition: getTransitProperty($props);
 }
+
+// Global media
+$CV_DIVISOR : 1.4;
+
+@function comp($prop) {
+  @return $prop / $CV_DIVISOR;
+}
+
+@mixin onCompactView {
+  @media screen and (max-width: 999px) {
+    @content;
+  }
+}
+
+@mixin onSuperCompactView {
+  @media screen and (max-width: 419px) {
+    @content;
+  }
+}

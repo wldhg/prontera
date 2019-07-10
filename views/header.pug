@@ -1,6 +1,6 @@
 header.global
 
-  a#identity.left.no-color(href="/")
+  a#identity.left.no-color.no-underline(href="/")
     s_if_var_img-logo
       img(src="[##_var_img-logo_##]" alt="[##_title_##] 아이덴티티")
     span= "[##_title_##]"
@@ -13,9 +13,8 @@ header.global
 
     ul#shortcuts
       s_if_var_url-home
-        a#goto-home.no-color(href="[##_var_url-home_##]" target="_self")
-          span= "홈으로 돌아가기"
-          include icons/return
+        a#goto-home.no-color.scale-y-96(href="[##_var_url-home_##]" target="_self")
+          include icons/home
       s_if_var_url-github
         a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank")
           include icons/github
