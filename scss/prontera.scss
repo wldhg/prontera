@@ -6,39 +6,94 @@
 @import "global";
 
 html {
-  scrollbar-color: rgba(128, 128, 128, .4) rgba(200, 200, 200, .6);
+  @include transit(background-color, scrollbar-color);
+  scrollbar-color: #999 #ccc;
+  font-size: $FONT_SIZE;
+  line-height: $LINE_HEIGHT;
 }
 
 body {
+  @include transit(color);
   width: 100%;
   margin: 0;
-  color: var(--ul);
-  font-size: 12px;
-  line-height: 1.4;
+  color: $COLOR_DARK;
 
   &, * {
     font-family: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    direction: ltr;
+    --color-def: #{$COLOR_DARK};
+    --color-inv: #{$COLOR_LIGHT};
 
     &:focus {
       outline: none;
     }
 
     &::selection {
-      color: #eaeaea;
-      background-color: var(--hl);
+      color: $COLOR_LIGHT;
+      background-color: $COLOR_HL;
+    }
+  }
+
+  a {
+    @include transit(color);
+    text-decoration: none;
+    position: relative;
+    color: $COLOR_DEF;
+
+    &:hover, &:target, &:focus {
+      text-decoration: underline;
+    }
+
+    &:not(.no-color) {
+      &:hover, &:target, &:focus {
+        color: $COLOR_HL;
+      }
     }
   }
 
   path, polygon {
-    fill: var(--ul);
+    fill: $COLOR_HL;
   }
 }
 
 main {
-  width: $CONTENT-WIDTH;
-  padding-top: 90px;
-  margin: 0 auto;
+  width: $CONTENT_WIDTH;
   height: fit-content;
   height: auto;
+  position: relative;
   display: block;
+  padding-top: $HEADER_HEIGHT + $CONTENT_PADDING;
+  margin: 0 auto;
+
+  #content {
+    width: 70%;
+    box-sizing: border-box;
+    padding-right: $CONTENT_PADDING;
+  }
+
+  #side-bar {
+    width: 30%;
+    box-sizing: border-box;
+    padding-left: $CONTENT_PADDING;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.no-event {
+  pointer-events: none;
+}
+
+.speak-only {
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  position: absolute;
+  text-indent: -101vw;
 }

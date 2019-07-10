@@ -1,10 +1,11 @@
 PtRegister(
   "menu-highlight",
-  function (w) {
+  function (w, c) {
 
-    try {
-      document.querySelector("header.global .t_menu_page a[href=\"" + location.pathname + "\"]").classList.add("now");
-    } catch (e) { console.debug(e); }
+    const currentMenu = document.querySelector("#menu a[href=\"" + location.pathname + "\"]");
+    if (currentMenu) {
+      currentMenu.classList.add("current");
+    }
 
   },
 );

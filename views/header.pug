@@ -1,23 +1,27 @@
 header.global
-  nav
-    a.identity(href="/")
-      s_if_var_img-logo
-        img(src="[##_var_img-logo_##]" alt="[##_title_##] 아이덴티티")
-      h1= "[##_title_##]"
 
+  a#identity.left.no-color(href="/")
+    s_if_var_img-logo
+      img(src="[##_var_img-logo_##]" alt="[##_title_##] 아이덴티티")
+    span= "[##_title_##]"
+
+  nav#menu.left
     | [##_blog_menu_##]
 
-    div#dark-controller.right(title="밝기 모드 전환")
+  //- Just for bind two components to right-side
+  div#others.inherit.right
+
+    ul#shortcuts
+      s_if_var_url-github
+        a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank")
+          include icons/github
+      s_if_var_url-home
+        a#goto-home.no-color(href="[##_var_url-home_##]" target="_self")
+          span= "홈으로 돌아가기"
+          include icons/return
+
+    div#modarkbul(title="밝기 모드 전환")
       include icons/moon
       label.no-event
         input#is-dark(type="checkbox" name="is-dark")
       include icons/sun
-
-    ul#shortcuts.right
-      s_if_var_url-github
-        a#goto-github(href="[##_var_url-github_##]" target="_blank")
-          include icons/github
-      s_if_var_url-home
-        a#goto-home(href="[##_var_url-home_##]" target="_self")
-          span= "홈페이지로 돌아가기"
-          include icons/return

@@ -1,11 +1,11 @@
 s_guest: article
 
   header
-    h2.ct-title= "방명록"
+    h1.ct-title= "방명록"
 
   section.gb-write
-    h3= "작성하기"
-    s_guest_input_form: div
+    h2= "작성하기"
+    s_guest_input_form
       div.ct-reply-textarea
         textarea(name="[##_guest_textarea_body_##]" placeholder="한 마디 남겨주세요.")
       div.ct-reply-author
@@ -17,7 +17,7 @@ s_guest: article
         input.no-dark(type="submit" value="글 남기기" onclick="[##_guest_onclick_submit_##]")
 
   section.ct-reply-list
-    h3= "기록"
+    h2= "기록"
     s_guest_container: ol
       s_guest_rep: li(id="[##_guest_rep_id_##]" class="[##_guest_rep_class_##]")
         span.name= "[##_guest_rep_name_##]"

@@ -3,7 +3,7 @@ const PtRegister = function (name, fn) {
   if (window.onload && window.PtLaunched) {
     window.PtStore[name] = {};
     try {
-      fn(window.PtStore[name]);
+      fn(window.PtStore[name], window.PtConfig);
     } catch (e) {
       console.debug(e);
     }
@@ -31,7 +31,7 @@ window.onload = function () {
     for (const i in PtQueue) {
       window.PtStore[i] = {};
       try {
-        PtQueue[i](window.PtStore[i]);
+        PtQueue[i](window.PtStore[i], window.PtConfig);
       } catch (e) {
         console.debug(e);
       }

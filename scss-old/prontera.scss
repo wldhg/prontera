@@ -84,6 +84,12 @@ body {
     path { fill: var(--ul); }
 }
 
+a {
+  transition:opacity 0.32s ease-in-out, -webkit-transform 0.32s ease-in-out;
+  transition:transform 0.32s ease-in-out, opacity 0.32s ease-in-out;
+  transition:transform 0.32s ease-in-out, opacity 0.32s ease-in-out, -webkit-transform 0.32s ease-in-out;
+}
+
 main {
     @include size($CONTENT_WIDTH, auto);
     padding-top: 90px;

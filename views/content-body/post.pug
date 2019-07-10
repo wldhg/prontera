@@ -11,7 +11,7 @@ s_article_rep: article
 
   //- Common header
   header
-    h2.ct-title
+    h1.ct-title
       a(href="[##_article_rep_link_##]")
         | [##_article_rep_title_##]
     div.ct-info
@@ -32,6 +32,7 @@ s_article_rep: article
   //- Real article
   s_permalink_article_rep
     section.ct-body
+      h2.speak-only= "본문"
       | [##_article_rep_desc_##]
     s_tag_label: section.ct-tags
       span= "태그"
@@ -56,7 +57,7 @@ s_article_rep: article
                   a.address(href="[##_rp_rep_link_##]")= "#"
                   a.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
                 p= "[##_rp_rep_desc_##]"
-        s_rp_input_form: div
+        s_rp_input_form
           div.ct-reply-textarea
             textarea(name="[##_rp_input_comment_##]" placeholder="하고 싶은 말이 무엇인가요?")
           div.ct-reply-author

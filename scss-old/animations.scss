@@ -1,15 +1,6 @@
 @import "common";
 
-@keyframes bound-up {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(100%); }
-    60% { transform: translateY(-175%); opacity: 1; }
-    61% { transform: translateY(-175%); opacity: 0; }
-    62% { transform: translateY(175%); opacity: 0; }
-    63% { transform: translateY(175%); opacity: 1; }
-    92% { transform: translateY(0); }
-    100% { transform: translateY(0); }
-}
+
 
 @keyframes opa-wave {
     0% { opacity: .8; }

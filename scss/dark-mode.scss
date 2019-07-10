@@ -1,4 +1,18 @@
 @import "common";
 
-body.dark {
+html.dark {
+  scrollbar-color: #666 #333;
+
+  body {
+    color: $COLOR_LIGHT;
+
+    &, *:not(.no-dark) {
+      --color-def: #{$COLOR_LIGHT};
+      --color-inv: #{$COLOR_DARK};
+    }
+
+    header.global {
+      background-color: $COLOR_DARK_H;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 //- Dark mode
-script
+script(async)
   | (function () {
   |   var cq = document.cookie.split(";");
   |   cq.forEach(function (cr) {
@@ -14,18 +14,22 @@ script
   |     }
   |   });
   | })();
-  | window.modarkbulDomain = '[##_var_cookie-domain_##]';
+  | window.PtConfig = {
+  |   modarkbulDomain: '[##_var_cookie-domain_##]',
+  |   hlColor: '[##_var_color-hl_##]',
+  |   ulColor: '[##_var_color-ul_##]',
+  | };
+
+//- Code Highlight
+script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js" defer)
 
 //- Prontera
 script(src="./base.js" async)
 script(src="./functions.js" defer)
 
-//- Code Highlight
-script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js")
-
 //- MathJax
 script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async)
-script(type="text/x-mathjax-config")
+script(type="text/x-mathjax-config" defer)
   | MathJax.Hub.Config({
   |   tex2jax: {
   |     inlineMath: [['$$', '$$']],

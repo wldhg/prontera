@@ -1,1 +1,45 @@
-$CONTENT_WIDTH : 1000px;
+// Global text
+$FONT_SIZE: 16px;
+$LINE_HEIGHT: 1.4;
+$W_NORMAL: 400;
+$W_BOLD: 700;
+
+// Global header
+$HEADER_HEIGHT : 72px;
+$HEADER_INNER_PADDING : 11px;
+$HEADER_INNER_HEIGHT : $HEADER_HEIGHT - ($HEADER_INNER_PADDING * 2);
+
+// Content
+$CONTENT_WIDTH : 1180px;
+$CONTENT_PADDING : 10px;
+
+// Position: fixed
+$FIXED_MARGIN_HORI : 3vw;
+$FIXED_MARGIN_VERT : 25px;
+
+// Global color
+$COLOR_LIGHT : #eaeaea;
+$COLOR_LIGHT_H : #f0f0f0;
+$COLOR_DARK : #000000;
+$COLOR_DARK_H : #222222;
+$COLOR_HL : var(--hl);
+$COLOR_UL : var(--ul);
+$COLOR_DEF : var(--color-def);
+$COLOR_INV : var(--color-inv);
+
+// Global transition
+$TRANSIT_PROPERTY : .32s ease-in-out;
+
+@function getTransitProperty($props) {
+  $tsFullText : '';
+  $tsSeparator : '';
+  @each $prop in $props {
+    $tsFullText : $tsFullText + $tsSeparator + $prop + ' ' + $TRANSIT_PROPERTY;
+    $tsSeparator : ', ';
+  }
+  @return #{$tsFullText};
+}
+
+@mixin transit($props...) {
+  transition: getTransitProperty($props);
+}

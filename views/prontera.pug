@@ -24,6 +24,9 @@ html(lang="ko")
       main
         div#content.left
 
+          //- About heading
+            * For page, <h2> or below can be used
+            * For post, <h3> or below can be used
           include content-body/page
           include content-body/post
           include content-body/tags
@@ -42,5 +45,5 @@ html(lang="ko")
 
       include footer
 
-      a.goto-top.dark-ne(href="#top")
+      a#goto-top.no-dark(href="#top")
         span= "가장 위로"

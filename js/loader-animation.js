@@ -1,15 +1,15 @@
 PtRegister(
   "loader-animation",
-  function (w) {
+  function (w, c) {
 
-    w.identity = document.querySelector("header.global a.identity img");
+    w.identityImage = document.querySelector("header.global #identity img");
 
-    if (w.identity) {
-        w.identity.style.setProperty("animation", "none");
+    if (w.identityImage) {
+      w.identityImage.style.setProperty("animation", "none");
 
-        window.addEventListener("beforeunload", function () {
-            w.identity.style.setProperty("animation", "opa-wave 2s infinite");
-        });
+      window.addEventListener("beforeunload", function () {
+        w.identityImage.style.setProperty("animation", "shiney 2.4s infinite");
+      });
     }
 
   },

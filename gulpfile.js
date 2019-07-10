@@ -1,4 +1,3 @@
-const fs = require("fs");
 const gulp = require('gulp');
 const gSass = require('gulp-sass');
 const gRename = require("gulp-rename");
@@ -8,7 +7,7 @@ const gConcat = require("gulp-concat");
 const gPug = require("gulp-pug");
 const gClean = require("gulp-clean");
 const gMinifySvg = require("gulp-svgmin");
-const gEmpty = require("gulp-empty");
+const gBabel = require("gulp-babel");
 
 // Build styles
 var buildSass = () => gulp.src('./scss/prontera.scss')
@@ -20,6 +19,7 @@ var buildSass = () => gulp.src('./scss/prontera.scss')
 // Build scripts
 var buildJs = () => gulp.src('./js/*.js')
     .pipe(gConcat('functions.js'))
+    .pipe(gBabel({ presets: ['@babel/env'] }))
     .pipe(gMinifyJs({ noSource: true, ext: {min: '.js'} }))
     .pipe(gulp.dest('./out'));
 
