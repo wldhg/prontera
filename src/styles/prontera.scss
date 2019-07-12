@@ -1,0 +1,122 @@
+@import "common";
+
+@import "animas";
+@import "dark-mode";
+
+@import "global";
+@import "content-body";
+@import "tistory";
+
+html {
+  scrollbar-color: #999 #ccc;
+  font-size: $FONT_SIZE;
+  line-height: $LINE_HEIGHT;
+
+  @include transit(background-color, scrollbar-color);
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  color: $COLOR_DARK;
+
+  @include transit(color);
+
+  &, * {
+    font-family: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    direction: ltr;
+    --color-def: #{$COLOR_DARK};
+    --color-def-hl: #{$COLOR_DARK_H};
+    --color-inv: #{$COLOR_LIGHT};
+    --color-inv-hl: #{$COLOR_LIGHT_H};
+
+    &:focus {
+      outline: none;
+    }
+
+    &::selection {
+      color: $COLOR_LIGHT;
+      background-color: $COLOR_HL;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    position: relative;
+    color: $COLOR_DEF;
+
+    @include transit(color);
+
+    &:not(.no-underline) {
+      @include underlineEffect;
+    }
+
+    &.no-underline {
+      @include noUnderlineEffect;
+    }
+
+    &:not(.no-color) {
+      &:hover, &:target, &:focus {
+        color: $COLOR_HL;
+      }
+    }
+  }
+
+  path, polygon {
+    fill: $COLOR_HL;
+  }
+}
+
+main {
+  width: $CONTENT_WIDTH;
+  height: auto;
+  height: fit-content;
+  position: relative;
+  display: block;
+  padding-top: $HEADER_HEIGHT + $CONTENT_PADDING;
+  margin: 0 auto;
+
+  @include onCompactView {
+    padding-top: comp($HEADER_HEIGHT * 2 + $CONTENT_PADDING);
+  }
+
+  #content {
+    width: 70%;
+    box-sizing: border-box;
+    padding-right: $CONTENT_PADDING;
+  }
+
+  #side-bar {
+    width: 30%;
+    box-sizing: border-box;
+    padding-left: $CONTENT_PADDING;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.no-event {
+  pointer-events: none;
+}
+
+.no-transparency {
+  opacity: 1 !important;
+}
+
+.speak-only {
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  position: absolute;
+  text-indent: -101vw;
+}
+
+.scale-y-96 {
+  transform: scaleY(.96);
+}

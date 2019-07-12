@@ -1,0 +1,71 @@
+@import "common";
+
+html.dark {
+  scrollbar-color: #666 #333;
+
+  body {
+    color: $COLOR_LIGHT;
+
+    &, *:not(.no-dark) {
+      --color-def: #{$COLOR_LIGHT};
+      --color-def-hl: #{$COLOR_LIGHT_H};
+      --color-inv: #{$COLOR_DARK};
+      --color-inv-hl: #{$COLOR_DARK_H};
+    }
+
+    #goto-top::before {
+      filter: brightness(1);
+    }
+
+    header.global {
+      background-color: $COLOR_DARK_H;
+
+      #modarkbul {
+        .container .border {
+          background-color: #000000;
+        }
+
+        .icon.moon path {
+          fill: #4f75b3;
+        }
+
+        .icon.sun path {
+          fill: #edd326;
+        }
+      }
+    }
+
+    .ct-header .meta {
+      .date, .category, .comments-count {
+        &::before {
+          filter: brightness(1.75);
+        }
+      }
+    }
+
+    .ct-body {
+      hr {
+        filter: brightness(4);
+      }
+
+      .fileblock {
+        .image {
+          filter: brightness(4);
+        }
+
+        a::after {
+          filter: contrast(0%) brightness(1.5);
+        }
+      }
+    }
+  }
+
+  .layer_post, .layer_ccl {
+    background-color: $COLOR_INV_H !important;
+    border: 1px solid #656565;
+
+    .ico_postbtn {
+      filter: invert(1) brightness(15) contrast(80%);
+    }
+  }
+}

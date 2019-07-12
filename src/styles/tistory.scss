@@ -1,0 +1,19 @@
+@import "common";
+
+.layer_post, .layer_ccl {
+  @include transit(background-color, border);
+
+  .btn_mark, .txt_mark {
+    color: $COLOR_DEF !important;
+
+    @include transit(color, background-color);
+    @include noUnderlineEffect;
+    @include onAnchorActive {
+      background-color: rgba(160, 160, 160, .2) !important;
+    }
+  }
+
+  .ico_postbtn {
+    @include transit(filter);
+  }
+}

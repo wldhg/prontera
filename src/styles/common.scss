@@ -1,0 +1,92 @@
+// Text
+$FONT_SIZE: 16px;
+$LINE_HEIGHT: 1.4;
+$W_NORMAL: 400;
+$W_BOLD: 700;
+
+// Global header
+$HEADER_HEIGHT : 72px;
+$HEADER_INNER_PADDING : 11px;
+$HEADER_INNER_HEIGHT : $HEADER_HEIGHT - ($HEADER_INNER_PADDING * 2);
+$HEADER_SHADOW: 0px 0px 2px rgba(100, 100, 100, .35);
+
+// Content
+$CONTENT_WIDTH : 1180px;
+$CONTENT_PADDING : 20px;
+$CONTENT_RADIUS: 4px;
+
+// Position: fixed
+$FIXED_MARGIN_HORI : 3vw;
+$FIXED_MARGIN_VERT : 25px;
+
+// Effects
+$EFFECT_PUSH_SCALE : .92;
+$EFFECT_GIANT_SCALE : 1.3;
+
+// Color
+$COLOR_GRAY : #8c8c8c;
+$COLOR_LIGHT : #eaeaea;
+$COLOR_LIGHT_H : #f0f0f0;
+$COLOR_DARK : #000000;
+$COLOR_DARK_H : #191919;
+$COLOR_HL : var(--hl);
+$COLOR_UL : var(--ul);
+$COLOR_DEF : var(--color-def);
+$COLOR_DEF_H : var(--color-def-hl);
+$COLOR_INV : var(--color-inv);
+$COLOR_INV_H : var(--color-inv-hl);
+
+// Transition
+$TRANSIT_PROPERTY : .32s ease-in-out;
+
+@function getTransitProperty($props) {
+  $tsFullText : '';
+  $tsSeparator : '';
+  @each $prop in $props {
+    $tsFullText : $tsFullText + $tsSeparator + $prop + ' ' + $TRANSIT_PROPERTY;
+    $tsSeparator : ', ';
+  }
+  @return #{$tsFullText};
+}
+
+@mixin transit($props...) {
+  transition: getTransitProperty($props);
+}
+
+// Compact View
+$CV_DIVISOR : 1.4;
+
+@function comp($prop) {
+  @return $prop / $CV_DIVISOR;
+}
+
+@mixin onCompactView {
+  @media screen and (max-width: 999px) {
+    @content;
+  }
+}
+
+@mixin onSuperCompactView {
+  @media screen and (max-width: 419px) {
+    @content;
+  }
+}
+
+// Anchor
+@mixin onAnchorActive {
+  &:hover, &:target, &:focus {
+    @content;
+  }
+}
+
+@mixin noUnderlineEffect {
+  @include onAnchorActive {
+    text-decoration: none;
+  }
+}
+
+@mixin underlineEffect {
+  @include onAnchorActive {
+    text-decoration: underline;
+  }
+}

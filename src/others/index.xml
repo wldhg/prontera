@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin>
+  <information>
+    <name>Prontera</name>
+    <version>1.0.0</version>
+    <description>넘치지 않으면서 적당하게 알맞은 스킨입니다.</description>
+    <license>이 스킨은 MPL 2.0 라이선스를 따릅니다.</license>
+  </information>
+  <author>
+    <name>Widh</name>
+    <homepage>https://widh.me/</homepage>
+    <email>jio@widh.me</email>
+  </author>
+  <default>
+    <recentEntries>4</recentEntries>
+    <recentComments>4</recentComments>
+    <recentTrackbacks>4</recentTrackbacks>
+    <itemsOnGuestbook>20</itemsOnGuestbook>
+    <tagsInCloud>65535</tagsInCloud>
+    <sortInCloud>1</sortInCloud>
+    <expandComment>1</expandComment>
+    <expandTrackback>0</expandTrackback>
+    <lengthOfRecentNotice>65535</lengthOfRecentNotice>
+    <lengthOfRecentEntry>65535</lengthOfRecentEntry>
+    <lengthOfRecentComment>65535</lengthOfRecentComment>
+    <lengthOfRecentTrackback>65535</lengthOfRecentTrackback>
+    <lengthOfLink>65535</lengthOfLink>
+    <entriesOnPage>7</entriesOnPage>
+    <entriesOnList>14</entriesOnList>
+    <showListOnHome>0</showListOnHome>
+    <showListOnCategory>1</showListOnCategory>
+    <tree>
+      <color>333333</color>
+      <bgColor>eeeeee</bgColor>
+      <activeColor>ee3344</activeColor>
+      <activeBgColor>cccccc</activeBgColor>
+      <labelLength>65535</labelLength>
+      <showValue>1</showValue>
+    </tree>
+  </default>
+  <variables>
+    <variablegroup name="기본 디자인 설정">
+      <variable>
+        <name>img-logo</name>
+        <label>블로그 아이콘</label>
+        <description>상단 로고 옆의 아이콘을 사용하고 싶은 경우.</description>
+        <type>IMAGE</type>
+        <option />
+      </variable>
+      <variable>
+        <name>color-hl</name>
+        <label>주 색상</label>
+        <description>강조되어 표시될 색상.</description>
+        <type>COLOR</type>
+        <option />
+        <default>#ee3344</default>
+      </variable>
+      <variable>
+        <name>color-ul</name>
+        <label>보조 색상</label>
+        <description>그리 중요하지 않지만 차별화된 색상.</description>
+        <type>COLOR</type>
+        <option />
+        <default>#333333</default>
+      </variable>
+    </variablegroup>
+    <variablegroup name="바로가기 설정">
+      <variable>
+        <name>url-home</name>
+        <label>홈페이지 URL</label>
+        <type>STRING</type>
+        <description>블로그 이외 별개의 홈페이지가 있을 경우.</description>
+        <option />
+      </variable>
+      <variable>
+        <name>url-github</name>
+        <label>Github URL</label>
+        <description>보여줄 수 있는 Github 프로필이 있는 경우.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+    </variablegroup>
+    <variablegroup name="프로필 설정">
+      <variable>
+        <name>name-main</name>
+        <label>필명</label>
+        <description>TISTORY 계정명 이외의 필명을 사용하는 경우.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
+        <name>name-alter</name>
+        <label>보조 필명</label>
+        <description>필명을 보조하는 단어 혹은 설명이 있는 경우.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
+        <name>img-avatar</name>
+        <label>프로필 이미지</label>
+        <description>나를 대표하는 이미지 하나. RSS 구독 링크의 역할.</description>
+        <type>IMAGE</type>
+        <option />
+      </variable>
+    </variablegroup>
+    <variablegroup name="기타 설정">
+      <variable>
+        <name>cookie-domain</name>
+        <label>밝기 모드 쿠키 도메인</label>
+        <description>"modarkbul"=["true"|"false"] 의 형식으로 저장됨.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
+        <name>content-global-notice</name>
+        <label>전역 공지 내용</label>
+        <description>모든 페이지의 상단에 표시됨.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
+        <name>url-global-notice</name>
+        <label>전역 공지 링크</label>
+        <description>전역 공지 내용이 있을 때의 링크.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+    </variablegroup>
+  </variables>
+</skin>

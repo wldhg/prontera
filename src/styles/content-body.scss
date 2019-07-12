@@ -1,0 +1,313 @@
+@import "common";
+
+// ? About body_id
+// tt-body-index = main page
+// tt-body-page = an article, a page
+// tt-body-guestbook = guestbook page
+// tt-body-tag = tag page, list of articles in specified tag
+// tt-body-category = list of articles in specified category
+// tt-body-search = list of articles which are results of search
+
+// Article list type
+body[data-page-type="tt-body-index"],
+body[data-page-type="tt-body-tag"],
+body[data-page-type="tt-body-category"],
+body[data-page-type="tt-body-search"] {
+  #content article {
+    padding: $CONTENT_PADDING;
+    background-color: $COLOR_INV_H;
+    box-shadow: $HEADER_SHADOW;
+    border-radius: 4px;
+
+    @include transit(background-color);
+
+    &:not(:first-of-type) {
+      margin-top: $CONTENT_PADDING;
+    }
+  }
+}
+
+// Article post type
+body[data-page-type="tt-body-page"] {
+}
+
+// Guestbook type
+body[data-page-type="tt-body-guestbook"] {
+}
+
+.ct-header {
+  .title {
+    margin: 2rem 0 1rem;
+    font-size: 3rem;
+    font-weight: $W_BOLD;
+
+    a {
+      font-size: inherit;
+    }
+  }
+
+  .meta {
+    $META_HEIGHT: 1.1rem;
+
+    color: $COLOR_GRAY;
+    margin: 1rem 0;
+    font-size: $META_HEIGHT;
+
+    & > *:not(:last-child) {
+      margin-right: $CONTENT_PADDING * 1.4;
+    }
+
+    a {
+      color: $COLOR_GRAY;
+    }
+
+    .date::before {
+      background: url('./images/heart.svg');
+    }
+
+    .category::before {
+      background: url('./images/tag.svg');
+      transform: scale(.96);
+    }
+
+    .comments-count::before {
+      background: url('./images/comment.svg');
+    }
+
+    .date, .category, .comments-count {
+      &::before {
+        content: '';
+        width: $META_HEIGHT;
+        height: $META_HEIGHT;
+        background-size: contain;
+        display: inline-block;
+        background-repeat: no-repeat;
+        margin: 0 7.5px -2.5px 0;
+        filter: brightness(.25);
+
+        @include transit(filter);
+      }
+    }
+  }
+}
+
+.ct-body {
+  margin: calc(2rem + #{$CONTENT_PADDING}) 0;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  h5, blockquote {
+    font-size: 1.1rem;
+  }
+
+  h6, a, abbr, address, caption, code, del, i, ins, label, legend, li, p, pre, q, ruby, s, samp, span, td, u, var, b, cite, strong, th {
+    font-size: 1rem;
+  }
+
+  small, figcaption, kbd {
+    font-size: .85rem;
+  }
+
+  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, label, legend, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var {
+    font-weight: $W_NORMAL;
+  }
+  b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
+    font-weight: $W_BOLD;
+  }
+
+  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, label, legend, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
+    line-height: $LINE_HEIGHT;
+  }
+
+  a {
+    color: $COLOR_HL;
+    opacity: .9;
+
+    @include transit(opacity);
+    @include onAnchorActive {
+      opacity: 1;
+    }
+  }
+
+  blockquote, q {
+    &, & p {
+
+    }
+  }
+
+  q {
+
+  }
+
+  pre {
+    code {
+
+    }
+  }
+
+  & > code, :not(pre) code {
+
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    border-radius: $CONTENT_RADIUS;
+    background-color: $COLOR_INV_H;
+    box-shadow: $HEADER_SHADOW;
+    margin: $CONTENT_PADDING auto;
+
+    @include transit(background-color);
+
+    tr {
+      @mixin bottomBorder($width, $color, $opacity : 1) {
+        position: relative;
+
+        &::after {
+          content: '';
+          background-color: $color;
+          opacity: $opacity;
+          height: $width;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      &:first-child th {
+        border-bottom: 3px solid $COLOR_HL;
+      }
+
+      &:not(:first-child) th:first-child {
+        border-right: 1.5px solid $COLOR_HL;
+      }
+
+      &:not(:first-child):not(:last-child) th:first-child {
+        @include bottomBorder(1px, $COLOR_GRAY, .4);
+      }
+
+      &:nth-child(even) {
+        td {
+          background-color: rgba(160, 160, 160, .15);
+        }
+      }
+
+      th {
+        color: $COLOR_HL;
+        font-weight: $W_BOLD;
+        padding: 8px 12px;
+      }
+
+      td {
+        padding: 6px 10px;
+      }
+
+      th, td {
+        border-width: 0;
+      }
+    }
+  }
+
+  & > ul, & > p > ul {
+    & > li {
+      list-style-type: '⁠—   ';
+
+      &::marker {
+        color: $COLOR_HL;
+      }
+    }
+  }
+
+  & > ul, & > p > ul, ol {
+    ul, & > ul ul, ol ul {
+      & > li {
+        list-style-type: '•  ';
+
+        ul li {
+          list-style-type: '‣  ';
+        }
+      }
+    }
+  }
+
+  ul, ol {
+    padding: 0 0 0 ($CONTENT_PADDING * 2);
+
+    ul, ol {
+      padding: 0 0 0 $CONTENT_PADDING * 1.4;
+    }
+  }
+
+  hr {
+    cursor: default !important;
+
+    @include transit(filter);
+  }
+
+  .mjx-chtml {
+    margin: 0 2px;
+
+    &, span {
+      font-size: 100%;
+      line-height: 0;
+    }
+  }
+
+  .fileblock {
+    background-color: $COLOR_INV_H;
+    border-color: transparent;
+    border-radius: $CONTENT_RADIUS;
+    box-shadow: $HEADER_SHADOW;
+
+    @include onAnchorActive {
+      transform: scale($EFFECT_PUSH_SCALE);
+    }
+    @include transit(background-color, transform);
+
+    .image {
+      filter: brightness(1);
+
+      @include transit(filter);
+    }
+
+    .desc {
+      .filename {
+        color: $COLOR_DEF_H;
+      }
+
+      .size {
+        color: $COLOR_GRAY;
+      }
+    }
+
+    a::after {
+      filter: contrast(50%);
+
+      @include transit(filter);
+    }
+  }
+}
+
+.ct-thumbnail {
+
+}
+
+.ct-excerpt {
+
+}

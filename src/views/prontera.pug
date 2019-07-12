@@ -1,0 +1,69 @@
+doctype
+html(lang="ko")
+
+  head
+    include scripts
+    include styles
+    include meta
+    title= "[##_page_title_##]"
+    link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")
+
+  //- About body_id
+    * tt-body-index = main page
+    * tt-body-page = an article, a page
+    * tt-body-guestbook = guestbook page
+    * tt-body-tag = tag page, list of articles in specified tag
+    * tt-body-category = list of articles in specified category
+    * tt-body-search = list of articles which are results of search
+
+  body#top(data-page-type="[##_body_id_##]")
+    s_t3
+
+      include header
+
+      main
+        div#content.left
+
+          s_list: div#index-counter
+            | '
+            b= "[##_list_conform_##]"
+            | ' 에 해당되는 글이
+            b= " [##_list_count_##]개 "
+            | 있습니다.
+
+          s_if_var_content-global-notice
+            div#global-notice
+              em
+                s_if_var_url-global-notice
+                  a(href="[##_var_url-global-notice_##]")
+                    | [##_var_content-global-notice_##]
+                s_not_var_url-global-notice
+                  | [##_var_content-global-notice_##]
+
+          include content-body/page
+          include content-body/post
+          include content-body/tags
+          include content-body/guestbook
+
+          s_paging: div#paginator
+            a.iter([##_prev_page_##] class="[##_no_more_prev_##]")
+              include icons/arrow-left
+            s_paging_rep
+              a.no-underline([##_paging_rep_link_##])= "[##_paging_rep_link_num_##]"
+            a.iter([##_next_page_##] class="[##_no_more_next_##]")
+              include icons/arrow-right
+
+        aside#side-bar.right
+          s_sidebar
+
+            include content-side/about-myself
+            include content-side/search
+            include content-side/categories
+            include content-side/notices
+            include content-side/recents
+            include content-side/links
+
+      include footer
+
+      a#goto-top(href="#top")
+        span= "가장 위로"

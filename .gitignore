@@ -82,5 +82,5 @@ typings/
 # Prontera output
 out/
 
-# Krita files
+# Krita temporary files
 *.jpg~

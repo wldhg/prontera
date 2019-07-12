@@ -1,0 +1,444 @@
+@import "common";
+
+#goto-top {
+  position: fixed;
+  right: $FIXED_MARGIN_HORI;
+  bottom: $FIXED_MARGIN_VERT;
+  display: none;
+  border-spacing: 10px;
+  padding: 0 5px;
+  pointer-events: none;
+  background-color: $COLOR_INV_H;
+  color: $COLOR_DEF;
+  opacity: 0;
+  overflow: hidden;
+  box-shadow: $HEADER_SHADOW;
+
+  @include transit(transform, opacity, background-color, color);
+  @include noUnderlineEffect;
+  @include onAnchorActive {
+    transform: scale($EFFECT_PUSH_SCALE);
+
+    &::before {
+      animation: boundUp 1.3s ease-out;
+    }
+  }
+
+  &.enabled {
+    display: table;
+    pointer-events: initial;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    content: '';
+    background-image: url('./images/up.svg');
+    background-size: cover;
+    display: table-cell;
+    vertical-align: middle;
+    filter: brightness(0);
+
+    @include transit(filter);
+  }
+
+  span {
+    display: table-cell;
+  }
+}
+
+#paginator {
+  $PAGINATOR_SIZE: 20px;
+
+  display: table;
+  padding: $CONTENT_PADDING 0;
+  border-spacing: $CONTENT_PADDING / 2;
+  margin: auto;
+  text-align: center;
+
+  a {
+    display: table-cell;
+    width: $PAGINATOR_SIZE;
+    height: $PAGINATOR_SIZE;
+    vertical-align: middle;
+    color: $COLOR_DEF;
+
+    @include transit(color, opacity);
+
+    &.iter {
+      padding: 0 8px;
+    }
+
+    &:not(.iter) {
+      padding-bottom: 5px;
+    }
+
+    &:not([href]) {
+      cursor: default;
+      opacity: .28;
+    }
+
+    &[href] {
+      cursor: pointer;
+      opacity: .7;
+
+      @include onAnchorActive {
+        opacity: 1;
+        color: $COLOR_HL;
+
+        span, svg {
+          transform: scale(1.2);
+        }
+
+        polygon {
+          fill: $COLOR_HL;
+        }
+      }
+    }
+
+    svg {
+      height: $PAGINATOR_SIZE;
+
+      @include transit(transform);
+
+      polygon {
+        fill: $COLOR_DEF;
+
+        @include transit(fill);
+      }
+    }
+
+    span {
+      line-height: $PAGINATOR_SIZE;
+      display: block;
+      margin: 0 8px;
+      font-size: 1.1rem;
+      line-height: 1.1rem;
+
+      @include transit(transform);
+    }
+  }
+}
+
+header.global {
+  z-index: 100;
+  max-width: 100vw;
+  width: 100%;
+  height: $HEADER_HEIGHT;
+  box-sizing: border-box;
+  padding: 0 $FIXED_MARGIN_HORI;
+  background-color: $COLOR_LIGHT_H;
+  box-shadow: $HEADER_SHADOW;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  @include transit(top, background-color);
+  @include onCompactView {
+    height: comp($HEADER_HEIGHT) * 2;
+    display: block;
+    padding: 0;
+  }
+
+  &.hidden {
+    top: -1 * ($HEADER_HEIGHT + 4px);
+
+    @include onCompactView {
+      top: -1 * (comp($HEADER_HEIGHT) * 2 + 4px);
+    }
+  }
+
+  & > *, & > .inherit > * {
+    height: $HEADER_HEIGHT;
+    display: inline-flex;
+    box-sizing: border-box;
+
+    @include onCompactView {
+      height: comp($HEADER_HEIGHT);
+      display: flex;
+    }
+
+    * {
+      padding: 0;
+    }
+  }
+
+  %paddedComponent {
+    vertical-align: middle;
+    padding: $HEADER_INNER_PADDING 0;
+    height: $HEADER_INNER_HEIGHT;
+    box-sizing: content-box;
+
+    @include onCompactView {
+      padding: comp($HEADER_INNER_PADDING) 0;
+      height: comp($HEADER_INNER_HEIGHT);
+    }
+
+    img, svg {
+      width: auto;
+      height: $HEADER_INNER_HEIGHT;
+      max-height: $HEADER_INNER_HEIGHT;
+
+      @include onCompactView {
+        height: comp($HEADER_INNER_HEIGHT);
+        max-height: comp($HEADER_INNER_HEIGHT);
+      }
+    }
+  }
+
+  @mixin headerButton($horiPadding : 0, $hovOpacity : .24) {
+    position: relative;
+
+    @include onAnchorActive {
+      &::before {
+        opacity: $hovOpacity;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -1 * $horiPadding;
+      padding: 0 $horiPadding;
+      box-sizing: content-box;
+      width: 100%;
+      height: $HEADER_HEIGHT;
+      background-color: #999999;
+      opacity: 0;
+      z-index: -1;
+      content: '';
+
+      @include transit(opacity);
+      @include onCompactView {
+        left: -1 * comp($horiPadding);
+        padding: 0 comp($horiPadding);
+        height: comp($HEADER_HEIGHT);
+      }
+    }
+  }
+
+  #identity {
+    $IDENTITY_PADDING_HORI: 15px;
+
+    @extend %paddedComponent;
+    @include headerButton($IDENTITY_PADDING_HORI);
+    @include onCompactView {
+      @include headerButton(comp($IDENTITY_PADDING_HORI));
+      padding-left: comp($IDENTITY_PADDING_HORI);
+      padding-right: comp($IDENTITY_PADDING_HORI);
+    }
+
+    //- Identity Logo
+    img {
+      animation: shiney 2.4s infinite;
+      padding-right: 10px;
+    }
+
+    //- Identity Text
+    span {
+      font-size: $HEADER_INNER_HEIGHT / $LINE_HEIGHT;
+      font-weight: $W_BOLD;
+
+      @include onCompactView {
+        font-size: comp($HEADER_INNER_HEIGHT / $LINE_HEIGHT);
+      }
+    }
+  }
+
+  #menu ul {
+    display: flex;
+    margin: 0;
+
+    @include onCompactView {
+      width: 100vw;
+      overflow-x: scroll;
+    }
+
+    li {
+      $MENU_BOX_PADDING: 10px;
+
+      display: table;
+      padding: 0 $MENU_BOX_PADDING;
+      cursor: pointer;
+      box-sizing: border-box;
+      list-style: none;
+
+      @include headerButton(0, .1);
+
+      a {
+        $MENU_INDICATOR_HEIGHT: 4px;
+
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 0 10px ($MENU_INDICATOR_HEIGHT / 2);
+        min-width: 110px - (2 * $MENU_BOX_PADDING);
+        max-width: 25vw;
+        height: $HEADER_HEIGHT;
+        font-size: 1.2rem;
+
+        @include onCompactView {
+          min-width: 80px - (2 * $MENU_BOX_PADDING);
+          font-size: 1.1rem;
+          height: comp($HEADER_HEIGHT);
+        }
+        @include onSuperCompactView {
+          font-size: .92rem;
+        }
+        @include noUnderlineEffect;
+
+        &.current {
+          &::after {
+            position: absolute;
+            width: 90%;
+            bottom: 5px;
+            height: $MENU_INDICATOR_HEIGHT;
+            left: 5%;
+            background-color: $COLOR_HL;
+            border-radius: $MENU_INDICATOR_HEIGHT;
+            opacity: .7;
+            content: '';
+
+            @include onCompactView {
+              height: comp($MENU_INDICATOR_HEIGHT);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #others {
+    @include onCompactView {
+      position: absolute;
+      right: 10px;
+      top: 0;
+    }
+  }
+
+  #shortcuts {
+    $SHORTCUT_SIZE: 26px;
+    $SHORTCUT_PADDING_VERT: ($HEADER_INNER_HEIGHT - $SHORTCUT_SIZE) / 2;
+    $SHORTCUT_PADDING_HORI: 20px;
+
+    margin: 0;
+
+    @extend %paddedComponent;
+    @include onSuperCompactView {
+      display: none;
+    }
+
+    a {
+      padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI $SHORTCUT_PADDING_VERT 0;
+
+      @include onCompactView {
+        $SHORTCUT_PADDING_VERT: (comp($HEADER_INNER_HEIGHT) - $SHORTCUT_SIZE) / 2;
+
+        padding: $SHORTCUT_PADDING_VERT comp($SHORTCUT_PADDING_HORI) $SHORTCUT_PADDING_VERT 0;
+      }
+
+      &:hover, &:focus {
+        img, svg {
+          transform: scale($EFFECT_GIANT_SCALE);
+        }
+      }
+
+      img, svg {
+        height: $SHORTCUT_SIZE;
+        width: auto;
+
+        @include transit(transform);
+      }
+    }
+  }
+
+  #modarkbul {
+    $MDB_WIDTH: 40px;
+    $MDB_HEIGHT: 22px;
+    $MDB_BALL_SIZE: 14px;
+    $MDB_ELASTICITY: 4px;
+    $MDB_FUSS: 3px;
+    $MDB_MARGIN: ($MDB_HEIGHT - $MDB_BALL_SIZE) / 2;
+    $MDB_TOP_FIX: ($MDB_HEIGHT - 1.2px - $MDB_BALL_SIZE) / 3;
+
+    display: table;
+    border-spacing: 10px;
+    cursor: pointer;
+    opacity: 0;
+
+    @extend %paddedComponent;
+    @include transit(opacity);
+    @include onCompactView {
+      margin-top: -1 * comp(10px);
+    }
+
+    & > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &:hover, &:focus {
+      .container .border label {
+        left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE - $MDB_ELASTICITY - $MDB_FUSS;
+        width: $MDB_BALL_SIZE + $MDB_ELASTICITY;
+
+        &.dark {
+          left: $MDB_MARGIN + $MDB_FUSS;
+        }
+      }
+    }
+
+    .container {
+      .border {
+        border-radius: $MDB_HEIGHT;
+        width: $MDB_WIDTH;
+        height: $MDB_HEIGHT;
+        position: relative;
+        background-color: #dfdfdf;
+        margin-top: $MDB_TOP_FIX;
+
+        @include transit(background-color);
+
+        label {
+          position: absolute;
+          width: $MDB_BALL_SIZE;
+          height: $MDB_BALL_SIZE;
+          top: $MDB_MARGIN;
+          left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE;
+          border-radius: $MDB_BALL_SIZE;
+          background-color: $COLOR_HL;
+
+          @include transit(left, width);
+
+          &.dark {
+            left: $MDB_MARGIN;
+          }
+
+          input[type="checkbox"] { display: none; }
+        }
+      }
+    }
+
+    .icon {
+      width: $MDB_HEIGHT;
+      height: $MDB_HEIGHT;
+      margin-top: $MDB_TOP_FIX;
+
+      &.moon path {
+        fill: #0e2d6c;
+      }
+
+      &.sun path {
+        fill: #ffb700;
+      }
+    }
+  }
+}

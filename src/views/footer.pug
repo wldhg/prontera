@@ -1,0 +1,18 @@
+footer.global
+
+  div#hosted-on
+    span= "Hosted on ♥ TISTORY"
+
+  div#copyright
+    p
+      = "© "
+      s_if_var_url-home
+        a(href="[##_var_url-home_##]")
+          include functions/author
+      s_not_var_url-home
+        span
+          include functions/author
+      = " & "
+      a(href="https://github.com/widh/prontera" target="_blank")
+        | Prontera
+      = "."
