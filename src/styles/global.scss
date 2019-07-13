@@ -1,5 +1,48 @@
 @import "common";
 
+#copy-helper {
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+}
+
+#global-notice {
+  padding: 12px $CONTENT_PADDING 13px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  box-shadow: $HEADER_SHADOW;
+  background-color: $COLOR_INV_H;
+  margin-bottom: $CONTENT_PADDING;
+  border-radius: $CONTENT_RADIUS;
+  display: flex;
+
+  @include transit(background-color);
+
+  &::before {
+    content: '';
+    background-image: url('./images/info.svg');
+    width: 1.3rem;
+    height: 1.3rem;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 7px;
+
+    @include transit(filter);
+  }
+
+  em {
+    font-style: normal;
+  }
+}
+
 #goto-top {
   position: fixed;
   right: $FIXED_MARGIN_HORI;
@@ -13,6 +56,7 @@
   opacity: 0;
   overflow: hidden;
   box-shadow: $HEADER_SHADOW;
+  border-radius: $CONTENT_RADIUS;
 
   @include transit(transform, opacity, background-color, color);
   @include noUnderlineEffect;
@@ -138,6 +182,7 @@ header.global {
   left: 0;
   display: flex;
   justify-content: space-between;
+  user-select: none;
 
   @include transit(top, background-color);
   @include onCompactView {

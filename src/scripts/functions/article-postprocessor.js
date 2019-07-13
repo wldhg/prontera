@@ -49,7 +49,17 @@ PtRegister(
         target.querySelector('.count-text').textContent = '댓글 없음';
       }
 
-    })
+    });
+
+    // Thumbnail expanding
+    const tnTargets = document.querySelectorAll('.ct-thumbnail');
+    tnTargets.forEach((target) => {
+      target.onclick = () => {
+        window.open(target.dataset.link, '_self')
+      };
+      target.style.setProperty('height', `calc(${target.parentNode.offsetHeight}px - 4rem)`);
+      target.style.setProperty('cursor', 'pointer');
+    });
 
     end(timeTargets, commentTargets);
 

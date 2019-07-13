@@ -33,7 +33,8 @@ script(async)
   |     try {
   |       fn(window.PtStore[name], window.PtConfig, function () {
   |         console.groupCollapsed('Result — ' + name);
-  |         console.log(Array.from(arguments));
+  |         Array.from(arguments).forEach(console.log);
+  |         console.groupEnd();
   |       });
   |     } catch (e) {
   |       console.debug(e);

@@ -18,17 +18,28 @@ body[data-page-type="tt-body-search"] {
     background-color: $COLOR_INV_H;
     box-shadow: $HEADER_SHADOW;
     border-radius: 4px;
+    position: relative;
 
     @include transit(background-color);
 
     &:not(:first-of-type) {
       margin-top: $CONTENT_PADDING;
     }
+
+    .ct-header {
+      .title {
+        margin-top: 0;
+        font-size: 2.1rem;
+      }
+    }
   }
 }
 
 // Article post type
 body[data-page-type="tt-body-page"] {
+  main {
+    width: $CONTENT_WIDTH / $LINE_HEIGHT;
+  }
 }
 
 // Guestbook type
@@ -114,7 +125,7 @@ body[data-page-type="tt-body-guestbook"] {
     font-size: 1.1rem;
   }
 
-  h6, a, abbr, address, caption, code, del, i, ins, label, legend, li, p, pre, q, ruby, s, samp, span, td, u, var, b, cite, strong, th {
+  h6, a, abbr, address, caption, code, del, i, ins, li, p, pre, q, ruby, s, samp, span, td, u, var, b, cite, strong, th {
     font-size: 1rem;
   }
 
@@ -122,15 +133,16 @@ body[data-page-type="tt-body-guestbook"] {
     font-size: .85rem;
   }
 
-  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, label, legend, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var {
+  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var {
     font-weight: $W_NORMAL;
   }
   b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
     font-weight: $W_BOLD;
   }
 
-  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, label, legend, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
+  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
     line-height: $LINE_HEIGHT;
+    word-wrap: break-word;
   }
 
   a {
@@ -143,24 +155,124 @@ body[data-page-type="tt-body-guestbook"] {
     }
   }
 
-  blockquote, q {
-    &, & p {
+  kbd {
+    border-radius: $CONTENT_RADIUS;
+    box-shadow: $HEADER_SHADOW;
+    background-color: $COLOR_INV_H;
+    margin: 0 3px;
+    padding: 2px 6px;
+    border-bottom: 3px solid $COLOR_GRAY;
 
+    @include transit(background-color);
+  }
+
+  caption, figcaption, cite {
+    color: $COLOR_GRAY;
+    font-style: italic;
+  }
+
+  rp {
+    color: $COLOR_GRAY;
+  }
+
+  blockquote {
+    margin-right: 3rem;
+    margin-left: 2rem;
+    padding-right: 2.1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-right: 1px solid rgba(140, 140, 140, .2);
+    width: max-content;
+    max-width: calc(100% - 9.1rem);
+
+    &::after {
+      height: 1.84rem;
+      width: 1.84rem;
+      margin-top: .3rem;
+      right: -3rem;
     }
   }
 
   q {
+    padding-right: 1.26rem;
 
-  }
+    &::before {
+      display: none;
+    }
 
-  pre {
-    code {
-
+    &::after {
+      height: .8rem;
+      width: .8rem;
+      margin-top: 3px;
+      right: 0;
     }
   }
 
-  & > code, :not(pre) code {
+  blockquote, q {
+    position: relative;
+    font-style: italic;
 
+    &, p, span {
+      color: $COLOR_GRAY;
+    }
+
+    &::after {
+      content: '';
+      background-image: url('./images/quote.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      filter: invert(.45);
+    }
+  }
+
+  code, pre, samp {
+    font-family: $FONT_FAMILY_MONOSPACE, $FONT_FAMILY_NORMAL;
+    background-color: $COLOR_INV_H;
+    box-shadow: $HEADER_SHADOW;
+    padding: 0px 4px 1px;
+    margin: 0px 1px;
+    border-radius: $CONTENT_RADIUS;
+    color: #586377;
+    user-select: none;
+
+    @include transit(background-color, color);
+  }
+
+  pre, samp {
+    padding: 8px 12px;
+    margin: $CONTENT_PADDING 0;
+
+    code {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      color: $COLOR_DEF;
+
+      @include transit(color);
+
+      @import "hljs-customization";
+      @include hljs((
+        'red': #E53935,
+        'orange': #F76D47,
+        'yellow': #FFB62C,
+        'green': #91B859,
+        'cyan': #39ADB5,
+        'blue': #6182B8,
+        'paleblue': #8796B0,
+        'purple': #7C4DFF,
+        'brown': #C17E70,
+        'gray': #686868
+      ));
+
+      span {
+        @include transit(color);
+      }
+    }
   }
 
   table {
@@ -170,7 +282,8 @@ body[data-page-type="tt-body-guestbook"] {
     border-radius: $CONTENT_RADIUS;
     background-color: $COLOR_INV_H;
     box-shadow: $HEADER_SHADOW;
-    margin: $CONTENT_PADDING auto;
+    margin: $CONTENT_PADDING 0;
+    width: 100%;
 
     @include transit(background-color);
 
@@ -260,6 +373,49 @@ body[data-page-type="tt-body-guestbook"] {
     @include transit(filter);
   }
 
+  .copiable {
+    position: relative;
+    cursor: pointer;
+    overflow: visible;
+
+    &::after {
+      position: absolute;
+      content: '복사 완료';
+      font-family: $FONT_FAMILY_NORMAL;
+      background-color: $COLOR_INV_H;
+      color: $COLOR_DEF;
+      box-shadow: $HEADER_SHADOW;
+      border-radius: $CONTENT_RADIUS;
+      font-style: normal;
+      font-weight: $W_NORMAL;
+      width: max-content;
+      padding: 3px 7px 4px;
+      left: 0;
+      font-size: .85rem;
+      z-index: -1;
+      opacity: 0;
+      top: calc(-1 * (1rem + 11px));
+      user-select: none;
+
+      @include transit(top, color, background-color, opacity);
+    }
+
+    &.copied::after {
+      top: calc(-1 * (1rem + 14px));
+      opacity: 1;
+    }
+
+    &.failed::after {
+      background-color: $COLOR_HL;
+      color: $COLOR_LIGHT;
+      content: '복사 실패';
+    }
+
+    &.visible::after {
+      z-index: 2;
+    }
+  }
+
   .mjx-chtml {
     margin: 0 2px;
 
@@ -274,6 +430,7 @@ body[data-page-type="tt-body-guestbook"] {
     border-color: transparent;
     border-radius: $CONTENT_RADIUS;
     box-shadow: $HEADER_SHADOW;
+    user-select: none;
 
     @include onAnchorActive {
       transform: scale($EFFECT_PUSH_SCALE);
@@ -302,12 +459,115 @@ body[data-page-type="tt-body-guestbook"] {
       @include transit(filter);
     }
   }
+
+  .btn-toggle-moreless {
+    margin: 1rem auto !important;
+    width: max-content;
+    display: block;
+    border-radius: $CONTENT_RADIUS;
+    box-shadow: $HEADER_SHADOW;
+    background-color: $COLOR_INV_H;
+    color: $COLOR_DEF_H !important;
+    padding: 8px 13px;
+    user-select: none;
+
+    @include noUnderlineEffect;
+    @include colorEffect($COLOR_DEF_H);
+    @include onAnchorActive {
+      transform: scale($EFFECT_PUSH_SCALE);
+    }
+    @include transit(background-color, color, transform);
+  }
+
+  .moreless-content {
+    margin: 1rem auto 2rem;
+    padding: 2rem;
+    border-radius: $CONTENT_RADIUS;
+    box-shadow: $HEADER_SHADOW;
+    background-color: $COLOR_INV_H;
+    width: max-content;
+    max-width: calc(100% - 4rem);
+
+    @include transit(background-color);
+  }
+
+  .imageslideblock {
+    box-shadow: $HEADER_SHADOW;
+    border-radius: $CONTENT_RADIUS;
+    background-color: $COLOR_INV_H;
+    margin: 1rem auto !important;
+    padding: 22px 44px 0;
+    width: max-content;
+
+    @include transit(background-color);
+
+    .ico-prev, .ico-next {
+      filter: contrast(0%);
+    }
+
+    .image-container {
+      background-color: transparent;
+    }
+
+    .mark {
+      @include transit(filter);
+
+      span {
+        @include transit(background-color);
+      }
+    }
+  }
 }
 
 .ct-thumbnail {
+  position: relative;
+  float: right;
+  margin: .6rem .6rem $CONTENT_PADDING $CONTENT_PADDING;
+  height: 0;
+  max-height: 250px;
+  z-index: 2;
 
+  @include transit(height);
+
+  .container {
+    height: 100%;
+    width: 250px;
+    box-shadow: $HEADER_SHADOW;
+    border-radius: $CONTENT_RADIUS;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $COLOR_INV_XH;
+    background-position: center;
+
+    @include transit(transform, background-color);
+    @include onAnchorActive {
+      transform: scale($EFFECT_PUSH_SCALE);
+    }
+  }
 }
 
 .ct-excerpt {
+  color: $COLOR_DEF_XH;
+  opacity: .8;
 
+  @include transit(color);
+}
+
+.ct-see-more {
+  float: right;
+  margin-left: 1rem;
+  margin-top: .6rem;
+  border-radius: $CONTENT_RADIUS;
+  box-shadow: $HEADER_SHADOW;
+  background-color: $COLOR_INV_XH;
+  color: $COLOR_DEF_H !important;
+  padding: 5px 10px;
+  user-select: none;
+
+  @include noUnderlineEffect;
+  @include colorEffect($COLOR_DEF_H);
+  @include onAnchorActive {
+    transform: scale($EFFECT_PUSH_SCALE);
+  }
+  @include transit(background-color, color, transform);
 }

@@ -23,12 +23,14 @@ body {
   @include transit(color);
 
   &, * {
-    font-family: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    font-family: $FONT_FAMILY_NORMAL;
     direction: ltr;
     --color-def: #{$COLOR_DARK};
     --color-def-hl: #{$COLOR_DARK_H};
+    --color-def-xhl: #{$COLOR_DARK_XH};
     --color-inv: #{$COLOR_LIGHT};
     --color-inv-hl: #{$COLOR_LIGHT_H};
+    --color-inv-xhl: #{$COLOR_LIGHT_XH};
 
     &:focus {
       outline: none;
@@ -69,11 +71,10 @@ body {
 
 main {
   width: $CONTENT_WIDTH;
-  height: auto;
-  height: fit-content;
+  height: max-content;
   position: relative;
-  display: block;
-  padding-top: $HEADER_HEIGHT + $CONTENT_PADDING;
+  display: flex;
+  padding-top: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
   margin: 0 auto;
 
   @include onCompactView {

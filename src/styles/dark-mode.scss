@@ -9,8 +9,14 @@ html.dark {
     &, *:not(.no-dark) {
       --color-def: #{$COLOR_LIGHT};
       --color-def-hl: #{$COLOR_LIGHT_H};
+      --color-def-xhl: #{$COLOR_LIGHT_XH};
       --color-inv: #{$COLOR_DARK};
       --color-inv-hl: #{$COLOR_DARK_H};
+      --color-inv-xhl: #{$COLOR_DARK_XH};
+    }
+
+    #global-notice::before {
+      filter: invert(.92);
     }
 
     #goto-top::before {
@@ -48,6 +54,28 @@ html.dark {
         filter: brightness(4);
       }
 
+      code, pre, samp {
+        color: #B2CCD6;
+      }
+
+      pre, samp {
+        code {
+          @import "hljs-customization";
+          @include hljs((
+            'red': #FF5370,
+            'orange': #F78C6C,
+            'yellow': #FFCB6B,
+            'green': #C3E88D,
+            'cyan': #89DDFF,
+            'blue': #82AAFF,
+            'paleblue': #B2CCD6,
+            'purple': #C792EA,
+            'brown': #C17E70,
+            'gray': #797979
+          ));
+        }
+      }
+
       .fileblock {
         .image {
           filter: brightness(4);
@@ -56,6 +84,10 @@ html.dark {
         a::after {
           filter: contrast(0%) brightness(1.5);
         }
+      }
+
+      .imageslideblock .mark {
+        filter: invert(1) brightness(2);
       }
     }
   }
