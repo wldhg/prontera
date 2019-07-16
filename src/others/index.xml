@@ -55,14 +55,6 @@
         <option />
         <default>#ee3344</default>
       </variable>
-      <variable>
-        <name>color-ul</name>
-        <label>보조 색상</label>
-        <description>그리 중요하지 않지만 차별화된 색상.</description>
-        <type>COLOR</type>
-        <option />
-        <default>#333333</default>
-      </variable>
     </variablegroup>
     <variablegroup name="바로가기 설정">
       <variable>

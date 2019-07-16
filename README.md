@@ -1,16 +1,22 @@
 <p align='center'>
+  <img alt='Prontera' src='./prontera.png'>
+</p>
 
-# Prontera
+<p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (NOT-RELEASED)</p>
 
-*넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (NOT-RELEASED)*
-
-![Version](https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square)
-![Travis CI Build Status](https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square)
-![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?style=flat-square)
-![License](https://img.shields.io/github/license/widh/prontera.svg?style=flat-square)
-
-![미리보기](raw/preview560.jpg)
-
+<p align='center'>
+  <a href="https://github.com/widh/prontera/blob/master/package.json">
+    <img alt='Version' src='https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square'>
+  </a>
+  <a href="https://travis-ci.com/widh/prontera">
+    <img alt='Travis CI Build Status' src='https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square'>
+  </a>
+  <a href="https://widh.me/">
+    <img alt='Maintenance' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
+  </a>
+  <a href="https://www.mozilla.org/en-US/MPL/2.0/">
+    <img alt='License' src='https://img.shields.io/github/license/widh/prontera.svg?style=flat-square'>
+  </a>
 </p>
 
 ## 기능 안내
@@ -23,6 +29,7 @@
 + 밝기 모드 쿠키 도메인 공유
 + 블로그 전역 공지
 + 하이라이트 색상 지정
++ TISTORY 새로운 에디터 지원
 
 #### 영원히 추가할 예정이 없는 기능
 
@@ -43,6 +50,10 @@
 + `(확정)` 웹 접근성 개선
 + `(확정)` 읽기 모드에서의 맥락 안정화
 + `(확정)` 목차 생성 기능
++ `(확정)` 웹 표준 개선
++ `(확정)` 브라우저 테스트 (Internet Explorer 제외)
++ `(확정)` `README.md` 스크린샷 업데이트
++ `(고려)` 아이콘만 있는 헤더 로고
 + `(고려)` 갤러리 스타일의 게시글 리스트
 + `(고려)` 사이드바의 최근 댓글 패널
 + `(고려)` 영어 지원
@@ -65,6 +76,13 @@ $ yarn; yarn build
 ```
 
 이후 `out` 디렉토리에서 모든 스킨 파일을 확인할 수 있습니다.
+
+
+## 권장 사항
+
++ 메인 메뉴의 수: 4개
++ 블로그 이름: 영문 9글자 이내 혹은 한글 5글자 이내
+
 
 ## 라이센스
 
