@@ -1,0 +1,11 @@
+//- Post Common Meta
+section.meta
+  span.date(data-rfc-time="[##_article_rep_date_year_##]-[##_article_rep_date_month_##]-[##_article_rep_date_day_##]T[##_article_rep_date_hour_##]:[##_article_rep_date_minute_##]:[##_article_rep_date_second_##]+0900")
+    | [##_article_rep_date_year_##]년 [##_article_rep_date_month_##]월 [##_article_rep_date_day_##]일 [##_article_rep_date_hour_##]:[##_article_rep_date_minute_##]
+  span.category
+    a.no-underline(href="[##_article_rep_category_link_##]")
+      | [##_article_rep_category_##]
+  s_rp_count: span.comments-count(data-count="[##_article_rep_rp_cnt_##]")
+    a.no-underline(href="#comments")
+      span.speak-only= "댓글 수 "
+      span.count-text= "[##_article_rep_rp_cnt_##]개"

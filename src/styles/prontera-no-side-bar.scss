@@ -1,0 +1,20 @@
+@import "common";
+
+@media screen {
+  main {
+    #content {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 100%;
+
+      @include onCompactView {
+        padding: 0 comp($CONTENT_PADDING);
+        max-width: $CONTENT_WIDTH * .8;
+      }
+    }
+
+    #side-bar {
+      display: none;
+    }
+  }
+}

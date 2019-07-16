@@ -3,7 +3,33 @@
 // Colors and theme from https://github.com/equinusocio/vsc-material-theme
 // Above theme is licensed with Apache-2.0 license.
 
-@mixin hljs($Palette) {
+$HLJS_LIGHT: (
+  'red': #E53935,
+  'orange': #F76D47,
+  'yellow': #FFB62C,
+  'green': #91B859,
+  'cyan': #39ADB5,
+  'blue': #6182B8,
+  'paleblue': #8796B0,
+  'purple': #7C4DFF,
+  'brown': #C17E70,
+  'gray': #686868
+);
+
+$HLJS_DARK: (
+  "red": #ff5370,
+  "orange": #f78c6c,
+  "yellow": #ffcb6b,
+  "green": #c3e88d,
+  "cyan": #89ddff,
+  "blue": #82aaff,
+  "paleblue": #b2ccd6,
+  "purple": #c792ea,
+  "brown": #c17e70,
+  "gray": #797979
+);
+
+@mixin applyHighlightJS($Palette) {
   .hljs- {
     &keyword, &type {
       color: map-get($Palette, "purple");

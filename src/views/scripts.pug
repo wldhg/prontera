@@ -1,18 +1,32 @@
-//- Dark mode
+//- Prontera head scripts
 script(async)
   | "use strict";
+  |
+  | window.PtAgent = navigator.userAgent.toLowerCase();
+  | if (
+  |   (navigator.appName === "Netscape" && window.PtAgent.indexOf("trident") !== -1)
+  |   || window.PtAgent.indexOf("msie") !== -1
+  | ) {
+  |   if (document.cookie.indexOf("stillie") === -1) {
+  |     var wannaUseIE = window.confirm("Internet Explorer는 공식적으로 폐기된 브라우저입니다.\n따라서 이 블로그는 Internet Explorer에서 제대로 보이거나 작동하지 않습니다.\n그래도 Internet Explorer로 방문하시겠습니까?");
+  |     if (wannaUseIE === true) {
+  |       document.cookie = "stillie=true";
+  |     } else {
+  |       alert("이전 페이지로 돌아갑니다.");
+  |       history.back();
+  |     }
+  |   }
+  | }
   |
   | (function () {
   |   var cq = document.cookie.split(";");
   |   cq.forEach(function (cr) {
   |     var c = cr.split("=");
-  |     if ("modarkbul" === c[0].trim()) {
-  |       if (c[1][0] === "t") {
-  |         document.documentElement.style.setProperty("background-color", "#000000");
-  |         document.documentElement.classList.add("dark");
-  |       } else {
-  |         document.documentElement.style.setProperty("background-color", "#eaeaea");
-  |       }
+  |     if ("modarkbul" === c[0].trim() && c[1][0] === "t") {
+  |       document.documentElement.style.setProperty("background-color", "#000000");
+  |       document.documentElement.classList.add("dark");
+  |     } else {
+  |       document.documentElement.style.setProperty("background-color", "#eaeaea");
   |     }
   |   });
   | })();
@@ -48,8 +62,8 @@ script(async)
 script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js" defer)
 
 //- Prontera
-script(src="./onload.js" async)
-script(src="./functions.js" defer)
+script(src="./images/onload.js" async)
+script(src="./images/functions.js" defer)
 
 //- MathJax
 script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML&locale=ko" async)

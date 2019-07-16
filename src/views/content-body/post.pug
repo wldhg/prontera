@@ -6,17 +6,14 @@ s_article_rep: article
     s_article_rep_thumbnail: section.ct-thumbnail(data-link="[##_article_rep_link_##]")
       .container(style="background-image: url([##_article_rep_thumbnail_url_##])")
     a.ct-see-more(href="[##_article_rep_link_##]")= "더보기"
-    include post-header
+    include post/header
     section.ct-excerpt
       | [##_article_rep_summary_##]
 
   //- Real article
   s_permalink_article_rep
-    include post-header
-
-    section.ct-body
-      span.speak-only= "본문"
-      | [##_article_rep_desc_##]
+    include post/header
+    include post/body
 
     footer.ct-footer
       s_tag_label: section.ct-tags

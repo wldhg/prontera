@@ -32,7 +32,7 @@ html(lang="ko")
             | 있습니다.
 
           s_if_var_content-global-notice
-            div#global-notice
+            div#global-notice.no-print
               em
                 s_if_var_url-global-notice
                   a(href="[##_var_url-global-notice_##]")
@@ -45,7 +45,7 @@ html(lang="ko")
           include content-body/tags
           include content-body/guestbook
 
-          s_paging: div#paginator
+          s_paging: div#paginator.no-print
             a.iter([##_prev_page_##] class="[##_no_more_prev_##]")
               include icons/arrow-left
             s_paging_rep
@@ -53,7 +53,7 @@ html(lang="ko")
             a.iter([##_next_page_##] class="[##_no_more_next_##]")
               include icons/arrow-right
 
-        aside#side-bar.right
+        aside#side-bar.right.no-print
           s_sidebar
 
             include content-side/about-myself
@@ -65,7 +65,7 @@ html(lang="ko")
 
       include footer
 
-      a#goto-top(href="#top")
+      a#goto-top(href="#top").no-print
         span= "가장 위로"
 
       textarea#copy-helper

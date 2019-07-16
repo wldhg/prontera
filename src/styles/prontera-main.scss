@@ -1,18 +1,23 @@
 @import "common";
 
-@import "animas";
-@import "dark-mode";
+@import "animation";
+@import "modarkbul";
 
 @import "global";
 @import "content-body";
+@import "content-side";
 @import "tistory";
 
 html {
   scrollbar-color: #999 #ccc;
   font-size: $FONT_SIZE;
   line-height: $LINE_HEIGHT;
+  background-color: $COLOR_LIGHT;
 
   @include transit(background-color, scrollbar-color);
+  @media print {
+    background-color: #ffffff !important;
+  }
 }
 
 body {
@@ -27,9 +32,11 @@ body {
     direction: ltr;
     --color-def: #{$COLOR_DARK};
     --color-def-hl: #{$COLOR_DARK_H};
+    --color-def-thl: #{$COLOR_DARK_TH};
     --color-def-xhl: #{$COLOR_DARK_XH};
     --color-inv: #{$COLOR_LIGHT};
     --color-inv-hl: #{$COLOR_LIGHT_H};
+    --color-inv-thl: #{$COLOR_LIGHT_TH};
     --color-inv-xhl: #{$COLOR_LIGHT_XH};
 
     &:focus {
@@ -63,34 +70,77 @@ body {
       }
     }
   }
-
-  path, polygon {
-    fill: $COLOR_HL;
-  }
 }
 
 main {
+  $MAIN_TOP_PADDING: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
+  $MAIN_TOP_PADDING_CV: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
+
   width: $CONTENT_WIDTH;
   height: max-content;
   position: relative;
   display: flex;
-  padding-top: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
+  padding-top: $MAIN_TOP_PADDING;
   margin: 0 auto;
+  overflow: hidden;
 
   @include onCompactView {
-    padding-top: comp($HEADER_HEIGHT * 2 + $CONTENT_PADDING);
+    padding-top: $MAIN_TOP_PADDING_CV;
+    width: 100%;
+  }
+  @media print {
+    padding-top: 0;
+    width: 100%;
   }
 
   #content {
     width: 70%;
     box-sizing: border-box;
     padding-right: $CONTENT_PADDING;
+    padding-left: $CONTENT_PADDING / 2;
+
+    @include onCompactView {
+      width: 100%;
+      margin: 0 auto;
+      max-width: $CONTENT_WIDTH * .7;
+      padding: 0 comp($CONTENT_PADDING);
+    }
+    @media print {
+      width: 100%;
+      padding: $CONTENT_PADDING;
+    }
   }
 
   #side-bar {
     width: 30%;
     box-sizing: border-box;
     padding-left: $CONTENT_PADDING;
+    outline-color: transparent;
+
+    @include onCompactView {
+      z-index: 90;
+      position: fixed;
+      padding: $MAIN_TOP_PADDING_CV $CONTENT_PADDING 0;
+      top: 0;
+      right: -89vw;
+      width: 88vw;
+      height: 100vh;
+      box-shadow: $HEADER_SHADOW;
+      background-color: $COLOR_INV_XH;
+      outline-width: 101vw;
+      outline-style: solid;
+
+      @include transit(right, outline-color);
+
+      &.visible {
+        right: 0;
+        outline-color: $COLOR_INV_TH;
+      }
+
+      &::before {
+        content: '';
+      }
+    }
   }
 }
 
@@ -104,6 +154,10 @@ main {
 
 .no-event {
   pointer-events: none;
+}
+
+.no-print {
+  @include noPrint;
 }
 
 .no-transparency {

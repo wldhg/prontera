@@ -37,13 +37,15 @@ body[data-page-type="tt-body-search"] {
 
 // Article post type
 body[data-page-type="tt-body-page"] {
-  main {
-    width: $CONTENT_WIDTH / $LINE_HEIGHT;
-  }
 }
 
 // Guestbook type
 body[data-page-type="tt-body-guestbook"] {
+}
+
+#content article {
+  box-sizing: border-box;
+  padding: 0 $CONTENT_PADDING;
 }
 
 .ct-header {
@@ -255,19 +257,8 @@ body[data-page-type="tt-body-guestbook"] {
 
       @include transit(color);
 
-      @import "hljs-customization";
-      @include hljs((
-        'red': #E53935,
-        'orange': #F76D47,
-        'yellow': #FFB62C,
-        'green': #91B859,
-        'cyan': #39ADB5,
-        'blue': #6182B8,
-        'paleblue': #8796B0,
-        'purple': #7C4DFF,
-        'brown': #C17E70,
-        'gray': #686868
-      ));
+      @import "highlight-js";
+      @include applyHighlightJS($HLJS_LIGHT);
 
       span {
         @include transit(color);

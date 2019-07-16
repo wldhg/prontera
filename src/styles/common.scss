@@ -29,17 +29,21 @@ $EFFECT_GIANT_SCALE: 1.3;
 $COLOR_GRAY: #8c8c8c;
 $COLOR_LIGHT: #eaeaea;
 $COLOR_LIGHT_H: #f0f0f0;
+$COLOR_LIGHT_TH: rgba(248, 248, 248, .75);
 $COLOR_LIGHT_XH: #f8f8f8;
 $COLOR_DARK: #000000;
 $COLOR_DARK_H: #191919;
+$COLOR_DARK_TH: rgba(0, 0, 0, .75);
 $COLOR_DARK_XH: #333333;
 $COLOR_HL: var(--hl);
 $COLOR_UL: var(--ul);
 $COLOR_DEF: var(--color-def);
 $COLOR_DEF_H: var(--color-def-hl);
+$COLOR_DEF_TH: var(--color-def-thl);
 $COLOR_DEF_XH: var(--color-def-xhl);
 $COLOR_INV: var(--color-inv);
 $COLOR_INV_H: var(--color-inv-hl);
+$COLOR_INV_TH: var(--color-inv-thl);
 $COLOR_INV_XH: var(--color-inv-xhl);
 
 // Transition
@@ -59,6 +63,13 @@ $TRANSIT_PROPERTY : .32s ease-in-out;
   transition: getTransitProperty($props);
 }
 
+// Print View
+@mixin noPrint {
+  @media print {
+    display: none !important;
+  }
+}
+
 // Compact View
 $CV_DIVISOR : 1.4;
 
@@ -67,13 +78,25 @@ $CV_DIVISOR : 1.4;
 }
 
 @mixin onCompactView {
-  @media screen and (max-width: 999px) {
+  @media screen and (max-width: #{$CONTENT_WIDTH + $CONTENT_PADDING - 1px}) {
+    @content;
+  }
+}
+
+@mixin onSemiCompactView {
+  @media screen and (max-width: 799px) {
     @content;
   }
 }
 
 @mixin onSuperCompactView {
   @media screen and (max-width: 419px) {
+    @content;
+  }
+}
+
+@mixin onUltraCompactView {
+  @media screen and (max-width: 329px) {
     @content;
   }
 }

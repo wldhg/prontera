@@ -1,15 +1,8 @@
 s_page_rep: article
 
-  style(type="text/css")
-    | div#content { width: 100%; padding-right: 0; }
-    | article.page header { text-align: center; }
-    | article.page header h2 { font-size: 3rem; }
-    | aside.right { display: none; }
+  link(rel="stylesheet" href="./images/no-side-bar.css" type="text/css")
 
   header.ct-header
-    h1.ct-title
-      a.center(href="[##_article_rep_link_##]")
-        | [##_article_rep_title_##]
+    include post/title
 
-  section.ct-body
-    | [##_article_rep_desc_##]
+  include post/body

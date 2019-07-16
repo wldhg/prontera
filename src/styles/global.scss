@@ -44,6 +44,7 @@
 }
 
 #goto-top {
+  z-index: 80;
   position: fixed;
   right: $FIXED_MARGIN_HORI;
   bottom: $FIXED_MARGIN_VERT;
@@ -51,12 +52,13 @@
   border-spacing: 10px;
   padding: 0 5px;
   pointer-events: none;
-  background-color: $COLOR_INV_H;
+  background-color: $COLOR_INV_XH;
   color: $COLOR_DEF;
   opacity: 0;
   overflow: hidden;
   box-shadow: $HEADER_SHADOW;
   border-radius: $CONTENT_RADIUS;
+  user-select: none;
 
   @include transit(transform, opacity, background-color, color);
   @include noUnderlineEffect;
@@ -166,6 +168,10 @@
       @include transit(transform);
     }
   }
+}
+
+#MathJax_Message {
+  @include noPrint;
 }
 
 header.global {
@@ -302,7 +308,7 @@ header.global {
 
     @include onCompactView {
       width: 100vw;
-      overflow-x: scroll;
+      overflow-x: auto;
     }
 
     li {
@@ -340,22 +346,25 @@ header.global {
         }
         @include noUnderlineEffect;
 
-        &.current {
-          &::after {
-            position: absolute;
-            width: 90%;
-            bottom: 5px;
-            height: $MENU_INDICATOR_HEIGHT;
-            left: 5%;
-            background-color: $COLOR_HL;
-            border-radius: $MENU_INDICATOR_HEIGHT;
-            opacity: .7;
-            content: '';
+        &::after {
+          position: absolute;
+          width: 90%;
+          bottom: 4px;
+          height: $MENU_INDICATOR_HEIGHT;
+          left: 5%;
+          background-color: $COLOR_HL;
+          border-radius: $MENU_INDICATOR_HEIGHT;
+          opacity: 0;
+          content: '';
 
-            @include onCompactView {
-              height: comp($MENU_INDICATOR_HEIGHT);
-            }
+          @include transit(opacity);
+          @include onCompactView {
+            height: comp($MENU_INDICATOR_HEIGHT);
           }
+        }
+
+        &.current::after {
+          opacity: .85;
         }
       }
     }
@@ -393,14 +402,22 @@ header.global {
       &:hover, &:focus {
         img, svg {
           transform: scale($EFFECT_GIANT_SCALE);
+
+          @include onCompactView {
+            fill: $COLOR_DEF;
+          }
         }
       }
 
       img, svg {
         height: $SHORTCUT_SIZE;
         width: auto;
+        fill: $COLOR_HL;
 
-        @include transit(transform);
+        @include transit(transform, fill);
+        @include onCompactView {
+          fill: $COLOR_GRAY;
+        }
       }
     }
   }
@@ -423,6 +440,9 @@ header.global {
     @include transit(opacity);
     @include onCompactView {
       margin-top: -1 * comp(10px);
+    }
+    @include onUltraCompactView {
+      display: none;
     }
 
     & > * {

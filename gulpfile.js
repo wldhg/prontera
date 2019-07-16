@@ -9,11 +9,18 @@ const gClean = require("gulp-clean");
 const gMinifySvg = require("gulp-svgmin");
 const gBabel = require("gulp-babel");
 
-// Build styles
-var buildSass = () => gulp.src('./src/styles/prontera.scss')
+// Build styles - prontera
+var buildSassProntera = () => gulp.src('./src/styles/prontera-main.scss')
   .pipe(gSass({ outputStyle: 'compressed' }))
   .pipe(gAutoPrefixer())
   .pipe(gRename('style.css'))
+  .pipe(gulp.dest('./out'));
+
+// Build styles - no side-bar patch
+var buildSassSinglePost = () => gulp.src('./src/styles/prontera-no-side-bar.scss')
+  .pipe(gSass({ outputStyle: 'compressed' }))
+  .pipe(gAutoPrefixer())
+  .pipe(gRename('no-side-bar.css'))
   .pipe(gulp.dest('./out'));
 
 // Build script - onload
@@ -56,7 +63,14 @@ var mkdir = () => gulp.src('*.*', { read: false })
 var watch = async () => {
   await clean();
   try {
-    buildSass(); gulp.watch('./src/styles/*.scss', {}, buildSass);
+    buildSassProntera(); gulp.watch([
+      './src/styles/*.scss',
+      '!./src/styles/prontera-no-side-bar.scss',
+    ], {}, buildSassProntera);
+    buildSassSinglePost(); gulp.watch([
+      './src/styles/common.scss',
+      './src/styles/prontera-no-side-bar.scss',
+    ], {}, buildSassSinglePost);
     buildJsOnload(); gulp.watch('./src/scripts/onload.js', {}, buildJsOnload);
     buildJsFunctions(); gulp.watch('./src/scripts/functions/*.js', {}, buildJsFunctions);
     buildPug(); gulp.watch([
@@ -74,7 +88,8 @@ var watch = async () => {
 var build = async () => {
   await clean();
   try {
-    buildSass();
+    buildSassProntera();
+    buildSassSinglePost();
     buildJsOnload();
     buildJsFunctions();
     buildPug();
