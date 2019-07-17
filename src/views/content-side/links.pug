@@ -1,10 +1,10 @@
 s_sidebar_element
   // 바깥 고리 (링크)
-  section#links
-    div.sp-title= "바깥 고리"
-    ul.sp-list
-      s_link_rep: li.item
+  section#links.sp-container
+    div.title= "바깥 고리"
+    ul.list
+      s_link_rep: li
         a(href="[##_link_url_##]" target="_blank")
-          span.title= "[##_link_site_##]"
-          div.meta
-            span.url= "[##_link_url_##]"
+          span.item= "[##_link_site_##]"
+          br
+          span.url.meta= "[##_link_url_##]"

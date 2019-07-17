@@ -12,7 +12,7 @@ PtRegister(
 
     if (w.isDark) {
       w.checkBox.checked = w.isDark;
-      w.themeColor.content = "#000000";
+      w.themeColor.content = "#191919";
       w.mdbLabel.classList.add('dark');
     }
 
@@ -30,12 +30,12 @@ PtRegister(
       if (w.isDark) {
         document.documentElement.style.setProperty("background-color", "#000000");
         document.documentElement.classList.add("dark");
-        w.themeColor.content = "#000000";
+        w.themeColor.content = "#191919";
         w.mdbLabel.classList.add('dark');
       } else {
-        document.documentElement.style.setProperty("background-color", "#eaeaea");
+        document.documentElement.style.setProperty("background-color", "#f0f0f0");
         document.documentElement.classList.remove("dark");
-        w.themeColor.content = "#eaeaea";
+        w.themeColor.content = "#f8f8f8";
         w.mdbLabel.classList.remove('dark');
       }
 
