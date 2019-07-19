@@ -3,9 +3,9 @@ PtRegister(
   (w, c, end) => {
 
     // Time formatting
+    const timeTargets = document.querySelectorAll('[data-rfc-time]');
+    const tiTimeTargets = document.querySelectorAll('[data-tistory-time]');
     const formatTime = () => {
-      const timeTargets = document.querySelectorAll('[data-rfc-time]');
-      const tiTimeTargets = document.querySelectorAll('[data-tistory-time]');
       const now = new Date();
       const nowMS = now.getTime();
 
@@ -74,7 +74,7 @@ PtRegister(
       target.style.setProperty('cursor', 'pointer');
     });
 
-    end(timeTargets, commentTargets);
+    end(timeTargets, tiTimeTargets, commentTargets);
 
   },
 )

@@ -34,9 +34,8 @@ html(lang="ko")
                   | [##_var_content-global-notice_##]
 
           s_list: div#index-counter
-            | '
-            b= "[##_list_conform_##]"
-            | ' 에 해당되는 글이
+            b= "'[##_list_conform_##]' "
+            | 에 해당되는 글이
             b= " [##_list_count_##]개 "
             | 있습니다.
 
@@ -62,6 +61,7 @@ html(lang="ko")
             include content-side/notices
             include content-side/recents
             include content-side/links
+            include content-side/twitter
 
       include footer
 

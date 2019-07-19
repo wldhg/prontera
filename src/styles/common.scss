@@ -62,6 +62,20 @@ $TRANSIT_PROPERTY : .32s ease-in-out;
   transition: getTransitProperty($props);
 }
 
+// Spinner
+$SPINNER_SIZE: 48px;
+
+@import "SpinThatShit/src/loaders";
+@mixin spinner {
+  @include loader06(
+    $size: $SPINNER_SIZE,
+    $align: middle,
+    $color: $COLOR_GRAY,
+    $duration: 1s,
+    $border-size: 4px
+  );
+}
+
 // Print View
 @mixin noPrint {
   @media print {
@@ -107,6 +121,12 @@ $CV_DIVISOR : 1.4;
   }
 }
 
+@mixin notOnAnchorActive {
+  &:not(:hover):not(:target):not(:focus) {
+    @content;
+  }
+}
+
 @mixin noUnderlineEffect {
   @include onAnchorActive {
     text-decoration: none;
@@ -123,4 +143,12 @@ $CV_DIVISOR : 1.4;
   @include onAnchorActive {
     color: $color;
   }
+}
+
+// Others
+@function strip($data) {
+  @if type-of($data) == 'number' and not unitless($data) {
+    @return $data / ($data * 0 + 1);
+  }
+  @return $data;
 }

@@ -1,8 +1,11 @@
+include ingredients
+
+//- Each page
 s_page_rep: article
 
   link(rel="stylesheet" href="./images/no-side-bar.css" type="text/css")
 
   header.ct-header
-    include post/title
+    +title(true)
 
-  include post/body
+  +body(true)

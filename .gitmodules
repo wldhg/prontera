@@ -1,0 +1,3 @@
+[submodule "src/styles/SpinThatShit"]
+	path = src/styles/SpinThatShit
+	url = https://github.com/MatejKustec/SpinThatShit.git

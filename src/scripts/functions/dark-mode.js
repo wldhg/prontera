@@ -24,6 +24,7 @@ PtRegister(
     };
     w.setCookie(w.isDark);
 
+    w.toggleRunners = [];
     w.toggle = function () {
       w.isDark = !w.isDark;
 
@@ -41,6 +42,13 @@ PtRegister(
 
       w.setCookie(w.isDark);
       w.checkBox.checked = w.isDark;
+      w.toggleRunners.forEach((fn) => {
+        try {
+          fn(w.isDark);
+        } catch (e) {
+          console.debug(e);
+        }
+      });
     };
     w.darkCont.onclick = w.toggle;
 

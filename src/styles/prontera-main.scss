@@ -175,3 +175,7 @@ main {
 .scale-y-96 {
   transform: scaleY(.96);
 }
+
+.spinner {
+  @include spinner;
+}

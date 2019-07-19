@@ -97,6 +97,13 @@
     </variablegroup>
     <variablegroup name="기타 설정">
       <variable>
+        <name>twitter-id</name>
+        <label>트위터 ID</label>
+        <description>사이드 바의 트위터 패널에 사용되는 ID.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
         <name>cookie-domain</name>
         <label>밝기 모드 쿠키 도메인</label>
         <description>"modarkbul"=["true"|"false"] 의 형식으로 저장됨.</description>

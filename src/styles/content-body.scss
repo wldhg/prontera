@@ -14,22 +14,28 @@ body[data-page-type="tt-body-tag"],
 body[data-page-type="tt-body-category"],
 body[data-page-type="tt-body-search"] {
   #content article {
-    padding: $CONTENT_PADDING;
-    background-color: $COLOR_INV_H;
-    box-shadow: $HEADER_SHADOW;
-    border-radius: 4px;
-    position: relative;
+    padding: 0;
 
-    @include transit(background-color);
+    a {
+      padding: $CONTENT_PADDING;
+      background-color: $COLOR_INV_H;
+      box-shadow: $HEADER_SHADOW;
+      border-radius: 4px;
+      position: relative;
+      display: block;
+      margin: $CONTENT_PADDING 0;
 
-    &:not(:first-of-type) {
-      margin-top: $CONTENT_PADDING;
-    }
+      @include transit(background-color, transform, color);
+      @include colorEffect($COLOR_DEF);
+      @include onAnchorActive {
+        transform: scale($EFFECT_PUSH_SCALE);
+      }
 
-    .ct-header {
-      .title {
-        margin-top: 0;
-        font-size: 2.1rem;
+      .ct-header {
+        .title {
+          margin-top: 0;
+          font-size: 2.1rem;
+        }
       }
     }
   }
@@ -96,7 +102,7 @@ body[data-page-type="tt-body-guestbook"] {
         display: inline-block;
         background-repeat: no-repeat;
         margin: 0 7.5px -2.5px 0;
-        filter: brightness(.25);
+        filter: brightness(.75);
 
         @include transit(filter);
       }
@@ -508,6 +514,10 @@ body[data-page-type="tt-body-guestbook"] {
       }
     }
   }
+
+  .container_postbtn {
+    padding-bottom: 0;
+  }
 }
 
 .ct-thumbnail {
@@ -530,10 +540,7 @@ body[data-page-type="tt-body-guestbook"] {
     background-color: $COLOR_INV_XH;
     background-position: center;
 
-    @include transit(transform, background-color);
-    @include onAnchorActive {
-      transform: scale($EFFECT_PUSH_SCALE);
-    }
+    @include transit(background-color);
   }
 }
 
@@ -542,23 +549,4 @@ body[data-page-type="tt-body-guestbook"] {
   opacity: .8;
 
   @include transit(color);
-}
-
-.ct-see-more {
-  float: right;
-  margin-left: 1rem;
-  margin-top: .6rem;
-  border-radius: $CONTENT_RADIUS;
-  box-shadow: $HEADER_SHADOW;
-  background-color: $COLOR_INV_XH;
-  color: $COLOR_DEF_H !important;
-  padding: 5px 10px;
-  user-select: none;
-
-  @include noUnderlineEffect;
-  @include colorEffect($COLOR_DEF_H);
-  @include onAnchorActive {
-    transform: scale($EFFECT_PUSH_SCALE);
-  }
-  @include transit(background-color, color, transform);
 }

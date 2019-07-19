@@ -1,5 +1,15 @@
 @import "common";
 
+.spinner-container {
+  display: table;
+  text-align: center;
+  margin: auto;
+
+  .spinner {
+    display: table-cell;
+  }
+}
+
 #copy-helper {
   z-index: -1;
   opacity: 0;
@@ -13,7 +23,7 @@
   left: 0;
 }
 
-#global-notice {
+#global-notice, #index-counter {
   padding: 12px $CONTENT_PADDING 13px;
   font-size: 1rem;
   line-height: 1.2rem;
@@ -25,7 +35,7 @@
 
   @include transit(background-color);
 
-  &::before {
+  &:not(#index-counter)::before {
     content: '';
     background-image: url('./images/info.svg');
     width: 1.3rem;
@@ -36,6 +46,14 @@
     margin-right: 7px;
 
     @include transit(filter);
+  }
+
+  b {
+    padding: 0 .333rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
   }
 
   em {
@@ -434,7 +452,7 @@ header.global {
     display: table;
     border-spacing: 10px;
     cursor: pointer;
-    opacity: 0;
+    opacity: .3;
 
     @extend %paddedComponent;
     @include transit(opacity);

@@ -5,7 +5,7 @@
 <p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (NOT-RELEASED)</p>
 
 <p align='center'>
-  <a href="https://github.com/widh/prontera/blob/master/package.json">
+  <a href="https://github.com/widh/prontera/blob/master/package.json#L3">
     <img alt='Version' src='https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square'>
   </a>
   <a href="https://travis-ci.com/widh/prontera">
@@ -32,6 +32,7 @@
 + 블로그 전역 공지
 + 하이라이트 색상 지정
 + TISTORY 새로운 에디터 지원
++ 사이드바 트위터 타임라인 임베드
 
 #### 영원히 추가할 예정이 없는 기능
 
@@ -73,7 +74,7 @@
 #### 빌드 명령어
 
 ```sh
-$ git clone https://github.com/widh/prontera.git; cd prontera
+$ git clone https://github.com/widh/prontera.git --recurse-submodules; cd prontera
 $ yarn; yarn build
 ```
 
@@ -88,9 +89,13 @@ $ yarn; yarn build
 
 ## 라이센스
 
-디자인의 토대는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)입니다.
-
 이 프로젝트는 *Mozilla Public License 2.0*을 따릅니다.
+
+#### 디자인 라이센스
+
+스킨 디자인의 토대는 [MIT License](https://github.com/AngryPowman/hexo-theme-prontera/blob/master/LICENSE)를 기반으로 하는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)입니다.
+
+스피너(불러오기 애니메이션)의 디자인은 [MIT License](https://github.com/MatejKustec/SpinThatShit/blob/master/LICENSE)를 기반으로 하는 [Matej Kustec](https://github.com/MatejKustec)의 [SpinThatShit](https://github.com/MatejKustec/SpinThatShit) 프로젝트를 이용하였습니다.
 
 #### 이미지 라이센스
 
