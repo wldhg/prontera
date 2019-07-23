@@ -8,7 +8,7 @@ PtRegister(
       w.identityImage.style.setProperty("animation", "none");
 
       window.addEventListener("beforeunload", function () {
-        w.identityImage.style.setProperty("animation", "shiney 2.4s infinite");
+        w.identityImage.style.setProperty("animation", "shiney 3.2s ease-in-out infinite");
       });
     }
 

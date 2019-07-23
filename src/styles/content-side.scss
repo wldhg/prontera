@@ -1,7 +1,7 @@
 @import "common";
 
 $SIDE_LINE_WIDTH: 4px;
-$SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
+$SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
 
 @mixin commentCount {
   margin-left: 3px;
@@ -183,7 +183,7 @@ $SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
   form {
     $SEARCH_HEIGHT: 8.5 * $SIDE_LINE_WIDTH;
     $SEARCH_COLOR_HOVER: rgba(127, 127, 127, 0.8);
-    $SEARCH_COLOR_NORMAL: rgba(127, 127, 127, 0.6);
+    $SEARCH_COLOR_NORMAL: rgba(127, 127, 127, 0.7);
     $SEARCH_MARGIN_RIGHT: max(20px - 2 * $SIDE_LINE_WIDTH, 0px);
 
     height: $SEARCH_HEIGHT;
@@ -197,7 +197,7 @@ $SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
       }
 
       button {
-        margin-left: -1 * (4px + $SEARCH_MARGIN_RIGHT);
+        margin-left: -1 * (5.5px + $SEARCH_MARGIN_RIGHT);
 
         svg path {
           fill: $SEARCH_COLOR_HOVER;
@@ -210,13 +210,9 @@ $SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
         background-color: $COLOR_HL;
       }
 
-      button:not(:focus) {
-        margin-left: -1 * (7px + $SEARCH_MARGIN_RIGHT);
-      }
-
       button {
         @include onAnchorActive {
-          transform: perspective(620px) rotateX(20deg) translateY(2px);
+          transform: perspective(620px) rotateX(20deg) translateY(2.5px);
         }
 
         svg path {
@@ -336,7 +332,7 @@ $SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
 
       &::before {
         content: "–";
-        color: $COLOR_HL;
+        color: $COLOR_GRAY;
         position: absolute;
         height: 1rem;
         width: 1rem;
@@ -357,7 +353,7 @@ $SIDE_HOVER_BACKGROUND: rgba(160, 160, 160, 0.15);
         @include noUnderlineEffect;
         @include onAnchorActive {
           background-color: $SIDE_HOVER_BACKGROUND;
-          color: $COLOR_HL !important;
+          color: $COLOR_DEF !important;
         }
 
         .c_cnt {

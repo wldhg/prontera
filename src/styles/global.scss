@@ -70,7 +70,7 @@
   border-spacing: 10px;
   padding: 0 5px;
   pointer-events: none;
-  background-color: $COLOR_INV_XH;
+  background-color: $COLOR_INV_H;
   color: $COLOR_DEF;
   opacity: 0;
   overflow: hidden;
@@ -305,7 +305,7 @@ header.global {
 
     //- Identity Logo
     img {
-      animation: shiney 2.4s infinite;
+      animation: shiney 3.2s ease-in-out infinite;
       padding-right: 10px;
     }
 
@@ -489,6 +489,9 @@ header.global {
         margin-top: $MDB_TOP_FIX;
 
         @include transit(background-color);
+        @include onCompactView {
+          margin-top: $MDB_TOP_FIX * 2;
+        }
 
         label {
           position: absolute;
@@ -500,6 +503,9 @@ header.global {
           background-color: $COLOR_HL;
 
           @include transit(left, width);
+          @include onCompactView {
+            background-color: $COLOR_GRAY;
+          }
 
           &.dark {
             left: $MDB_MARGIN;

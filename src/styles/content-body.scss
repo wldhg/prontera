@@ -113,16 +113,30 @@ body[data-page-type="tt-body-guestbook"] {
 .ct-body {
   margin: calc(2rem + #{$CONTENT_PADDING}) 0;
 
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1.6em 0 0;
+
+    &+ {
+      h1, h2, h3, h4, h5, h6 {
+        margin: .6em 0 0;
+      }
+    }
+  }
+
+  p {
+    margin: 1em 0;
+  }
+
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
 
   h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   h4 {
@@ -148,8 +162,13 @@ body[data-page-type="tt-body-guestbook"] {
     font-weight: $W_BOLD;
   }
 
-  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
-    line-height: $LINE_HEIGHT;
+  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
+    line-height: inherit;
+    word-wrap: break-word;
+  }
+
+  p, li {
+    line-height: $LINE_HEIGHT_PARAGRAPH;
     word-wrap: break-word;
   }
 
@@ -177,6 +196,7 @@ body[data-page-type="tt-body-guestbook"] {
   caption, figcaption, cite {
     color: $COLOR_GRAY;
     font-style: italic;
+    margin: 0 .6em;
   }
 
   rp {
@@ -272,6 +292,14 @@ body[data-page-type="tt-body-guestbook"] {
     }
   }
 
+  img {
+    border-radius: $CONTENT_RADIUS / 2;
+  }
+
+  figure img {
+    width: auto;
+  }
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -334,17 +362,17 @@ body[data-page-type="tt-body-guestbook"] {
     }
   }
 
-  & > ul, & > p > ul {
+  & > ul, & > p > ul, .moreless-content > ul {
     & > li {
       list-style-type: '⁠—   ';
 
       &::marker {
-        color: $COLOR_HL;
+        color: $COLOR_GRAY;
       }
     }
   }
 
-  & > ul, & > p > ul, ol {
+  & > ul, & > p > ul, .moreless-content > ul, ol {
     ul, & > ul ul, ol ul {
       & > li {
         list-style-type: '•  ';
@@ -362,6 +390,10 @@ body[data-page-type="tt-body-guestbook"] {
     ul, ol {
       padding: 0 0 0 $CONTENT_PADDING * 1.4;
     }
+  }
+
+  li:not(:last-of-type) {
+    margin-bottom: .6em;
   }
 
   hr {
@@ -398,7 +430,7 @@ body[data-page-type="tt-body-guestbook"] {
     }
 
     &.copied::after {
-      top: calc(-1 * (1rem + 14px));
+      top: calc(-1 * (1em + 20px));
       opacity: 1;
     }
 
@@ -428,6 +460,7 @@ body[data-page-type="tt-body-guestbook"] {
     border-radius: $CONTENT_RADIUS;
     box-shadow: $HEADER_SHADOW;
     user-select: none;
+    line-height: 1;
 
     @include onAnchorActive {
       transform: scale($EFFECT_PUSH_SCALE);
@@ -525,14 +558,14 @@ body[data-page-type="tt-body-guestbook"] {
   float: right;
   margin: .6rem .6rem $CONTENT_PADDING $CONTENT_PADDING;
   height: 0;
-  max-height: 250px;
+  max-height: 205px;
   z-index: 2;
 
   @include transit(height);
 
   .container {
     height: 100%;
-    width: 250px;
+    width: 205px;
     box-shadow: $HEADER_SHADOW;
     border-radius: $CONTENT_RADIUS;
     background-size: cover;
