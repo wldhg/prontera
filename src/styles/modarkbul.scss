@@ -11,12 +11,12 @@
       *:not(.no-dark) {
         --color-def: #{$COLOR_LIGHT};
         --color-def-hl: #{$COLOR_LIGHT_H};
-        --color-def-thl: #{$COLOR_LIGHT_TH};
-        --color-def-xhl: #{$COLOR_LIGHT_XH};
+        --color-def-tp: #{$COLOR_LIGHT_T};
+        --color-def-op: #{$COLOR_LIGHT_O};
         --color-inv: #{$COLOR_DARK};
         --color-inv-hl: #{$COLOR_DARK_H};
-        --color-inv-thl: #{$COLOR_DARK_TH};
-        --color-inv-xhl: #{$COLOR_DARK_XH};
+        --color-inv-tp: #{$COLOR_DARK_T};
+        --color-inv-op: #{$COLOR_DARK_O};
       }
 
       #global-notice::before {
@@ -28,13 +28,7 @@
       }
 
       header.global {
-        background-color: $COLOR_DARK_H;
-
         #modarkbul {
-          .container .border {
-            background-color: #000000;
-          }
-
           .icon.moon path {
             fill: #4f75b3;
           }
@@ -69,7 +63,6 @@
         pre,
         samp {
           code {
-            @import "highlight-js";
             @include applyHighlightJS($HLJS_DARK);
           }
         }

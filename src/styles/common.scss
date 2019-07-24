@@ -1,53 +1,48 @@
+// Lengths
+$HEADER_HEIGHT: 72px;
+$CONTENT_WIDTH: 1180px;
+$CONTENT_PADDING: 20px;
+$VIEWPORT_MARGIN_HORI: 3vw;
+$VIEWPORT_MARGIN_VERT: 25px;
+
 // Text
 $FONT_SIZE: 16px;
 $LINE_HEIGHT: 1.4;
 $LINE_HEIGHT_PARAGRAPH: 1.6;
-$W_NORMAL: 400;
-$W_BOLD: 700;
+$WEIGHT_NORMAL: 400;
+$WEIGHT_BOLD: 700;
+$FONT_FAMILY_DEFAULT: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
 $FONT_FAMILY_MONOSPACE: 'Noto Sans Mono CJK KR', 'Noto Sans Mono', 'Roboto Mono', monospace;
-$FONT_FAMILY_NORMAL: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
-
-// Global header
-$HEADER_HEIGHT: 72px;
-$HEADER_INNER_PADDING: 11px;
-$HEADER_INNER_HEIGHT: $HEADER_HEIGHT - ($HEADER_INNER_PADDING * 2);
-$HEADER_SHADOW: 0px 0px 2px rgba(170, 170, 170, .35);
-
-// Content
-$CONTENT_WIDTH: 1180px;
-$CONTENT_PADDING: 20px;
-$CONTENT_RADIUS: 4px;
-
-// Position: fixed
-$FIXED_MARGIN_HORI: 3vw;
-$FIXED_MARGIN_VERT: 25px;
-
-// Effects
-$EFFECT_PUSH_SCALE: .92;
-$EFFECT_GIANT_SCALE: 1.3;
 
 // Color
-$COLOR_GRAY: #7c7c7c;
-$COLOR_LIGHT: #f8f8f8;
-$COLOR_LIGHT_H: #fbfbfb;
-$COLOR_LIGHT_TH: rgba(251, 251, 251, .75);
-$COLOR_LIGHT_XH: #ffffff;
+$COLOR_LIGHT_O: .1;
+$COLOR_DARK_O: .29;
+
+$COLOR_LIGHT: #faf9f8;
+$COLOR_LIGHT_H: #ffffff;
+$COLOR_LIGHT_T: rgba(255, 255, 255, .7);
+
 $COLOR_DARK: #000000;
-$COLOR_DARK_H: #191919;
-$COLOR_DARK_TH: rgba(0, 0, 0, .75);
-$COLOR_DARK_XH: #333333;
+$COLOR_DARK_H: #201f1e;
+$COLOR_DARK_T: rgba(0, 0, 0, .4);
+
 $COLOR_HL: var(--color-hl);
+
 $COLOR_DEF: var(--color-def);
 $COLOR_DEF_H: var(--color-def-hl);
-$COLOR_DEF_TH: var(--color-def-thl);
-$COLOR_DEF_XH: var(--color-def-xhl);
+$COLOR_DEF_T: var(--color-def-tp);
+$COLOR_DEF_O: var(--color-def-op);
+
 $COLOR_INV: var(--color-inv);
 $COLOR_INV_H: var(--color-inv-hl);
-$COLOR_INV_TH: var(--color-inv-thl);
-$COLOR_INV_XH: var(--color-inv-xhl);
+$COLOR_INV_T: var(--color-inv-tp);
+$COLOR_INV_O: var(--color-inv-op);
+
+$COLOR_GRAY: #757371;
+$COLOR_GRAY_O: rgba(117, 115, 113, $COLOR_INV_O);
 
 // Transition
-$TRANSIT_PROPERTY : .32s ease-in-out;
+$TRANSIT_PROPERTY: .26s ease-in-out;
 
 @function getTransitProperty($props) {
   $tsFullText: '';
@@ -61,6 +56,44 @@ $TRANSIT_PROPERTY : .32s ease-in-out;
 
 @mixin transit($props...) {
   transition: getTransitProperty($props);
+}
+
+// General Effects
+$EFFECT_PUSH_SCALE: .92;
+$EFFECT_PULL_SCALE: 1.3;
+
+@mixin onFocus {
+  &:hover, &:target, &:focus {
+    @content;
+  }
+}
+@mixin notOnFocus {
+  &:not(:hover):not(:target):not(:focus) {
+    @content;
+  }
+}
+
+// Component Effects
+$RADBOX_RADIUS: 3.5px;
+$RADBOX_SHADOW: 0 0 .5px 0 #{$COLOR_GRAY_O}, 0 .5px 2.4px 0 #{$COLOR_GRAY_O}, 0 .15px 2px 0 #{$COLOR_GRAY_O};
+$RADBOX_SHADOW_H: 0 0 1px 0 #{$COLOR_GRAY_O}, 0 .5px 3.2px 0 #{$COLOR_GRAY_O}, 0 .15px 4px 0 #{$COLOR_GRAY_O};
+@mixin radbox($addiTransit...) {
+  box-shadow: $RADBOX_SHADOW;
+  border-radius: $RADBOX_RADIUS;
+  background-color: $COLOR_INV_H;
+  cursor: pointer;
+
+  @if length($addiTransit) == 0 {
+    @include transit(box-shadow, transform);
+  }
+  @else {
+    transition: #{getTransitProperty((box-shadow, transform))}, #{getTransitProperty($addiTransit)};
+  }
+
+  &:hover, &:active, &:focus {
+    box-shadow: $RADBOX_SHADOW_H;
+    transform: scale(#{$EFFECT_PUSH_SCALE});
+  }
 }
 
 // Spinner
@@ -85,7 +118,7 @@ $SPINNER_SIZE: 48px;
 }
 
 // Compact View
-$CV_DIVISOR : 1.4;
+$CV_DIVISOR: 1.4;
 
 @function comp($prop) {
   @return $prop / $CV_DIVISOR;
@@ -96,53 +129,147 @@ $CV_DIVISOR : 1.4;
     @content;
   }
 }
-
 @mixin onSemiCompactView {
   @media screen and (max-width: 799px) {
     @content;
   }
 }
-
 @mixin onSuperCompactView {
   @media screen and (max-width: 419px) {
     @content;
   }
 }
-
 @mixin onUltraCompactView {
   @media screen and (max-width: 329px) {
     @content;
   }
 }
 
-// Anchor
-@mixin onAnchorActive {
-  &:hover, &:target, &:focus {
-    @content;
-  }
-}
+// Highlight.js
+$HLJS_LIGHT: (
+  'red': #E53935,
+  'orange': #F76D47,
+  'yellow': #FFB62C,
+  'green': #91B859,
+  'cyan': #39ADB5,
+  'blue': #6182B8,
+  'paleblue': #8796B0,
+  'purple': #7C4DFF,
+  'brown': #C17E70,
+  'gray': #686868
+);
 
-@mixin notOnAnchorActive {
-  &:not(:hover):not(:target):not(:focus) {
-    @content;
-  }
-}
+$HLJS_DARK: (
+  "red": #ff5370,
+  "orange": #f78c6c,
+  "yellow": #ffcb6b,
+  "green": #c3e88d,
+  "cyan": #89ddff,
+  "blue": #82aaff,
+  "paleblue": #b2ccd6,
+  "purple": #c792ea,
+  "brown": #c17e70,
+  "gray": #797979
+);
 
-@mixin noUnderlineEffect {
-  @include onAnchorActive {
-    text-decoration: none;
-  }
-}
-
-@mixin underlineEffect {
-  @include onAnchorActive {
-    text-decoration: underline;
-  }
-}
-
-@mixin colorEffect($color : $COLOR_DEF) {
-  @include onAnchorActive {
-    color: $color;
+@mixin applyHighlightJS($Palette) {
+  .hljs- {
+    &keyword, &type {
+      color: map-get($Palette, "purple");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &built_in, &attribute, &variable, &formula {
+      color: $COLOR_DEF;
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &literal, &number, &selector-tag, &template-tag {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &regexp, &meta, &meta-keyword {
+      color: map-get($Palette, "cyan");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &string, &meta-string, &selector-attr, &addition {
+      color: map-get($Palette, "green");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &subst, &builtin-name {
+      color: map-get($Palette, "brown");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &symbol, &class {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &title, &function, &template-variable {
+      color: map-get($Palette, "blue");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &params, &name, &strong, &deletion {
+      color: map-get($Palette, "red");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &comment {
+      color: map-get($Palette, "gray");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &doctag {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &section {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &tag, &bullet, &code {
+      color: map-get($Palette, "cyan");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &attr {
+      color: map-get($Palette, "paleblue");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &emphasis {
+      color: map-get($Palette, "red");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &link {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+      text-decoration: underline;
+    }
+    &quote {
+      color: $COLOR_DEF;
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &selector-id, &selector-pseudo {
+      color: map-get($Palette, "purple");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &selector-class {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
   }
 }
 

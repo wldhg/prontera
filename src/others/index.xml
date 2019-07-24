@@ -14,17 +14,14 @@
   <default>
     <recentEntries>4</recentEntries>
     <recentComments>4</recentComments>
-    <recentTrackbacks>4</recentTrackbacks>
     <itemsOnGuestbook>20</itemsOnGuestbook>
     <tagsInCloud>65535</tagsInCloud>
     <sortInCloud>1</sortInCloud>
     <expandComment>1</expandComment>
-    <expandTrackback>0</expandTrackback>
-    <lengthOfRecentNotice>65535</lengthOfRecentNotice>
-    <lengthOfRecentEntry>65535</lengthOfRecentEntry>
-    <lengthOfRecentComment>65535</lengthOfRecentComment>
-    <lengthOfRecentTrackback>65535</lengthOfRecentTrackback>
-    <lengthOfLink>65535</lengthOfLink>
+    <lengthOfRecentNotice>100</lengthOfRecentNotice>
+    <lengthOfRecentEntry>100</lengthOfRecentEntry>
+    <lengthOfRecentComment>200</lengthOfRecentComment>
+    <lengthOfLink>30</lengthOfLink>
     <entriesOnPage>7</entriesOnPage>
     <entriesOnList>14</entriesOnList>
     <showListOnHome>0</showListOnHome>
@@ -53,7 +50,7 @@
         <description>강조되어 표시될 색상.</description>
         <type>COLOR</type>
         <option />
-        <default>#ee3344</default>
+        <default>#33bbaa</default>
       </variable>
     </variablegroup>
     <variablegroup name="바로가기 설정">

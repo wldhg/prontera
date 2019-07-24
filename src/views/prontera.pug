@@ -2,9 +2,9 @@ doctype
 html(lang="ko")
 
   head
-    include meta
-    include scripts
-    include styles
+    include head/meta
+    include head/scripts
+    include head/styles
     title= "[##_page_title_##]"
     link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")
 
@@ -19,38 +19,20 @@ html(lang="ko")
   body#top(data-page-type="[##_body_id_##]")
     s_t3
 
-      include header
+      include global/header
 
       main
         div#content.left
 
-          s_if_var_content-global-notice
-            div#global-notice.no-print
-              em
-                s_if_var_url-global-notice
-                  a(href="[##_var_url-global-notice_##]")
-                    | [##_var_content-global-notice_##]
-                s_not_var_url-global-notice
-                  | [##_var_content-global-notice_##]
-
-          s_list: div#index-counter
-            b= "'[##_list_conform_##]' "
-            | 에 해당되는 글이
-            b= " [##_list_count_##]개 "
-            | 있습니다.
+          include global/notice
+          include global/index-counter
 
           include content-body/page
           include content-body/post
           include content-body/tags
           include content-body/guestbook
 
-          s_paging: div#paginator.no-print
-            a.iter([##_prev_page_##] class="[##_no_more_prev_##]")
-              include icons/arrow-left
-            s_paging_rep
-              a.no-underline([##_paging_rep_link_##])= "[##_paging_rep_link_num_##]"
-            a.iter([##_next_page_##] class="[##_no_more_next_##]")
-              include icons/arrow-right
+          include global/paginator
 
         aside#side-bar.right.no-print
           s_sidebar
@@ -63,9 +45,8 @@ html(lang="ko")
             include content-side/links
             include content-side/twitter
 
-      include footer
+      include global/footer
 
-      a#goto-top(href="#top").no-print
-        span= "가장 위로"
+      include global/goto-top
 
       textarea#copy-helper

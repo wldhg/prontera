@@ -1,0 +1,120 @@
+@import "common";
+
+.spinner-container {
+  display: table;
+  text-align: center;
+  margin: auto;
+
+  .spinner {
+    display: table-cell;
+  }
+}
+
+#copy-helper {
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+}
+
+#global-notice, #index-counter {
+  padding: 12px $CONTENT_PADDING 13px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  box-shadow: $RADBOX_SHADOW;
+  background-color: $COLOR_INV_H;
+  margin-bottom: $CONTENT_PADDING;
+  border-radius: $RADBOX_RADIUS;
+  display: flex;
+
+  @include transit(background-color);
+
+  &:not(#index-counter)::before {
+    content: '';
+    background-image: url('./images/info.svg');
+    width: 1.3rem;
+    height: 1.3rem;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 7px;
+
+    @include transit(filter);
+  }
+
+  b {
+    padding: 0 .333rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  em {
+    font-style: normal;
+  }
+}
+
+#goto-top {
+  z-index: 80;
+  position: fixed;
+  right: $VIEWPORT_MARGIN_HORI;
+  bottom: $VIEWPORT_MARGIN_VERT;
+  display: none;
+  border-spacing: 10px;
+  padding: 0 5px;
+  pointer-events: none;
+  background-color: $COLOR_INV_H;
+  color: $COLOR_DEF;
+  opacity: 0;
+  overflow: hidden;
+  box-shadow: $RADBOX_SHADOW;
+  border-radius: $RADBOX_RADIUS;
+  user-select: none;
+
+  @include transit(transform, opacity, background-color, color);
+  @include onFocus {
+    transform: scale($EFFECT_PUSH_SCALE);
+    text-decoration: none;
+
+    &::before {
+      animation: boundUp 1.3s ease-out;
+    }
+  }
+
+  &.enabled {
+    display: table;
+    pointer-events: initial;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    content: '';
+    background-image: url('./images/up.svg');
+    background-size: cover;
+    display: table-cell;
+    vertical-align: middle;
+    filter: brightness(0);
+
+    @include transit(filter);
+  }
+
+  span {
+    display: table-cell;
+  }
+}
+
+#MathJax_Message {
+  @include noPrint;
+}

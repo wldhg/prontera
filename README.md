@@ -63,7 +63,6 @@
 + `(고려)` Google Analytics 지원
 + `(연구)` 티스토리 제공 Summary 대신 원본 게시글 사용
 
-
 ## 스킨 빌드 방법
 
 #### 준비물
@@ -80,18 +79,14 @@ $ yarn; yarn build
 
 이후 `out` 디렉토리에서 모든 스킨 파일을 확인할 수 있습니다.
 
-
 ## 권장 사항
 
 + 메인 메뉴의 수: 4개
 + 블로그 이름: 영문 9글자 이내 혹은 한글 5글자 이내
 
-
 ## 라이센스
 
 이 프로젝트는 *Mozilla Public License 2.0*을 따릅니다.
-
-#### 디자인 라이센스
 
 스킨 디자인의 토대는 [MIT License](https://github.com/AngryPowman/hexo-theme-prontera/blob/master/LICENSE)를 기반으로 하는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)입니다.
 
@@ -99,16 +94,19 @@ $ yarn; yarn build
 
 #### 이미지 라이센스
 
-- `padlock-locked.pug`: &copy; Widh.
-- `padlock-unlocked.pug`: &copy; Widh.
++ `padlock-locked.pug`: &copy; Widh.
++ `padlock-unlocked.pug`: &copy; Widh.
 
-이 밖에 프로젝트에서 사용한 `svg` 이미지는 비상업적 이용이 허가된 아이콘으로, 자세한 내용은 [이 링크](https://www.svgrepo.com/info/licensing)에서 설명합니다.
+이 밖에 Prontera에서 사용한 `svg` 이미지는 비상업적 이용이 허가된 아이콘으로, 자세한 내용은 [이 링크](https://www.svgrepo.com/info/licensing)에서 설명합니다.
 
 #### 글꼴 라이센스
 
-- Noto Sans KR: [Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
-- Roboto Mono: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
++ Noto Sans KR: [Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web)
++ Roboto Mono: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-#### 코드 하이라이트 디자인 라이센스
+#### 색상 라이센스
 
-- VSC Material Theme: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+Prontera의 기본 색상 일부는 아래의 디자인을 참고하였습니다.
+
++ 기본 흑/백 색상: Microsoft UI Fabric([MIT License](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/LICENSE))
++ 코드 하이라이트: VSC Material Theme([Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0))

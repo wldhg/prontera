@@ -1,43 +1,47 @@
 @import "common";
-
 @import "animation";
 @import "modarkbul";
 
-@import "global";
+@import "global-header";
+@import "global-footer";
+@import "global-paginator";
+@import "global-others";
+
 @import "content-body";
 @import "content-side";
-@import "tistory";
+@import "content-tistory";
 
 html {
-  scrollbar-color: #999 #ccc;
   font-size: $FONT_SIZE;
   line-height: $LINE_HEIGHT;
   background-color: $COLOR_LIGHT;
+  scrollbar-color: #999 #ccc;
 
   @include transit(background-color, scrollbar-color);
   @media print {
-    background-color: #ffffff !important;
+    background-color: transparent !important;
   }
 }
 
 body {
   width: 100%;
+  min-height: 100%;
   margin: 0;
   color: $COLOR_DARK;
 
   @include transit(color);
 
   &, * {
-    font-family: $FONT_FAMILY_NORMAL;
+    font-family: $FONT_FAMILY_DEFAULT;
     direction: ltr;
     --color-def: #{$COLOR_DARK};
     --color-def-hl: #{$COLOR_DARK_H};
-    --color-def-thl: #{$COLOR_DARK_TH};
-    --color-def-xhl: #{$COLOR_DARK_XH};
+    --color-def-tp: #{$COLOR_DARK_T};
+    --color-def-op: #{$COLOR_DARK_O};
     --color-inv: #{$COLOR_LIGHT};
     --color-inv-hl: #{$COLOR_LIGHT_H};
-    --color-inv-thl: #{$COLOR_LIGHT_TH};
-    --color-inv-xhl: #{$COLOR_LIGHT_XH};
+    --color-inv-tp: #{$COLOR_LIGHT_T};
+    --color-inv-op: #{$COLOR_LIGHT_O};
 
     &:focus {
       outline: none;
@@ -57,11 +61,15 @@ body {
     @include transit(color);
 
     &:not(.no-underline) {
-      @include underlineEffect;
+      @include onFocus {
+        text-decoration: underline;
+      }
     }
 
     &.no-underline {
-      @include noUnderlineEffect;
+      @include onFocus {
+        text-decoration: none;
+      }
     }
 
     &:not(.no-color) {
@@ -74,7 +82,9 @@ body {
 
 main {
   $MAIN_TOP_PADDING: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
-  $MAIN_TOP_PADDING_CV: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
+  $MAIN_TOP_PADDING_C: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
+  $MAIN_CONTENT_WIDTH: 70%;
+  $MAIN_SIDE_BAR_WIDTH_C: 88vw;
 
   width: $CONTENT_WIDTH;
   height: max-content;
@@ -85,7 +95,7 @@ main {
   overflow: hidden;
 
   @include onCompactView {
-    padding-top: $MAIN_TOP_PADDING_CV;
+    padding-top: $MAIN_TOP_PADDING_C;
     width: 100%;
   }
   @media print {
@@ -94,7 +104,7 @@ main {
   }
 
   #content {
-    width: 70%;
+    width: $MAIN_CONTENT_WIDTH;
     box-sizing: border-box;
     padding-right: $CONTENT_PADDING;
     padding-left: $CONTENT_PADDING / 2;
@@ -112,7 +122,7 @@ main {
   }
 
   #side-bar {
-    width: 30%;
+    width: 100% - $MAIN_CONTENT_WIDTH;
     box-sizing: border-box;
     padding-left: $CONTENT_PADDING;
     outline-color: transparent;
@@ -120,13 +130,13 @@ main {
     @include onCompactView {
       z-index: 90;
       position: fixed;
-      padding: $MAIN_TOP_PADDING_CV $CONTENT_PADDING 0;
+      padding: $MAIN_TOP_PADDING_C $CONTENT_PADDING 0;
       top: 0;
-      right: -89vw;
-      width: 88vw;
+      right: -1 * (1vw + $MAIN_SIDE_BAR_WIDTH_C);
+      width: $MAIN_SIDE_BAR_WIDTH_C;
       height: 100vh;
-      box-shadow: $HEADER_SHADOW;
-      background-color: $COLOR_INV_XH;
+      box-shadow: $RADBOX_SHADOW;
+      background-color: $COLOR_INV_H;
       outline-width: 101vw;
       outline-style: solid;
 
@@ -134,7 +144,7 @@ main {
 
       &.visible {
         right: 0;
-        outline-color: $COLOR_INV_TH;
+        outline-color: $COLOR_INV_T;
       }
 
       &::before {
@@ -172,10 +182,16 @@ main {
   text-indent: -101vw;
 }
 
-.scale-y-96 {
-  transform: scaleY(.96);
-}
+.spinner-container {
+  opacity: 0;
 
-.spinner {
-  @include spinner;
+  @include transit(opacity);
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .spinner {
+    @include spinner;
+  }
 }

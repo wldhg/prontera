@@ -39,7 +39,7 @@ PtRegister(
           });
 
           const twitterSpinner = document.querySelector('#twitter .spinner-container');
-          twitterSpinner.style.setProperty('opacity', '0');
+          twitterSpinner.classList.remove('visible');
           window.setTimeout(() => {
             twitterSpinner.style.setProperty('display', 'none');
             twitterFrame.classList.add('visible');

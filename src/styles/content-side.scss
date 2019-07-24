@@ -32,7 +32,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
 
   .title {
     font-size: 1.3rem;
-    font-weight: $W_BOLD;
+    font-weight: $WEIGHT_BOLD;
     line-height: 2.3;
   }
 
@@ -59,10 +59,10 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
       }
 
       @include transit(background-color, color, opacity);
-      @include noUnderlineEffect;
-      @include onAnchorActive {
+      @include onFocus {
         background-color: $SIDE_HOVER_BACKGROUND;
         opacity: 1;
+        text-decoration: none;
 
         .meta {
           color: $COLOR_GRAY;
@@ -72,7 +72,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
 
     .item {
       font-size: 1rem;
-      font-weight: $W_NORMAL;
+      font-weight: $WEIGHT_NORMAL;
     }
 
     .comments-count {
@@ -109,14 +109,14 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
   .info {
     .author {
       font-size: 1.6rem;
-      font-weight: $W_BOLD;
+      font-weight: $WEIGHT_BOLD;
       line-height: 1;
       margin-bottom: $CONTENT_PADDING / 4;
     }
 
     .alternative {
       font-size: 1.15rem;
-      font-weight: $W_NORMAL;
+      font-weight: $WEIGHT_NORMAL;
       margin-bottom: $CONTENT_PADDING / 2;
     }
 
@@ -130,7 +130,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     position: relative;
     margin-left: 10px;
 
-    @include onAnchorActive {
+    @include onFocus {
       .icon {
         filter: opacity(1);
 
@@ -171,7 +171,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     .avatar {
       width: $MYSELF_SIZE;
       height: $MYSELF_SIZE;
-      box-shadow: $HEADER_SHADOW;
+      box-shadow: $RADBOX_SHADOW;
       border-radius: $MYSELF_SIZE / 2;
 
       @include transit(margin, width, height);
@@ -191,7 +191,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     border-collapse: collapse;
     position: relative;
 
-    @include onAnchorActive {
+    @include onFocus {
       &::after {
         background-color: $SEARCH_COLOR_HOVER;
       }
@@ -211,7 +211,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
       }
 
       button {
-        @include onAnchorActive {
+        @include onFocus {
           transform: perspective(620px) rotateX(20deg) translateY(2.5px);
         }
 
@@ -247,18 +247,18 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
       $SEARCH_INPUT_MARGIN: 0.064rem * strip($SIDE_LINE_WIDTH);
 
       width: calc(100% - #{$SEARCH_HEIGHT});
-      color: $COLOR_DEF_XH;
-      caret-color: $COLOR_DEF_XH;
+      color: $COLOR_DEF_H;
+      caret-color: $COLOR_DEF_H;
       font-size: 1rem;
       padding: 0 calc(#{$SEARCH_INPUT_MARGIN} + 7px + #{$SEARCH_MARGIN_RIGHT}) 0
         $SEARCH_INPUT_MARGIN;
       line-height: $SEARCH_HEIGHT;
       vertical-align: middle;
-      opacity: 0.75;
+      opacity: 0.6;
 
       @include transit(caret-color, color, opacity);
-      @include onAnchorActive {
-        opacity: 1;
+      @include onFocus {
+        opacity: .8;
       }
     }
 
@@ -286,7 +286,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     margin: ($CONTENT_PADDING / 2) 0;
 
     @include transit(opacity);
-    @include onAnchorActive {
+    @include onFocus {
       opacity: 1;
 
       a {
@@ -295,7 +295,7 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     }
 
     &:not(:focus-within) {
-      @include notOnAnchorActive {
+      @include notOnFocus {
         a.current {
           background-color: $SIDE_HOVER_BACKGROUND;
           color: $COLOR_HL !important;
@@ -350,10 +350,10 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
         display: block;
 
         @include transit(background-color, color);
-        @include noUnderlineEffect;
-        @include onAnchorActive {
+        @include onFocus {
           background-color: $SIDE_HOVER_BACKGROUND;
           color: $COLOR_DEF !important;
+          text-decoration: none;
         }
 
         .c_cnt {
@@ -373,8 +373,8 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
 
   .twitter-container {
     max-height: $TWITTER_HEIGHT;
-    box-shadow: $HEADER_SHADOW;
-    border-radius: $CONTENT_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
+    border-radius: $RADBOX_RADIUS;
     background-color: $COLOR_INV_H;
     margin: ($CONTENT_PADDING / 2) 0;
     opacity: 0;
@@ -385,8 +385,6 @@ $SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
     .spinner-container {
       margin-top: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
       margin-bottom: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
-
-      @include transit(opacity);
     }
 
     .twitter-timeline {

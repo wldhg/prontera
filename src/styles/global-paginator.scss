@@ -1,0 +1,74 @@
+@import "common";
+
+#paginator {
+  $PAGINATOR_SIZE: 20px;
+
+  display: table;
+  padding: $CONTENT_PADDING 0;
+  border-spacing: $CONTENT_PADDING / 2;
+  margin: auto;
+  text-align: center;
+
+  a {
+    display: table-cell;
+    width: $PAGINATOR_SIZE;
+    height: $PAGINATOR_SIZE;
+    vertical-align: middle;
+    color: $COLOR_DEF;
+
+    @include transit(color, opacity);
+
+    &.iter {
+      padding: 0 8px;
+    }
+
+    &:not(.iter) {
+      padding-bottom: 5px;
+    }
+
+    &:not([href]) {
+      cursor: default;
+      opacity: .28;
+    }
+
+    &[href] {
+      cursor: pointer;
+      opacity: .7;
+
+      @include onFocus {
+        opacity: 1;
+        color: $COLOR_HL;
+
+        span, svg {
+          transform: scale(1.2);
+        }
+
+        polygon {
+          fill: $COLOR_HL;
+        }
+      }
+    }
+
+    svg {
+      height: $PAGINATOR_SIZE;
+
+      @include transit(transform);
+
+      polygon {
+        fill: $COLOR_DEF;
+
+        @include transit(fill);
+      }
+    }
+
+    span {
+      line-height: $PAGINATOR_SIZE;
+      display: block;
+      margin: 0 8px;
+      font-size: 1.1rem;
+      line-height: 1.1rem;
+
+      @include transit(transform);
+    }
+  }
+}

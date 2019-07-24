@@ -7,9 +7,9 @@
     color: $COLOR_DEF !important;
 
     @include transit(color, background-color);
-    @include noUnderlineEffect;
-    @include onAnchorActive {
+    @include onFocus {
       background-color: rgba(160, 160, 160, .2) !important;
+      text-decoration: none;
     }
   }
 

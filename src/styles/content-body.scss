@@ -19,16 +19,16 @@ body[data-page-type="tt-body-search"] {
     a {
       padding: $CONTENT_PADDING;
       background-color: $COLOR_INV_H;
-      box-shadow: $HEADER_SHADOW;
+      box-shadow: $RADBOX_SHADOW;
       border-radius: 4px;
       position: relative;
       display: block;
       margin: $CONTENT_PADDING 0;
 
       @include transit(background-color, transform, color);
-      @include colorEffect($COLOR_DEF);
-      @include onAnchorActive {
+      @include onFocus {
         transform: scale($EFFECT_PUSH_SCALE);
+        color: $COLOR_DEF;
       }
 
       .ct-header {
@@ -58,7 +58,7 @@ body[data-page-type="tt-body-guestbook"] {
   .title {
     margin: 2rem 0 1rem;
     font-size: 3rem;
-    font-weight: $W_BOLD;
+    font-weight: $WEIGHT_BOLD;
 
     a {
       font-size: inherit;
@@ -156,10 +156,10 @@ body[data-page-type="tt-body-guestbook"] {
   }
 
   a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, li, p, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var {
-    font-weight: $W_NORMAL;
+    font-weight: $WEIGHT_NORMAL;
   }
   b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
-    font-weight: $W_BOLD;
+    font-weight: $WEIGHT_BOLD;
   }
 
   a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, pre, q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
@@ -177,14 +177,14 @@ body[data-page-type="tt-body-guestbook"] {
     opacity: .9;
 
     @include transit(opacity);
-    @include onAnchorActive {
+    @include onFocus {
       opacity: 1;
     }
   }
 
   kbd {
-    border-radius: $CONTENT_RADIUS;
-    box-shadow: $HEADER_SHADOW;
+    border-radius: $RADBOX_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
     background-color: $COLOR_INV_H;
     margin: 0 3px;
     padding: 2px 6px;
@@ -257,12 +257,12 @@ body[data-page-type="tt-body-guestbook"] {
   }
 
   code, pre, samp {
-    font-family: $FONT_FAMILY_MONOSPACE, $FONT_FAMILY_NORMAL;
+    font-family: $FONT_FAMILY_MONOSPACE, $FONT_FAMILY_DEFAULT;
     background-color: $COLOR_INV_H;
-    box-shadow: $HEADER_SHADOW;
+    box-shadow: $RADBOX_SHADOW;
     padding: 0px 4px 1px;
     margin: 0px 1px;
-    border-radius: $CONTENT_RADIUS;
+    border-radius: $RADBOX_RADIUS;
     color: #586377;
     user-select: none;
 
@@ -282,8 +282,6 @@ body[data-page-type="tt-body-guestbook"] {
       color: $COLOR_DEF;
 
       @include transit(color);
-
-      @import "highlight-js";
       @include applyHighlightJS($HLJS_LIGHT);
 
       span {
@@ -293,7 +291,7 @@ body[data-page-type="tt-body-guestbook"] {
   }
 
   img {
-    border-radius: $CONTENT_RADIUS / 2;
+    border-radius: $RADBOX_RADIUS / 2;
   }
 
   figure img {
@@ -304,9 +302,9 @@ body[data-page-type="tt-body-guestbook"] {
     border-collapse: collapse;
     border-spacing: 0;
     border: none;
-    border-radius: $CONTENT_RADIUS;
+    border-radius: $RADBOX_RADIUS;
     background-color: $COLOR_INV_H;
-    box-shadow: $HEADER_SHADOW;
+    box-shadow: $RADBOX_SHADOW;
     margin: $CONTENT_PADDING 0;
     width: 100%;
 
@@ -348,7 +346,7 @@ body[data-page-type="tt-body-guestbook"] {
 
       th {
         color: $COLOR_HL;
-        font-weight: $W_BOLD;
+        font-weight: $WEIGHT_BOLD;
         padding: 8px 12px;
       }
 
@@ -410,13 +408,13 @@ body[data-page-type="tt-body-guestbook"] {
     &::after {
       position: absolute;
       content: '복사 완료';
-      font-family: $FONT_FAMILY_NORMAL;
+      font-family: $FONT_FAMILY_DEFAULT;
       background-color: $COLOR_INV_H;
       color: $COLOR_DEF;
-      box-shadow: $HEADER_SHADOW;
-      border-radius: $CONTENT_RADIUS;
+      box-shadow: $RADBOX_SHADOW;
+      border-radius: $RADBOX_RADIUS;
       font-style: normal;
-      font-weight: $W_NORMAL;
+      font-weight: $WEIGHT_NORMAL;
       width: max-content;
       padding: 3px 7px 4px;
       left: 0;
@@ -457,12 +455,12 @@ body[data-page-type="tt-body-guestbook"] {
   .fileblock {
     background-color: $COLOR_INV_H;
     border-color: transparent;
-    border-radius: $CONTENT_RADIUS;
-    box-shadow: $HEADER_SHADOW;
+    border-radius: $RADBOX_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
     user-select: none;
     line-height: 1;
 
-    @include onAnchorActive {
+    @include onFocus {
       transform: scale($EFFECT_PUSH_SCALE);
     }
     @include transit(background-color, transform);
@@ -494,17 +492,17 @@ body[data-page-type="tt-body-guestbook"] {
     margin: 1rem auto !important;
     width: max-content;
     display: block;
-    border-radius: $CONTENT_RADIUS;
-    box-shadow: $HEADER_SHADOW;
+    border-radius: $RADBOX_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
     background-color: $COLOR_INV_H;
     color: $COLOR_DEF_H !important;
     padding: 8px 13px;
     user-select: none;
 
-    @include noUnderlineEffect;
-    @include colorEffect($COLOR_DEF_H);
-    @include onAnchorActive {
+    @include onFocus {
       transform: scale($EFFECT_PUSH_SCALE);
+      text-decoration: none;
+      color: $COLOR_DEF_H;
     }
     @include transit(background-color, color, transform);
   }
@@ -512,8 +510,8 @@ body[data-page-type="tt-body-guestbook"] {
   .moreless-content {
     margin: 1rem auto 2rem;
     padding: 2rem;
-    border-radius: $CONTENT_RADIUS;
-    box-shadow: $HEADER_SHADOW;
+    border-radius: $RADBOX_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
     background-color: $COLOR_INV_H;
     width: max-content;
     max-width: calc(100% - 4rem);
@@ -522,8 +520,8 @@ body[data-page-type="tt-body-guestbook"] {
   }
 
   .imageslideblock {
-    box-shadow: $HEADER_SHADOW;
-    border-radius: $CONTENT_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
+    border-radius: $RADBOX_RADIUS;
     background-color: $COLOR_INV_H;
     margin: 1rem auto !important;
     padding: 22px 44px 0;
@@ -566,11 +564,11 @@ body[data-page-type="tt-body-guestbook"] {
   .container {
     height: 100%;
     width: 205px;
-    box-shadow: $HEADER_SHADOW;
-    border-radius: $CONTENT_RADIUS;
+    box-shadow: $RADBOX_SHADOW;
+    border-radius: $RADBOX_RADIUS;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: $COLOR_INV_XH;
+    background-color: $COLOR_INV_T;
     background-position: center;
 
     @include transit(background-color);
@@ -578,7 +576,7 @@ body[data-page-type="tt-body-guestbook"] {
 }
 
 .ct-excerpt {
-  color: $COLOR_DEF_XH;
+  color: $COLOR_DEF_H;
   opacity: .8;
 
   @include transit(color);

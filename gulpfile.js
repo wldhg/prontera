@@ -17,10 +17,10 @@ var buildSassProntera = () => gulp.src('./src/styles/prontera-main.scss')
   .pipe(gulp.dest('./out'));
 
 // Build styles - no side-bar patch
-var buildSassSinglePost = () => gulp.src('./src/styles/prontera-no-side-bar.scss')
+var buildSassPage = () => gulp.src('./src/styles/prontera-page.scss')
   .pipe(gSass({ outputStyle: 'compressed' }))
   .pipe(gAutoPrefixer())
-  .pipe(gRename('no-side-bar.css'))
+  .pipe(gRename('page.css'))
   .pipe(gulp.dest('./out'));
 
 // Build script - onload
@@ -67,10 +67,10 @@ var watch = async () => {
       './src/styles/*.scss',
       '!./src/styles/prontera-no-side-bar.scss',
     ], {}, buildSassProntera);
-    buildSassSinglePost(); gulp.watch([
+    buildSassPage(); gulp.watch([
       './src/styles/common.scss',
-      './src/styles/prontera-no-side-bar.scss',
-    ], {}, buildSassSinglePost);
+      './src/styles/prontera-page.scss',
+    ], {}, buildSassPage);
     buildJsOnload(); gulp.watch('./src/scripts/onload.js', {}, buildJsOnload);
     buildJsFunctions(); gulp.watch('./src/scripts/functions/*.js', {}, buildJsFunctions);
     buildPug(); gulp.watch([
@@ -78,6 +78,9 @@ var watch = async () => {
       './src/views/icons/*.pug',
       './src/views/content-body/*.pug',
       './src/views/content-side/*.pug',
+      './src/views/global/*.pug',
+      './src/views/head/*.pug',
+      './src/views/functions/*.pug'
     ], {}, buildPug);
     buildSvg(); gulp.watch('./src/images/*.svg', {}, buildSvg);
     buildRaw(); gulp.watch('./src/others/*', {}, buildRaw);
@@ -89,7 +92,7 @@ var build = async () => {
   await clean();
   try {
     buildSassProntera();
-    buildSassSinglePost();
+    buildSassPage();
     buildJsOnload();
     buildJsFunctions();
     buildPug();

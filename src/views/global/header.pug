@@ -13,16 +13,16 @@ header.global.no-print
 
     ul#shortcuts
       s_if_var_url-home
-        a#goto-home.no-color.scale-y-96(href="[##_var_url-home_##]" target="_self" title="홈페이지로 이동")
-          include icons/home
+        a#goto-home.no-color(href="[##_var_url-home_##]" target="_self" title="홈페이지로 이동")
+          include ../icons/home
       s_if_var_url-github
         a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank" title="깃허브 프로필로 이동")
-          include icons/github
+          include ../icons/github
 
     div#modarkbul(title="밝기 모드 전환")
-      include icons/moon
+      include ../icons/moon
       div.container
         div.border
           label.no-event
             input#is-dark(type="checkbox" name="is-dark")
-      include icons/sun
+      include ../icons/sun
