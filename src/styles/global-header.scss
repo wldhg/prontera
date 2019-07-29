@@ -1,5 +1,6 @@
 @import "common";
 
+$HEADER_HEIGHT: $HEADER_HEIGHT;
 $HEADER_INNER_PADDING: 11px;
 $HEADER_INNER_HEIGHT: $HEADER_HEIGHT - ($HEADER_INNER_PADDING * 2);
 
@@ -52,7 +53,8 @@ header.global {
     }
   }
 
-  & > *, & > .inherit > * {
+  & > *,
+  & > .flex > * {
     height: $HEADER_HEIGHT;
     display: inline-flex;
     box-sizing: border-box;
@@ -78,7 +80,8 @@ header.global {
       height: comp($HEADER_INNER_HEIGHT);
     }
 
-    img, svg {
+    img,
+    svg {
       width: auto;
       height: $HEADER_INNER_HEIGHT;
       max-height: $HEADER_INNER_HEIGHT;
@@ -90,44 +93,39 @@ header.global {
     }
   }
 
-  @mixin headerButton($horiPadding : 0, $hovOpacity : 1) {
+  #identity {
     position: relative;
 
+    @extend %paddedComponent;
     @include onFocus {
       &::before {
-        opacity: $hovOpacity;
+        opacity: 1;
       }
+    }
+    @include onCompactView {
+      padding-left: comp($IDENTITY_PADDING_HORI);
+      padding-right: comp($IDENTITY_PADDING_HORI);
     }
 
     &::before {
       position: absolute;
       top: 0;
-      left: -1 * $horiPadding;
-      padding: 0 $horiPadding;
+      left: -1 * $IDENTITY_PADDING_HORI;
+      padding: 0 $IDENTITY_PADDING_HORI;
       box-sizing: content-box;
       width: 100%;
       height: $HEADER_HEIGHT;
       background-color: $COLOR_GRAY_O;
       opacity: 0;
       z-index: -1;
-      content: '';
+      content: "";
 
       @include transit(opacity);
       @include onCompactView {
-        left: -1 * comp($horiPadding);
-        padding: 0 comp($horiPadding);
+        left: -1 * comp($IDENTITY_PADDING_HORI);
+        padding: 0 comp($IDENTITY_PADDING_HORI);
         height: comp($HEADER_HEIGHT);
       }
-    }
-  }
-
-  #identity {
-    @extend %paddedComponent;
-    @include headerButton($IDENTITY_PADDING_HORI);
-    @include onCompactView {
-      @include headerButton(comp($IDENTITY_PADDING_HORI));
-      padding-left: comp($IDENTITY_PADDING_HORI);
-      padding-right: comp($IDENTITY_PADDING_HORI);
     }
 
     //- Identity Logo
@@ -157,19 +155,105 @@ header.global {
       overflow-y: hidden;
     }
 
+    &:hover li:not(:hover),
+    &:focus-within li:not(:focus-within) {
+      &:not(.current) {
+        padding-left: 10px + $MENU_BOX_PADDING;
+        padding-right: 10px + $MENU_BOX_PADDING;
+
+        &::before {
+          width: 0;
+          left: initial;
+        }
+
+        a {
+          color: $COLOR_DEF;
+        }
+      }
+
+      a {
+        @include transit(color);
+      }
+    }
+
     li {
+      position: relative;
       display: table;
       cursor: pointer;
       box-sizing: border-box;
       list-style: none;
       min-width: 110px - (2 * $MENU_BOX_PADDING);
       max-width: 25vw;
-      box-sizing: border-box;
       padding: 0 (10px + $MENU_BOX_PADDING) ($MENU_INDICATOR_HEIGHT / 2);
 
-      @include headerButton();
+      @include transit(padding);
       @include onCompactView {
         min-width: 80px - (2 * $MENU_BOX_PADDING);
+
+        &::before {
+          opacity: 0 !important;
+          background-color: $COLOR_GRAY_O !important;
+          width: 100% !important;
+          transform: none !important;
+          height: comp($HEADER_HEIGHT);
+
+          @include transitImportant(background-color, opacity);
+        }
+
+        &.current a::after {
+          opacity: 0.8;
+          background-color: $COLOR_HL;
+        }
+      }
+
+      &::before {
+        content: "";
+        background-color: $COLOR_GRAY_O;
+        position: absolute;
+        width: 0;
+        right: 0;
+        height: $HEADER_HEIGHT;
+        transform: skew(-15deg);
+
+        @include transit(width);
+      }
+
+      &.current {
+        &::before {
+          background-color: $COLOR_HL;
+        }
+
+        a {
+          color: $COLOR_LIGHT;
+
+          @include onCompactView {
+            color: $COLOR_DEF;
+          }
+        }
+      }
+
+      &.current,
+      &:hover,
+      &:focus-within {
+        padding-left: 10px + $MENU_BOX_PADDING * 2;
+        padding-right: 10px + $MENU_BOX_PADDING * 2;
+
+        @include onCompactView {
+          padding-left: 10px + $MENU_BOX_PADDING;
+          padding-right: 10px + $MENU_BOX_PADDING;
+        }
+
+        &::before {
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      &:hover,
+      &:focus-within {
+        &::before {
+          opacity: 1 !important;
+        }
       }
 
       a {
@@ -179,40 +263,33 @@ header.global {
         text-align: center;
         height: $HEADER_HEIGHT;
         font-size: 1.2rem;
+        color: $COLOR_DEF;
 
+        @include transit(font-size);
         @include onCompactView {
           font-size: 1.1rem;
           height: comp($HEADER_HEIGHT);
           min-width: max-content;
         }
         @include onSuperCompactView {
-          font-size: .92rem;
+          font-size: 0.92rem;
         }
         @include onFocus {
           text-decoration: none;
-          color: $COLOR_DEF;
         }
 
         &::after {
           position: absolute;
           width: 100%;
           top: calc(50% + #{$LINE_HEIGHT} * 1em / 2 + 3px);
-          height: $MENU_INDICATOR_HEIGHT;
+          height: comp($MENU_INDICATOR_HEIGHT);
           left: 0;
           border-radius: $MENU_INDICATOR_HEIGHT;
           opacity: 0;
-          content: '';
+          content: "";
           z-index: -1;
 
           @include transit(opacity);
-          @include onCompactView {
-            height: comp($MENU_INDICATOR_HEIGHT);
-          }
-        }
-
-        &.current::after {
-          opacity: .7;
-          background-color: $COLOR_HL;
         }
       }
     }
@@ -224,125 +301,138 @@ header.global {
       right: 10px;
       top: 0;
     }
-  }
 
-  #shortcuts {
-    margin: 0;
+    #shortcuts {
+      margin: 0;
 
-    @extend %paddedComponent;
-    @include onSuperCompactView {
-      display: none;
+      @extend %paddedComponent;
+      @include onSuperCompactView {
+        display: none;
+      }
+
+      a {
+        padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI
+          $SHORTCUT_PADDING_VERT 0;
+
+        @include onCompactView {
+          padding: $SHORTCUT_PADDING_VERT_C comp($SHORTCUT_PADDING_HORI)
+            $SHORTCUT_PADDING_VERT_C 0;
+        }
+
+        &:hover,
+        &:focus {
+          img,
+          svg {
+            opacity: 1;
+          }
+        }
+
+        img,
+        svg {
+          height: $SHORTCUT_SIZE;
+          width: auto;
+          fill: $COLOR_DEF;
+          opacity: 0.6;
+
+          @include transit(opacity, fill);
+        }
+      }
     }
 
-    a {
-      padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI $SHORTCUT_PADDING_VERT 0;
+    #modarkbul {
+      display: table;
+      border-spacing: 10px;
+      cursor: pointer;
+      opacity: 0.3;
 
+      @extend %paddedComponent;
+      @include transit(opacity);
       @include onCompactView {
-        padding: $SHORTCUT_PADDING_VERT_C comp($SHORTCUT_PADDING_HORI) $SHORTCUT_PADDING_VERT_C 0;
+        margin-top: -1 * comp(10px);
+      }
+      @include onUltraCompactView {
+        display: none;
       }
 
-      &:hover, &:focus {
-        img, svg {
-          transform: scale($EFFECT_PULL_SCALE);
-
-          @include onCompactView {
-            fill: $COLOR_DEF;
-          }
-        }
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
       }
 
-      img, svg {
-        height: $SHORTCUT_SIZE;
-        width: auto;
-        fill: $COLOR_HL;
-
-        @include transit(transform, fill);
-        @include onCompactView {
-          fill: $COLOR_GRAY;
-        }
-      }
-    }
-  }
-
-  #modarkbul {
-    display: table;
-    border-spacing: 10px;
-    cursor: pointer;
-    opacity: .3;
-
-    @extend %paddedComponent;
-    @include transit(opacity);
-    @include onCompactView {
-      margin-top: -1 * comp(10px);
-    }
-    @include onUltraCompactView {
-      display: none;
-    }
-
-    & > * {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    &:hover, &:focus {
-      .container .border label {
-        left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE - $MDB_ELASTICITY - $MDB_FUSS;
-        width: $MDB_BALL_SIZE + $MDB_ELASTICITY;
-
-        &.dark {
-          left: $MDB_MARGIN + $MDB_FUSS;
-        }
-      }
-    }
-
-    .container {
-      .border {
-        border-radius: $MDB_HEIGHT;
-        width: $MDB_WIDTH;
-        height: $MDB_HEIGHT;
-        position: relative;
-        background-color: $COLOR_GRAY_O;
-        margin-top: $MDB_TOP_FIX;
-
-        @include transit(background-color);
-        @include onCompactView {
-          margin-top: $MDB_TOP_FIX * 2;
+      &:hover,
+      &:focus {
+        .icon {
+          opacity: 1;
         }
 
-        label {
-          position: absolute;
-          width: $MDB_BALL_SIZE;
-          height: $MDB_BALL_SIZE;
-          top: $MDB_MARGIN;
-          left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE;
-          border-radius: $MDB_BALL_SIZE;
-          background-color: $COLOR_HL;
-
-          @include transit(left, width);
-          @include onCompactView {
-            background-color: $COLOR_GRAY;
-          }
+        .container .border label {
+          left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE - $MDB_ELASTICITY -
+            $MDB_FUSS;
+          width: $MDB_BALL_SIZE + $MDB_ELASTICITY;
+          opacity: 1;
 
           &.dark {
-            left: $MDB_MARGIN;
+            left: $MDB_MARGIN + $MDB_FUSS;
           }
-
-          input[type="checkbox"] { display: none; }
         }
       }
-    }
 
-    .icon {
-      width: $MDB_HEIGHT;
-      height: $MDB_HEIGHT;
-      margin-top: $MDB_TOP_FIX;
+      .container {
+        .border {
+          border-radius: $MDB_HEIGHT;
+          width: $MDB_WIDTH;
+          height: $MDB_HEIGHT;
+          position: relative;
+          background-color: $COLOR_GRAY_O;
+          margin-top: $MDB_TOP_FIX;
 
-      &.moon path {
-        fill: #0e2d6c;
+          @include transit(background-color);
+          @include onCompactView {
+            margin-top: $MDB_TOP_FIX * 2;
+          }
+
+          label {
+            position: absolute;
+            width: $MDB_BALL_SIZE;
+            height: $MDB_BALL_SIZE;
+            top: $MDB_MARGIN;
+            left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE;
+            border-radius: $MDB_BALL_SIZE;
+            background-color: $COLOR_DEF;
+            opacity: 0.6;
+
+            @include transit(left, width, opacity, background-color);
+
+            &.dark {
+              left: $MDB_MARGIN;
+            }
+
+            input[type="checkbox"] {
+              display: none;
+            }
+          }
+        }
       }
 
-      &.sun path {
-        fill: #ffb700;
+      .icon {
+        width: $MDB_HEIGHT;
+        height: $MDB_HEIGHT;
+        margin-top: $MDB_TOP_FIX;
+        opacity: 0.8;
+
+        @include transit(opacity);
+
+        &.moon path {
+          fill: #163b88;
+        }
+
+        &.sun path {
+          fill: #ffb700;
+        }
+
+        path {
+          @include transit(fill);
+        }
       }
     }
   }

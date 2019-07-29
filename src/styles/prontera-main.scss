@@ -106,7 +106,7 @@ main {
   #content {
     width: $MAIN_CONTENT_WIDTH;
     box-sizing: border-box;
-    padding-right: $CONTENT_PADDING;
+    padding-right: $CONTENT_PADDING * 1.5;
     padding-left: $CONTENT_PADDING / 2;
 
     @include onCompactView {

@@ -14,15 +14,17 @@ $FONT_FAMILY_DEFAULT: 'Noto Sans CJK KR', 'Noto Sans KR', 'Helvetica Neue', Aria
 $FONT_FAMILY_MONOSPACE: 'Noto Sans Mono CJK KR', 'Noto Sans Mono', 'Roboto Mono', monospace;
 
 // Color
+$COLOR_OFF_O: .6;
+$COLOR_ON_O: 1;
 $COLOR_LIGHT_O: .1;
-$COLOR_DARK_O: .29;
+$COLOR_DARK_O: .4;
 
 $COLOR_LIGHT: #faf9f8;
 $COLOR_LIGHT_H: #ffffff;
 $COLOR_LIGHT_T: rgba(255, 255, 255, .7);
 
 $COLOR_DARK: #000000;
-$COLOR_DARK_H: #201f1e;
+$COLOR_DARK_H: #1b1a19;
 $COLOR_DARK_T: rgba(0, 0, 0, .4);
 
 $COLOR_HL: var(--color-hl);
@@ -37,8 +39,8 @@ $COLOR_INV_H: var(--color-inv-hl);
 $COLOR_INV_T: var(--color-inv-tp);
 $COLOR_INV_O: var(--color-inv-op);
 
-$COLOR_GRAY: #757371;
-$COLOR_GRAY_O: rgba(117, 115, 113, $COLOR_INV_O);
+$COLOR_GRAY: #484644;
+$COLOR_GRAY_O: rgba(72, 70, 68, $COLOR_INV_O);
 
 // Transition
 $TRANSIT_PROPERTY: .26s ease-in-out;
@@ -55,6 +57,9 @@ $TRANSIT_PROPERTY: .26s ease-in-out;
 
 @mixin transit($props...) {
   transition: getTransitProperty($props);
+}
+@mixin transitImportant($props...) {
+  transition: getTransitProperty($props) !important;
 }
 
 // General Effects
@@ -76,19 +81,26 @@ $EFFECT_PULL_SCALE: 1.3;
 $RADBOX_RADIUS: 3.5px;
 $RADBOX_SHADOW: 0 0 .5px 0 #{$COLOR_GRAY_O}, 0 .5px 2.4px 0 #{$COLOR_GRAY_O}, 0 .15px 2px 0 #{$COLOR_GRAY_O};
 $RADBOX_SHADOW_H: 0 0 1px 0 #{$COLOR_GRAY_O}, 0 .5px 3.2px 0 #{$COLOR_GRAY_O}, 0 .15px 4px 0 #{$COLOR_GRAY_O};
-@mixin radbox {
+@mixin radbox($addiTransit...) {
   box-shadow: $RADBOX_SHADOW;
   border-radius: $RADBOX_RADIUS;
   background-color: $COLOR_INV_H;
+
+  @if length($addiTransit) == 0 {
+    @include transit(background-color);
+  }
+  @else {
+    transition: #{getTransitProperty((background-color))}, #{getTransitProperty($addiTransit)};
+  }
 }
 @mixin radboxButton($addiTransit...) {
   cursor: pointer;
 
   @if length($addiTransit) == 0 {
-    @include transit(box-shadow, transform);
+    @include transit(box-shadow, transform, background-color);
   }
   @else {
-    transition: #{getTransitProperty((box-shadow, transform))}, #{getTransitProperty($addiTransit)};
+    transition: #{getTransitProperty((box-shadow, transform, background-color))}, #{getTransitProperty($addiTransit)};
   }
 
   @include radbox;

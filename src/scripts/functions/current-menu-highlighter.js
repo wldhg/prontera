@@ -4,6 +4,7 @@ PtRegister(
 
     // First try - Global menu
     let currentMenu = document.querySelector(`#menu a[href="${location.pathname}"]`);
+    let wannaParent = true;
 
     // Second try - Category menu
     // This works on 'tt-body-page' and 'tt-body-category'
@@ -21,11 +22,19 @@ PtRegister(
       } else {
         currentMenu = document.querySelector(`aside #categories li a[href="${location.pathname}"]`);
       }
+
+      wannaParent = false;
     }
 
-    if (currentMenu) currentMenu.classList.add("current");
+    if (currentMenu) {
+      if (wannaParent) {
+        currentMenu.parentElement.classList.add("current");
+      } else {
+        currentMenu.classList.add("current");
+      }
+    }
 
-    end(currentMenu);
+    end(currentMenu, wannaParent);
 
   },
 );

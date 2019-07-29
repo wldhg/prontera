@@ -6,13 +6,14 @@ s_article_rep: article
   //- Article excerpt
   s_index_article_rep
     a.no-underline(href="[##_article_rep_link_##]" title="눌러서 \"[##_article_rep_title_##]\" 글 전체 읽기")
-      s_article_rep_thumbnail: section.ct-thumbnail(data-link="[##_article_rep_link_##]")
-        .container(style="background-image: url([##_article_rep_thumbnail_url_##])")
-      header.ct-header
-        +title(false)
-        +meta(false)
-      section.ct-excerpt
-        | [##_article_rep_summary_##]
+      s_article_rep_thumbnail: section.ct-thumbnail
+        img(aria-hidden="true" src="[##_article_rep_thumbnail_url_##]" alt="썸네일 이미지")
+      section.ct-summary
+        header.ct-header
+          +title(false)
+          +meta(false)
+        section.ct-excerpt
+          | [##_article_rep_summary_##]
 
 
   //- Real article

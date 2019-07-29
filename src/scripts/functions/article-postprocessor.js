@@ -4,7 +4,7 @@ PtRegister(
 
     // Time formatting
     const timeTargets = document.querySelectorAll('[data-rfc-time]');
-    const tiTimeTargets = document.querySelectorAll('[data-tistory-time]');
+    const tsTimeTargets = document.querySelectorAll('[data-tistory-time]');
     const formatTime = () => {
       const now = new Date();
       const nowMS = now.getTime();
@@ -44,10 +44,10 @@ PtRegister(
       };
 
       timeTargets.forEach(timeReformatter);
-      tiTimeTargets.forEach((tiTimeTarget) => {
-        tiTimeTarget.dataset.rfcTime = tiTimeTarget.dataset.tistoryTime.replace(' ', 'T').replace(/\./g, '-');
+      tsTimeTargets.forEach((tsTimeTarget) => {
+        tsTimeTarget.dataset.rfcTime = tsTimeTarget.dataset.tistoryTime.replace(' ', 'T').replace(/\./g, '-');
 
-        timeReformatter(tiTimeTarget);
+        timeReformatter(tsTimeTarget);
       });
     };
     formatTime();
@@ -64,17 +64,7 @@ PtRegister(
 
     });
 
-    // Thumbnail expanding
-    const tnTargets = document.querySelectorAll('.ct-thumbnail');
-    tnTargets.forEach((target) => {
-      target.onclick = () => {
-        window.open(target.dataset.link, '_self')
-      };
-      target.style.setProperty('height', `calc(${target.parentNode.offsetHeight}px - 4rem)`);
-      target.style.setProperty('cursor', 'pointer');
-    });
-
-    end(timeTargets, tiTimeTargets, commentTargets);
+    end(timeTargets, tsTimeTargets, commentTargets);
 
   },
 )
