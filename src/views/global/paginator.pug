@@ -1,7 +1,7 @@
 s_paging: div#paginator.no-print
-  a.iter([##_prev_page_##] class="[##_no_more_prev_##]")
+  a.iter([##_prev_page_##] class="[##_no_more_prev_##]" title="이전 페이지로 이동")
     include ../icons/arrow-left
   s_paging_rep
     a.no-underline([##_paging_rep_link_##])= "[##_paging_rep_link_num_##]"
-  a.iter([##_next_page_##] class="[##_no_more_next_##]")
+  a.iter([##_next_page_##] class="[##_no_more_next_##]" title="다음 페이지로 이동")
     include ../icons/arrow-right

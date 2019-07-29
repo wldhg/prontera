@@ -36,12 +36,15 @@ body {
     direction: ltr;
     --color-def: #{$COLOR_DARK};
     --color-def-hl: #{$COLOR_DARK_H};
+    --color-def-xhl: #{$COLOR_DARK_XH};
     --color-def-tp: #{$COLOR_DARK_T};
     --color-def-op: #{$COLOR_DARK_O};
     --color-inv: #{$COLOR_LIGHT};
     --color-inv-hl: #{$COLOR_LIGHT_H};
+    --color-inv-xhl: #{$COLOR_LIGHT_XH};
     --color-inv-tp: #{$COLOR_LIGHT_T};
     --color-inv-op: #{$COLOR_LIGHT_O};
+    --color-shadow: #{$COLOR_GRAY_T};
 
     &:focus {
       outline: none;

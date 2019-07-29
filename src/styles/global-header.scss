@@ -115,7 +115,7 @@ header.global {
       box-sizing: content-box;
       width: 100%;
       height: $HEADER_HEIGHT;
-      background-color: $COLOR_GRAY_O;
+      background-color: $COLOR_GRAY_T;
       opacity: 0;
       z-index: -1;
       content: "";
@@ -192,7 +192,7 @@ header.global {
 
         &::before {
           opacity: 0 !important;
-          background-color: $COLOR_GRAY_O !important;
+          background-color: $COLOR_GRAY_T !important;
           width: 100% !important;
           transform: none !important;
           height: comp($HEADER_HEIGHT);
@@ -208,7 +208,7 @@ header.global {
 
       &::before {
         content: "";
-        background-color: $COLOR_GRAY_O;
+        background-color: $COLOR_GRAY_T;
         position: absolute;
         width: 0;
         right: 0;
@@ -383,7 +383,7 @@ header.global {
           width: $MDB_WIDTH;
           height: $MDB_HEIGHT;
           position: relative;
-          background-color: $COLOR_GRAY_O;
+          background-color: $COLOR_GRAY_T;
           margin-top: $MDB_TOP_FIX;
 
           @include transit(background-color);

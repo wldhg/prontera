@@ -7,9 +7,13 @@
       padding-right: 10%;
       width: 100%;
 
+      .ct-header {
+        padding-bottom: 0;
+      }
+
       @include onCompactView {
         padding: 0 comp($CONTENT_PADDING);
-        max-width: $CONTENT_WIDTH * .8;
+        max-width: $CONTENT_WIDTH * 0.8;
       }
     }
 

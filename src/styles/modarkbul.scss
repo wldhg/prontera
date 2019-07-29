@@ -11,12 +11,15 @@
       *:not(.no-dark) {
         --color-def: #{$COLOR_LIGHT};
         --color-def-hl: #{$COLOR_LIGHT_H};
+        --color-def-xhl: #{$COLOR_LIGHT_XH};
         --color-def-tp: #{$COLOR_LIGHT_T};
         --color-def-op: #{$COLOR_LIGHT_O};
         --color-inv: #{$COLOR_DARK};
         --color-inv-hl: #{$COLOR_DARK_H};
+        --color-inv-xhl: #{$COLOR_DARK_XH};
         --color-inv-tp: #{$COLOR_DARK_T};
         --color-inv-op: #{$COLOR_DARK_O};
+        --color-shadow: #{$COLOR_DARK_T};
       }
 
       #global-notice::before {
@@ -44,7 +47,7 @@
         .category,
         .comments-count {
           &::before {
-            filter: brightness(1.15);
+            filter: brightness(1.2);
           }
         }
       }
@@ -89,8 +92,12 @@
       border: 1px solid #656565;
 
       .ico_postbtn {
-        filter: invert(1) brightness(15) contrast(80%);
+        filter: invert(1) brightness(4.7) contrast(80%);
       }
+    }
+
+    [id^="tistoryFootnoteLayer"] {
+      filter: grayscale(1) invert(.6) contrast(360%);
     }
   }
 }

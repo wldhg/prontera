@@ -17,3 +17,10 @@
     @include transit(filter);
   }
 }
+
+[id^="tistoryFootnoteLayer"] {
+  filter: grayscale(1);
+  color: $COLOR_DARK;
+
+  @include transit(filter);
+}

@@ -1,8 +1,8 @@
 @import "common";
 
-#paginator {
-  $PAGINATOR_SIZE: 20px;
+$PAGINATOR_SIZE: 24px;
 
+#paginator {
   display: table;
   padding: $CONTENT_PADDING 0;
   border-spacing: $CONTENT_PADDING / 2;
@@ -19,29 +19,21 @@
     @include transit(color, opacity);
 
     &.iter {
-      padding: 0 8px;
-    }
-
-    &:not(.iter) {
-      padding-bottom: 5px;
+      padding: 0 4px;
     }
 
     &:not([href]) {
       cursor: default;
-      opacity: .28;
+      opacity: 0.28;
     }
 
     &[href] {
       cursor: pointer;
-      opacity: .7;
+      opacity: 0.6;
 
       @include onFocus {
         opacity: 1;
         color: $COLOR_HL;
-
-        span, svg {
-          transform: scale(1.2);
-        }
 
         polygon {
           fill: $COLOR_HL;
@@ -51,8 +43,7 @@
 
     svg {
       height: $PAGINATOR_SIZE;
-
-      @include transit(transform);
+      display: block;
 
       polygon {
         fill: $COLOR_DEF;
@@ -64,11 +55,10 @@
     span {
       line-height: $PAGINATOR_SIZE;
       display: block;
-      margin: 0 8px;
-      font-size: 1.1rem;
-      line-height: 1.1rem;
-
-      @include transit(transform);
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+      font-weight: $WEIGHT_BOLD;
+      font-style: italic;
     }
   }
 }

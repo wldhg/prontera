@@ -23,33 +23,18 @@
   left: 0;
 }
 
-#global-notice, #index-counter {
+#global-notice,
+#index-counter {
   padding: 12px $CONTENT_PADDING 13px;
   font-size: 1rem;
   line-height: 1.2rem;
-  box-shadow: $RADBOX_SHADOW;
-  background-color: $COLOR_INV_H;
   margin-bottom: $CONTENT_PADDING;
-  border-radius: $RADBOX_RADIUS;
   display: flex;
 
-  @include transit(background-color);
-
-  &:not(#index-counter)::before {
-    content: '';
-    background-image: url('./images/info.svg');
-    width: 1.3rem;
-    height: 1.3rem;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 7px;
-
-    @include transit(filter);
-  }
+  @include radbox;
 
   b {
-    padding: 0 .333rem;
+    padding: 0 0.333rem;
 
     &:first-child {
       padding-left: 0;
@@ -61,6 +46,19 @@
   }
 }
 
+#global-notice::before {
+  content: "";
+  background-image: url("./images/info.svg");
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 7px;
+
+  @include transit(filter);
+}
+
 #goto-top {
   z-index: 80;
   position: fixed;
@@ -70,17 +68,13 @@
   border-spacing: 10px;
   padding: 0 5px;
   pointer-events: none;
-  background-color: $COLOR_INV_H;
   color: $COLOR_DEF;
   opacity: 0;
   overflow: hidden;
-  box-shadow: $RADBOX_SHADOW;
-  border-radius: $RADBOX_RADIUS;
   user-select: none;
 
-  @include transit(transform, opacity, background-color, color);
+  @include radboxButton(opacity, color);
   @include onFocus {
-    transform: scale($EFFECT_PUSH_SCALE);
     text-decoration: none;
 
     &::before {
@@ -100,8 +94,8 @@
   &::before {
     width: 24px;
     height: 24px;
-    content: '';
-    background-image: url('./images/up.svg');
+    content: "";
+    background-image: url("./images/up.svg");
     background-size: cover;
     display: table-cell;
     vertical-align: middle;
