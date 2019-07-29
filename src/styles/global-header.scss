@@ -154,6 +154,7 @@ header.global {
     @include onCompactView {
       width: 100vw;
       overflow-x: auto;
+      overflow-y: hidden;
     }
 
     li {
@@ -182,6 +183,7 @@ header.global {
         @include onCompactView {
           font-size: 1.1rem;
           height: comp($HEADER_HEIGHT);
+          min-width: max-content;
         }
         @include onSuperCompactView {
           font-size: .92rem;
@@ -200,6 +202,7 @@ header.global {
           border-radius: $MENU_INDICATOR_HEIGHT;
           opacity: 0;
           content: '';
+          z-index: -1;
 
           @include transit(opacity);
           @include onCompactView {
