@@ -11,6 +11,10 @@
         padding-bottom: 0;
       }
 
+      .ct-body {
+        padding-bottom: $CONTENT_PADDING;
+      }
+
       @include onCompactView {
         padding: 0 comp($CONTENT_PADDING);
         max-width: $CONTENT_WIDTH * 0.8;

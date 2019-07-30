@@ -1,0 +1,15 @@
+@import "../common";
+
+footer.global {
+  width: $CONTENT_WIDTH;
+  margin: auto;
+  padding: $CONTENT_PADDING 0 (3 * $CONTENT_PADDING);
+  box-sizing: border-box;
+  user-select: none;
+  font-family: $FONT_FAMILY_MONOSPACE;
+
+  @include onCompactView {
+    padding-top: comp($CONTENT_PADDING) comp($CONTENT_PADDING) (3 * comp($CONTENT_PADDING));
+    width: 100%;
+  }
+}

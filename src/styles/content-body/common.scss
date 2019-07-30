@@ -1,114 +1,4 @@
-@import "common";
-
-// ? About body_id
-// tt-body-index = main page
-// tt-body-page = an article, a page
-// tt-body-guestbook = guestbook page
-// tt-body-tag = tag page, list of articles in specified tag
-// tt-body-category = list of articles in specified category
-// tt-body-search = list of articles which are results of search
-
-// Guestbook type
-body[data-page-type="tt-body-guestbook"] {
-}
-
-// Article list type
-body[data-page-type="tt-body-index"],
-body[data-page-type="tt-body-tag"],
-body[data-page-type="tt-body-category"],
-body[data-page-type="tt-body-search"] {
-  #content article {
-    padding: 0;
-
-    a {
-      position: relative;
-      display: flex;
-      flex-flow: row-reverse;
-      margin: $CONTENT_PADDING 0;
-      width: 100%;
-      overflow: hidden;
-
-      @include radboxButton(color);
-      @include onFocus {
-        color: $COLOR_DEF;
-      }
-      @include onCompactView {
-        flex-flow: column;
-      }
-
-      .ct-thumbnail,
-      .ct-summary {
-        display: block;
-      }
-
-      .ct-thumbnail {
-        width: 205px;
-        min-width: 205px;
-        max-width: 205px;
-        overflow: hidden;
-
-        @include onCompactView {
-          height: 205px;
-          width: initial;
-          min-width: initial;
-          max-width: initial;
-          max-height: 205px;
-          min-height: 205px;
-        }
-
-        img {
-          width: 205px;
-          height: 100%;
-          object-fit: cover;
-          background-color: $COLOR_GRAY_T;
-
-          @include onCompactView {
-            width: 100%;
-            height: 205px;
-          }
-        }
-      }
-
-      .ct-summary {
-        padding: $CONTENT_PADDING;
-        width: 100%;
-        box-sizing: border-box;
-
-        .ct-header {
-          border: none;
-          padding-bottom: 0;
-          margin-bottom: 0;
-
-          .title {
-            margin-top: 0;
-            font-size: 2.1rem;
-          }
-        }
-
-        .ct-excerpt {
-          color: $COLOR_DEF_H;
-          opacity: 0.8;
-
-          @include transit(color);
-        }
-      }
-    }
-  }
-}
-
-// Article post type
-body[data-page-type="tt-body-page"] {
-  #content article {
-    display: block;
-    box-sizing: border-box;
-    padding: 0 ($LINE_HEIGHT * $CONTENT_PADDING);
-
-    @include radbox;
-    @include onCompactView {
-      padding: 0 $CONTENT_PADDING;
-    }
-  }
-}
+@import "../common";
 
 .ct-header {
   padding-bottom: .5rem;
@@ -188,6 +78,9 @@ body[data-page-type="tt-body-page"] {
         filter: brightness(0.2);
 
         @include transit(filter);
+        @include onDark {
+          filter: brightness(1.2);
+        }
       }
     }
   }
@@ -349,6 +242,9 @@ body[data-page-type="tt-body-page"] {
     user-select: none;
 
     @include radboxH(color);
+    @include onDark {
+      color: #b2ccd6;
+    }
   }
 
   pre, samp {
@@ -364,7 +260,10 @@ body[data-page-type="tt-body-page"] {
       color: $COLOR_DEF;
 
       @include transit(color);
-      @include applyHighlightJS($HLJS_LIGHT);
+      @include applyHighlightJS($COLORSET_HLJS_LIGHT);
+      @include onDark {
+        @include applyHighlightJS($COLORSET_HLJS_DARK);
+      }
 
       span {
         @include transit(color);
@@ -480,6 +379,9 @@ body[data-page-type="tt-body-page"] {
     cursor: default !important;
 
     @include transit(filter);
+    @include onDark {
+      filter: brightness(4);
+    }
   }
 
   .copiable {
@@ -533,6 +435,9 @@ body[data-page-type="tt-body-page"] {
       filter: brightness(1);
 
       @include transit(filter);
+      @include onDark {
+        filter: brightness(4);
+      }
     }
 
     .desc {
@@ -549,6 +454,9 @@ body[data-page-type="tt-body-page"] {
       filter: contrast(50%);
 
       @include transit(filter);
+      @include onDark {
+        filter: contrast(0%) brightness(1.5);
+      }
     }
   }
 
@@ -594,6 +502,9 @@ body[data-page-type="tt-body-page"] {
 
     .mark {
       @include transit(filter);
+      @include onDark {
+        filter: invert(1) brightness(2);
+      }
 
       span {
         @include transit(background-color);
@@ -611,17 +522,6 @@ body[data-page-type="tt-body-page"] {
 
     @include onFocus {
       text-decoration: underline !important;
-    }
-  }
-}
-
-.ct-body, .ct-excerpt {
-  .mjx-chtml {
-    margin: 0 3px !important;
-
-    &, span {
-      font-size: 100%;
-      line-height: 0;
     }
   }
 }

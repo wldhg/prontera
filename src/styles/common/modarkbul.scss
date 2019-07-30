@@ -1,0 +1,7 @@
+@mixin onDark {
+  @at-root html.dark & {
+    @media screen {
+      @content;
+    }
+  }
+}

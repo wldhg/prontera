@@ -1,0 +1,59 @@
+$COLOR_OFF_O: 0.6;
+$COLOR_ON_O: 1;
+$COLOR_LIGHT_O: 0.1;
+$COLOR_DARK_O: 0.4;
+
+$COLOR_LIGHT: #faf9f8;
+$COLOR_LIGHT_H: #ffffff;
+$COLOR_LIGHT_XH: #faf9f8;
+$COLOR_LIGHT_T: rgba(255, 255, 255, 0.7);
+
+$COLOR_DARK: #000000;
+$COLOR_DARK_H: #1b1a19;
+$COLOR_DARK_XH: #292827;
+$COLOR_DARK_T: rgba(0, 0, 0, 0.4);
+
+$COLOR_HL: var(--color-hl);
+
+$COLOR_DEF: var(--color-def);
+$COLOR_DEF_H: var(--color-def-hl);
+$COLOR_DEF_XH: var(--color-def-xhl);
+$COLOR_DEF_T: var(--color-def-tp);
+$COLOR_DEF_O: var(--color-def-op);
+
+$COLOR_INV: var(--color-inv);
+$COLOR_INV_H: var(--color-inv-hl);
+$COLOR_INV_XH: var(--color-inv-xhl);
+$COLOR_INV_T: var(--color-inv-tp);
+$COLOR_INV_O: var(--color-inv-op);
+
+$COLOR_GRAY: #797775;
+$COLOR_GRAY_T: rgba(72, 70, 68, $COLOR_INV_O);
+
+$COLOR_SHADOW_T: var(--color-shadow);
+
+$COLORSET_HLJS_LIGHT: (
+  "red": #e53935,
+  "orange": #f76d47,
+  "yellow": #ffb62c,
+  "green": #91b859,
+  "cyan": #39adb5,
+  "blue": #6182b8,
+  "paleblue": #8796b0,
+  "purple": #7c4dff,
+  "brown": #c17e70,
+  "gray": #686868
+);
+
+$COLORSET_HLJS_DARK: (
+  "red": #ff5370,
+  "orange": #f78c6c,
+  "yellow": #ffcb6b,
+  "green": #c3e88d,
+  "cyan": #89ddff,
+  "blue": #82aaff,
+  "paleblue": #b2ccd6,
+  "purple": #c792ea,
+  "brown": #c17e70,
+  "gray": #797979
+);

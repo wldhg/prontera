@@ -1,0 +1,102 @@
+@import "_import";
+
+$SEARCH_HEIGHT: 8.5 * $SIDE_LINE_WIDTH;
+$SEARCH_COLOR_HOVER: rgba(127, 127, 127, 0.8);
+$SEARCH_COLOR_NORMAL: rgba(127, 127, 127, 0.7);
+$SEARCH_MARGIN_RIGHT: max(20px - 2 * $SIDE_LINE_WIDTH, 0px);
+
+#search {
+  form {
+    height: $SEARCH_HEIGHT;
+    display: flex;
+    border-collapse: collapse;
+    position: relative;
+
+    @include onFocus {
+      &::after {
+        background-color: $SEARCH_COLOR_HOVER;
+      }
+
+      button {
+        margin-left: -1 * (5.5px + $SEARCH_MARGIN_RIGHT);
+
+        svg path {
+          fill: $SEARCH_COLOR_HOVER;
+        }
+      }
+    }
+
+    &:focus-within {
+      &::after {
+        background-color: $COLOR_HL;
+      }
+
+      button {
+        @include onFocus {
+          transform: perspective(620px) rotateX(20deg) translateY(2.5px);
+        }
+
+        svg path {
+          fill: $COLOR_HL;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      background-color: $SEARCH_COLOR_NORMAL;
+      opacity: 0.9;
+      width: 100%;
+      height: $SIDE_LINE_WIDTH;
+      border-radius: $SIDE_LINE_WIDTH / 2;
+      position: absolute;
+      bottom: -1 * $SIDE_LINE_WIDTH;
+      left: 0;
+
+      @include transit(background-color);
+    }
+
+    input,
+    button {
+      box-sizing: border-box;
+      height: $SEARCH_HEIGHT;
+      background: transparent;
+      border: none;
+    }
+
+    input {
+      $SEARCH_INPUT_MARGIN: 0.064rem * strip($SIDE_LINE_WIDTH);
+
+      width: calc(100% - #{$SEARCH_HEIGHT});
+      color: $COLOR_DEF_H;
+      caret-color: $COLOR_DEF_H;
+      font-size: 1rem;
+      padding: 0 calc(#{$SEARCH_INPUT_MARGIN} + 7px + #{$SEARCH_MARGIN_RIGHT}) 0
+        $SEARCH_INPUT_MARGIN;
+      line-height: $SEARCH_HEIGHT;
+      vertical-align: middle;
+      opacity: 0.6;
+
+      @include transit(caret-color, color, opacity);
+      @include onFocus {
+        opacity: .8;
+      }
+    }
+
+    button {
+      width: $SEARCH_HEIGHT;
+      padding: 0;
+      cursor: pointer;
+      margin-left: -1 * $SEARCH_MARGIN_RIGHT;
+
+      @include transit(transform, margin-left);
+
+      svg path {
+        fill: $SEARCH_COLOR_NORMAL;
+        opacity: 0.9;
+
+        @include transit(fill);
+      }
+    }
+  }
+}

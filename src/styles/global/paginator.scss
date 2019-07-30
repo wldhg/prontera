@@ -1,4 +1,4 @@
-@import "common";
+@import "../common";
 
 $PAGINATOR_SIZE: 24px;
 
@@ -24,12 +24,14 @@ $PAGINATOR_SIZE: 24px;
 
     &:not([href]) {
       cursor: default;
-      opacity: 0.28;
+
+      span, svg {
+        opacity: 0.28;
+      }
     }
 
     &[href] {
       cursor: pointer;
-      opacity: 0.6;
 
       @include onFocus {
         opacity: 1;
@@ -38,6 +40,10 @@ $PAGINATOR_SIZE: 24px;
         polygon {
           fill: $COLOR_HL;
         }
+      }
+
+      span, svg {
+        opacity: 0.6;
       }
     }
 
@@ -53,12 +59,16 @@ $PAGINATOR_SIZE: 24px;
     }
 
     span {
-      line-height: $PAGINATOR_SIZE;
       display: block;
       font-size: 1.3rem;
       line-height: 1.3rem;
       font-weight: $WEIGHT_BOLD;
       font-style: italic;
+
+      &.selected {
+        opacity: 1;
+        text-decoration: underline;
+      }
     }
   }
 }

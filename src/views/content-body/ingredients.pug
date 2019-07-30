@@ -1,34 +1,34 @@
 //- Post common ingredients
 
-mixin title(useAnchor = true)
+mixin title(useAnchor = true, ingType = "article")
   h1.title
     if useAnchor
-      a.no-underline(href="[##_article_rep_link_##]")
-        | [##_article_rep_title_##]
+      a.no-underline(href="[##_" + ingType + "_rep_link_##]")
+        = "[##_" + ingType + "_rep_title_##]"
     else
-      | [##_article_rep_title_##]
+      = "[##_" + ingType + "_rep_title_##]"
 
-mixin meta(useAnchor = true)
+mixin meta(useAnchor = true, ingType = "article")
   section.meta
-    span.date(data-rfc-time="[##_article_rep_date_year_##]-[##_article_rep_date_month_##]-[##_article_rep_date_day_##]T[##_article_rep_date_hour_##]:[##_article_rep_date_minute_##]:[##_article_rep_date_second_##]+0900")
-      | [##_article_rep_date_year_##]년 [##_article_rep_date_month_##]월 [##_article_rep_date_day_##]일 [##_article_rep_date_hour_##]:[##_article_rep_date_minute_##]
+    span.date(data-rfc-time="[##_" + ingType + "_rep_date_year_##]-[##_" + ingType + "_rep_date_month_##]-[##_" + ingType + "_rep_date_day_##]T[##_" + ingType + "_rep_date_hour_##]:[##_" + ingType + "_rep_date_minute_##]:[##_" + ingType + "_rep_date_second_##]+0900")
+      = "[##_" + ingType + "_rep_date_year_##]년 [##_" + ingType + "_rep_date_month_##]월 [##_" + ingType + "_rep_date_day_##]일 [##_" + ingType + "_rep_date_hour_##]:[##_" + ingType + "_rep_date_minute_##]"
     span.category
       if useAnchor
-        a.no-underline(href="[##_article_rep_category_link_##]")
-          | [##_article_rep_category_##]
+        a.no-underline(href="[##_" + ingType + "_rep_category_link_##]")
+          = "[##_" + ingType + "_rep_category_##]"
       else
-        | [##_article_rep_category_##]
-    s_rp_count: span.comments-count(data-count="[##_article_rep_rp_cnt_##]")
+        = "[##_" + ingType + "_rep_category_##]"
+    s_rp_count: span.comments-count(data-count="[##_" + ingType + "_rep_rp_cnt_##]")
       if useAnchor
         a.no-underline(href="#comments")
           span.speak-only= "댓글 수 "
-          span.count-text= "[##_article_rep_rp_cnt_##]개"
+          span.count-text= "[##_" + ingType + "_rep_rp_cnt_##]개"
       else
         span.speak-only= "댓글 수 "
-        span.count-text= "[##_article_rep_rp_cnt_##]개"
+        span.count-text= "[##_" + ingType + "_rep_rp_cnt_##]개"
 
-mixin body(appendHiddenHeader = true)
+mixin body(appendHiddenHeader = true, ingType = "article")
   section.ct-body
     if appendHiddenHeader
       span.speak-only= "본문"
-    | [##_article_rep_desc_##]
+    = "[##_" + ingType + "_rep_desc_##]"

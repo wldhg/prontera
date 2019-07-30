@@ -1,0 +1,13 @@
+@mixin onFocus {
+  &:hover,
+  &:target,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin notOnFocus {
+  &:not(:hover):not(:target):not(:focus) {
+    @content;
+  }
+}

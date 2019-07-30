@@ -6,20 +6,24 @@
 
 <p align='center'>
   <a href="https://github.com/widh/prontera/blob/master/package.json#L3">
-    <img alt='Version' src='https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square'>
+    <img alt='버전' src='https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square'>
   </a>
   <a href="https://travis-ci.com/widh/prontera">
-    <img alt='Travis CI Build Status' src='https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square'>
+    <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square'>
   </a>
   <a href="https://widh.me/">
-    <img alt='Maintenance' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
+    <img alt='레포지토리 유지 여부' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
   </a>
   <a href="https://www.mozilla.org/en-US/MPL/2.0/">
-    <img alt='License' src='https://img.shields.io/github/license/widh/prontera.svg?style=flat-square'>
+    <img alt='라이센스' src='https://img.shields.io/github/license/widh/prontera.svg?style=flat-square'>
   </a>
 </p>
 
 <br>
+
+## 미리 보기
+
+<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/widh/prontera/master/src/preview.png" width="540"></p>
 
 ## 기능 안내
 

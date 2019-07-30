@@ -1,0 +1,54 @@
+@import "../common";
+
+#goto-top {
+  z-index: 80;
+  position: fixed;
+  right: $VIEWPORT_MARGIN_HORI;
+  bottom: $VIEWPORT_MARGIN_VERT;
+  display: none;
+  border-spacing: 10px;
+  padding: 0 5px;
+  pointer-events: none;
+  color: $COLOR_DEF;
+  opacity: 0;
+  overflow: hidden;
+  user-select: none;
+
+  @include radboxButton(opacity, color);
+  @include onFocus {
+    text-decoration: none;
+
+    &::before {
+      animation: boundUp 1.3s ease-out;
+    }
+  }
+
+  &.enabled {
+    display: table;
+    pointer-events: initial;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    content: "";
+    background-image: url("./images/up.svg");
+    background-size: cover;
+    display: table-cell;
+    vertical-align: middle;
+    filter: brightness(0);
+
+    @include transit(filter);
+    @include onDark {
+      filter: brightness(1);
+    }
+  }
+
+  span {
+    display: table-cell;
+  }
+}

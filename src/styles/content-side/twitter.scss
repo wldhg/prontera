@@ -1,0 +1,30 @@
+@import "_import";
+
+$TWITTER_HEIGHT: 540px;
+
+#twitter {
+  .twitter-container {
+    max-height: $TWITTER_HEIGHT;
+    box-shadow: $RADBOX_SHADOW;
+    border-radius: $RADBOX_RADIUS;
+    background-color: $COLOR_INV_H;
+    margin: ($CONTENT_PADDING / 2) 0;
+    opacity: 0;
+    overflow-y: auto;
+
+    @include transit(background-color, opacity);
+
+    .spinner-container {
+      margin-top: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
+      margin-bottom: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
+    }
+
+    .twitter-timeline {
+      display: none !important;
+
+      &.visible {
+        display: block !important;
+      }
+    }
+  }
+}

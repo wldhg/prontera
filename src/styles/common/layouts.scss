@@ -1,0 +1,43 @@
+@import "variables";
+
+// Compact View
+$CV_DIVISOR: 1.4;
+
+@function comp($prop) {
+  @return $prop / $CV_DIVISOR;
+}
+
+@mixin onCompactView {
+  @media screen and (max-width: #{$CONTENT_WIDTH + $CONTENT_PADDING - 1px}) {
+    @content;
+  }
+}
+@mixin onSemiCompactView {
+  @media screen and (max-width: 799px) {
+    @content;
+  }
+}
+@mixin onSuperCompactView {
+  @media screen and (max-width: 419px) {
+    @content;
+  }
+}
+@mixin onUltraCompactView {
+  @media screen and (max-width: 329px) {
+    @content;
+  }
+}
+
+// Wide View
+@mixin onWideView {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
+// Print View
+@mixin noPrint {
+  @media print {
+    display: none !important;
+  }
+}

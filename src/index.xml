@@ -23,8 +23,8 @@
     <lengthOfRecentComment>200</lengthOfRecentComment>
     <lengthOfLink>30</lengthOfLink>
     <entriesOnPage>7</entriesOnPage>
-    <entriesOnList>14</entriesOnList>
-    <showListOnHome>0</showListOnHome>
+    <entriesOnList>7</entriesOnList>
+    <showListOnHome>1</showListOnHome>
     <showListOnCategory>1</showListOnCategory>
     <tree>
       <color>333333</color>
@@ -34,6 +34,16 @@
       <labelLength>65535</labelLength>
       <showValue>1</showValue>
     </tree>
+    <liststyle>
+      <item>
+        <label>기본 글 목록</label>
+        <value>excerpt</value>
+      </item>
+      <item>
+        <label>썸네일 목록</label>
+        <value>gallery</value>
+      </item>
+    </liststyle>
   </default>
   <variables>
     <variablegroup name="기본 디자인 설정">
@@ -51,6 +61,14 @@
         <type>COLOR</type>
         <option />
         <default>#33bbaa</default>
+      </variable>
+      <variable>
+        <name>footer-hosted</name>
+        <label>티스토리 기반 표시</label>
+        <description>하단 "Hosted on TISTORY" 표시 여부.</description>
+        <type>BOOL</type>
+        <option />
+        <default>true</default>
       </variable>
     </variablegroup>
     <variablegroup name="바로가기 설정">

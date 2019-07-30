@@ -1,0 +1,53 @@
+@import "../common";
+
+#copy-helper {
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+}
+
+#global-notice,
+#index-counter {
+  padding: 12px $CONTENT_PADDING 13px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-bottom: $CONTENT_PADDING;
+  display: flex;
+
+  @include radbox;
+
+  b {
+    padding: 0 0.333rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  em {
+    font-style: normal;
+  }
+}
+
+#global-notice::before {
+  content: "";
+  background-image: url("./images/info.svg");
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 7px;
+
+  @include transit(filter);
+  @include onDark {
+    filter: invert(.92);
+  }
+}

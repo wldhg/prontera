@@ -1,4 +1,4 @@
-@import "common";
+@import "../common";
 
 $HEADER_HEIGHT: $HEADER_HEIGHT;
 $HEADER_INNER_PADDING: 11px;
@@ -424,10 +424,18 @@ header.global {
 
         &.moon path {
           fill: #163b88;
+
+          @include onDark {
+            fill: #4f75b3;
+          }
         }
 
         &.sun path {
           fill: #ffb700;
+
+          @include onDark {
+            fill: #edd326;
+          }
         }
 
         path {

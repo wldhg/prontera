@@ -1,0 +1,84 @@
+@import "_import";
+
+.sp-container {
+  &:not(#search):not(#about-myself) {
+    margin-top: $CONTENT_PADDING * 2;
+    padding-top: $SIDE_LINE_WIDTH;
+    padding-left: 4px;
+    padding-right: 4px;
+    position: relative;
+
+    &::before {
+      content: "";
+      background-color: $COLOR_HL;
+      opacity: 0.9;
+      width: max($SIDE_LINE_WIDTH * 2.5 + 2px, 18px);
+      height: $SIDE_LINE_WIDTH;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: $SIDE_LINE_WIDTH / 2;
+    }
+  }
+
+  .title {
+    font-size: 1.3rem;
+    font-weight: $WEIGHT_BOLD;
+    line-height: 2.3;
+  }
+
+  .list {
+    list-style: none;
+    padding-left: 0;
+    margin: ($CONTENT_PADDING / 2) 0;
+
+    &:empty {
+      &::before {
+        content: "등록된 내용이 없습니다.";
+        color: $COLOR_GRAY;
+        margin-left: 18px;
+      }
+    }
+
+    a {
+      padding: 11px 18px;
+      display: block;
+      opacity: 0.8;
+
+      .meta {
+        color: $COLOR_GRAY;
+      }
+
+      @include transit(background-color, color, opacity);
+      @include onFocus {
+        background-color: $SIDE_HOVER_BACKGROUND;
+        opacity: 1;
+        text-decoration: none;
+
+        .meta {
+          color: $COLOR_GRAY;
+        }
+      }
+    }
+
+    .item {
+      font-size: 1rem;
+      font-weight: $WEIGHT_NORMAL;
+    }
+
+    .comments-count {
+      @include commentCount;
+    }
+
+    .meta {
+      font-size: .96rem;
+      opacity: .9;
+
+      &:not(:last-child) {
+        &::after {
+          content: ", ";
+        }
+      }
+    }
+  }
+}

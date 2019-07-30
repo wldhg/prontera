@@ -1,0 +1,88 @@
+@import "_import";
+
+$MYSELF_SIZE: 96px;
+
+#about-myself {
+  &:first-child + #search {
+    border-top: none;
+    margin-top: $CONTENT_PADDING * 1.5;
+    margin-bottom: $CONTENT_PADDING * 2.5 + $SIDE_LINE_WIDTH;
+    padding-top: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .info {
+    .author {
+      font-size: 1.6rem;
+      font-weight: $WEIGHT_BOLD;
+      line-height: 1;
+      margin-bottom: $CONTENT_PADDING / 4;
+    }
+
+    .alternative {
+      font-size: 1.15rem;
+      font-weight: $WEIGHT_NORMAL;
+      margin-bottom: $CONTENT_PADDING / 2;
+    }
+
+    .description {
+      color: $COLOR_GRAY;
+    }
+  }
+
+  .rss {
+    float: right;
+    position: relative;
+    margin-left: 10px;
+
+    @include onFocus {
+      .icon {
+        filter: opacity(1);
+
+        &.rss- {
+          &inner {
+            animation: shiney 2.8s ease-in-out 0s infinite normal;
+          }
+
+          &outer {
+            animation: shiney 2.8s ease-in-out 0.2s infinite normal;
+          }
+        }
+      }
+
+      .avatar {
+        margin: ($MYSELF_SIZE / 4 + 2px) ($MYSELF_SIZE / 4 + 2px) 0 0;
+        width: ($MYSELF_SIZE / 4) * 3 - 2px;
+        height: ($MYSELF_SIZE / 4) * 3 - 2px;
+      }
+    }
+
+    .icon {
+      opacity: 0;
+      filter: opacity(0);
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $MYSELF_SIZE / 2;
+      height: $MYSELF_SIZE / 2;
+
+      @include transit(filter);
+
+      path {
+        fill: $COLOR_HL;
+      }
+    }
+
+    .avatar {
+      width: $MYSELF_SIZE;
+      height: $MYSELF_SIZE;
+      box-shadow: $RADBOX_SHADOW;
+      border-radius: $MYSELF_SIZE / 2;
+
+      @include transit(margin, width, height);
+    }
+  }
+}

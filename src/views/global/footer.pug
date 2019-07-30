@@ -1,18 +1,19 @@
 footer.global
 
-  div#hosted-on
-    span= "Hosted on ♥ TISTORY"
+  s_if_var_footer-hosted
+    div#hosted-on
+      span= "Hosted on TISTORY"
+
+  div#designed-by(data-skin-on="[##_blog_link_##]")
+    a(href="https://github.com/widh/prontera" target="_blank")= "Prontera"
+    span= " designed by "
+    a(href="https://widh.me/" target="_blank")= "widh"
 
   div#copyright
-    p
-      = "© "
-      s_if_var_url-home
-        a(href="[##_var_url-home_##]")
-          include ../functions/author
-      s_not_var_url-home
-        span
-          include ../functions/author
-      = " & "
-      a(href="https://github.com/widh/prontera" target="_blank")
-        | Prontera
-      = "."
+    = "© "
+    s_if_var_url-home
+      a(href="[##_var_url-home_##]")
+        include ../others/author
+    s_not_var_url-home
+      span
+        include ../others/author

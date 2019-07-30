@@ -1,0 +1,89 @@
+@import "_import";
+
+#categories {
+  & > ul {
+    opacity: 0.8;
+    margin: ($CONTENT_PADDING / 2) 0;
+
+    @include transit(opacity);
+    @include onFocus {
+      opacity: 1;
+
+      a {
+        color: $COLOR_GRAY;
+      }
+    }
+
+    &:not(:focus-within) {
+      @include notOnFocus {
+        a.current {
+          background-color: $SIDE_HOVER_BACKGROUND;
+          color: $COLOR_HL !important;
+        }
+      }
+    }
+  }
+
+  & > ul > li > a {
+    display: none !important;
+  }
+
+  & > ul,
+  & > ul > li > ul {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+
+    & > li::before {
+      display: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 2.667rem;
+    padding-left: 0;
+
+    ul {
+      margin-bottom: $CONTENT_PADDING / 2;
+    }
+
+    li {
+      position: relative;
+
+      &::before {
+        content: "–";
+        color: $COLOR_GRAY;
+        position: absolute;
+        height: 1rem;
+        width: 1rem;
+        left: -1.133rem;
+        top: 10px;
+        line-height: 1rem;
+        font-size: 1rem;
+      }
+
+      a {
+        padding: 10px;
+        height: 1rem;
+        font-size: 1rem;
+        line-height: 1rem;
+        display: block;
+
+        @include transit(background-color, color);
+        @include onFocus {
+          background-color: $SIDE_HOVER_BACKGROUND;
+          color: $COLOR_DEF !important;
+          text-decoration: none;
+        }
+
+        .c_cnt {
+          @include commentCount;
+        }
+
+        img {
+          filter: grayscale(1);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import "../common";
+
+.mjx-chtml {
+  margin: 0 3px !important;
+
+  &, span {
+    font-size: 100% !important;
+    line-height: 0 !important;
+  }
+}
+
+#MathJax_Message {
+  @include noPrint;
+}

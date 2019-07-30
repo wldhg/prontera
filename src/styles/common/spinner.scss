@@ -1,0 +1,14 @@
+@import "colors";
+
+$SPINNER_SIZE: 48px;
+
+@import "../SpinThatShit/src/loaders";
+@mixin spinner {
+  @include loader06(
+    $size: $SPINNER_SIZE,
+    $align: middle,
+    $color: $COLOR_GRAY,
+    $duration: 1s,
+    $border-size: 4px
+  );
+}

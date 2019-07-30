@@ -58,13 +58,24 @@ PtRegister(
     commentTargets.forEach((target) => {
 
       const count = Number.parseInt(target.dataset.count);
-      if (!Number.isNaN(count) && count === 0) {
+      if (target.dataset.count.length === 0 || (!Number.isNaN(count) && count === 0)) {
         target.querySelector('.count-text').textContent = '댓글 없음';
+      } else if (target.dataset.count[0] === '(') {
+        target.querySelector('.count-text').textContent =
+          `${target.dataset.count.substring(1, target.dataset.count.length - 1)}개`;
       }
 
     });
 
-    end(timeTargets, tsTimeTargets, commentTargets);
+    // Fix "No category"
+    const cgTargets = document.querySelectorAll('.meta .category, .meta.category');
+    cgTargets.forEach((target) => {
+      if (target.textContent === '분류없음') {
+        target.textContent = '분류 없음';
+      }
+    });
+
+    end(timeTargets, tsTimeTargets, commentTargets, cgTargets);
 
   },
 )

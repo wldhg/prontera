@@ -1,0 +1,124 @@
+@import "variables";
+
+@mixin applyHighlightJS($Palette) {
+  .hljs- {
+    &keyword,
+    &type {
+      color: map-get($Palette, "purple");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &built_in,
+    &attribute,
+    &variable,
+    &formula {
+      color: $COLOR_DEF;
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &literal,
+    &number,
+    &selector-tag,
+    &template-tag {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &regexp,
+    &meta,
+    &meta-keyword {
+      color: map-get($Palette, "cyan");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &string,
+    &meta-string,
+    &selector-attr,
+    &addition {
+      color: map-get($Palette, "green");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &subst,
+    &builtin-name {
+      color: map-get($Palette, "brown");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &symbol,
+    &class {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &title,
+    &function,
+    &template-variable {
+      color: map-get($Palette, "blue");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &params,
+    &name,
+    &strong,
+    &deletion {
+      color: map-get($Palette, "red");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &comment {
+      color: map-get($Palette, "gray");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &doctag {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &section {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &tag,
+    &bullet,
+    &code {
+      color: map-get($Palette, "cyan");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &attr {
+      color: map-get($Palette, "paleblue");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+    }
+    &emphasis {
+      color: map-get($Palette, "red");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &link {
+      color: map-get($Palette, "orange");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: normal;
+      text-decoration: underline;
+    }
+    &quote {
+      color: $COLOR_DEF;
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &selector-id,
+    &selector-pseudo {
+      color: map-get($Palette, "purple");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+    &selector-class {
+      color: map-get($Palette, "yellow");
+      font-weight: $WEIGHT_NORMAL;
+      font-style: italic;
+    }
+  }
+}

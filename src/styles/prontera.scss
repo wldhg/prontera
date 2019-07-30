@@ -1,15 +1,32 @@
 @import "common";
-@import "animation";
-@import "modarkbul";
 
-@import "global-header";
-@import "global-footer";
-@import "global-paginator";
-@import "global-others";
+@import "global/header";
+@import "global/footer";
+@import "global/goto-top";
+@import "global/paginator";
+@import "global/spinner";
+@import "global/mathjax";
+@import "global/tistory";
+@import "global/others";
 
-@import "content-body";
-@import "content-side";
-@import "content-tistory";
+@import "content-body/common";
+@import "content-body/index";
+@import "content-body/list-excerpt";
+@import "content-body/list-gallery";
+@import "content-body/post";
+@import "content-body/tags";
+@import "content-body/guestbook";
+
+@import "content-side/common";
+@import "content-side/about-myself";
+@import "content-side/categories";
+@import "content-side/search";
+@import "content-side/twitter";
+
+$MAIN_TOP_PADDING: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
+$MAIN_TOP_PADDING_C: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
+$MAIN_CONTENT_WIDTH: 70%;
+$MAIN_SIDE_BAR_WIDTH_C: 88vw;
 
 html {
   font-size: $FONT_SIZE;
@@ -21,6 +38,11 @@ html {
   @media print {
     background-color: transparent !important;
   }
+  @media screen {
+    &.dark {
+      scrollbar-color: #666 #333;
+    }
+  }
 }
 
 body {
@@ -30,6 +52,9 @@ body {
   color: $COLOR_DARK;
 
   @include transit(color);
+  @include onDark {
+    color: $COLOR_LIGHT;
+  }
 
   &, * {
     font-family: $FONT_FAMILY_DEFAULT;
@@ -45,6 +70,22 @@ body {
     --color-inv-tp: #{$COLOR_LIGHT_T};
     --color-inv-op: #{$COLOR_LIGHT_O};
     --color-shadow: #{$COLOR_GRAY_T};
+
+    @include onDark {
+      &:not(.no-dark) {
+        --color-def: #{$COLOR_LIGHT};
+        --color-def-hl: #{$COLOR_LIGHT_H};
+        --color-def-xhl: #{$COLOR_LIGHT_XH};
+        --color-def-tp: #{$COLOR_LIGHT_T};
+        --color-def-op: #{$COLOR_LIGHT_O};
+        --color-inv: #{$COLOR_DARK};
+        --color-inv-hl: #{$COLOR_DARK_H};
+        --color-inv-xhl: #{$COLOR_DARK_XH};
+        --color-inv-tp: #{$COLOR_DARK_T};
+        --color-inv-op: #{$COLOR_DARK_O};
+        --color-shadow: #{$COLOR_DARK_T};
+      }
+    }
 
     &:focus {
       outline: none;
@@ -84,11 +125,6 @@ body {
 }
 
 main {
-  $MAIN_TOP_PADDING: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
-  $MAIN_TOP_PADDING_C: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
-  $MAIN_CONTENT_WIDTH: 70%;
-  $MAIN_SIDE_BAR_WIDTH_C: 88vw;
-
   width: $CONTENT_WIDTH;
   height: max-content;
   position: relative;
@@ -197,4 +233,31 @@ main {
   .spinner {
     @include spinner;
   }
+}
+
+@keyframes boundUp {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(100%); }
+  60% { transform: translateY(-175%); opacity: 1; }
+  61% { transform: translateY(-175%); opacity: 0; }
+  62% { transform: translateY(175%); opacity: 0; }
+  63% { transform: translateY(175%); opacity: 1; }
+  92% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shiney {
+  0% { opacity: .8; }
+  14% { opacity: .6; }
+  27% { opacity: .8; }
+  32% { opacity: .8; }
+  41% { opacity: .4; }
+  50% { opacity: .6; }
+  56% { opacity: .8; }
+  68% { opacity: .5; }
+  74% { opacity: .6; }
+  80% { opacity: .8; }
+  88% { opacity: .4; }
+  96% { opacity: .6; }
+  100% { opacity: .8; }
 }

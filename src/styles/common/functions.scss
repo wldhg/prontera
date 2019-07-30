@@ -1,0 +1,6 @@
+@function strip($data) {
+  @if type-of($data) == "number" and not unitless($data) {
+    @return $data / ($data * 0 + 1);
+  }
+  @return $data;
+}

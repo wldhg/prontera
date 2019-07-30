@@ -1,0 +1,16 @@
+@import "../common";
+
+// ? About body_id
+// tt-body-index = main page
+// tt-body-page = an article, a page
+// tt-body-guestbook = guestbook page
+// tt-body-tag = tag page, list of articles in specified tag
+// tt-body-category = list of articles in specified category
+// tt-body-search = list of articles which are results of search
+
+// Article list type - gallery
+body[data-page-type="tt-body-index"],
+body[data-page-type="tt-body-tag"],
+body[data-page-type="tt-body-category"],
+body[data-page-type="tt-body-search"] {
+}

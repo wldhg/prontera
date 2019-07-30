@@ -1,0 +1,97 @@
+@import "../common";
+
+// ? About body_id
+// tt-body-index = main page
+// tt-body-page = an article, a page
+// tt-body-guestbook = guestbook page
+// tt-body-tag = tag page, list of articles in specified tag
+// tt-body-category = list of articles in specified category
+// tt-body-search = list of articles which are results of search
+
+// Article list type - excerpt
+body[data-page-type="tt-body-index"],
+body[data-page-type="tt-body-tag"],
+body[data-page-type="tt-body-category"],
+body[data-page-type="tt-body-search"] {
+  #content article {
+    padding: 0;
+
+    a {
+      position: relative;
+      display: flex;
+      flex-flow: row-reverse;
+      margin: $CONTENT_PADDING 0;
+      width: 100%;
+      overflow: hidden;
+
+      @include radboxButton(color);
+      @include onFocus {
+        color: $COLOR_DEF;
+      }
+      @include onCompactView {
+        flex-flow: column;
+      }
+
+      .ct-thumbnail,
+      .ct-summary {
+        display: block;
+      }
+
+      .ct-thumbnail {
+        width: 205px;
+        min-width: 205px;
+        max-width: 205px;
+        overflow: hidden;
+
+        @include onCompactView {
+          height: 205px;
+          width: initial;
+          min-width: initial;
+          max-width: initial;
+          max-height: 205px;
+          min-height: 205px;
+        }
+
+        img {
+          width: 205px;
+          height: 100%;
+          object-fit: cover;
+          background-color: $COLOR_GRAY_T;
+
+          @include onCompactView {
+            width: 100%;
+            height: 205px;
+          }
+        }
+      }
+
+      .ct-summary {
+        padding: $CONTENT_PADDING;
+        width: 100%;
+        box-sizing: border-box;
+
+        .ct-header {
+          border: none;
+          padding-bottom: 0;
+          margin-bottom: 0;
+
+          .title {
+            margin-top: 0;
+            font-size: 2.1rem;
+
+            img {
+              display: none;
+            }
+          }
+        }
+
+        .ct-excerpt {
+          color: $COLOR_DEF_H;
+          opacity: 0.8;
+
+          @include transit(color);
+        }
+      }
+    }
+  }
+}

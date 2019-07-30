@@ -1,0 +1,10 @@
+@import "../common";
+
+$SIDE_LINE_WIDTH: 4px;
+$SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
+
+@mixin commentCount {
+  margin-left: 3px;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}

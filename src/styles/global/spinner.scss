@@ -1,0 +1,11 @@
+@import "../common";
+
+.spinner-container {
+  display: table;
+  text-align: center;
+  margin: auto;
+
+  .spinner {
+    display: table-cell;
+  }
+}
