@@ -1,8 +1,8 @@
-s_if_var_content-global-notice
+s_if_var_global-notice-content
   div#global-notice.no-print
     em
-      s_if_var_url-global-notice
-        a(href="[##_var_url-global-notice_##]")
-          | [##_var_content-global-notice_##]
-      s_not_var_url-global-notice
-        | [##_var_content-global-notice_##]
+      s_if_var_global-notice-url
+        a(href="[##_var_global-notice-url_##]")
+          | [##_var_global-notice-content_##]
+      s_not_var_global-notice-url
+        | [##_var_global-notice-content_##]

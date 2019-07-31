@@ -6,9 +6,9 @@ s_guest: article
   section.gb-write
     h2= "작성하기"
     s_guest_input_form
-      div.ct-reply-textarea
+      div.use-js.ct-reply-textarea
         textarea(name="[##_guest_textarea_body_##]" placeholder="한 마디 남겨주세요.")
-      div.ct-reply-author
+      div.use-js.ct-reply-author
         s_guest_member
           s_guest_form
             input(type="text" name="[##_guest_input_name_##]" value="[##_guest_name_##]" placeholder="이름")
@@ -22,7 +22,7 @@ s_guest: article
       s_guest_rep: li(id="[##_guest_rep_id_##]" class="[##_guest_rep_class_##]")
         span.name= "[##_guest_rep_name_##]"
         span.date= "[##_guest_rep_date_##]"
-        div.control
+        div.use-js.control
           a.modify(href="#" onclick="[##_guest_rep_onclick_delete_##]")= "관리"
           a.write(href="#" onclick="[##_guest_rep_onclick_reply_##]")= "답글"
         p= "[##_guest_rep_desc_##]"
@@ -30,6 +30,6 @@ s_guest: article
           s_guest_reply_rep: li(id="[##_guest_rep_id_##]" class="[##_guest_rep_class_##]")
             span.name= "[##_guest_rep_name_##]"
             span.date= "[##_guest_rep_date_##]"
-            div.control
+            div.use-js.control
               a.modify(href="#" onclick="[##_guest_rep_onclick_delete_##]")= "관리"
             p= "[##_guest_rep_desc_##]"

@@ -221,20 +221,6 @@ main {
   text-indent: -101vw;
 }
 
-.spinner-container {
-  opacity: 0;
-
-  @include transit(opacity);
-
-  &.visible {
-    opacity: 1;
-  }
-
-  .spinner {
-    @include spinner;
-  }
-}
-
 @keyframes boundUp {
   0% { transform: translateY(0); }
   25% { transform: translateY(100%); }

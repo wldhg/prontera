@@ -4,8 +4,17 @@
   display: table;
   text-align: center;
   margin: auto;
+  opacity: 0;
+
+  @include transit(opacity);
+
+  &.visible {
+    opacity: 1;
+  }
 
   .spinner {
     display: table-cell;
+
+    @include spinner;
   }
 }

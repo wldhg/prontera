@@ -29,57 +29,49 @@
     <tree>
       <color>333333</color>
       <bgColor>eeeeee</bgColor>
-      <activeColor>ee3344</activeColor>
+      <activeColor>33bbaa</activeColor>
       <activeBgColor>cccccc</activeBgColor>
       <labelLength>65535</labelLength>
       <showValue>1</showValue>
     </tree>
-    <liststyle>
-      <item>
-        <label>기본 글 목록</label>
-        <value>excerpt</value>
-      </item>
-      <item>
-        <label>썸네일 목록</label>
-        <value>gallery</value>
-      </item>
-    </liststyle>
   </default>
+  <liststyle>
+    <item>
+      <label>기본 글 목록</label>
+      <value>excerpt</value>
+    </item>
+    <item>
+      <label>썸네일 목록</label>
+      <value>gallery</value>
+    </item>
+  </liststyle>
   <variables>
-    <variablegroup name="기본 디자인 설정">
+    <variablegroup name="전역 디자인 설정">
       <variable>
         <name>color-hl</name>
         <label>주 색상</label>
-        <description>강조되어 표시될 색상.</description>
+        <description>강조되는 곳에 표시될 색상.</description>
         <type>COLOR</type>
         <option />
         <default>#33bbaa</default>
       </variable>
+    </variablegroup>
+    <variablegroup name="상단 헤더 설정">
       <variable>
-        <name>img-logo</name>
-        <label>블로그 아이콘</label>
-        <description>상단 로고에 아이콘을 사용하고 싶을 때.</description>
+        <name>logo-img</name>
+        <label>블로그 로고</label>
+        <description>상단 아이덴티티 부분에 아이콘을 사용하고 싶을 때.</description>
         <type>IMAGE</type>
         <option />
       </variable>
       <variable>
-        <name>img-logo-only</name>
-        <label>블로그 이름 숨기기</label>
-        <description>상단 로고에 아이콘만 표시하고 싶을 때.</description>
+        <name>logo-img-only</name>
+        <label>로고 아이콘만 보이기</label>
+        <description>상단에 아이덴티티 아이콘만 표시하고 싶을 때.</description>
         <type>BOOL</type>
         <option />
         <default>false</default>
       </variable>
-      <variable>
-        <name>footer-hosted</name>
-        <label>티스토리 기반 표시</label>
-        <description>하단 "Hosted on TISTORY" 표시 여부.</description>
-        <type>BOOL</type>
-        <option />
-        <default>true</default>
-      </variable>
-    </variablegroup>
-    <variablegroup name="바로가기 설정">
       <variable>
         <name>url-home</name>
         <label>홈페이지 URL</label>
@@ -95,7 +87,7 @@
         <option />
       </variable>
     </variablegroup>
-    <variablegroup name="프로필 설정">
+    <variablegroup name="사이드바 설정">
       <variable>
         <name>name-main</name>
         <label>필명</label>
@@ -117,8 +109,6 @@
         <type>IMAGE</type>
         <option />
       </variable>
-    </variablegroup>
-    <variablegroup name="기타 설정">
       <variable>
         <name>twitter-id</name>
         <label>트위터 ID</label>
@@ -126,22 +116,34 @@
         <type>STRING</type>
         <option />
       </variable>
+    </variablegroup>
+    <variablegroup name="하단 설정">
+      <variable>
+        <name>footer-hosted</name>
+        <label>티스토리 기반 표시</label>
+        <description>하단 "Hosted on TISTORY" 표시 여부.</description>
+        <type>BOOL</type>
+        <option />
+        <default>true</default>
+      </variable>
+    </variablegroup>
+    <variablegroup name="기타 설정">
       <variable>
         <name>cookie-domain</name>
         <label>밝기 모드 쿠키 도메인</label>
-        <description>"modarkbul"=["true"|"false"] 의 형식으로 저장됨.</description>
+        <description>해당 도메인에 "modarkbul"="true|false" 의 형식으로 저장됨.</description>
         <type>STRING</type>
         <option />
       </variable>
       <variable>
-        <name>content-global-notice</name>
+        <name>global-notice-content</name>
         <label>전역 공지 내용</label>
         <description>모든 페이지의 상단에 표시됨.</description>
         <type>STRING</type>
         <option />
       </variable>
       <variable>
-        <name>url-global-notice</name>
+        <name>global-notice-url</name>
         <label>전역 공지 링크</label>
         <description>전역 공지 내용이 있을 때의 링크.</description>
         <type>STRING</type>

@@ -4,7 +4,7 @@ $PAGINATOR_SIZE: 24px;
 
 #paginator {
   display: table;
-  padding: $CONTENT_PADDING 0;
+  padding: ($CONTENT_PADDING * 1.5) 0;
   border-spacing: $CONTENT_PADDING / 2;
   margin: auto;
   text-align: center;

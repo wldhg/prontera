@@ -1,34 +1,48 @@
 //- Post common ingredients
 
-mixin title(useAnchor = true, ingType = "article")
+mixin title(ingType = "article")
   h1.title
-    if useAnchor
-      a.no-underline(href="[##_" + ingType + "_rep_link_##]")
-        = "[##_" + ingType + "_rep_title_##]"
-    else
-      = "[##_" + ingType + "_rep_title_##]"
+    if ingType == "article"
+      a.no-underline(href="[##_article_rep_link_##]")
+        = "[##_article_rep_title_##]"
+    else if ingType == "list"
+      = "[##_list_rep_title_##]"
 
-mixin meta(useAnchor = true, ingType = "article")
+mixin meta(ingType = "article")
   section.meta
+
     span.date(data-rfc-time="[##_" + ingType + "_rep_date_year_##]-[##_" + ingType + "_rep_date_month_##]-[##_" + ingType + "_rep_date_day_##]T[##_" + ingType + "_rep_date_hour_##]:[##_" + ingType + "_rep_date_minute_##]:[##_" + ingType + "_rep_date_second_##]+0900")
-      = "[##_" + ingType + "_rep_date_year_##]년 [##_" + ingType + "_rep_date_month_##]월 [##_" + ingType + "_rep_date_day_##]일 [##_" + ingType + "_rep_date_hour_##]:[##_" + ingType + "_rep_date_minute_##]"
+      span= "[##_" + ingType + "_rep_date_year_##]년 [##_" + ingType + "_rep_date_month_##]월 [##_" + ingType + "_rep_date_day_##]일 [##_" + ingType + "_rep_date_hour_##]:[##_" + ingType + "_rep_date_minute_##]"
+
     span.category
-      if useAnchor
-        a.no-underline(href="[##_" + ingType + "_rep_category_link_##]")
-          = "[##_" + ingType + "_rep_category_##]"
-      else
-        = "[##_" + ingType + "_rep_category_##]"
-    s_rp_count: span.comments-count(data-count="[##_" + ingType + "_rep_rp_cnt_##]")
-      if useAnchor
+      if ingType == "article"
+        a.no-underline(href="[##_article_rep_category_link_##]")
+          = "[##_article_rep_category_##]"
+      else if ingType == "list"
+        span= "[##_list_rep_category_##]"
+
+    if ingType == "article"
+      s_rp_count: span.comments-count(data-count="[##_article_rep_rp_cnt_##]")
         a.no-underline(href="#comments")
           span.speak-only= "댓글 수 "
-          span.count-text= "[##_" + ingType + "_rep_rp_cnt_##]개"
-      else
+          span.count-text= "[##_article_rep_rp_cnt_##]개"
+    else if ingType == "list"
+      span.comments-count(data-count="[##_list_rep_rp_cnt_##]")
         span.speak-only= "댓글 수 "
-        span.count-text= "[##_" + ingType + "_rep_rp_cnt_##]개"
+        span.count-text= "[##_list_rep_rp_cnt_##]개"
 
-mixin body(appendHiddenHeader = true, ingType = "article")
+    if ingType == "article"
+      s_ad_div: span.admin-tools
+        span.publishment-status= "[##_s_ad_s1_label_##]"
+        span.publishment-tools
+          a.use-js(href="#" onclick="[##_s_ad_s2_onclick_##]" data-fn="publish" title="이 게시글을 [##_s_ad_s2_label_##].")= "발행 전환"
+          span= " / "
+          a.use-js(href="#" onclick="[##_s_ad_m_onclick_##]" data-fn="modify")= "수정"
+          span= " / "
+          a.use-js(href="#" onclick="[##_s_ad_d_onclick_##]" data-fn="delete")= "삭제"
+
+
+mixin body()
   section.ct-body
-    if appendHiddenHeader
-      span.speak-only= "본문"
-    = "[##_" + ingType + "_rep_desc_##]"
+    span.speak-only= "본문"
+    = "[##_article_rep_desc_##]"

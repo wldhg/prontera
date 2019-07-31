@@ -1,16 +1,15 @@
 @import "../common";
 
 .ct-header {
-  padding-bottom: .5rem;
   border-bottom: 1px solid $COLOR_GRAY_T;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5 * $CONTENT_PADDING;
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
   display: table;
   width: 100%;
 
   .title {
-    margin: 2rem 0 1rem;
+    margin: 2rem 0 1.5rem;
     font-size: 2.6rem;
     font-weight: $WEIGHT_BOLD;
     word-wrap: break-word;
@@ -28,10 +27,11 @@
   .meta {
     $META_HEIGHT: 1.1rem;
 
-    margin: 1rem 0;
     font-size: 1rem;
     line-height: 1rem;
-    opacity: .8;
+    float: left;
+    width: 100%;
+    user-select: none;
 
     & > *:not(:last-child) {
       margin-right: $CONTENT_PADDING * 1.4;
@@ -45,10 +45,19 @@
       display: inline-block;
       word-break: keep-all;
       word-wrap: normal;
+
+      &::before, & > a, & > span {
+        opacity: .4;
+      }
     }
 
     a {
       color: $COLOR_DEF;
+
+      @include onFocus {
+        color: $COLOR_DEF;
+        opacity: .7 !important;
+      }
     }
 
     .date::before {
@@ -64,9 +73,17 @@
       background: url("./images/comment.svg");
     }
 
+    [id^="commentCount"] {
+      float: left;
+    }
+
     .date,
     .category,
     .comments-count {
+      margin-bottom: 1rem * $LINE_HEIGHT;
+
+      @extend [id^="commentCount"];
+
       &::before {
         content: "";
         width: $META_HEIGHT;
@@ -83,11 +100,36 @@
         }
       }
     }
+
+    .admin-tools {
+      float: right;
+      text-align: right;
+
+      & > span {
+        display: block;
+
+        & + span {
+          margin-top: $CONTENT_PADDING / 2;
+        }
+
+        &:last-child {
+          margin-bottom: $CONTENT_PADDING / 2;
+        }
+
+        & > * {
+          font-size: .8rem;
+        }
+
+        a + span {
+          opacity: .6;
+        }
+      }
+    }
   }
 }
 
 .ct-body {
-  margin: ($CONTENT_PADDING / 2) 0;
+  margin: ($CONTENT_PADDING * 2) 0;
 
   h1, h2, h3, h4, h5, h6 {
     margin: 1.4em 0 0;
@@ -527,6 +569,5 @@
 }
 
 .ct-footer {
-  padding-top: $CONTENT_PADDING / 2;
   padding-bottom: $CONTENT_PADDING * 2;
 }

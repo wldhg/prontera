@@ -132,6 +132,10 @@ header.global {
     img {
       animation: shiney 3.2s ease-in-out infinite;
       padding-right: 10px;
+
+      &[data-img-only="1"] {
+        padding-right: 0;
+      }
     }
 
     //- Identity Text

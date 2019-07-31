@@ -1,13 +1,13 @@
 include ingredients
 
 //- Each post
-s_article_rep: article
-  s_permalink_article_rep
+s_article_rep: s_permalink_article_rep
+  article
 
     header.ct-header
-      +title(true, "article")
-      +meta(true, "article")
-    +body(true, "article")
+      +title("article")
+      +meta("article")
+    +body()
 
     footer.ct-footer
       s_tag_label: section.ct-tags
@@ -22,8 +22,8 @@ s_article_rep: article
               span.ct-reply-date= "[##_rp_rep_date_##]"
               div.ct-reply-control
                 a.address(href="[##_rp_rep_link_##]")= "#"
-                a.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
-                a.write(href="#" onclick="[##_rp_rep_onclick_reply_##]")= "대댓글"
+                a.use-js.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
+                a.use-js.write(href="#" onclick="[##_rp_rep_onclick_reply_##]")= "대댓글"
               p= "[##_rp_rep_desc_##]"
               s_rp2_container: ol
                 s_rp2_rep: li(id="[##_rp_rep_id_##]" class="[##_rp_rep_class_##]")
@@ -31,12 +31,12 @@ s_article_rep: article
                   span.date= "[##_rp_rep_date_##]"
                   div.control
                     a.address(href="[##_rp_rep_link_##]")= "#"
-                    a.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
+                    a.use-js.modify(href="#" onclick="[##_rp_rep_onclick_delete_##]")= "관리"
                   p= "[##_rp_rep_desc_##]"
           s_rp_input_form
-            div.ct-reply-textarea
+            div.use-js.ct-reply-textarea
               textarea(name="[##_rp_input_comment_##]" placeholder="하고 싶은 말이 무엇인가요?")
-            div.ct-reply-author
+            div.use-js.ct-reply-author
               s_rp_member
                 s_rp_guest
                   input(type="text" name="[##_rp_input_name_##]" value="[##_guest_name_##]" placeholder="이름")

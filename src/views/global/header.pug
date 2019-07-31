@@ -1,15 +1,15 @@
 header.global.no-print
 
-  a#identity.left.no-color.no-underline(href="/")
-    s_if_var_img-logo
-      img(src="[##_var_img-logo_##]" alt="[##_title_##] 아이덴티티")
-    s_not_var_img-logo-only
+  a#identity.left.no-color.no-underline(href="/" title="[##_title_##]")
+    s_if_var_logo-img
+      img(src="[##_var_logo-img_##]" alt="[##_title_##] 아이덴티티" data-img-only="[##_var_logo-img-only_##]")
+    s_not_var_logo-img-only
       span= "[##_title_##]"
 
   nav#menu.left
     | [##_blog_menu_##]
 
-  //- Just for bind two components to right-side
+  //- #others - Just for bind two components to right-side
   div#others.right.flex
 
     ul#shortcuts
@@ -17,7 +17,7 @@ header.global.no-print
         a#goto-home.no-color(href="[##_var_url-home_##]" target="_self" title="홈페이지로 이동")
           include ../icons/home
       s_if_var_url-github
-        a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank" title="깃허브 프로필로 이동")
+        a#goto-github.no-color(href="[##_var_url-github_##]" target="_blank" title="깃허브 프로필 열기")
           include ../icons/github
 
     div#modarkbul(title="밝기 모드 전환")

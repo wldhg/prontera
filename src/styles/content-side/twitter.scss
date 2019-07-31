@@ -9,18 +9,35 @@ $TWITTER_HEIGHT: 540px;
     border-radius: $RADBOX_RADIUS;
     background-color: $COLOR_INV_H;
     margin: ($CONTENT_PADDING / 2) 0;
-    opacity: 0;
     overflow-y: auto;
+    height: $TWITTER_HEIGHT;
 
-    @include transit(background-color, opacity);
+    @include transit(background-color);
 
     .spinner-container {
       margin-top: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
       margin-bottom: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
+
+      &::after {
+        content: '브라우저의 콘텐츠 차단 기능이 켜져 있으면 트위터 타임라인이 표시되지 않습니다.';
+        opacity: .4;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0px 50px;
+        left: 0;
+        bottom: ($TWITTER_HEIGHT / 2) - $SPINNER_SIZE - 30px;
+        word-break: keep-all;
+        font-size: .75rem;
+      }
     }
 
     .twitter-timeline {
       display: none !important;
+      opacity: 0;
+
+      @include transit(opacity);
 
       &.visible {
         display: block !important;

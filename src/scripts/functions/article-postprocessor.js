@@ -39,7 +39,7 @@ PtRegister(
           timeString += `${minutes}분 전`;
         }
 
-        target.textContent = timeString;
+        target.innerHTML = `<span>${timeString}</span>`;
 
       };
 
@@ -67,8 +67,8 @@ PtRegister(
 
     });
 
-    // Fix "No category"
-    const cgTargets = document.querySelectorAll('.meta .category, .meta.category');
+    // Add space on "No category"
+    const cgTargets = document.querySelectorAll('.meta .category > a, .meta .category > span, .meta.category');
     cgTargets.forEach((target) => {
       if (target.textContent === '분류없음') {
         target.textContent = '분류 없음';

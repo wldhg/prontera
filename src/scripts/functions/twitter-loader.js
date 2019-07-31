@@ -22,31 +22,34 @@ PtRegister(
         if (twitterFrame) {
           window.clearInterval(twitterDetector);
 
-          twitterFrame.contentWindow
-            .document.documentElement.style.setProperty(
-              'transition',
-              'all .32s ease-in-out',
-              'important'
-            );
-
           PtStore['dark-mode'].toggleRunners.push((isDark) => {
             Array.from(twitterFrame.contentWindow.document.head.children)
               .forEach((node) => {
                 if (node.tagName.toLowerCase() === 'link') {
                   node.href = node.href.replace(isDark ? 'light' : 'dark', isDark ? 'dark' : 'light');
                 };
-              })
+              });
           });
 
           const twitterSpinner = document.querySelector('#twitter .spinner-container');
           twitterSpinner.classList.remove('visible');
           window.setTimeout(() => {
-            twitterSpinner.style.setProperty('display', 'none');
             twitterFrame.classList.add('visible');
             window.setTimeout(() => {
-              w.twitterContainer.style.setProperty('opacity', '1');
+              twitterSpinner.style.setProperty('display', 'none');
+              document.querySelector('#twitter iframe.twitter-timeline').style.setProperty('opacity', '1');
             }, 50);
           }, 300);
+
+          const twtHeadDetector = window.setInterval(() => {
+            const twtHead = twitterFrame.contentWindow.document.head;
+            if (twtHead) {
+              window.clearInterval(twtHeadDetector);
+
+              twitterFrame.contentWindow
+                .document.head.innerHTML += '<style>* { transition: all .32s ease-in-out; }</style>';
+            }
+          }, 250);
         }
       }, 250);
     }

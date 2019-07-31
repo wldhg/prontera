@@ -83,6 +83,12 @@ body[data-page-type="tt-body-search"] {
               display: none;
             }
           }
+
+          .meta > {
+            & .date, & .category, & .comments-count {
+              margin-bottom: 1rem;
+            }
+          }
         }
 
         .ct-excerpt {
