@@ -1,24 +1,26 @@
 @import "_import";
 
 .sp-container {
-  &:not(#search):not(#about-myself) {
-    margin-top: $CONTENT_PADDING * 2;
-    padding-top: $SIDE_LINE_WIDTH;
-    padding-left: 4px;
-    padding-right: 4px;
-    position: relative;
+  margin-top: $CONTENT_PADDING * 2;
+  padding-top: $SIDE_LINE_WIDTH;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: relative;
 
-    &::before {
-      content: "";
-      background-color: $COLOR_HL;
-      opacity: 0.9;
-      width: max($SIDE_LINE_WIDTH * 2.5 + 2px, 18px);
-      height: $SIDE_LINE_WIDTH;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: $SIDE_LINE_WIDTH / 2;
-    }
+  &::before {
+    content: "";
+    background-color: $COLOR_HL;
+    opacity: 0.9;
+    width: max($SIDE_LINE_WIDTH * 2.5 + 2px, 18px);
+    height: $SIDE_LINE_WIDTH;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: $SIDE_LINE_WIDTH / 2;
+  }
+
+  &:first-child {
+    margin-top: 0 !important;
   }
 
   .title {
@@ -41,9 +43,9 @@
     }
 
     a {
-      padding: 11px 18px;
+      padding: ($CONTENT_PADDING / 2) $CONTENT_PADDING;
       display: block;
-      opacity: 0.8;
+      opacity: $SIDE_CONTENT_O;
 
       .meta {
         color: $COLOR_GRAY;
@@ -51,7 +53,7 @@
 
       @include transit(background-color, color, opacity);
       @include onFocus {
-        background-color: $SIDE_HOVER_BACKGROUND;
+        background-color: $COLOR_GRAY_T;
         opacity: 1;
         text-decoration: none;
 
@@ -71,7 +73,7 @@
     }
 
     .meta {
-      font-size: .96rem;
+      font-size: .9rem;
       opacity: .9;
 
       &:not(:last-child) {

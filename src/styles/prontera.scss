@@ -16,6 +16,7 @@
 @import "content-body/post";
 @import "content-body/tags";
 @import "content-body/guestbook";
+@import "content-body/others";
 
 @import "content-side/common";
 @import "content-side/about-myself";
@@ -59,6 +60,10 @@ body {
   &, * {
     font-family: $FONT_FAMILY_DEFAULT;
     direction: ltr;
+
+    --color-dark: #{$COLOR_DARK};
+    --color-light: #{$COLOR_LIGHT};
+
     --color-def: #{$COLOR_DARK};
     --color-def-hl: #{$COLOR_DARK_H};
     --color-def-xhl: #{$COLOR_DARK_XH};
@@ -92,7 +97,7 @@ body {
     }
 
     &::selection {
-      color: $COLOR_LIGHT;
+      color: $COLOR_HL_INV;
       background-color: $COLOR_HL;
     }
   }
@@ -179,7 +184,7 @@ main {
       outline-width: 101vw;
       outline-style: solid;
 
-      @include transit(right, outline-color);
+      @include transit(right, outline-color, box-shadow);
 
       &.visible {
         right: 0;

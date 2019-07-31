@@ -8,8 +8,14 @@
   display: table;
   width: 100%;
 
-  .title {
+  @include transit(border-bottom);
+
+  .upper, .lower {
     margin: 2rem 0 1.5rem;
+  }
+
+  .title {
+    margin: 0;
     font-size: 2.6rem;
     font-weight: $WEIGHT_BOLD;
     word-wrap: break-word;
@@ -24,6 +30,23 @@
     }
   }
 
+  .tags {
+    display: block;
+    opacity: .7;
+    color: $COLOR_DEF;
+    font-size: 0;
+
+    .tag-anchors a {
+      color: $COLOR_DEF;
+      font-size: 1.3rem;
+      margin-right: .333em;
+
+      &::before {
+        content: '#';
+      }
+    }
+  }
+
   .meta {
     $META_HEIGHT: 1.1rem;
 
@@ -33,21 +56,32 @@
     width: 100%;
     user-select: none;
 
-    & > *:not(:last-child) {
+    & > .left > * {
       margin-right: $CONTENT_PADDING * 1.4;
+      line-height: 1.25;
 
       @include onCompactView {
         margin-bottom: 4px;
       }
     }
 
-    & > span {
+    & > div > span {
       display: inline-block;
       word-break: keep-all;
       word-wrap: normal;
 
       &::before, & > a, & > span {
         opacity: .4;
+      }
+
+      & > a, & > span:not(.no-effect) {
+        @include onFocus {
+          opacity: .7;
+
+          &::before {
+            opacity: .4;
+          }
+        }
       }
     }
 
@@ -56,7 +90,6 @@
 
       @include onFocus {
         color: $COLOR_DEF;
-        opacity: .7 !important;
       }
     }
 
@@ -73,16 +106,10 @@
       background: url("./images/comment.svg");
     }
 
-    [id^="commentCount"] {
-      float: left;
-    }
-
     .date,
     .category,
     .comments-count {
-      margin-bottom: 1rem * $LINE_HEIGHT;
-
-      @extend [id^="commentCount"];
+      margin-bottom: $CONTENT_PADDING;
 
       &::before {
         content: "";
@@ -116,7 +143,7 @@
           margin-bottom: $CONTENT_PADDING / 2;
         }
 
-        & > * {
+        &:not(.publishment-status) > * {
           font-size: .8rem;
         }
 
@@ -429,7 +456,7 @@
   .copiable {
     position: relative;
     cursor: pointer;
-    overflow: auto;
+    overflow: visible;
 
     &::after {
       position: absolute;
@@ -457,7 +484,7 @@
 
     &.failed::after {
       background-color: $COLOR_HL;
-      color: $COLOR_LIGHT;
+      color: $COLOR_HL_INV;
       content: "복사 실패";
     }
 
@@ -570,4 +597,7 @@
 
 .ct-footer {
   padding-bottom: $CONTENT_PADDING * 2;
+  border-top: 1px solid $COLOR_GRAY_T;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
 }

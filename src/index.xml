@@ -55,6 +55,17 @@
         <option />
         <default>#33bbaa</default>
       </variable>
+      <variable>
+        <name>color-hl-inv</name>
+        <label>주 색상 대비색</label>
+        <description>강조 색상과 대비되어도 잘 보이는 색상.</description>
+        <type>SELECT</type>
+        <option>[
+          {"name": "light", "label": "하얀색", "value": "light"},
+          {"name": "dark", "label": "검은색", "value": "dark"}
+        ]</option>
+        <default>light</default>
+      </variable>
     </variablegroup>
     <variablegroup name="상단 헤더 설정">
       <variable>
@@ -127,17 +138,10 @@
         <default>true</default>
       </variable>
     </variablegroup>
-    <variablegroup name="기타 설정">
-      <variable>
-        <name>cookie-domain</name>
-        <label>밝기 모드 쿠키 도메인</label>
-        <description>해당 도메인에 "modarkbul"="true|false" 의 형식으로 저장됨.</description>
-        <type>STRING</type>
-        <option />
-      </variable>
+    <variablegroup name="공지 설정">
       <variable>
         <name>global-notice-content</name>
-        <label>전역 공지 내용</label>
+        <label>전역 공지 제목</label>
         <description>모든 페이지의 상단에 표시됨.</description>
         <type>STRING</type>
         <option />
@@ -145,7 +149,23 @@
       <variable>
         <name>global-notice-url</name>
         <label>전역 공지 링크</label>
-        <description>전역 공지 내용이 있을 때의 링크.</description>
+        <description>전역 공지가 있을 때의 링크.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+      <variable>
+        <name>global-notice-detail</name>
+        <label>전역 공지 상세 내용</label>
+        <description>전역 공지의 세부 내용이 있을 때의 링크.</description>
+        <type>STRING</type>
+        <option />
+      </variable>
+    </variablegroup>
+    <variablegroup name="기타 설정">
+      <variable>
+        <name>cookie-domain</name>
+        <label>밝기 모드 쿠키 도메인</label>
+        <description>해당 도메인에 "modarkbul"="true|false" 의 형식으로 저장됨.</description>
         <type>STRING</type>
         <option />
       </variable>

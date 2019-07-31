@@ -1,8 +1,11 @@
 s_if_var_global-notice-content
   div#global-notice.no-print
-    em
-      s_if_var_global-notice-url
-        a(href="[##_var_global-notice-url_##]")
+    div.content
+      em.title
+        s_if_var_global-notice-url
+          a(href="[##_var_global-notice-url_##]")
+            | [##_var_global-notice-content_##]
+        s_not_var_global-notice-url
           | [##_var_global-notice-content_##]
-      s_not_var_global-notice-url
-        | [##_var_global-notice-content_##]
+      s_if_var_global-notice-detail
+        span.detail= "[##_var_global-notice-detail_##]"

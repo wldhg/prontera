@@ -12,7 +12,7 @@ $TWITTER_HEIGHT: 540px;
     overflow-y: auto;
     height: $TWITTER_HEIGHT;
 
-    @include transit(background-color);
+    @include transit(background-color, box-shadow);
 
     .spinner-container {
       margin-top: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;

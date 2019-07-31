@@ -6,6 +6,23 @@ $SEARCH_COLOR_NORMAL: rgba(127, 127, 127, 0.7);
 $SEARCH_MARGIN_RIGHT: max(20px - 2 * $SIDE_LINE_WIDTH, 0px);
 
 #search {
+  @at-root #about-myself:first-child + & {
+    border-top: none;
+    margin-top: $CONTENT_PADDING * 1.5;
+    margin-bottom: $CONTENT_PADDING * 2.5 + $SIDE_LINE_WIDTH;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    &::before {
+      display: none;
+    }
+
+    .title {
+      display: none;
+    }
+  }
+
   form {
     height: $SEARCH_HEIGHT;
     display: flex;

@@ -32,6 +32,10 @@ body[data-page-type="tt-body-search"] {
         flex-flow: column;
       }
 
+      &:first-of-type {
+        margin-top: 0;
+      }
+
       .ct-thumbnail,
       .ct-summary {
         display: block;
@@ -77,6 +81,7 @@ body[data-page-type="tt-body-search"] {
 
           .title {
             margin-top: 0;
+            margin-bottom: 1rem;
             font-size: 2.1rem;
 
             img {
@@ -84,10 +89,8 @@ body[data-page-type="tt-body-search"] {
             }
           }
 
-          .meta > {
-            & .date, & .category, & .comments-count {
-              margin-bottom: 1rem;
-            }
+          .meta {
+            margin-bottom: 1rem;
           }
         }
 

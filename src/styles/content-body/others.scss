@@ -1,0 +1,13 @@
+@import "../common";
+
+.absent_post {
+  margin-top: 60px;
+  padding-top: 60px !important;
+  font-size: $FONT_SIZE !important;
+  font-weight: $WEIGHT_NORMAL !important;
+
+  @include transit(filter);
+  @include onDark {
+    filter: invert(1) brightness(5);
+  }
+}

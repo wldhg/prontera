@@ -2,7 +2,7 @@
 
 #categories {
   & > ul {
-    opacity: 0.8;
+    opacity: $SIDE_CONTENT_O;
     margin: ($CONTENT_PADDING / 2) 0;
 
     @include transit(opacity);
@@ -17,7 +17,7 @@
     &:not(:focus-within) {
       @include notOnFocus {
         a.current {
-          background-color: $SIDE_HOVER_BACKGROUND;
+          background-color: $COLOR_GRAY_T;
           color: $COLOR_HL !important;
         }
       }
@@ -35,6 +35,14 @@
 
     & > li::before {
       display: none;
+    }
+
+    & > li > a {
+      padding-left: $CONTENT_PADDING;
+    }
+
+    & > li > ul {
+      margin-left: calc(#{$CONTENT_PADDING} + 2.667rem);
     }
   }
 
@@ -71,7 +79,7 @@
 
         @include transit(background-color, color);
         @include onFocus {
-          background-color: $SIDE_HOVER_BACKGROUND;
+          background-color: $COLOR_GRAY_T;
           color: $COLOR_DEF !important;
           text-decoration: none;
         }

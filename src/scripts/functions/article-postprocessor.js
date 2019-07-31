@@ -39,7 +39,7 @@ PtRegister(
           timeString += `${minutes}분 전`;
         }
 
-        target.innerHTML = `<span>${timeString}</span>`;
+        target.innerHTML = `<span class="no-effect">${timeString}</span>`;
 
       };
 

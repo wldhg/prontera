@@ -1,7 +1,7 @@
 @import "../common";
 
 $SIDE_LINE_WIDTH: 4px;
-$SIDE_HOVER_BACKGROUND: rgba(200, 200, 200, 0.15);
+$SIDE_CONTENT_O: .8;
 
 @mixin commentCount {
   margin-left: 3px;

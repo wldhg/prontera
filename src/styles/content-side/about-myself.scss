@@ -3,15 +3,23 @@
 $MYSELF_SIZE: 96px;
 
 #about-myself {
-  &:first-child + #search {
-    border-top: none;
-    margin-top: $CONTENT_PADDING * 1.5;
-    margin-bottom: $CONTENT_PADDING * 2.5 + $SIDE_LINE_WIDTH;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:first-child {
     padding-top: 0;
 
     &::before {
       display: none;
     }
+
+    .title {
+      display: none;
+    }
+  }
+
+  .title {
+    margin-bottom: $CONTENT_PADDING;
   }
 
   .info {
@@ -30,6 +38,7 @@ $MYSELF_SIZE: 96px;
 
     .description {
       color: $COLOR_GRAY;
+      font-size: .9rem;
     }
   }
 
@@ -82,7 +91,7 @@ $MYSELF_SIZE: 96px;
       box-shadow: $RADBOX_SHADOW;
       border-radius: $MYSELF_SIZE / 2;
 
-      @include transit(margin, width, height);
+      @include transit(margin, width, height, box-shadow);
     }
   }
 }

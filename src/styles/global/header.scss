@@ -38,7 +38,7 @@ header.global {
   justify-content: space-between;
   user-select: none;
 
-  @include transit(top, background-color);
+  @include transit(top, background-color, box-shadow);
   @include onCompactView {
     height: comp($HEADER_HEIGHT) * 2;
     display: block;
@@ -182,7 +182,7 @@ header.global {
 
     li {
       position: relative;
-      display: table;
+      display: block;
       cursor: pointer;
       box-sizing: border-box;
       list-style: none;
@@ -228,7 +228,7 @@ header.global {
         }
 
         a {
-          color: $COLOR_LIGHT;
+          color: $COLOR_HL_INV;
 
           @include onCompactView {
             color: $COLOR_DEF;
@@ -269,7 +269,7 @@ header.global {
         font-size: 1.2rem;
         color: $COLOR_DEF;
 
-        @include transit(font-size);
+        @include transit(font-size, color);
         @include onCompactView {
           font-size: 1.1rem;
           height: comp($HEADER_HEIGHT);

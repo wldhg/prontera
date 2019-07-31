@@ -1,5 +1,7 @@
 @import "../common";
 
+$GLOBAL_BAR_SPACING: 7px;
+
 #copy-helper {
   z-index: -1;
   opacity: 0;
@@ -15,39 +17,52 @@
 
 #global-notice,
 #index-counter {
-  padding: 12px $CONTENT_PADDING 13px;
+  padding: (12px - $GLOBAL_BAR_SPACING) ($CONTENT_PADDING - $GLOBAL_BAR_SPACING) (12px - $GLOBAL_BAR_SPACING);
   font-size: 1rem;
   line-height: 1.2rem;
   margin-bottom: $CONTENT_PADDING;
-  display: flex;
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+  border-spacing: $GLOBAL_BAR_SPACING;
 
   @include radbox;
+}
 
-  b {
-    padding: 0 0.333rem;
+#global-notice {
+  &::before, .content {
+    display: table-cell;
+    vertical-align: center;
+  }
 
-    &:first-child {
-      padding-left: 0;
+  &::before {
+    content: "";
+    background-image: url("./images/info.svg");
+    width: 1.3rem;
+    height: 1.3rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include transit(filter);
+    @include onDark {
+      filter: invert(.92);
     }
   }
 
-  em {
+  .title {
     font-style: normal;
   }
-}
 
-#global-notice::before {
-  content: "";
-  background-image: url("./images/info.svg");
-  width: 1.3rem;
-  height: 1.3rem;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 7px;
+  .detail {
+    opacity: .6;
+    display: block;
+    margin-top: .5rem;
+    font-size: .9rem;
+  }
 
-  @include transit(filter);
-  @include onDark {
-    filter: invert(.92);
+  a {
+    @include onFocus {
+      color: $COLOR_DEF;
+    }
   }
 }
