@@ -1,6 +1,6 @@
 {
   "name": "prontera",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "description": "A tistory skin named <Prontera>.",
   "main": "gulpfile.js",
   "repository": "https://github.com/widh/prontera.git",
@@ -10,6 +10,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "adm-zip": "^0.4.13",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -28,6 +29,8 @@
   },
   "scripts": {
     "start": "npx gulp",
-    "build": "npx gulp build"
+    "watch": "npx gulp watch",
+    "build": "npx gulp build",
+    "zip": "npx gulp zip"
   }
 }

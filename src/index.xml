@@ -48,19 +48,27 @@
   <variables>
     <variablegroup name="기본 디자인 설정">
       <variable>
-        <name>img-logo</name>
-        <label>블로그 아이콘</label>
-        <description>상단 로고 옆의 아이콘을 사용하고 싶은 경우.</description>
-        <type>IMAGE</type>
-        <option />
-      </variable>
-      <variable>
         <name>color-hl</name>
         <label>주 색상</label>
         <description>강조되어 표시될 색상.</description>
         <type>COLOR</type>
         <option />
         <default>#33bbaa</default>
+      </variable>
+      <variable>
+        <name>img-logo</name>
+        <label>블로그 아이콘</label>
+        <description>상단 로고에 아이콘을 사용하고 싶을 때.</description>
+        <type>IMAGE</type>
+        <option />
+      </variable>
+      <variable>
+        <name>img-logo-only</name>
+        <label>블로그 이름 숨기기</label>
+        <description>상단 로고에 아이콘만 표시하고 싶을 때.</description>
+        <type>BOOL</type>
+        <option />
+        <default>false</default>
       </variable>
       <variable>
         <name>footer-hosted</name>

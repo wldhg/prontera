@@ -23,7 +23,9 @@
 
 ## 미리 보기
 
-<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/widh/prontera/master/src/preview.png" width="540"></p>
+<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/widh/prontera/master/src/preview.png" width="100%"></p>
+
+<br>
 
 ## 기능 안내
 
@@ -37,6 +39,7 @@
 + 하이라이트 색상 지정
 + TISTORY 새로운 에디터 지원
 + 사이드바 트위터 타임라인 임베드
++ 아이콘만 있는 헤더 로고
 
 #### 영원히 추가할 예정이 없는 기능
 
@@ -60,7 +63,6 @@
 + `(확정)` 브라우저 테스트 (Internet Explorer 제외)
 + `(확정)` `README.md` 스크린샷 업데이트
 + `(확정)` 디자인 통일성 개선
-+ `(고려)` 아이콘만 있는 헤더 로고
 + `(고려)` 갤러리 스타일의 게시글 리스트
 + `(고려)` 사이드바의 최근 댓글 패널
 + `(고려)` 영어 지원

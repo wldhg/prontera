@@ -3,7 +3,8 @@ header.global.no-print
   a#identity.left.no-color.no-underline(href="/")
     s_if_var_img-logo
       img(src="[##_var_img-logo_##]" alt="[##_title_##] 아이덴티티")
-    span= "[##_title_##]"
+    s_not_var_img-logo-only
+      span= "[##_title_##]"
 
   nav#menu.left
     | [##_blog_menu_##]
