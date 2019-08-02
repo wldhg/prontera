@@ -9,7 +9,7 @@ PtRegister(
       const now = new Date();
       const nowMS = now.getTime();
 
-      const timeReformatter = (target) => {
+      const timeReformatter = (target, addSeconds = true) => {
 
         const date = new Date(target.dataset.rfcTime);
         const dateMS = date.getTime();
@@ -24,11 +24,21 @@ PtRegister(
         }
         detailedDateString += `${date.getMonth() + 1}월 ${date.getDate()}일`
 
-        target.title = `${detailedDateString} ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초 (대한민국 표준시)`;
+        if (addSeconds) {
+          target.title = `${detailedDateString} ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초 (대한민국 표준시)`;
+        } else {
+          target.title = `${detailedDateString} ${date.getHours()}시 ${date.getMinutes()}분 (대한민국 표준시)`;
+        }
 
         let timeString = '';
         if (nowMS - dateMS >= 86400000) {
           timeString = detailedDateString;
+
+          if (target.dataset.tistoryTimeDetail && target.dataset.tistoryTimeDetail === 'true') {
+            timeString += date.getHours() >= 12 ? ' 오후 ' : ' 오전 ';
+            timeString += `${date.getHours() % (date.getHours() >= 13 ? 12 : 24)}시 `;
+            timeString += `${date.getMinutes()}분`;
+          }
         } else {
           const hours = Math.floor((nowMS - dateMS) / 3600000);
           const minutes = Math.floor((nowMS - dateMS - 3600000 * hours) / 60000);
@@ -47,7 +57,7 @@ PtRegister(
       tsTimeTargets.forEach((tsTimeTarget) => {
         tsTimeTarget.dataset.rfcTime = tsTimeTarget.dataset.tistoryTime.replace(' ', 'T').replace(/\./g, '-');
 
-        timeReformatter(tsTimeTarget);
+        timeReformatter(tsTimeTarget, false);
       });
     };
     formatTime();

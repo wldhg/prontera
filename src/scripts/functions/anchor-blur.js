@@ -6,9 +6,7 @@ PtRegister(
     anchors.forEach((anchor) => {
       if (!anchor.onclick) {
         anchor.onclick = () => {
-          if (document.activeElement) {
-            document.activeElement.blur();
-          }
+          document.activeElement.blur();
         }
       }
     });

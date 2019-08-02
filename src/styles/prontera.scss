@@ -7,6 +7,7 @@
 @import "global/spinner";
 @import "global/mathjax";
 @import "global/tistory";
+@import "global/toc";
 @import "global/others";
 
 @import "content-body/common";
@@ -26,8 +27,6 @@
 
 $MAIN_TOP_PADDING: $HEADER_HEIGHT + $CONTENT_PADDING * 2;
 $MAIN_TOP_PADDING_C: comp($HEADER_HEIGHT * 2) + $CONTENT_PADDING;
-$MAIN_CONTENT_WIDTH: 70%;
-$MAIN_SIDE_BAR_WIDTH_C: 88vw;
 
 html {
   font-size: $FONT_SIZE;
@@ -130,7 +129,7 @@ body {
 }
 
 main {
-  width: $CONTENT_WIDTH;
+  width: 100%;
   height: max-content;
   position: relative;
   display: flex;
@@ -140,59 +139,108 @@ main {
 
   @include onCompactView {
     padding-top: $MAIN_TOP_PADDING_C;
-    width: 100%;
   }
   @media print {
     padding-top: 0;
-    width: 100%;
+  }
+
+  #toc {
+    position: relative;
+    display: none;
+
+    @include onWideView {
+      min-height: 10px;
+      text-align: right;
+      width: $ASIDE_WIDTH;
+      box-sizing: border-box;
+      padding: 0 ($CONTENT_PADDING * 2.5) 0 ($CONTENT_PADDING * 5);
+      min-width: $CONTENT_PADDING * 4 + $ASIDE_WIDTH_MIN;
+      display: block;
+
+      .sticky {
+        position: sticky;
+        top: $MAIN_TOP_PADDING;
+      }
+
+      .title {
+        font-weight: $WEIGHT_BOLD;
+        font-size: 1.3rem;
+      }
+
+      #toc-content {
+
+      }
+    }
   }
 
   #content {
-    width: $MAIN_CONTENT_WIDTH;
+    width: $CONTENT_WIDTH * 1.4;
+    max-width: $CONTENT_WIDTH_MAX;
+    min-width: $CONTENT_WIDTH_MIN;
     box-sizing: border-box;
-    padding-right: $CONTENT_PADDING * 1.5;
-    padding-left: $CONTENT_PADDING / 2;
+    padding: 0 $CONTENT_PADDING;
+    margin-left: auto;
 
     @include onCompactView {
       width: 100%;
       margin: 0 auto;
-      max-width: $CONTENT_WIDTH * .7;
       padding: 0 comp($CONTENT_PADDING);
+      min-width: initial;
+    }
+    @include onWideView {
+      width: 50%;
+      margin-left: 0;
     }
     @media print {
       width: 100%;
+      max-width: initial;
+      min-width: initial;
       padding: $CONTENT_PADDING;
     }
   }
 
   #side-bar {
-    width: 100% - $MAIN_CONTENT_WIDTH;
+    max-width: $ASIDE_WIDTH_MAX;
+    width: 100% - ($CONTENT_WIDTH * 1.4);
     box-sizing: border-box;
-    padding-left: $CONTENT_PADDING;
+    padding: 0 $CONTENT_PADDING 0 2.5vw;
     outline-color: transparent;
+    margin-right: auto;
+    min-width: $ASIDE_WIDTH_MIN;
 
+    @media print {
+      display: none;
+    }
+    @include onWideView {
+      width: $ASIDE_WIDTH;
+      margin-right: 0;
+      padding: 0 ($CONTENT_PADDING * 5) 0 ($CONTENT_PADDING * 2.5);
+      min-width: $CONTENT_PADDING * 4 + $ASIDE_WIDTH_MIN;
+    }
     @include onCompactView {
       z-index: 90;
       position: fixed;
-      padding: $MAIN_TOP_PADDING_C $CONTENT_PADDING 0;
+      padding: ($MAIN_TOP_PADDING_C + 10px) ($CONTENT_PADDING + 10px) 0;
       top: 0;
-      right: -1 * (1vw + $MAIN_SIDE_BAR_WIDTH_C);
-      width: $MAIN_SIDE_BAR_WIDTH_C;
+      right: -1 * (93vw);
+      width: 92vw;
       height: 100vh;
       box-shadow: $RADBOX_SHADOW;
       background-color: $COLOR_INV_H;
       outline-width: 101vw;
       outline-style: solid;
+      min-width: initial;
+      overflow-y: auto;
 
-      @include transit(right, outline-color, box-shadow);
+      @include transit(right, outline-color, box-shadow, background-color);
 
       &.visible {
         right: 0;
         outline-color: $COLOR_INV_T;
       }
 
-      &::before {
-        content: '';
+      & > :last-child {
+        padding-bottom: 2 * comp($CONTENT_PADDING);
       }
     }
   }

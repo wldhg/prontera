@@ -49,9 +49,7 @@ $RADBOX_SHADOW_H: 0 0 1px 0 #{$COLOR_SHADOW_T}, 0 0.5px 3.2px 0 #{$COLOR_SHADOW_
 
   @include radboxBase;
 
-  &:hover,
-  &:active,
-  &:focus {
+  @include onFocus {
     box-shadow: $RADBOX_SHADOW_H;
     transform: scale(#{$EFFECT_PUSH_SCALE});
   }
@@ -67,10 +65,7 @@ $RADBOX_SHADOW_H: 0 0 1px 0 #{$COLOR_SHADOW_T}, 0 0.5px 3.2px 0 #{$COLOR_SHADOW_
   }
 
   @include radboxBaseH;
-
-  &:hover,
-  &:active,
-  &:focus {
+  @include onFocus {
     box-shadow: $RADBOX_SHADOW_H;
     transform: scale(#{$EFFECT_PUSH_SCALE});
   }

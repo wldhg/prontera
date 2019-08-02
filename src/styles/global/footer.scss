@@ -1,7 +1,6 @@
 @import "../common";
 
 footer.global {
-  width: $CONTENT_WIDTH;
   margin: auto;
   padding: ($CONTENT_PADDING * 2.5) ($CONTENT_PADDING / 2);
   box-sizing: border-box;
@@ -10,7 +9,6 @@ footer.global {
 
   @include onCompactView {
     padding-top: $CONTENT_PADDING comp($CONTENT_PADDING) 10vh;
-    width: 100%;
   }
 
   &, a, span {

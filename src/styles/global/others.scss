@@ -17,7 +17,7 @@ $GLOBAL_BAR_SPACING: 7px;
 
 #global-notice,
 #index-counter {
-  padding: (12px - $GLOBAL_BAR_SPACING) ($CONTENT_PADDING - $GLOBAL_BAR_SPACING) (12px - $GLOBAL_BAR_SPACING);
+  padding: (17px - $GLOBAL_BAR_SPACING) ($CONTENT_PADDING - $GLOBAL_BAR_SPACING) (17px - $GLOBAL_BAR_SPACING);
   font-size: 1rem;
   line-height: 1.2rem;
   margin-bottom: $CONTENT_PADDING;
@@ -63,6 +63,28 @@ $GLOBAL_BAR_SPACING: 7px;
   a {
     @include onFocus {
       color: $COLOR_DEF;
+    }
+  }
+}
+
+#index-counter {
+  user-select: none;
+
+  .inner-conform::before {
+    @at-root body[data-page-type="tt-body-tag"] & {
+      content: '#';
+    }
+  }
+
+  .conform::after {
+    @at-root body[data-page-type="tt-body-tag"] & {
+      content: '태그가 달린 게시글이';
+    }
+    @at-root body[data-page-type="tt-body-category"] & {
+      content: '카테고리에 속하는 게시글이';
+    }
+    @at-root body[data-page-type="tt-body-search"] & {
+      content: '의 검색 결과가';
     }
   }
 }

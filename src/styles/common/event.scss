@@ -1,13 +1,19 @@
 @mixin onFocus {
-  &:hover,
   &:target,
-  &:focus {
+  &:focus,
+  &:active {
     @content;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
   }
 }
 
 @mixin notOnFocus {
-  &:not(:hover):not(:target):not(:focus) {
+  &:not(:hover):not(:target):not(:focus):not(:active) {
     @content;
   }
 }

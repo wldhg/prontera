@@ -49,6 +49,8 @@ PtRegister(
           console.debug(e);
         }
       });
+
+      document.activeElement.blur();
     };
     w.darkCont.onclick = w.toggle;
 

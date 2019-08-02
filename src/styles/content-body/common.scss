@@ -1,5 +1,14 @@
 @import "../common";
 
+@mixin contentOpener {
+  margin: 1rem auto !important;
+  width: max-content;
+  display: block;
+  color: $COLOR_DEF_H !important;
+  padding: 8px 13px;
+  user-select: none;
+}
+
 .ct-header {
   border-bottom: 1px solid $COLOR_GRAY_T;
   margin-bottom: 1.5 * $CONTENT_PADDING;
@@ -10,146 +19,146 @@
 
   @include transit(border-bottom);
 
-  .upper, .lower {
+  .upper, .lower, .single {
     margin: 2rem 0 1.5rem;
   }
+}
 
-  .title {
-    margin: 0;
-    font-size: 2.6rem;
-    font-weight: $WEIGHT_BOLD;
-    word-wrap: break-word;
-    word-break: keep-all;
+.ct-title {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: $WEIGHT_BOLD;
+  word-wrap: break-word;
+  word-break: keep-all;
+
+  @include onCompactView {
+    word-break: normal;
+  }
+
+  a {
+    font-size: inherit;
+  }
+}
+
+.ct-tags {
+  display: block;
+  opacity: .4;
+  color: $COLOR_DEF;
+  font-size: 0;
+
+  .tag-anchors a {
+    color: $COLOR_DEF;
+    font-size: 1.3rem;
+    margin-right: .333em;
+
+    &::before {
+      content: '#';
+    }
+  }
+}
+
+.ct-meta {
+  $META_HEIGHT: 1.1rem;
+
+  font-size: 1rem;
+  line-height: 1rem;
+  float: left;
+  width: 100%;
+  user-select: none;
+
+  & > .left > * {
+    margin-right: $CONTENT_PADDING * 1.4;
+    line-height: 1.25;
 
     @include onCompactView {
-      word-break: normal;
-    }
-
-    a {
-      font-size: inherit;
+      margin-bottom: 4px;
     }
   }
 
-  .tags {
-    display: block;
-    opacity: .7;
-    color: $COLOR_DEF;
-    font-size: 0;
+  & > div > span {
+    display: inline-block;
+    word-break: keep-all;
+    word-wrap: normal;
 
-    .tag-anchors a {
-      color: $COLOR_DEF;
-      font-size: 1.3rem;
-      margin-right: .333em;
-
-      &::before {
-        content: '#';
-      }
-    }
-  }
-
-  .meta {
-    $META_HEIGHT: 1.1rem;
-
-    font-size: 1rem;
-    line-height: 1rem;
-    float: left;
-    width: 100%;
-    user-select: none;
-
-    & > .left > * {
-      margin-right: $CONTENT_PADDING * 1.4;
-      line-height: 1.25;
-
-      @include onCompactView {
-        margin-bottom: 4px;
-      }
+    &::before, & > a, & > span {
+      opacity: .4;
     }
 
-    & > div > span {
-      display: inline-block;
-      word-break: keep-all;
-      word-wrap: normal;
-
-      &::before, & > a, & > span {
-        opacity: .4;
-      }
-
-      & > a, & > span:not(.no-effect) {
-        @include onFocus {
-          opacity: .7;
-
-          &::before {
-            opacity: .4;
-          }
-        }
-      }
-    }
-
-    a {
-      color: $COLOR_DEF;
-
+    & > a, & > span:not(.no-effect) {
       @include onFocus {
-        color: $COLOR_DEF;
-      }
-    }
+        opacity: .7;
 
-    .date::before {
-      background: url("./images/heart.svg");
-    }
-
-    .category::before {
-      background: url("./images/tag.svg");
-      transform: scale(0.96);
-    }
-
-    .comments-count::before {
-      background: url("./images/comment.svg");
-    }
-
-    .date,
-    .category,
-    .comments-count {
-      margin-bottom: $CONTENT_PADDING;
-
-      &::before {
-        content: "";
-        width: $META_HEIGHT;
-        height: $META_HEIGHT;
-        background-size: contain;
-        display: inline-block;
-        background-repeat: no-repeat;
-        margin: 0 7.5px -2.5px 0;
-        filter: brightness(0.2);
-
-        @include transit(filter);
-        @include onDark {
-          filter: brightness(1.2);
+        &::before {
+          opacity: .4;
         }
       }
     }
+  }
 
-    .admin-tools {
-      float: right;
-      text-align: right;
+  a {
+    color: $COLOR_DEF;
 
-      & > span {
-        display: block;
+    @include onFocus {
+      color: $COLOR_DEF;
+    }
+  }
 
-        & + span {
-          margin-top: $CONTENT_PADDING / 2;
-        }
+  .date::before {
+    background: url("./images/heart.svg");
+  }
 
-        &:last-child {
-          margin-bottom: $CONTENT_PADDING / 2;
-        }
+  .category::before {
+    background: url("./images/tag.svg");
+    transform: scale(0.96);
+  }
 
-        &:not(.publishment-status) > * {
-          font-size: .8rem;
-        }
+  .comments-count::before {
+    background: url("./images/comment.svg");
+  }
 
-        a + span {
-          opacity: .6;
-        }
+  .date,
+  .category,
+  .comments-count {
+    margin-bottom: $CONTENT_PADDING;
+
+    &::before {
+      content: "";
+      width: $META_HEIGHT;
+      height: $META_HEIGHT;
+      background-size: contain;
+      display: inline-block;
+      background-repeat: no-repeat;
+      margin: 0 7.5px -2.5px 0;
+      filter: brightness(0.2);
+
+      @include transit(filter);
+      @include onDark {
+        filter: brightness(1.2);
+      }
+    }
+  }
+
+  .admin-tools {
+    float: right;
+    text-align: right;
+
+    & > span {
+      display: block;
+
+      & + span {
+        margin-top: $CONTENT_PADDING / 2;
+      }
+
+      &:last-child {
+        margin-bottom: $CONTENT_PADDING / 2;
+      }
+
+      &:not(.publishment-status) > * {
+        font-size: .8rem;
+      }
+
+      a + span {
+        opacity: .6;
       }
     }
   }
@@ -530,13 +539,7 @@
   }
 
   .btn-toggle-moreless {
-    margin: 1rem auto !important;
-    width: max-content;
-    display: block;
-    color: $COLOR_DEF_H !important;
-    padding: 8px 13px;
-    user-select: none;
-
+    @include contentOpener;
     @include onFocus {
       text-decoration: none;
       color: $COLOR_DEF_H;
@@ -600,4 +603,18 @@
   border-top: 1px solid $COLOR_GRAY_T;
   border-top-left-radius: 1px;
   border-top-right-radius: 1px;
+
+  .ct-reply-list {
+    ol {
+      list-style: none;
+      padding: 0;
+
+      li:first-child.tt_more_preview_comments_wrap {
+        text-align: center;
+
+        @include radboxButtonH;
+        @include contentOpener;
+      }
+    }
+  }
 }

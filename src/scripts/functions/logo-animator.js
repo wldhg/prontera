@@ -15,4 +15,5 @@ PtRegister(
     end();
 
   },
+  true
 );

@@ -20,6 +20,7 @@ window.onload = () => {
             );
           } catch (e) {
             console.debug(e);
+            resolve(e);
           }
         })
       );

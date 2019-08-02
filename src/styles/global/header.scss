@@ -45,7 +45,7 @@ header.global {
     padding: 0;
   }
 
-  &.hidden {
+  &.hidden:not(.force-visible) {
     top: -1 * ($HEADER_HEIGHT + 4px);
 
     @include onCompactView {
@@ -149,151 +149,229 @@ header.global {
     }
   }
 
-  #menu ul {
-    display: flex;
-    margin: 0;
-
+  #menu {
     @include onCompactView {
       width: 100vw;
-      overflow-x: auto;
-      overflow-y: hidden;
     }
 
-    &:hover li:not(:hover),
-    &:focus-within li:not(:focus-within) {
-      &:not(.current) {
-        padding-left: 10px + $MENU_BOX_PADDING;
-        padding-right: 10px + $MENU_BOX_PADDING;
-
-        &::before {
-          width: 0;
-          left: initial;
-        }
-
-        a {
-          color: $COLOR_DEF;
-        }
-      }
-
-      a {
-        @include transit(color);
-      }
-    }
-
-    li {
-      position: relative;
-      display: block;
+    #open-sidebar {
+      display: none;
+      opacity: .3;
       cursor: pointer;
-      box-sizing: border-box;
-      list-style: none;
-      min-width: 110px - (2 * $MENU_BOX_PADDING);
-      max-width: 25vw;
-      padding: 0 (10px + $MENU_BOX_PADDING) ($MENU_INDICATOR_HEIGHT / 2);
 
-      @include transit(padding);
+      @include transit(opacity);
       @include onCompactView {
-        min-width: 80px - (2 * $MENU_BOX_PADDING);
-
-        &::before {
-          opacity: 0 !important;
-          background-color: $COLOR_GRAY_T !important;
-          width: 100% !important;
-          transform: none !important;
-          height: comp($HEADER_HEIGHT);
-
-          @include transitImportant(background-color, opacity);
-        }
-
-        &.current a::after {
-          opacity: 0.8;
-          background-color: $COLOR_HL;
-        }
+        display: block;
+        width: comp($HEADER_HEIGHT) + 10px;
+        height: comp($HEADER_HEIGHT);
+        box-sizing: border-box;
+        background: transparent;
+        border: none;
+        padding: 15px 20px;
       }
-
-      &::before {
-        content: "";
-        background-color: $COLOR_GRAY_T;
-        position: absolute;
-        width: 0;
-        right: 0;
-        height: $HEADER_HEIGHT;
-        transform: skew(-15deg);
-
-        @include transit(width);
-      }
-
-      &.current {
-        &::before {
-          background-color: $COLOR_HL;
+      @include onFocus {
+        .triangle.a {
+          transform: translateX(-20%);
+          opacity: 0;
         }
 
-        a {
-          color: $COLOR_HL_INV;
+        .short-bar {
+          transform: translateX(-20%);
+        }
 
-          @include onCompactView {
-            color: $COLOR_DEF;
+        &.opened {
+          .triangle.b {
+            transform: translateX(20%);
+            opacity: 0;
+          }
+
+          .short-bar.a {
+            transform: translateX(22.5%) translateY(-22.5%) rotateZ(45deg);
+          }
+
+          .short-bar.b {
+            transform: translateX(-48%) translateY(52%) rotateZ(-45deg);
           }
         }
       }
 
-      &.current,
-      &:hover,
-      &:focus-within {
-        padding-left: 10px + $MENU_BOX_PADDING * 2;
-        padding-right: 10px + $MENU_BOX_PADDING * 2;
+      &.opened {
+        .triangle.a {
+          opacity: 0;
+        }
 
-        @include onCompactView {
+        .triangle.b {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        .short-bar {
+          transform: translateX(-40%);
+        }
+      }
+
+      svg {
+        overflow: visible;
+
+        path {
+          fill: $COLOR_DEF;
+
+          &.triangle.b {
+            transform: translateX(20%);
+            opacity: 0;
+          }
+
+          @include transit(fill, transform, opacity);
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      margin: 0;
+
+      @include onCompactView {
+        width: calc(100vw - #{comp($HEADER_HEIGHT)} - 10px);
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      &:hover li:not(:hover),
+      &:focus-within li:not(:focus-within) {
+        &:not(.current) {
           padding-left: 10px + $MENU_BOX_PADDING;
           padding-right: 10px + $MENU_BOX_PADDING;
+
+          &::before {
+            width: 0;
+            left: initial;
+          }
+
+          a {
+            color: $COLOR_DEF;
+          }
         }
 
-        &::before {
-          width: 100%;
-          left: 0;
+        a {
+          @include transit(color);
         }
       }
 
-      &:hover,
-      &:focus-within {
-        &::before {
-          opacity: 1 !important;
-        }
-      }
-
-      a {
+      li {
         position: relative;
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        height: $HEADER_HEIGHT;
-        font-size: 1.2rem;
-        color: $COLOR_DEF;
+        display: block;
+        cursor: pointer;
+        box-sizing: border-box;
+        list-style: none;
+        min-width: 110px - (2 * $MENU_BOX_PADDING);
+        max-width: 25vw;
+        padding: 0 (10px + $MENU_BOX_PADDING) ($MENU_INDICATOR_HEIGHT / 2);
 
-        @include transit(font-size, color);
+        @include transit(padding);
         @include onCompactView {
-          font-size: 1.1rem;
-          height: comp($HEADER_HEIGHT);
           min-width: max-content;
-        }
-        @include onSuperCompactView {
-          font-size: 0.92rem;
-        }
-        @include onFocus {
-          text-decoration: none;
+
+          &::before {
+            opacity: 0 !important;
+            background-color: $COLOR_GRAY_T !important;
+            width: 100% !important;
+            transform: none !important;
+            height: comp($HEADER_HEIGHT);
+
+            @include transitImportant(background-color, opacity);
+          }
+
+          &.current a::after {
+            opacity: 0.8;
+            background-color: $COLOR_HL;
+          }
         }
 
-        &::after {
-          position: absolute;
-          width: 100%;
-          top: calc(50% + #{$LINE_HEIGHT} * 1em / 2 + 3px);
-          height: comp($MENU_INDICATOR_HEIGHT);
-          left: 0;
-          border-radius: $MENU_INDICATOR_HEIGHT;
-          opacity: 0;
+        &::before {
           content: "";
-          z-index: -1;
+          background-color: $COLOR_GRAY_T;
+          position: absolute;
+          width: 0;
+          right: 0;
+          height: $HEADER_HEIGHT;
+          transform: skew(-15deg);
 
-          @include transit(opacity);
+          @include transit(width);
+        }
+
+        &.current {
+          &::before {
+            background-color: $COLOR_HL;
+          }
+
+          a {
+            color: $COLOR_HL_INV;
+
+            @include onCompactView {
+              color: $COLOR_DEF;
+            }
+          }
+        }
+
+        &.current,
+        &:hover,
+        &:focus-within {
+          padding-left: 10px + $MENU_BOX_PADDING * 2;
+          padding-right: 10px + $MENU_BOX_PADDING * 2;
+
+          @include onCompactView {
+            padding-left: 10px + $MENU_BOX_PADDING;
+            padding-right: 10px + $MENU_BOX_PADDING;
+          }
+
+          &::before {
+            width: 100%;
+            left: 0;
+          }
+        }
+
+        &:hover,
+        &:focus-within {
+          &::before {
+            opacity: 1 !important;
+          }
+        }
+
+        a {
+          position: relative;
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          height: $HEADER_HEIGHT;
+          font-size: 1.2rem;
+          color: $COLOR_DEF;
+
+          @include transit(font-size, color);
+          @include onCompactView {
+            font-size: 1.1rem;
+            height: comp($HEADER_HEIGHT);
+            min-width: max-content;
+          }
+          @include onSuperCompactView {
+            font-size: 0.92rem;
+          }
+          @include onFocus {
+            text-decoration: none;
+          }
+
+          &::after {
+            position: absolute;
+            width: 100%;
+            top: calc(50% + #{$LINE_HEIGHT} * 1em / 2 + 3px);
+            height: comp($MENU_INDICATOR_HEIGHT);
+            left: 0;
+            border-radius: $MENU_INDICATOR_HEIGHT;
+            opacity: 0;
+            content: "";
+            z-index: -1;
+
+            @include transit(opacity);
+          }
         }
       }
     }
@@ -316,11 +394,11 @@ header.global {
 
       a {
         padding: $SHORTCUT_PADDING_VERT $SHORTCUT_PADDING_HORI
-          $SHORTCUT_PADDING_VERT 0;
+        $SHORTCUT_PADDING_VERT 0;
 
         @include onCompactView {
           padding: $SHORTCUT_PADDING_VERT_C comp($SHORTCUT_PADDING_HORI)
-            $SHORTCUT_PADDING_VERT_C 0;
+          $SHORTCUT_PADDING_VERT_C 0;
         }
 
         &:hover,
@@ -358,20 +436,14 @@ header.global {
         display: none;
       }
 
-      & > * {
-        display: table-cell;
-        vertical-align: middle;
-      }
-
-      &:hover,
-      &:focus {
+      @include onFocus {
         .icon {
           opacity: 1;
         }
 
         .container .border label {
           left: $MDB_WIDTH - $MDB_MARGIN - $MDB_BALL_SIZE - $MDB_ELASTICITY -
-            $MDB_FUSS;
+          $MDB_FUSS;
           width: $MDB_BALL_SIZE + $MDB_ELASTICITY;
           opacity: 1;
 
@@ -379,6 +451,11 @@ header.global {
             left: $MDB_MARGIN + $MDB_FUSS;
           }
         }
+      }
+
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
       }
 
       .container {

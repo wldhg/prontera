@@ -1,7 +1,7 @@
 //- Post common ingredients
 
 mixin title(ingType = "article")
-  h1.title
+  h1.ct-title
     if ingType == "article"
       a.no-underline(href="[##_article_rep_link_##]")
         = "[##_article_rep_title_##]"
@@ -10,12 +10,12 @@ mixin title(ingType = "article")
 
 mixin tags(ingType = "article")
   if ingType == "article"
-    s_tag_label: span.tags
+    s_tag_label: span.ct-tags
       span.speak-only= "태그"
       span.tag-anchors= "[##_tag_label_rep_##]"
 
 mixin meta(ingType = "article", onlyAdminTools = false)
-  section.meta
+  section.ct-meta
 
     .left
       if onlyAdminTools == false

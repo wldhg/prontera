@@ -12,7 +12,7 @@
     <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square'>
   </a>
   <a href="https://widh.me/">
-    <img alt='레포지토리 유지 여부' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
+    <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
   </a>
   <a href="https://www.mozilla.org/en-US/MPL/2.0/">
     <img alt='라이센스' src='https://img.shields.io/github/license/widh/prontera.svg?style=flat-square'>
@@ -41,9 +41,11 @@
 
 #### 영원히 지원할 예정이 없는 기능
 
-+ TISTORY 구 에디터 지원 `Deprecated by TISTORY`
-+ TISTORY 공지 기능 `Deprecated by TISTORY`
-+ 위치 로그, 미디어 로그 `Deprecated by TISTORY`
++ TISTORY 구 에디터 지원
++ TISTORY 공지 기능
++ TISTORY 리스트 스타일
++ TISTORY 트랙백
++ TISTORY 위치 로그, 미디어 로그
 + 댓글 및 방명록에 홈페이지 주소 입력하기
 + Internet Explorer에서의 정상적 렌더링 `'제대로 표시되지 않는다'는 안내 제공`
 
@@ -84,7 +86,7 @@ $ cd out; ls
 
 <br>
 
-## 라이센스
+## 라이센스 및 저작권
 
 이 프로젝트는 *Mozilla Public License 2.0*을 따릅니다.
 
@@ -92,12 +94,13 @@ $ cd out; ls
 
 스피너(불러오기 애니메이션)의 디자인은 [MIT License](https://github.com/MatejKustec/SpinThatShit/blob/master/LICENSE)를 기반으로 하는 [Matej Kustec](https://github.com/MatejKustec)의 [SpinThatShit](https://github.com/MatejKustec/SpinThatShit) 프로젝트를 이용하였습니다.
 
-#### 이미지 라이센스
+#### 이미지 라이센스 및 저작권
 
-+ `padlock-locked.pug`: &copy; Widh.
-+ `padlock-unlocked.pug`: &copy; Widh.
++ `src/views/icons/padlock-locked.pug`: &copy; Widh.
++ `src/views/icons/padlock-unlocked.pug`: &copy; Widh.
++ `src/views/icons/menu.pug`: [Online Web Fonts](http://www.onlinewebfonts.com), licensed by CC BY 3.0.
 
-이 밖에 Prontera 스킨이 포함하는 모든 이미지는 비상업적 이용이 허가된 `svg` 아이콘으로, 라이센스와 관련한 자세한 내용은 [이 링크](https://www.svgrepo.com/info/licensing)에서 설명합니다.
+이 밖에 Prontera 스킨이 포함하는 모든 이미지는 비상업적 이용이 허가된 `svg` 아이콘으로, 라이센스와 관련한 자세한 내용은 [SVG Repo](https://www.svgrepo.com/info/licensing)에서 설명합니다.
 
 #### 글꼴 라이센스
 
