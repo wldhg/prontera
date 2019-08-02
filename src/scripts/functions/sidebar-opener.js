@@ -16,12 +16,14 @@ PtRegister(
         opener.classList.add('opened');
         aside.classList.add('visible');
         header.classList.add('force-visible');
+        content.classList.add('blur');
         opener.title = '눌러서 사이드바 닫기';
         content.onclick = open;
       } else {
         opener.classList.remove('opened');
         aside.classList.remove('visible');
         header.classList.remove('force-visible');
+        content.classList.remove('blur');
         opener.title = '눌러서 사이드바 열기';
         content.onclick = null;
       }

@@ -28,18 +28,15 @@ html(lang="ko")
       | }
       |
       | (function () {
-      |   var cq = document.cookie.split(";");
-      |   cq.forEach(function (cr) {
-      |     var c = cr.split("=");
-      |     if ("modarkbul" === c[0].trim()) {
-      |       if (c[1][0] === "t") {
-      |         document.documentElement.style.setProperty("background-color", "#000000");
-      |         document.documentElement.classList.add("dark");
-      |       } else {
-      |         document.documentElement.style.setProperty("background-color", "#faf9f8");
-      |       }
-      |     }
-      |   });
+      |   if (
+      |     (!document.cookie.includes("modarkbul") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      |     || (document.cookie.includes("modarkbul=true"))
+      |   ) {
+      |     document.documentElement.style.setProperty("background-color", "#000000");
+      |     document.documentElement.classList.add("dark");
+      |   } else {
+      |     document.documentElement.style.setProperty("background-color", "#faf9f8");
+      |   }
       | })();
       |
       | window.PtConfig = {
@@ -112,7 +109,7 @@ html(lang="ko")
 
     main
 
-      include global/toc
+      include global/read-helper
 
       div#content.left
 

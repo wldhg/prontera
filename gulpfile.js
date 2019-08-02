@@ -20,18 +20,11 @@ const gMinifySvg = require('gulp-svgmin');
 const gMinifyHTML = require('gulp-htmlmin');
 const gXMLValidator = require('gulp-xml-validator');
 
-// Build styles - prontera
-const buildSassProntera = () => gulp.src('./src/styles/prontera.scss')
+// Build styles
+const buildSass = () => gulp.src('./src/styles/prontera.scss')
   .pipe(gSass({ outputStyle: 'compressed' }))
   .pipe(gAutoPrefixer())
   .pipe(gRename('style.css'))
-  .pipe(gulp.dest('./out'));
-
-// Build styles - page patch
-const buildSassPage = () => gulp.src('./src/styles/page.scss')
-  .pipe(gSass({ outputStyle: 'compressed' }))
-  .pipe(gAutoPrefixer())
-  .pipe(gRename('page.css'))
   .pipe(gulp.dest('./out'));
 
 // Build script - onload
@@ -114,8 +107,7 @@ const license = (resolve) => {
 // Build once
 const build = (resolve) => {
   try {
-    buildSassProntera();
-    buildSassPage();
+    buildSass();
     buildJsOnload();
     buildJsFunctions();
     buildPug();
@@ -135,12 +127,7 @@ const watch = () => {
       './src/styles/content-side/*.scss',
       './src/styles/common.scss',
       './src/styles/prontera.scss',
-    ], {}, buildSassProntera);
-    gulp.watch([
-      './src/styles/common/*.scss',
-      './src/styles/common.scss',
-      './src/styles/page.scss',
-    ], {}, buildSassPage);
+    ], {}, buildSass);
     gulp.watch('./src/scripts/onload.js', {}, buildJsOnload);
     gulp.watch('./src/scripts/functions/*.js', {}, buildJsFunctions);
     gulp.watch([
