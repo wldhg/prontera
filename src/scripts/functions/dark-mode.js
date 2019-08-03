@@ -16,13 +16,18 @@ PtRegister(
       w.mdbLabel.classList.add('dark');
     }
 
-    w.setCookie = function (value) {
+    w.setCookie = function (isDark) {
       const date = new Date();
-      date.setTime(date.getTime() + 315360000000);
-      const expires = `expires=${date.toUTCString()}`;
-      document.cookie = `modarkbul=${value};${expires};path=/${c.modarkbulDomain ? `;domain=${c.modarkbulDomain}` : ''}`;
+      if (
+        (isDark && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        || (!isDark && window.matchMedia("(prefers-color-scheme: light)").matches)
+      ) {
+        date.setTime(0);
+      } else {
+        date.setTime(date.getTime() + 315360000000);
+      }
+      document.cookie = `modarkbul=${isDark ? 'dark' : 'light'};expires=${date.toUTCString()};path=/${c.modarkbulDomain ? `;domain=${c.modarkbulDomain}` : ''}`;
     };
-    w.setCookie(w.isDark);
 
     w.toggleRunners = [];
     w.toggle = function () {

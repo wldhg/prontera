@@ -30,7 +30,7 @@ html(lang="ko")
       | (function () {
       |   if (
       |     (!document.cookie.includes("modarkbul") && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      |     || (document.cookie.includes("modarkbul=true"))
+      |     || (document.cookie.includes("modarkbul=dark"))
       |   ) {
       |     document.documentElement.style.setProperty("background-color", "#000000");
       |     document.documentElement.classList.add("dark");

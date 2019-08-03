@@ -165,7 +165,7 @@
       <variable>
         <name>cookie-domain</name>
         <label>밝기 모드 쿠키 도메인</label>
-        <description>해당 도메인에 "modarkbul"="true|false" 의 형식으로 저장됨.</description>
+        <description>해당 도메인에 "modarkbul"="light|dark" 의 형식으로 저장됨.</description>
         <type>STRING</type>
         <option />
       </variable>
