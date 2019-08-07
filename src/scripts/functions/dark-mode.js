@@ -2,7 +2,7 @@ PtRegister(
   "dark-mode",
   (w, c, end) => {
 
-    w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true";
+    w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "dark";
     w.themeColor = document.querySelector('meta[name=theme-color]');
     w.mdbLabel = document.querySelector('#modarkbul label');
     w.checkBox = document.getElementById("is-dark");

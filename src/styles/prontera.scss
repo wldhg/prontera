@@ -146,31 +146,35 @@ main {
 
   #read-helper {
     position: relative;
+    visibility: hidden;
+    text-align: right;
+    width: $ASIDE_WIDTH;
+    box-sizing: border-box;
+    padding: 0 ($CONTENT_PADDING * 2.5) 0 ($CONTENT_PADDING * 3);
+    min-width: $ASIDE_WIDTH_MIN - $CONTENT_PADDING * 3;
+    max-width: $ASIDE_WIDTH_MIN;
+    margin-left: auto;
     display: none;
 
     @include onWideView {
-      text-align: right;
-      width: $ASIDE_WIDTH;
-      box-sizing: border-box;
-      padding: 0 ($CONTENT_PADDING * 2.5) 0 ($CONTENT_PADDING * 3);
-      min-width: $ASIDE_WIDTH_MIN - $CONTENT_PADDING * 3;
-      max-width: $ASIDE_WIDTH_MIN + $CONTENT_PADDING * 2;
-      margin-left: auto;
       display: block;
+    }
+    @include onWidePage {
+      visibility: visible;
+    }
 
-      .sticky {
-        position: sticky;
-        top: $MAIN_TOP_PADDING;
-      }
+    .sticky {
+      position: sticky;
+      top: $MAIN_TOP_PADDING;
+    }
 
-      .title {
-        font-weight: $WEIGHT_BOLD;
-        font-size: 1.3rem;
-      }
+    .title {
+      font-weight: $WEIGHT_BOLD;
+      font-size: 1.3rem;
+    }
 
-      #toc {
+    #toc {
 
-      }
     }
   }
 

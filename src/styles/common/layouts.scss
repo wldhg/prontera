@@ -30,8 +30,13 @@ $CV_DIVISOR: 1.4;
 
 // Wide View - Only supported in post type, for toc
 @mixin onWideView {
+  @media screen and (min-width: #{$CONTENT_WIDTH_MIN + $ASIDE_WIDTH_MIN * 2}) {
+    @content;
+  }
+}
+@mixin onWidePage {
   @at-root body[data-page-type="tt-body-page"] & {
-    @media screen and (min-width: #{$CONTENT_WIDTH_MIN + $ASIDE_WIDTH_MIN * 2}) {
+    @include onWideView {
       @content;
     }
   }
