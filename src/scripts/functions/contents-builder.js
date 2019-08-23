@@ -3,6 +3,7 @@ PtRegister(
   "contents-builder",
   (w, c, end) => {
 
+    /*
     // Originally Korean is not proper for DOM ID (by HTML spec)
     // But for Korean URL readability, I permitted them.
     // Also, only alphabets can be located in ID as first character,
@@ -58,7 +59,9 @@ PtRegister(
       }
 
       end();
-    }
+    }*/
+
+    end();
 
   },
 );

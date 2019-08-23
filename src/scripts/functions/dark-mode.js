@@ -2,7 +2,12 @@ PtRegister(
   "dark-mode",
   (w, c, end) => {
 
-    w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "dark";
+    if (document.cookie.includes('modarkbul=')) {
+      w.isDark = document.cookie.replace(/(?:(?:^|.*;\s*)modarkbul\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "dark";
+    } else {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) w.isDark = true;
+      else w.isDark = false;
+    }
     w.themeColor = document.querySelector('meta[name=theme-color]');
     w.mdbLabel = document.querySelector('#modarkbul label');
     w.checkBox = document.getElementById("is-dark");

@@ -70,6 +70,9 @@ PtRegister(
       document.querySelector('.text-amount').textContent = `${content.textContent.length} 글자, ${Math.floor(words / 180)} - ${Math.floor(words / 120)}분 소요`;
 
       end();
+
+    } else {
+      end();
     }
 
   },
