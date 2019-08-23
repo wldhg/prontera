@@ -3,16 +3,15 @@
 mixin title(ingType = "article")
   h1.ct-title
     if ingType == "article"
-      a.no-underline(href="[##_article_rep_link_##]")
-        = "[##_article_rep_title_##]"
+      a.no-underline(href="[##_article_rep_link_##]") [##_article_rep_title_##]
     else if ingType == "list"
-      = "[##_list_rep_title_##]"
+      | [##_list_rep_title_##]
 
 mixin tags(ingType = "article")
   if ingType == "article"
     s_tag_label: span.ct-tags
-      span.speak-only= "태그"
-      span.tag-anchors= "[##_tag_label_rep_##]"
+      span.speak-only 태그
+      span.tag-anchors [##_tag_label_rep_##]
 
 mixin meta(ingType = "article", onlyAdminTools = false)
   section.ct-meta
@@ -24,19 +23,20 @@ mixin meta(ingType = "article", onlyAdminTools = false)
 
         span.category
           if ingType == "article"
-            a.no-underline(href="[##_article_rep_category_link_##]")
-              = "[##_article_rep_category_##]"
+            a.no-underline(href="[##_article_rep_category_link_##]") [##_article_rep_category_##]
           else if ingType == "list"
-            span.no-effect= "[##_list_rep_category_##]"
+            span.no-effect [##_list_rep_category_##]
 
         if ingType == "article"
           s_rp_count: span.comments-count(data-count="[##_article_rep_rp_cnt_##]")
-            span.speak-only= "댓글 수 "
+            span.speak-only= "댓글 수"
+            | &nbsp;
             a.no-underline(href="#comments")
               span.count-text= "[##_article_rep_rp_cnt_##]개"
         else if ingType == "list"
           span.comments-count(data-count="[##_list_rep_rp_cnt_##]")
-            span.speak-only= "댓글 수 "
+            span.speak-only= "댓글 수"
+            | &nbsp;
             span.no-effect.count-text= "[##_list_rep_rp_cnt_##]개"
 
     .right.admin-tools
@@ -44,15 +44,15 @@ mixin meta(ingType = "article", onlyAdminTools = false)
       if ingType == "article"
         s_ad_div
           span.publishment-status
-            span.no-effect= "[##_s_ad_s1_label_##]"
+            span.no-effect [##_s_ad_s1_label_##]
           span.publishment-tools
-            a.no-effect.use-js(href="#" onclick="[##_s_ad_s2_onclick_##]" title="이 게시글을 [##_s_ad_s2_label_##].")= "발행 전환"
+            a.no-effect.use-js(href="#" onclick="[##_s_ad_s2_onclick_##]" title="이 게시글을 [##_s_ad_s2_label_##].") 발행 전환
             span.no-effect= " / "
-            a.no-effect.use-js(href="#" onclick="[##_s_ad_m_onclick_##]")= "수정"
+            a.no-effect.use-js(href="#" onclick="[##_s_ad_m_onclick_##]") 수정
             span.no-effect= " / "
-            a.no-effect.use-js(href="#" onclick="[##_s_ad_d_onclick_##]")= "삭제"
+            a.no-effect.use-js(href="#" onclick="[##_s_ad_d_onclick_##]") 삭제
 
 mixin body()
   section.ct-body
-    span.speak-only= "본문"
-    = "[##_article_rep_desc_##]"
+    span.speak-only 본문
+    | [##_article_rep_desc_##]

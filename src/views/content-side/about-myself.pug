@@ -2,7 +2,7 @@ s_sidebar_element
   // 내 정보
   section#about-myself.sp-container
 
-    div.title= "블로거 소개"
+    div.title 블로거 소개
 
     a.rss(href="[##_rss_url_##]" target="_blank" title="RSS 받아보기")
       include ../icons/rss-inner
@@ -13,7 +13,5 @@ s_sidebar_element
     div.info
       div.author
         include ../others/author
-      s_if_var_name-alter: div.alternative
-        | [##_var_name-alter_##]
-      div.description
-        | [##_desc_##]
+      s_if_var_name-alter: div.alternative [##_var_name-alter_##]
+      div.description [##_desc_##]

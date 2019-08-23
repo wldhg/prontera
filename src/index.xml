@@ -169,6 +169,13 @@
         <type>STRING</type>
         <option />
       </variable>
+      <variable>
+        <name>old-browser-notice</name>
+        <label>오래된 브라우저 안내글</label>
+        <description>오래된 브라우저로 접근 시 업데이트를 안내하는 글의 주소 (프로토콜 포함).</description>
+        <type>STRING</type>
+        <option />
+      </variable>
     </variablegroup>
   </variables>
 </skin>

@@ -1,13 +1,12 @@
 s_sidebar_element
   // 새로운 글
   section#recents.sp-container
-    div.title= "새로운 글"
+    div.title 새로운 글
     ul.list
       s_rctps_rep: li
         a(href="[##_rctps_rep_link_##]" target="_self")
-          span.item= "[##_rctps_rep_title_##]"
-          span.comments-count= "[##_rctps_rep_rp_cnt_##]"
+          span.item [##_rctps_rep_title_##]
+          span.comments-count [##_rctps_rep_rp_cnt_##]
           br
-          span.date.meta(data-tistory-time="[##_rctps_rep_date_##]:00+0900")
-            | [##_rctps_rep_date_##]
-          span.category.meta= "[##_rctps_rep_category_##]"
+          span.date.meta(data-tistory-time="[##_rctps_rep_date_##]:00+0900") [##_rctps_rep_date_##]
+          span.category.meta [##_rctps_rep_category_##]

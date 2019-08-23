@@ -2,15 +2,17 @@ footer.global
 
   s_if_var_footer-hosted
     div#hosted-on
-      span= "Hosted on TISTORY"
+      span Hosted on TISTORY
 
   div#designed-by(data-i-am="[##_blogger_##]")
-    a(href="https://github.com/widh/prontera" target="_blank")= "Prontera"
-    span= " designed by "
-    a(href="https://widh.me/" target="_blank")= "widh"
+    a(href="https://github.com/widh/prontera" target="_blank") Prontera
+    | &nbsp;
+    span designed by
+    | &nbsp;
+    a(href="https://widh.me/" target="_blank") widh
 
   div#copyright
-    = "© "
+    | ©&nbsp;
     s_if_var_url-home
       a(href="[##_var_url-home_##]" target="_blank")
         include ../others/author

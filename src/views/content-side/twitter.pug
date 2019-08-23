@@ -1,13 +1,13 @@
 s_sidebar_element
   // 트위터 타임라인
   section#twitter.sp-container
-    div.title= "트위터"
+    div.title 트위터
     s_if_var_twitter-id
       div.twitter-container
         include ../others/spinner
         a.twitter-timeline(
           href="https://twitter.com/[##_var_twitter-id_##]"
           data-chrome="transparent noheader nofooter noborders"
-        )= "[##_var_twitter-id_##]님의 트위터 바로가기"
+        ) [##_var_twitter-id_##]님의 트위터 바로가기
     s_not_var_twitter-id
-      span= "스킨 설정에서 트위터 ID를 등록해주세요."
+      span 스킨 설정에서 트위터 ID를 등록해주세요.

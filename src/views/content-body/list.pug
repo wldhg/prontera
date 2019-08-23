@@ -3,13 +3,13 @@ include ingredients
 //- Lists
 s_list: article(class="[##_list_style_##]")
 
-  //- Stylesheet of #index-counter is "global/others.scss".
+  //- Stylesheet of #index-counter is in "global/others.scss".
   div#index-counter
     span.conform: b
-      span.inner-conform= "[##_list_conform_##]"
-      = " "
-    b= " [##_list_count_##]개 "
-    | 있습니다.
+      span.inner-conform [##_list_conform_##]
+    | &nbsp;
+    b= "[##_list_count_##]개"
+    | &nbsp;있습니다.
 
   s_list_rep
     a.no-underline(href="[##_list_rep_link_##]" title="눌러서 이 글 전체 읽기")
@@ -19,5 +19,4 @@ s_list: article(class="[##_list_style_##]")
         header.ct-header
           +title("list")
           +meta("list")
-        section.ct-excerpt
-          | [##_list_rep_summary_##]
+        section.ct-excerpt [##_list_rep_summary_##]
