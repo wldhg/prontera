@@ -3,7 +3,7 @@
 #goto-top {
   z-index: 80;
   position: fixed;
-  right: $VIEWPORT_MARGIN_HORI;
+  left: $VIEWPORT_MARGIN_HORI;
   bottom: $VIEWPORT_MARGIN_VERT;
   display: none;
   border-spacing: 10px;
