@@ -146,7 +146,6 @@ main {
 
   #read-helper {
     position: relative;
-    visibility: hidden;
     text-align: right;
     width: $ASIDE_WIDTH;
     box-sizing: border-box;
@@ -156,11 +155,8 @@ main {
     margin-left: auto;
     display: none;
 
-    @include onWideView {
-      display: block;
-    }
     @include onWidePage {
-      visibility: visible;
+      display: block;
     }
 
     .sticky {
@@ -194,8 +190,11 @@ main {
       min-width: initial;
     }
     @include onWideView {
-      max-width: $CONTENT_WIDTH_MAX;
-      width: 50%;
+      max-width: calc(#{$CONTENT_WIDTH_MAX} + #{$ASIDE_WIDTH / 2});
+      width: $CONTENT_WIDTH + $ASIDE_WIDTH;
+      padding: 0 $CONTENT_PADDING 0 ($CONTENT_PADDING * 3);
+    }
+    @include onWidePage {
       margin-left: 0;
     }
     @media print {

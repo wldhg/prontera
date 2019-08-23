@@ -45,6 +45,7 @@
   opacity: .4;
   color: $COLOR_DEF;
   font-size: 0;
+  margin-top: 5px;
 
   .tag-anchors a {
     color: $COLOR_DEF;
@@ -353,10 +354,6 @@
     border-radius: $RADBOX_RADIUS / 2;
   }
 
-  figure img {
-    width: auto;
-  }
-
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -594,6 +591,23 @@
 
     @include onFocus {
       text-decoration: underline !important;
+    }
+  }
+
+  div.footnotes {
+    padding-top: 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--color-shadow);
+    border-radius: 1px;
+
+    &::before {
+      content: '각주';
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    li, a {
+      font-size: .875rem;
     }
   }
 }

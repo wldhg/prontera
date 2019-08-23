@@ -15,13 +15,27 @@ body[data-page-type="tt-body-category"],
 body[data-page-type="tt-body-search"] {
   #content article {
     padding: 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    max-height: 6457px;
+
+    @include onCompactView {
+      max-height: initial;
+      display: block;
+    }
+    @include onWideView {
+      max-height: 4305px;
+    }
 
     a {
       position: relative;
-      display: flex;
-      flex-flow: row-reverse;
-      margin: $CONTENT_PADDING 0;
-      width: 100%;
+      display: inline-flex;
+      flex-flow: column;
+      margin: $CONTENT_PADDING 8px;
+      width: calc(50% - 12px);
       overflow: hidden;
 
       @include radboxButton(color);
@@ -29,11 +43,17 @@ body[data-page-type="tt-body-search"] {
         color: $COLOR_DEF;
       }
       @include onCompactView {
-        flex-flow: column;
-      }
+        display: flex;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
 
-      &:first-of-type {
-        margin-top: 0;
+        &:first-of-type {
+          margin-top: 0;
+        }
+      }
+      @include onWideView {
+        width: calc(33% - 12px);
       }
 
       .ct-thumbnail,
@@ -42,30 +62,16 @@ body[data-page-type="tt-body-search"] {
       }
 
       .ct-thumbnail {
-        width: 205px;
-        min-width: 205px;
-        max-width: 205px;
+        height: 205px;
+        max-height: 205px;
+        min-height: 205px;
         overflow: hidden;
 
-        @include onCompactView {
-          height: 205px;
-          width: initial;
-          min-width: initial;
-          max-width: initial;
-          max-height: 205px;
-          min-height: 205px;
-        }
-
         img {
-          width: 205px;
-          height: 100%;
+          width: 100%;
+          height: 205px;
           object-fit: cover;
           background-color: $COLOR_GRAY_T;
-
-          @include onCompactView {
-            width: 100%;
-            height: 205px;
-          }
         }
       }
 

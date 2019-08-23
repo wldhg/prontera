@@ -34,14 +34,13 @@ header.global {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
+  display: block;
   justify-content: space-between;
   user-select: none;
 
   @include transit(top, background-color, box-shadow);
   @include onCompactView {
     height: comp($HEADER_HEIGHT) * 2;
-    display: block;
     padding: 0;
   }
 
@@ -140,18 +139,23 @@ header.global {
 
     //- Identity Text
     span {
-      font-size: $HEADER_INNER_HEIGHT / $LINE_HEIGHT;
+      margin-top: $HEADER_INNER_HEIGHT / $LINE_HEIGHT * .125 / 2 + .5px;
+      font-size: $HEADER_INNER_HEIGHT / $LINE_HEIGHT * .875;
       font-weight: $WEIGHT_BOLD;
 
       @include onCompactView {
-        font-size: comp($HEADER_INNER_HEIGHT / $LINE_HEIGHT);
+        font-size: comp($HEADER_INNER_HEIGHT / $LINE_HEIGHT * .875);
+        margin-top: comp($HEADER_INNER_HEIGHT / $LINE_HEIGHT * .125) / 2;
       }
     }
   }
 
   #menu {
+    margin-left: 50px;
+
     @include onCompactView {
       width: 100%;
+      margin-left: 0;
     }
 
     #open-sidebar {
@@ -306,6 +310,7 @@ header.global {
 
           a {
             color: $COLOR_HL_INV;
+            font-weight: 700;
 
             @include onCompactView {
               color: $COLOR_DEF;

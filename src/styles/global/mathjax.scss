@@ -1,7 +1,12 @@
 @import "../common";
 
 .mjx-chtml {
-  margin: 0 3px !important;
+  overflow: visible;
+
+  &:not(.MJXc-display) {
+    display: inline !important;
+    margin: 0 3px !important;
+  }
 
   &, span:not(.mjx-sub):not(.mjx-sup) {
     font-size: 100% !important;
