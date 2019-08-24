@@ -149,7 +149,7 @@ main {
     text-align: right;
     width: $ASIDE_WIDTH;
     box-sizing: border-box;
-    padding: 0 ($CONTENT_PADDING * 2.5) 0 ($CONTENT_PADDING * 3);
+    padding: 0 0 0 ($CONTENT_PADDING * 3);
     min-width: $ASIDE_WIDTH_MIN - $CONTENT_PADDING * 3;
     max-width: $ASIDE_WIDTH_MIN;
     margin-left: auto;
@@ -160,7 +160,8 @@ main {
     }
 
     .sticky {
-      position: sticky;
+      /* Temporary fixed. Intended: sticky */
+      position: fixed;
       top: $MAIN_TOP_PADDING;
     }
 
@@ -169,8 +170,103 @@ main {
       font-size: 1.3rem;
     }
 
-    #toc {
+    .topic {
+      margin-top: 10px;
+      display: block;
+    }
 
+    #toc {
+      & > ol {
+        margin-top: 10px !important;
+        max-height: calc(100vh - 320px - 3.3rem);
+        max-width: 345px;
+        overflow-y: auto;
+
+        & > li {
+          & > a {
+            padding-left: 35px;
+
+            &::before { width: 8px; }
+          }
+
+          & > ol > li {
+            & > a {
+              padding-left: 55px;
+
+              &::before { width: 16px; }
+            }
+
+            & > ol > li {
+              & > a {
+                padding-left: 75px;
+
+                &::before { width: 24px; }
+              }
+
+              & > ol > li {
+                & > a {
+                  padding-left: 95px;
+
+                  &::before { width: 32px; }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      ol {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      a {
+        margin-bottom: 6px;
+        font-size: 14px;
+        display: block;
+
+        @mixin highlight {
+          color: $COLOR_DEF;
+          text-decoration: none;
+
+          &::before {
+            opacity: .72;
+            background-color: $COLOR_HL;
+          }
+
+          span {
+            opacity: 1;
+          }
+        }
+
+        @include onFocus {
+          @include highlight;
+
+          span {
+            text-decoration: underline;
+          }
+        }
+
+        &.current {
+          @include highlight;
+        }
+
+        &::before {
+          content: '';
+          opacity: .36;
+          left: 0;
+          top: calc(50% - 1px);
+          position: absolute;
+          height: 2px;
+          display: block;
+          background-color: $COLOR_GRAY;
+        }
+
+        span {
+          opacity: .72;
+        }
+      }
     }
   }
 

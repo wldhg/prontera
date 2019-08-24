@@ -27,6 +27,7 @@ PtRegister(
       }
     };
 
+    w.onScroll = [];
     let wasVisible = !(w.pageOffset > w.scrollUpThreshold);
     window.onscroll = () => {
       w.pageOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -52,6 +53,13 @@ PtRegister(
         }
         wasVisible = false;
       }
+
+      // Process other scroll events
+      w.onScroll.forEach(fn => {
+        if (typeof fn === 'function') {
+          fn(w.pageOffset);
+        }
+      });
     };
 
     // Hash-related scripts are in "article-postprocessor".

@@ -44,7 +44,7 @@ header.global {
     padding: 0;
   }
 
-  &.hidden:not(.force-visible) {
+  &.hidden:not(.force-visible), &.force-hidden {
     top: -1 * ($HEADER_HEIGHT + 4px);
 
     @include onCompactView {
