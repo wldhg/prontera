@@ -43,7 +43,7 @@ PtRegister(
       const mainTop = document.querySelector('main').getBoundingClientRect().top;
       for (let i = 0; i < headers.length; i += 1) {
         headers[i].id = `ct-hid-${i}`;
-        scrollThresholds.push(headers[i].getBoundingClientRect().top - 240 - mainTop);
+        scrollThresholds.push(headers[i].getBoundingClientRect().top - 160 - mainTop);
 
         if (i === 0) {
           const firstTagI = Number.parseInt(headers[i].tagName.substring(1));

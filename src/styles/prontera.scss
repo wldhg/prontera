@@ -173,6 +173,8 @@ main {
     .topic {
       margin-top: 10px;
       display: block;
+      max-width: 305px;
+      word-break: keep-all;
     }
 
     #toc {
