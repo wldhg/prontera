@@ -5,17 +5,17 @@
 <p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (NOT-RELEASED)</p>
 
 <p align='center'>
-  <a href="https://github.com/widh/prontera/blob/master/package.json#L3">
-    <img alt='버전' src='https://img.shields.io/github/package-json/v/widh/prontera.svg?style=flat-square'>
+  <a href="https://github.com/wldh-g/prontera/blob/master/package.json#L3">
+    <img alt='버전' src='https://img.shields.io/github/package-json/v/wldh-g/prontera.svg?style=flat-square'>
   </a>
-  <a href="https://travis-ci.com/widh/prontera">
-    <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/widh/prontera.svg?style=flat-square'>
+  <a href="https://travis-ci.com/wldh-g/prontera">
+    <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/wldh-g/prontera.svg?style=flat-square'>
   </a>
-  <a href="https://widh.me/">
-    <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/yes/2019.svg?style=flat-square'>
+  <a>
+    <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/yes/2020.svg?style=flat-square'>
   </a>
   <a href="https://www.mozilla.org/en-US/MPL/2.0/">
-    <img alt='라이센스' src='https://img.shields.io/github/license/widh/prontera.svg?style=flat-square'>
+    <img alt='라이센스' src='https://img.shields.io/github/license/wldh-g/prontera.svg?style=flat-square'>
   </a>
 </p>
 
@@ -23,7 +23,7 @@
 
 ## 미리 보기
 
-<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/widh/prontera/master/src/preview.png" width="100%"></p>
+<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/wldh-g/prontera/master/src/preview.png" width="100%"></p>
 
 <hr>
 <br>
@@ -40,11 +40,11 @@
 |                             |                             | 페이지에서 사이드바 숨기기    | 자동 글 목차(toc) 생성       |
 
 <sup>1</sup> 2단 = TISTORY 카테고리 최대 깊이
-<sup>2</sup> 추가 기능 설명은 [위키](https://github.com/widh/prontera/wiki) 참조
+<sup>2</sup> 추가 기능 설명은 [위키](https://github.com/wldh-g/prontera/wiki) 참조
 
 #### 영원히 지원할 예정이 없는 기능
 
-+ TISTORY 구 에디터, 트랙백, 위치 로그, 미디어 로그, 리스트 스타일 `Deprecated by TISTORY`
++ TISTORY 구 에디터, 트랙백, 위치 로그, 미디어 로그 `Deprecated by TISTORY`
 + TISTORY 공지 기능
 + 댓글 및 방명록에 홈페이지 주소 입력하기
 + Internet Explorer에서의 정상적 렌더링 `'제대로 표시되지 않는다'는 안내 제공`
@@ -61,7 +61,7 @@
 #### 빌드 명령
 
 ```sh
-$ git clone https://github.com/widh/prontera.git --recurse-submodules; cd prontera
+$ git clone https://github.com/wldh-g/prontera.git --recurse-submodules; cd prontera
 $ yarn; yarn build
 $ cd out; ls
 ```
@@ -96,8 +96,8 @@ $ cd out; ls
 
 #### 이미지 라이센스 및 저작권
 
-+ `src/views/icons/padlock-locked.pug`: &copy; Widh.
-+ `src/views/icons/padlock-unlocked.pug`: &copy; Widh.
++ `src/views/icons/padlock-locked.pug`: &copy; Jio.
++ `src/views/icons/padlock-unlocked.pug`: &copy; Jio.
 + `src/views/icons/menu.pug`: [Online Web Fonts](http://www.onlinewebfonts.com), licensed by CC BY 3.0.
 
 이 밖에 Prontera 스킨이 포함하는 모든 이미지는 비상업적 이용이 허가된 `svg` 아이콘으로, 라이센스와 관련한 자세한 내용은 [SVG Repo](https://www.svgrepo.com/info/licensing)에서 설명합니다.

@@ -98,7 +98,7 @@ const mkdir = (resolve) => gulp.src('*.*', { read: false })
 
 // Create license file
 const license = (resolve) => {
-  const license = 'LICENSE : MPL-2.0\nAUTHOR  : Jio Gim (widh)\n\nSEE MORE INFORMATIONS AT https://github.com/widh/prontera';
+  const license = 'LICENSE : MPL-2.0\nAUTHOR  : Jio Gim (wldh-g)\n\nSEE MORE INFORMATIONS AT https://github.com/wldh-g/prontera';
   fs.writeFile('./out/LICENSE', license, (e) => {
     if (!e) { resolve(); } else { console.debug(e); }
   });

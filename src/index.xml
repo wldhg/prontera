@@ -3,13 +3,13 @@
   <information>
     <name>Prontera</name>
     <version>1.0.0</version>
-    <description>넘치지 않으면서 적당하게 알맞은 스킨입니다.</description>
+    <description>넘치지 않으면서 적당하게 알맞은 스킨입니다. 스킨 설정 관련 자세한 정보는 https://github.com/wldh-g/prontera/wiki 를 참조하세요.</description>
     <license>이 스킨은 MPL 2.0 라이선스를 따릅니다.</license>
   </information>
   <author>
-    <name>Widh</name>
-    <homepage>https://widh.me/</homepage>
-    <email>jio@widh.me</email>
+    <name>Jio</name>
+    <homepage>https://www.wldh.org/</homepage>
+    <email>jio@wldh.org</email>
   </author>
   <default>
     <recentEntries>4</recentEntries>
