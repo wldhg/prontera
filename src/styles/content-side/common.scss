@@ -36,7 +36,7 @@
 
     &:empty {
       &::before {
-        content: "등록된 내용이 없습니다.";
+        content: "등록된 내용이 없어요.";
         color: $COLOR_GRAY;
         margin-left: 18px;
       }
@@ -56,6 +56,7 @@
         background-color: $COLOR_GRAY_T;
         opacity: 1;
         text-decoration: none;
+        color: $COLOR_DEF;
 
         .meta {
           color: $COLOR_GRAY;

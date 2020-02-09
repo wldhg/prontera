@@ -9,8 +9,20 @@
 // tt-body-search = list of articles which are results of search
 
 // Article list type - gallery
-body[data-page-type="tt-body-index"],
+@mixin list-gallery {
+
+}
+
+body[data-page-type="tt-body-search"] {
+  #content article.gallery {
+    @include list-gallery;
+  }
+}
+
 body[data-page-type="tt-body-tag"],
 body[data-page-type="tt-body-category"],
-body[data-page-type="tt-body-search"] {
+body[data-page-type="tt-body-index"] {
+  #content article.idx-gallery {
+    @include list-gallery;
+  }
 }

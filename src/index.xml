@@ -23,7 +23,7 @@
     <lengthOfRecentComment>200</lengthOfRecentComment>
     <lengthOfLink>30</lengthOfLink>
     <entriesOnPage>21</entriesOnPage>
-    <entriesOnList>7</entriesOnList>
+    <entriesOnList>21</entriesOnList>
     <showListOnHome>1</showListOnHome>
     <showListOnCategory>1</showListOnCategory>
     <tree>
@@ -65,6 +65,27 @@
           {"name": "dark", "label": "검은색", "value": "dark"}
         ]</option>
         <default>light</default>
+      </variable>
+      <variable>
+        <name>color-hl-alter</name>
+        <label>주 색상 보조색</label>
+        <description>어두운/밝은 배경의 콘텐츠 영역에서 주 색상이 잘 안보일 경우 사용하는 보조 색상. 잘 보이는 경우에는 주 색상과 동일하게 설정.</description>
+        <type>COLOR</type>
+        <option />
+        <default>#33bbaa</default>
+      </variable>
+    </variablegroup>
+    <variablegroup name="메인 페이지 설정">
+      <variable>
+        <name>index-style</name>
+        <label>페이지 스타일</label>
+        <description>메인 인덱스 페이지의 리스트 스타일.</description>
+        <type>SELECT</type>
+        <option>[
+          {"name": "idx-excerpt", "label": "기본 글 목록", "value": "idx-excerpt"},
+          {"name": "idx-gallery", "label": "썸네일 목록", "value": "idx-gallery"}
+        ]</option>
+        <default>idx-excerpt</default>
       </variable>
     </variablegroup>
     <variablegroup name="상단 헤더 설정">

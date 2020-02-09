@@ -2,19 +2,6 @@
 
 $GLOBAL_BAR_SPACING: 7px;
 
-#copy-helper {
-  z-index: -1;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  position: fixed;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  top: 0;
-  left: 0;
-}
-
 #global-notice,
 #index-counter {
   padding: (17px - $GLOBAL_BAR_SPACING) ($CONTENT_PADDING - $GLOBAL_BAR_SPACING) (17px - $GLOBAL_BAR_SPACING);
@@ -78,15 +65,13 @@ $GLOBAL_BAR_SPACING: 7px;
 
   .conform::after {
     @at-root body[data-page-type="tt-body-tag"] & {
-      content: '태그가 달린 게시글이';
+      content: ' 태그가 달린 게시글이';
     }
     @at-root body[data-page-type="tt-body-category"] & {
-      content: '카테고리에 속하는 게시글이';
+      content: ' 카테고리에 속하는 게시글이';
     }
     @at-root body[data-page-type="tt-body-search"] & {
-      content: '의 검색 결과가';
+      content: ' 의 검색 결과가';
     }
   }
 }
-
-#isSecret, label[for="isSecret"] { display: none; }

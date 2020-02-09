@@ -10,14 +10,26 @@
 
 // Article post type
 body[data-page-type="tt-body-page"] {
-  #content article {
-    display: block;
-    box-sizing: border-box;
-    padding: 0 ($LINE_HEIGHT * $CONTENT_PADDING);
+  #content {
+    article {
+      display: block;
+      box-sizing: border-box;
 
-    @include radbox;
-    @include onCompactView {
-      padding: 0 $CONTENT_PADDING;
+      @media not print {
+        padding: 0 ($LINE_HEIGHT * $CONTENT_PADDING);
+
+        @include radbox;
+        @include onCompactView {
+          padding: 0 $CONTENT_PADDING;
+        }
+      }
+      @media print {
+        padding: 0 !important;
+      }
+    }
+
+    @include onWideView {
+      max-width: $CONTENT_WIDTH_MAX !important;
     }
   }
 }

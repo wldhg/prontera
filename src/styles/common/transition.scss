@@ -1,4 +1,6 @@
-$TRANSIT_PROPERTY: 0.32s ease-in-out;
+$TRANSIT_TIME: 0.32s;
+$TRANSIT_FUNCTION: ease-in-out;
+$TRANSIT_PROPERTY: #{$TRANSIT_TIME} #{$TRANSIT_FUNCTION};
 
 @function getTransitProperty($props) {
   $tsFullText: "";

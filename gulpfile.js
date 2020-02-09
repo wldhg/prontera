@@ -8,6 +8,7 @@ const zip = require('adm-zip');
 const gRename = require('gulp-rename');
 const gConcat = require('gulp-concat');
 const gClean = require('gulp-clean');
+const gHeader = require('gulp-header');
 
 const gSass = require('gulp-sass');
 const gPug = require('gulp-pug');
@@ -25,7 +26,14 @@ const buildSass = () => gulp.src('./src/styles/prontera.scss')
   .pipe(gSass({ outputStyle: 'compressed' }))
   .pipe(gAutoPrefixer())
   .pipe(gRename('style.css'))
+  .pipe(gHeader('@charset "utf-8";\n'))
   .pipe(gulp.dest('./out'));
+
+// Build script - raw scripts
+const buildJsRaw = () => gulp.src([
+  './src/scripts/*.js',
+  '!./src/scripts/onload.js',
+]).pipe(gulp.dest('./out'));
 
 // Build script - onload
 const buildJsOnload = () => gulp.src('./src/scripts/onload.js')
@@ -108,6 +116,7 @@ const license = (resolve) => {
 const build = (resolve) => {
   try {
     buildSass();
+    buildJsRaw();
     buildJsOnload();
     buildJsFunctions();
     buildPug();
@@ -129,6 +138,10 @@ const watch = () => {
       './src/styles/prontera.scss',
     ], {}, buildSass);
     gulp.watch('./src/scripts/onload.js', {}, buildJsOnload);
+    gulp.watch([
+      './src/scripts/*.js',
+      '!./src/scripts/onload.js',
+    ], {}, buildJsRaw);
     gulp.watch('./src/scripts/functions/*.js', {}, buildJsFunctions);
     gulp.watch([
       './src/views/*.pug',
@@ -136,7 +149,8 @@ const watch = () => {
       './src/views/content-body/*.pug',
       './src/views/content-side/*.pug',
       './src/views/global/*.pug',
-      './src/views/others/*.pug'
+      './src/views/scripts/*.pug',
+      './src/views/others/*.pug',
     ], {}, buildPug);
     gulp.watch('./src/images/*.svg', {}, buildSvg);
     gulp.watch('./src/index.xml', {}, buildIndexXML);

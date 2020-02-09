@@ -92,11 +92,11 @@ $SEARCH_MARGIN_RIGHT: max(20px - 2 * $SIDE_LINE_WIDTH, 0px);
         $SEARCH_INPUT_MARGIN;
       line-height: $SEARCH_HEIGHT;
       vertical-align: middle;
-      opacity: 0.6;
+      opacity: 0.8;
 
       @include transit(caret-color, color, opacity);
       @include onFocus {
-        opacity: .8;
+        opacity: 1;
       }
     }
 

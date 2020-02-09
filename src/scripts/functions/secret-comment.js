@@ -4,13 +4,13 @@ PtRegister(
   (w, c, end) => {
 
     w.checkBox = document.getElementById("isSecret");
-    w.label = document.querySelector(".wc-personal label");
 
     w.toggle = w.checkBox ? function (cb) {
+      const label = document.querySelector(".ct-reply-author label");
       if (cb.checked) {
-        w.label.classList.add("locked");
+        label.classList.add("locked");
       } else {
-        w.label.classList.remove("locked");
+        label.classList.remove("locked");
       }
     } : function () { };
 

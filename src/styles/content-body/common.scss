@@ -40,20 +40,29 @@
   }
 }
 
+.ct-subtitle {
+  font-size: 1.6rem;
+  color: $COLOR_GRAY;
+  font-weight: $WEIGHT_NORMAL;
+}
+
 .ct-tags {
   display: block;
-  opacity: .4;
-  color: $COLOR_DEF;
+  color: $COLOR_GRAY;
   font-size: 0;
   margin-top: 5px;
 
   .tag-anchors a {
-    color: $COLOR_DEF;
+    color: $COLOR_GRAY;
     font-size: 1.3rem;
     margin-right: .333em;
 
     &::before {
       content: '#';
+    }
+
+    &:hover {
+      color: $COLOR_HL;
     }
   }
 }
@@ -143,6 +152,10 @@
     float: right;
     text-align: right;
 
+    @media print {
+      display: none;
+    }
+
     & > span {
       display: block;
 
@@ -196,14 +209,14 @@
 
   h4 {
     font-size: 1.12rem;
+    color: var(--color-hl);
   }
 
   h5, blockquote {
     font-size: 1.05rem;
   }
 
-  h6, a, abbr, address, caption, code, del, i, ins, li, p, pre, q, ruby, s, samp,
-    span, td, u, var, b, cite, strong, th {
+  h6 {
     font-size: 1rem;
   }
 
@@ -211,25 +224,23 @@
     font-size: 0.85rem;
   }
 
-  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, li, p, pre,
-    q, rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var {
-    font-weight: $WEIGHT_NORMAL;
-  }
-
   b, cite, h1, h2, h3, h4, h5, h6, kbd, strong, th {
-    font-weight: $WEIGHT_BOLD;
+    &, & * {
+      font-weight: $WEIGHT_BOLD;
+    }
   }
 
-  a, abbr, address, blockquote, caption, code, del, figcaption, i, ins, pre, q,
-    rp, rt, ruby, s, samp, small, span, sub, sup, td, u, var, b, cite, h1, h2, h3,
-    h4, h5, h6, kbd, strong, th {
-    line-height: inherit;
-    word-wrap: break-word;
+  p > span {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, li, span {
+    word-break: break-all;
   }
 
   p, li {
     line-height: 1.6;
-    word-wrap: break-word;
   }
 
   a {
@@ -251,7 +262,7 @@
   }
 
   caption, figcaption, cite {
-    color: $COLOR_GRAY;
+    opacity: $COLOR_OFF_O;
     font-style: italic;
     margin: 0 0.6em;
   }
@@ -263,12 +274,17 @@
   blockquote {
     margin-right: 3rem;
     margin-left: 2rem;
+    padding-left: 0;
     padding-right: 2.1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-right: 1px solid rgba(140, 140, 140, 0.2);
     width: max-content;
     max-width: calc(100% - 9.1rem);
+    background-color: transparent;
+	  border-left: none;
+	  border-top: none;
+	  border-bottom: none;
 
     &::after {
       height: 1.84rem;
@@ -314,7 +330,6 @@
   }
 
   code, pre, samp {
-    font-family: $FONT_FAMILY_MONOSPACE, $FONT_FAMILY_DEFAULT;
     padding: 0px 4px 1px;
     margin: 0px 1px;
     color: #586377;
@@ -323,6 +338,10 @@
     @include radboxH(color);
     @include onDark {
       color: #b2ccd6;
+    }
+
+    &, * {
+      font-family: $FONT_FAMILY_MONOSPACE;
     }
   }
 
@@ -333,10 +352,13 @@
     code {
       background-color: transparent;
       box-shadow: none;
-      padding: 0;
+      padding: 0 0 8px 0;
       margin: 0;
       border-radius: 0;
       color: $COLOR_DEF;
+      width: 100%;
+      display: block;
+      overflow-x: auto;
 
       @include transit(color);
       @include applyHighlightJS($COLORSET_HLJS_LIGHT);
@@ -488,10 +510,22 @@
       opacity: 1;
     }
 
-    &.failed::after {
-      background-color: $COLOR_HL;
-      color: $COLOR_HL_INV;
+    &.copyerr::after {
+      background-color: #ffbb33;
+      color: $COLOR_DARK;
       content: "복사 실패";
+    }
+
+    &.noperm::after {
+      background-color: #ffbb33;
+      color: $COLOR_DARK;
+      content: "권한 없음";
+    }
+
+    &.permerr::after {
+      background-color: #ed2939;
+      color: $COLOR_LIGHT;
+      content: "권한 오류";
     }
 
     &.visible::after {
@@ -583,13 +617,19 @@
 
   .container_postbtn {
     padding-bottom: 0;
+
+    .postbtn_like {
+      @media print {
+        display: none;
+      }
+    }
   }
 
   a[id^="footnote_link"] {
     color: $COLOR_HL !important;
     text-decoration: none !important;
 
-    @include onFocus {
+    &:focus, &:active {
       text-decoration: underline !important;
     }
   }
@@ -628,6 +668,175 @@
 
         @include radboxButtonH;
         @include contentOpener;
+      }
+    }
+  }
+}
+
+.ct-reply-list {
+  & > ol, & > div > ol {
+    margin: 10px 0;
+    padding: 0;
+
+    li {
+      padding: 10px;
+      list-style: none;
+      background: rgba(200, 200, 200, .2) !important;
+      border-radius: $RADBOX_RADIUS;
+
+      &:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+
+      &:target {
+        animation: borderHighlight 1s infinite ease-in-out;
+      }
+
+      a {
+        color: var(--color-def);
+      }
+
+      ol {
+        margin-top: 10px;
+        padding-left: 2.5rem;
+
+        li:not(:last-of-type) {
+          margin-bottom: 6px;
+        }
+      }
+
+      p {
+        padding-left: 1em;
+
+        &:first-of-type {
+          margin-top: 5px;
+        }
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      &.rp_admin > .ct-reply-name::before,
+      &.guest_admin > .ct-reply-name::before {
+        content: '';
+        background: url("./images/star.svg") no-repeat;
+        width: .8rem;
+        height: .8rem;
+        display: inline-block;
+        animation: rotateZ 30s linear infinite;
+      }
+
+      .ct-reply-name {
+        margin-right: .28rem;
+        font-weight: 700;
+      }
+      .ct-reply-date {
+        color: #999;
+      }
+      .ct-reply-control {
+        float: right;
+
+        a { margin-left: .334em; }
+        a.address, a.modify { color: #999; }
+        a.write { color: var(--color-hl); }
+      }
+    }
+  }
+}
+
+.ct-reply-write {
+  @media print {
+    display: none;
+  }
+
+  textarea {
+    resize: vertical;
+    width: 100%;
+    min-height: 80px;
+    border-radius: $RADBOX_RADIUS;
+  }
+
+  textarea, input, label {
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: transparent;
+    color: var(--color-def);
+    border: 1px solid rgba(180, 180, 180, .3);
+
+    &:not([type="submit"]) {
+      margin-right: .3em;
+    }
+
+    &:focus, &:hover {
+      border-color: var(--color-hl);
+    }
+  }
+
+  .ct-reply-author {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+
+    label:first-child, input[type="submit"]:first-child {
+      margin-left: auto;
+    }
+
+    label {
+      width: 37px;
+      height: 37px;
+      padding: 3px;
+      cursor: pointer;
+
+      svg {
+        width: 23px;
+        height: 23px;
+        padding: 3px;
+      }
+
+      rect, path {
+        @include transit(fill);
+      }
+
+      &.locked {
+        background-color: var(--color-hl);
+
+        .icon.padlock-unlocked { display: none; }
+        rect, path { fill: var(--color-hl-inv) !important; }
+      }
+      &:not(.locked) {
+        .icon.padlock-locked { display: none; }
+
+        &:hover {
+          .icon.padlock-unlocked { display: none; }
+          .icon.padlock-locked { display: inherit; }
+        }
+        &:hover, &:focus {
+          rect, path { fill: var(--color-hl) !important; }
+        }
+
+        rect, path { fill: currentColor !important; }
+      }
+    }
+    input[type="checkbox"] { display: none; }
+
+    input[type="text"] { width: 50%; }
+    input[type="password"] { width: calc(35% - .9em - 37px); }
+    input[type="submit"] {
+      transition: background-color .32s ease-in-out, color .32s ease-in-out;
+      width: 15%;
+      min-width: calc(4.34em + 16px);
+      cursor: pointer;
+      border: none;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      background-color: rgba(180, 180, 180, .3);
+      color: var(--color-def);
+
+      &:hover, &:focus {
+        transition: none;
+        color: var(--color-hl-inv) !important;
+        background-color: var(--color-hl);
       }
     }
   }

@@ -1,5 +1,7 @@
 //- Must be work on all browsers
+//- For now, dummy!
 script.
+  "use strict";
   try {
     var oldBrowserNoticeURL = '[##_var_old-browser-notice_##]'
     (function () {
@@ -24,7 +26,7 @@ script.
   } catch (jsfde) {
     console.error(jsfde);
     document.body.innerHTML =
-      '<div id="old-browser-notice"><span>이 웹 브라우저는 현대 웹 기술을 지원하지 않기 때문에, 이 블로그는 이 브라우저에서 온전하게 보이거나 작동하지 않습니다.</span>'
-      + (oldBrowserNoticeURL.length > 1 ? '<a href="' + oldBrowserNoticeURL + '">블로그를 제대로 보고 싶어요.</a>' : '')
+      '<div id="old-browser-notice"><span>이 웹 브라우저는 현대 웹 기술을 지원하지 않기 때문에, 이 블로그는 이 브라우저에서 온전하게 보이거나 작동하지 않아요.</span>'
+      + (oldBrowserNoticeURL.length > 1 ? '<a href="' + oldBrowserNoticeURL + '">블로그를 제대로 보려면?</a>' : '')
       + '</div>' + document.body.innerHTML;
   }

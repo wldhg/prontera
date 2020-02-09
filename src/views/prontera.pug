@@ -9,68 +9,13 @@ html(lang="ko")
     meta(name="theme-color" content="#ffffff")
     meta(name="author" content="[##_blogger_##]")
 
-    script.
-      "use strict";
+    include scripts/modarkbul
+    include scripts/ie-detection
+    include scripts/pt-config
+    include scripts/mathjax
+    //- include scripts/feature-detection
 
-      window.PtAgent = navigator.userAgent.toLowerCase();
-      if (
-        (navigator.appName === "Netscape" && window.PtAgent.indexOf("trident") !== -1)
-        || window.PtAgent.indexOf("msie") !== -1
-      ) {
-        if (document.cookie.indexOf("stillie") === -1) {
-          var wannaUseIE = window.confirm("Internet Explorer는 공식적으로 폐기된 브라우저입니다.\n따라서 이 블로그는 Internet Explorer에서 제대로 보이거나 작동하지 않습니다.\n그래도 Internet Explorer로 방문하시겠습니까?");
-          if (wannaUseIE === true) {
-            document.cookie = "stillie=true";
-          } else {
-            alert("이전 페이지로 돌아갑니다.");
-            history.back();
-          }
-        }
-      }
-
-      (function () {
-        if (
-          (!document.cookie.includes("modarkbul") && window.matchMedia("(prefers-color-scheme: dark)").matches)
-          || (document.cookie.includes("modarkbul=dark"))
-        ) {
-          document.documentElement.style.setProperty("background-color", "#000000");
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.style.setProperty("background-color", "#faf9f8");
-        }
-      })();
-
-      window.PtConfig = {
-        modarkbulDomain: '[##_var_cookie-domain_##]',
-        hlColor: '[##_var_color-hl_##]',
-        ulColor: '[##_var_color-ul_##]',
-        pageType: '[##_body_id_##]',
-      };
-      window.PtQueue = {};
-      window.PtLateQueue = {};
-
-      window.PtRegister = function (name, fn, lazy) {
-        if (window.onload && window.PtLaunched) {
-          window.PtLateQueue[name] = fn;
-          window.PtStore[name] = {};
-          try {
-            fn(window.PtStore[name], window.PtConfig, function () {
-              console.groupCollapsed('Result — ' + name);
-              Array.from(arguments).forEach(console.log);
-              console.groupEnd();
-            });
-          } catch (e) {
-            console.debug(e);
-          }
-        } else {
-          (lazy ? PtLateQueue : PtQueue)[name] = fn;
-        }
-      };
-
-      if (window.PtConfig.modarkbulDomain.length > 1) {
-        document.domain = window.PtConfig.modarkbulDomain;
-      }
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js")
+    script(src="./images/highlight.min.js" defer)
     script(src="./images/onload.js" async)
     script(src="./images/functions.js" defer)
 
@@ -78,7 +23,8 @@ html(lang="ko")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&display=swap")
     link(rel="stylesheet" href="./style.css")
     style(type="text/css").
-      * { --color-hl: [##_var_color-hl_##]; --color-hl-inv: var(--color-[##_var_color-hl-inv_##]); }
+      * { --color-hl: [##_var_color-hl_##]; --color-hl-inv: var(--color-[##_var_color-hl-inv_##]); --color-hl-alter: [##_var_color-hl-alter_##]; }
+      a, p, p *, span, span *, h1, h2, h3, h4, h5, h6 { --color-hl: [##_var_color-hl-alter_##]; }
 
     title= "[##_page_title_##]"
     link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")
@@ -125,5 +71,3 @@ html(lang="ko")
     include global/footer
 
     include global/goto-top
-
-    textarea#copy-helper

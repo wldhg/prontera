@@ -3,9 +3,10 @@ PtRegister(
   (w, c, end) => {
 
     // Time formatting
-    const timeTargets = document.querySelectorAll('[data-rfc-time]');
-    const tsTimeTargets = document.querySelectorAll('[data-tistory-time]');
-    const formatTime = () => {
+    w.formatTime = () => {
+      const timeTargets = document.querySelectorAll('[data-rfc-time]');
+      const tsTimeTargets = document.querySelectorAll('[data-tistory-time]');
+
       const now = new Date();
       const nowMS = now.getTime();
 
@@ -49,19 +50,44 @@ PtRegister(
           timeString += `${minutes}분 전`;
         }
 
-        target.innerHTML = `<span class="no-effect">${timeString}</span>`;
+        const innerTarget = target.querySelector('span.no-effect');
+        if (innerTarget && (innerTarget.childNodes[0] instanceof Text)) {
+          innerTarget.childNodes[0].data = timeString + ' ';
+        } else {
+          target.innerHTML = `<span class="no-effect">${timeString}</span>`;
+        }
 
       };
 
       timeTargets.forEach(timeReformatter);
       tsTimeTargets.forEach((tsTimeTarget) => {
-        tsTimeTarget.dataset.rfcTime = tsTimeTarget.dataset.tistoryTime.replace(' ', 'T').replace(/\./g, '-');
+        let canReformatted = false;
+        let tistoryTime = '';
 
-        timeReformatter(tsTimeTarget, false);
+        if (tsTimeTarget.dataset.tistoryTime="PARSE_NEEDED") {
+          const innerTarget = tsTimeTarget.querySelector('span.no-effect');
+          if (tsTimeTarget.dataset.rfcTime && tsTimeTarget.dataset.rfcTime.length > 0) {
+            canReformatted = true;
+          } else if (innerTarget && (innerTarget.childNodes[0] instanceof Text)) {
+            tistoryTime = innerTarget.childNodes[0].data.trim();
+            canReformatted = true;
+          }
+        } else {
+          tistoryTime = tsTimeTarget.dataset.tistoryTime;
+          canReformatted = true;
+        }
+
+        if (tistoryTime.length > 0) {
+          tsTimeTarget.dataset.rfcTime = tistoryTime.replace(' ', 'T').replace(/\./g, '-');
+        }
+
+        if (canReformatted) {
+          timeReformatter(tsTimeTarget, false);
+        }
       });
     };
-    formatTime();
-    window.setInterval(formatTime, 60000);
+    w.formatTime();
+    window.setInterval(w.formatTime, 60000);
 
     // Comment counting
     const commentTargets = document.querySelectorAll('.comments-count[data-count]');
@@ -85,7 +111,7 @@ PtRegister(
       }
     });
 
-    end(timeTargets, tsTimeTargets, commentTargets, cgTargets);
+    end(commentTargets, cgTargets);
 
   },
 )

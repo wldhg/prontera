@@ -9,107 +9,158 @@
 // tt-body-search = list of articles which are results of search
 
 // Article list type - excerpt
-body[data-page-type="tt-body-index"],
-body[data-page-type="tt-body-tag"],
-body[data-page-type="tt-body-category"],
-body[data-page-type="tt-body-search"] {
-  #content article {
-    padding: 0;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: hidden;
-    max-height: 6457px;
+@mixin list-excerpt {
+  padding: 0;
+  position: relative;
 
+  @include onCompactView {
+    max-height: initial;
+    display: block;
+  }
+
+  &.arranged a {
+    position: absolute !important;
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+    margin: $CONTENT_PADDING 8px;
+    width: calc(50% - 16px);
+    vertical-align: top;
+    overflow: hidden;
+
+    @include radboxButton(color);
+    @include onFocus {
+      color: $COLOR_DEF;
+    }
     @include onCompactView {
-      max-height: initial;
-      display: block;
+      display: flex;
+      width: calc(100% - 4px);
+      margin-left: 2px;
+      margin-right: 2px;
+      flex-flow: row-reverse;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    @include onSemiCompactView {
+      flex-flow: column;
     }
     @include onWideView {
-      max-height: 4305px;
+      width: calc(33% - 16px);
     }
 
-    a {
-      position: relative;
-      display: inline-flex;
-      flex-flow: column;
-      margin: $CONTENT_PADDING 8px;
-      width: calc(50% - 12px);
+    .ct-thumbnail,
+    .ct-summary {
+      display: block;
+    }
+
+    .ct-thumbnail {
+      height: 205px;
+      max-height: 205px;
+      min-height: 205px;
       overflow: hidden;
 
-      @include radboxButton(color);
-      @include onFocus {
-        color: $COLOR_DEF;
-      }
       @include onCompactView {
-        display: flex;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+        width: 305px;
+        max-width: 305px;
+        min-width: 305px;
+        height: initial;
+        max-height: initial;
+        min-height: initial;
 
-        &:first-of-type {
-          margin-top: 0;
+        img {
+          width: 305px !important;
+          height: 100% !important;
         }
       }
-      @include onWideView {
-        width: calc(33% - 12px);
-      }
-
-      .ct-thumbnail,
-      .ct-summary {
-        display: block;
-      }
-
-      .ct-thumbnail {
+      @include onSemiCompactView {
+        width: initial;
+        max-width: initial;
+        min-width: initial;
         height: 205px;
         max-height: 205px;
         min-height: 205px;
-        overflow: hidden;
 
         img {
-          width: 100%;
-          height: 205px;
-          object-fit: cover;
-          background-color: $COLOR_GRAY_T;
+          width: 100% !important;
+          height: 205px !important;
         }
       }
 
-      .ct-summary {
-        padding: $CONTENT_PADDING;
+      img {
         width: 100%;
-        box-sizing: border-box;
+        height: 205px;
+        object-fit: cover;
+        background-color: $COLOR_GRAY_T;
+      }
+    }
 
-        .ct-header {
-          border: none;
-          padding-bottom: 0;
-          margin-bottom: 0;
+    .ct-thumbnail+.ct-summary {
+      @include onCompactView {
+        width: calc(100% - 305px) !important;
+      }
+      @include onSemiCompactView {
+        width: 100% !important;
+      }
+    }
+
+    .ct-summary {
+      padding: $CONTENT_PADDING;
+      width: 100%;
+      box-sizing: border-box;
+
+      .ct-header {
+        border: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .ct-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 2.1rem;
+
+        img {
+          display: none;
         }
+      }
 
-        .ct-title {
-          margin-top: 0;
+      .ct-meta {
+        .date, .category, .comments-count {
           margin-bottom: 1rem;
-          font-size: 2.1rem;
-
-          img {
-            display: none;
-          }
         }
+      }
 
-        .ct-meta {
-          .date, .category, .comments-count {
-            margin-bottom: 1rem;
-          }
-        }
+      .ct-excerpt {
+        color: $COLOR_DEF_H;
+        opacity: 0.75;
+        font-size: .9rem;
+        max-height: $LINE_HEIGHT * 0.9 * $FONT_SIZE * 8;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
-        .ct-excerpt {
-          color: $COLOR_DEF_H;
-          opacity: 0.8;
-          font-size: .9rem;
-
-          @include transit(color);
+        @include transit(color);
+        @include onCompactView {
+          max-height: $LINE_HEIGHT * 0.9 * $FONT_SIZE * 5 !important;
         }
       }
     }
+  }
+}
+
+body[data-page-type="tt-body-category"] {
+  #content article.excerpt {
+    @include list-excerpt;
+  }
+}
+
+body[data-page-type="tt-body-index"],
+body[data-page-type="tt-body-search"],
+body[data-page-type="tt-body-tag"] {
+  #content article.idx-excerpt {
+    @include list-excerpt;
   }
 }

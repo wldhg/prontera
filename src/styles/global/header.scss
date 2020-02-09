@@ -503,7 +503,7 @@ header.global {
       .icon {
         width: $MDB_HEIGHT;
         height: $MDB_HEIGHT;
-        margin-top: $MDB_TOP_FIX;
+        margin-top: $MDB_TOP_FIX * 2;
         opacity: 0.8;
 
         @include transit(opacity);

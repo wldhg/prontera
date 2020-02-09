@@ -80,7 +80,7 @@ $ cd out; ls
 
 깔끔한 화면 표시를 위해 아래의 가이드 라인을 권장합니다.
 
-+ 메인 메뉴의 수: 4개
++ 메인 메뉴의 수: 최대 4개
 + 블로그 이름: 영문 9글자 이내 혹은 한글 5글자 이내
 + 사이드바 순서: 제일 위에 '내 정보', 그 다음으로 '검색', 이후는 자유롭게 설정
 
@@ -90,9 +90,15 @@ $ cd out; ls
 
 이 프로젝트는 *Mozilla Public License 2.0*을 따릅니다.
 
-스킨 디자인의 토대는 [MIT License](https://github.com/AngryPowman/hexo-theme-prontera/blob/master/LICENSE)를 기반으로 하는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)입니다.
+스킨 디자인에 처음 영감을 준 프로젝트는 [MIT License](https://github.com/AngryPowman/hexo-theme-prontera/blob/master/LICENSE)를 기반으로 하는 [AngryPowman](https://github.com/AngryPowman)의 [Prontera](https://github.com/AngryPowman/hexo-theme-prontera)입니다.
 
 스피너(불러오기 애니메이션)의 디자인은 [MIT License](https://github.com/MatejKustec/SpinThatShit/blob/master/LICENSE)를 기반으로 하는 [Matej Kustec](https://github.com/MatejKustec)의 [SpinThatShit](https://github.com/MatejKustec/SpinThatShit) 프로젝트를 이용하였습니다.
+
+코드 하이라이트 기능은 [BSD 3-Clause License](https://github.com/highlightjs/highlight.js/blob/master/LICENSE)를 기반으로 하는 [highlight.js](https://highlightjs.org/)를 이용하여 구현하였습니다.
+
+수식 변환 기능은 [Apache 2.0 License](https://github.com/mathjax/MathJax-src/blob/master/LICENSE)를 기반으로 하는 [MathJax](https://www.mathjax.org/)를 이용하여 구현하였습니다.
+
+개발 보조 도구와 그 라이센스는 [yarn.lock](/yarn.lock) 파일을 참조하세요.
 
 #### 이미지 라이센스 및 저작권
 

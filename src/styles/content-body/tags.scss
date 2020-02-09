@@ -1,0 +1,50 @@
+@import "../common";
+
+// ? About body_id
+// tt-body-index = main page
+// tt-body-page = an article, a page
+// tt-body-guestbook = guestbook page
+// tt-body-tag = tag page, list of articles in specified tag
+// tt-body-category = list of articles in specified category
+// tt-body-search = list of articles which are results of search
+
+// Guestbook type
+body[data-page-type="tt-body-tag"] {
+  ul.tags-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+
+    li {
+      display: inline-block;
+      margin: 5px 20px;
+
+      a {
+        color: var(--color-hl);
+
+        @include transit(color);
+
+        &:hover,
+        &:focus {
+          color: var(--color-hl);
+        }
+
+        &.cloud1 {
+          font-size: 2.1rem;
+        }
+        &.cloud2 {
+          font-size: 1.9rem;
+        }
+        &.cloud3 {
+          font-size: 1.5rem;
+        }
+        &.cloud4 {
+          font-size: 1.3rem;
+        }
+        &.cloud5 {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}

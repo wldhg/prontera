@@ -30,13 +30,11 @@ mixin meta(ingType = "article", onlyAdminTools = false)
         if ingType == "article"
           s_rp_count: span.comments-count(data-count="[##_article_rep_rp_cnt_##]")
             span.speak-only= "댓글 수"
-            | &nbsp;
             a.no-underline(href="#comments")
               span.count-text= "[##_article_rep_rp_cnt_##]개"
         else if ingType == "list"
           span.comments-count(data-count="[##_list_rep_rp_cnt_##]")
             span.speak-only= "댓글 수"
-            | &nbsp;
             span.no-effect.count-text= "[##_list_rep_rp_cnt_##]개"
 
     .right.admin-tools

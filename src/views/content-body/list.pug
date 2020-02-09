@@ -1,7 +1,7 @@
 include ingredients
 
 //- Lists
-s_list: article(class="[##_list_style_##]")
+s_list: article(class="[##_list_style_##] [##_var_index-style_##]")
 
   //- Stylesheet of #index-counter is in "global/others.scss".
   div#index-counter
@@ -9,10 +9,10 @@ s_list: article(class="[##_list_style_##]")
       span.inner-conform [##_list_conform_##]
     | &nbsp;
     b= "[##_list_count_##]개"
-    | &nbsp;있습니다.
+    | &nbsp;있어요.
 
   s_list_rep
-    a.no-underline(href="[##_list_rep_link_##]" title="눌러서 이 글 전체 읽기")
+    a.no-underline.ct-item(href="[##_list_rep_link_##]" title="눌러서 이 글 전체 읽기")
       s_list_rep_thumbnail: section.ct-thumbnail
         img(aria-hidden="true" src="[##_list_rep_thumbnail_##]" alt="썸네일 이미지")
       section.ct-summary
@@ -20,3 +20,12 @@ s_list: article(class="[##_list_style_##]")
           +title("list")
           +meta("list")
         section.ct-excerpt [##_list_rep_summary_##]
+
+  script.
+    document.querySelectorAll('.ct-item .ct-excerpt').forEach((item) => {
+      const txt = document.createElement('textarea');
+      txt.innerHTML = item.innerText;
+      if (txt.value.length > 200) {
+        item.innerText = `${txt.value.split(' ').slice(0, 45).join(' ')} ...`;
+      }
+    });

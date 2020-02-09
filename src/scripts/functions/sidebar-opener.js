@@ -38,7 +38,7 @@ PtRegister(
     opener.onclick = open;
 
     // Bind swipe event on document
-    const moveSpeedThreshold = 10;
+    const moveSpeedThreshold = 15;
     const startPointThreshold = 15;
     let moveLengthThreshold;
     let swipeStartPoint;
@@ -46,7 +46,7 @@ PtRegister(
     let wasSatisfiedStartCondition;
     let wasOveredThreshold;
     main.addEventListener('touchstart', (event) => {
-      moveLengthThreshold = document.body.offsetWidth * 0.12;
+      moveLengthThreshold = document.body.offsetWidth * 0.24;
 
       swipeStartPoint = event.touches[0].clientX;
       latestSwipePoint = event.touches[0].clientX;

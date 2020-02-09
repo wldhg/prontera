@@ -1,0 +1,31 @@
+script.
+  "use strict";
+  window.PtConfig = {
+    modarkbulDomain: '[##_var_cookie-domain_##]',
+    hlColor: '[##_var_color-hl_##]',
+    pageType: '[##_body_id_##]',
+  };
+  window.PtQueue = {};
+  window.PtLateQueue = {};
+
+  window.PtRegister = function (name, fn, lazy) {
+    if (window.onload && window.PtLaunched) {
+      window.PtLateQueue[name] = fn;
+      window.PtStore[name] = {};
+      try {
+        fn(window.PtStore[name], window.PtConfig, function () {
+          console.groupCollapsed('Result — ' + name);
+          Array.from(arguments).forEach(console.log);
+          console.groupEnd();
+        });
+      } catch (e) {
+        console.debug(e);
+      }
+    } else {
+      (lazy ? PtLateQueue : PtQueue)[name] = fn;
+    }
+  };
+
+  if (window.PtConfig.modarkbulDomain.length > 1) {
+    document.domain = window.PtConfig.modarkbulDomain;
+  }

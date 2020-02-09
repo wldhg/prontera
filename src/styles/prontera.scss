@@ -163,6 +163,7 @@ main {
       /* Temporary fixed. Intended: sticky */
       position: fixed;
       top: $MAIN_TOP_PADDING;
+      max-width: calc(250px + 5%);
     }
 
     .title {
@@ -279,8 +280,8 @@ main {
     box-sizing: border-box;
     padding: 0 $CONTENT_PADDING;
     margin-left: auto;
+    transition: filter $TRANSIT_TIME;
 
-    @include transit(filter);
     @include onCompactView {
       width: 100%;
       margin: 0 auto;
@@ -404,4 +405,15 @@ main {
   88% { opacity: .4; }
   96% { opacity: .6; }
   100% { opacity: .8; }
+}
+
+@keyframes borderHighlight {
+  0% { border: 1px solid transparent; }
+  50% { border: 1px solid var(--color-hl); }
+  100% { border: 1px solid transparent; }
+}
+
+@keyframes rotateZ {
+  0% { transform: rotateZ(0); }
+  100% { transform: rotateZ(360deg); }
 }

@@ -1,19 +1,13 @@
 @import "../common";
 
-.mjx-chtml {
-  overflow: visible;
-
-  &:not(.MJXc-display) {
-    display: inline !important;
-    margin: 0 3px !important;
-  }
-
-  &, span:not(.mjx-sub):not(.mjx-sup) {
-    font-size: 100% !important;
-    line-height: 0 !important;
-  }
+.mjx-chtml[tabindex] {
+  display: inline-table !important;
 }
 
 #MathJax_Message {
   @include noPrint;
+}
+
+.MathJax_Preview {
+  display: none;
 }

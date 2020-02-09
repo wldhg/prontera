@@ -88,7 +88,7 @@ PtRegister(
 
       const words = content.textContent.split(' ').length;
 
-      document.querySelector('.text-amount').textContent = `${content.textContent.length} 글자, ${Math.floor(words / 180)} - ${Math.floor(words / 120)}분 소요`;
+      document.querySelector('.text-amount').textContent = `${content.textContent.length} 글자, ${Math.ceil(words / 88)} - ${Math.floor(words / 40)}분 소요`;
 
       for (let i = 0; i < scrollThresholds.length; i += 1) {
         if (i === scrollThresholds.length - 1) {

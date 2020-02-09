@@ -19,7 +19,7 @@ $TWITTER_HEIGHT: 540px;
       margin-bottom: ($TWITTER_HEIGHT - $SPINNER_SIZE) / 2;
 
       &::after {
-        content: '브라우저의 콘텐츠 차단 기능이 켜져 있으면 트위터 타임라인이 표시되지 않습니다.';
+        content: '브라우저의 콘텐츠 차단 기능이 켜져 있으면 트위터 타임라인이 표시되지 않아요.';
         opacity: .4;
         position: absolute;
         text-align: center;

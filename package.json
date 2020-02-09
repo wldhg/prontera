@@ -1,6 +1,6 @@
 {
   "name": "prontera",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-beta",
   "description": "A tistory skin named <Prontera>.",
   "main": "gulpfile.js",
   "repository": "https://github.com/wldh-g/prontera.git",
@@ -33,5 +33,8 @@
     "watch": "npx gulp watch",
     "build": "npx gulp build",
     "zip": "npx gulp zip"
+  },
+  "dependencies": {
+    "gulp-header": "^2.0.9"
   }
 }
