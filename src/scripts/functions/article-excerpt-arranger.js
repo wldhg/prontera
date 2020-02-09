@@ -27,13 +27,33 @@ PtRegister(
           let lntop = [idxh, idxh, idxh];
           const lnw = (cont.offsetWidth - 40) / ln;
           const lnleft = [-8, lnw - 12, lnw * 2 - 16];
-          w.items.forEach((item, idx) => {
-            const lni = idx % ln;
-            console.log([lnleft[lni], lntop[lni]]);
-            item.style.setProperty('left', `${lnleft[lni]}px`);
-            item.style.setProperty('top', `${lntop[lni]}px`);
-            lntop[lni] += item.offsetHeight + 24;
-          });
+          if (ln === 2) {
+            w.items.forEach((item) => {
+              let lni = 0;
+              if (lntop[0] <= lntop[1]) {
+                lni = 0;
+              } else if (lntop[1] <= lntop[0]) {
+                lni = 1;
+              }
+              item.style.setProperty('left', `${lnleft[lni]}px`);
+              item.style.setProperty('top', `${lntop[lni]}px`);
+              lntop[lni] += item.offsetHeight + 24;
+            });
+          } else {
+            w.items.forEach((item) => {
+              let lni = 0;
+              if (lntop[0] <= lntop[1] && lntop[0] <= lntop[2]) {
+                lni = 0;
+              } else if (lntop[1] <= lntop[0] && lntop[1] <= lntop[2]) {
+                lni = 1;
+              } else if (lntop[2] <= lntop[1] && lntop[2] <= lntop[0]) {
+                lni = 2;
+              }
+              item.style.setProperty('left', `${lnleft[lni]}px`);
+              item.style.setProperty('top', `${lntop[lni]}px`);
+              lntop[lni] += item.offsetHeight + 24;
+            });
+          }
           atcl.style.setProperty('height', `${Math.max(...lntop)}px`);
         }
       };

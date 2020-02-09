@@ -30,7 +30,7 @@
     vertical-align: top;
     overflow: hidden;
 
-    @include radboxButton(color);
+    @include radboxButton(color, left, top);
     @include onFocus {
       color: $COLOR_DEF;
     }

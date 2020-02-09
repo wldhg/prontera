@@ -760,7 +760,7 @@
   textarea, input, label {
     box-sizing: border-box;
     padding: 8px;
-    background-color: transparent;
+    background-color: var(--color-inv-hl);
     color: var(--color-def);
     border: 1px solid rgba(180, 180, 180, .3);
 
