@@ -12,6 +12,13 @@ script(type="text/x-mathjax-config").
   MathJax.Hub.Queue(function () {
     var args = arguments;
     window.PtRegister(
-      "mathjax", function (w, c, end) { end(Array.from(args)); }
+      "mathjax", function (w, c, end) {
+        document.querySelectorAll('.MJXc-processed').forEach(function(mjxc) {
+          if (mjxc.previousElementSibling.classList.contains('MathJax_Preview')) {
+            mjxc.previousElementSibling.style.setProperty('display', 'none');
+          }
+        });
+        end(Array.from(args));
+      }
     );
   });

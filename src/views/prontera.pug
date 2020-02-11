@@ -23,8 +23,15 @@ html(lang="ko")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&display=swap")
     link(rel="stylesheet" href="./style.css")
     style(type="text/css").
-      * { --color-hl: [##_var_color-hl_##]; --color-hl-inv: var(--color-[##_var_color-hl-inv_##]); --color-hl-alter: [##_var_color-hl-alter_##]; }
-      a, p, p *, span, span *, h1, h2, h3, h4, h5, h6 { --color-hl: [##_var_color-hl-alter_##]; }
+      * {
+        --color-hl: [##_var_color-hl_##];
+        --color-hl-inv: var(--color-[##_var_color-hl-inv_##]);
+        --color-hl-alter: [##_var_color-hl-alter_##];
+        --color-hl-orig: [##_var_color-hl_##];
+      }
+      a, p, p *, span, span *, h1, h2, h3, h4, h5, h6 {
+        --color-hl: [##_var_color-hl-alter_##];
+      }
 
     title= "[##_page_title_##]"
     link(rel="alternate" type="application/rss+xml" href="[##_rss_url_##]" title="[##_title_##]")

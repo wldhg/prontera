@@ -97,7 +97,12 @@ body {
 
     &::selection {
       color: $COLOR_HL_INV;
-      background-color: $COLOR_HL;
+      background-color: $COLOR_HL_ORIG;
+
+      @include transit(color);
+      @include onDark {
+        color: $COLOR_LIGHT !important;
+      }
     }
   }
 

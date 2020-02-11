@@ -14,10 +14,11 @@ PtRegister(
       }));
     });
     w.hljsPromise = Promise.all(hljsPromises).then(() => {
-      w.linkTargets = document.querySelectorAll('.ct-body .hljs .hljs-link');
+      w.linkTargets = document.querySelectorAll('.ct-body .hljs .hljs-link, .ct-body .hljs a');
       w.linkTargets.forEach((link) => {
         link.onclick = function () {
           window.open(link.textContent, '_blank');
+          return false;
         };
         link.onclick.isLinkOpener = true;
         link.style.setProperty('cursor', 'alias');
