@@ -19,7 +19,7 @@
   </a>
 </p>
 
-<p align="center"><small>저는 이 스킨을 더이상 개발하지 않습니다. 이 스킨의 모든 디자인 및 기능은 정적 블로그 생성기 <a href="https://hexo.io">Hexo</a>의 테마, <a href="https://github.com/wldh-g/ankha">Ankha</a>에서 이어집니다.</small></p>
+<p align="center"><sub>이 스킨은 더이상 발전하지 않습니다. 이 스킨의 모든 디자인 및 기능은 정적 블로그 생성기 <a href="https://hexo.io">Hexo</a>의 테마, <a href="https://github.com/wldh-g/ankha">Ankha</a>에서 이어집니다.</sub></p>
 
 <br>
 
