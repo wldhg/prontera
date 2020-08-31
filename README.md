@@ -2,7 +2,7 @@
   <img alt='Prontera' src='./prontera.png'>
 </p>
 
-<p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (NOT-RELEASED)</p>
+<p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (Archived)</p>
 
 <p align='center'>
   <a href="https://github.com/wldh-g/prontera/blob/master/package.json#L3">
@@ -12,12 +12,14 @@
     <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/wldh-g/prontera.svg?style=flat-square'>
   </a>
   <a>
-    <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/yes/2020.svg?style=flat-square'>
+    <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/no/2020.svg?style=flat-square'>
   </a>
   <a href="https://www.mozilla.org/en-US/MPL/2.0/">
     <img alt='라이센스' src='https://img.shields.io/github/license/wldh-g/prontera.svg?style=flat-square'>
   </a>
 </p>
+
+<p align="center"><small>저는 이 스킨을 더이상 개발하지 않습니다. 이 스킨의 모든 디자인 및 기능은 정적 블로그 생성기 [Hexo](https://hexo.io/)의 테마, [Ankha](https://github.com/wldh-g/ankha)에서 이어집니다.</small></p>
 
 <br>
 
@@ -30,8 +32,6 @@
 
 ## 기능 안내
 
-지원 예정 기능은 [TODO](TODO.md#readme)에서 확인할 수 있습니다.
-
 |      티스토리 기능 지원      |             외형             |            개인화           |          특별한 기능         |
 |:----------------------------|:----------------------------|:----------------------------|:----------------------------|
 | TISTORY 신 에디터 지원       | 반응형 디자인                | 강조 색상 지정               | 밝기 모드 쿠키 도메인 공유    |
@@ -40,9 +40,8 @@
 |                             |                             | 페이지에서 사이드바 숨기기    | 자동 글 목차(toc) 생성       |
 
 <sup>1</sup> 2단 = TISTORY 카테고리 최대 깊이
-<sup>2</sup> 추가 기능 설명은 [위키](https://github.com/wldh-g/prontera/wiki) 참조
 
-#### 영원히 지원할 예정이 없는 기능
+#### 지원하지 않는 기능
 
 + TISTORY 구 에디터, 트랙백, 위치 로그, 미디어 로그 `Deprecated by TISTORY`
 + TISTORY 공지 기능
@@ -55,7 +54,7 @@
 
 #### 준비물
 
-+ [node](https://nodejs.org/ko/) `버전 12 미지원 (node-sass)`
++ [node](https://nodejs.org/ko/) `오류 발생 시 Node.js 10을 사용해보세요`
 + [yarn](https://yarnpkg.com/lang/en/) `npm install yarn -g`
 
 #### 빌드 명령

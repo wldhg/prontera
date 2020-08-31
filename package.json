@@ -1,6 +1,6 @@
 {
   "name": "prontera",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "A tistory skin named <Prontera>.",
   "main": "gulpfile.js",
   "repository": "https://github.com/wldh-g/prontera.git",
