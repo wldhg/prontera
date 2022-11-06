@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A tistory skin named <Prontera>.",
   "main": "gulpfile.js",
-  "repository": "https://github.com/wldh-g/prontera.git",
+  "repository": "https://github.com/wldhg/prontera.git",
   "author": "Jio",
   "license": "MPL-2.0",
   "private": true,
