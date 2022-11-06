@@ -5,27 +5,25 @@
 <p align='center'>넘치지 않으면서 적당하게 알맞은 티스토리 스킨 (Archived)</p>
 
 <p align='center'>
-  <a href="https://github.com/wldh-g/prontera/blob/master/package.json#L3">
-    <img alt='버전' src='https://img.shields.io/github/package-json/v/wldh-g/prontera.svg?style=flat-square'>
+  <a href="https://github.com/wldhg/prontera/blob/master/package.json#L3">
+    <img alt='버전' src='https://img.shields.io/github/package-json/v/wldhg/prontera.svg?style=flat-square'>
   </a>
   <a href="https://travis-ci.com/wldh-g/prontera">
-    <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/wldh-g/prontera.svg?style=flat-square'>
+    <img alt='Travis CI 빌드 테스트 상태' src='https://img.shields.io/travis/com/wldhg/prontera.svg?style=flat-square'>
   </a>
   <a>
     <img alt='레포지토리 관리 여부' src='https://img.shields.io/maintenance/no/2020.svg?style=flat-square'>
   </a>
   <a href="https://www.mozilla.org/en-US/MPL/2.0/">
-    <img alt='라이센스' src='https://img.shields.io/github/license/wldh-g/prontera.svg?style=flat-square'>
+    <img alt='라이센스' src='https://img.shields.io/github/license/wldhg/prontera.svg?style=flat-square'>
   </a>
 </p>
-
-<p align="center"><sub>이 스킨은 더이상 발전하지 않습니다. 이 스킨의 모든 디자인 및 기능은 정적 블로그 생성기 <a href="https://hexo.io">Hexo</a>의 테마, <a href="https://github.com/wldh-g/ankha">Ankha</a>에서 이어집니다.</sub></p>
 
 <br>
 
 ## 미리 보기
 
-<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/wldh-g/prontera/master/src/preview.png" width="100%"></p>
+<p align='center'><img alt="스킨 미리보기" src="https://raw.githubusercontent.com/wldhg/prontera/master/src/preview.png" width="100%"></p>
 
 <hr>
 <br>
@@ -60,7 +58,7 @@
 #### 빌드 명령
 
 ```sh
-$ git clone https://github.com/wldh-g/prontera.git --recurse-submodules; cd prontera
+$ git clone https://github.com/wldhg/prontera.git --recurse-submodules; cd prontera
 $ yarn; yarn build
 $ cd out; ls
 ```
